@@ -1,0 +1,8 @@
+node_modules/
+
+build/tests/
+src/
+tests/
+
+webpack.config.js
+*.map

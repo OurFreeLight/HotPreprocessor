@@ -1,0 +1,38 @@
+{
+  "name": "hotpreprocessor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/src/Hotpreprocessor.js",
+  "types": "./build/src/Hotpreprocessor.d.js",
+  "scripts": {
+    "test": "npx mocha --timeout 999999 --colors ./build/tests/**/*.js",
+    "builddoc": "npx typedoc --ignoreCompilerErrors --mode file --readme README.md --out ./docs/ ./src",
+    "build": "npx tsc --build ./tsconfig.json",
+    "buildweb": "npx webpack --mode=production",
+    "buildwebdebug": "npx webpack --mode=development --debug",
+    "publish": "npm publish --access public"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/isomorphic-fetch": "0.0.35",
+    "@types/node": "^13.13.1",
+    "@types/node-fetch": "^2.5.6",
+    "isomorphic-fetch": "^2.2.1",
+    "node-fetch": "^2.6.0",
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/express": "^4.17.6",
+    "@types/mocha": "^7.0.2",
+    "@types/selenium-webdriver": "^4.0.9",
+    "chai": "^4.2.0",
+    "express": "^4.17.1",
+    "mocha": "^7.1.1",
+    "selenium-webdriver": "^4.0.0-alpha.7",
+    "ts-loader": "^7.0.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
