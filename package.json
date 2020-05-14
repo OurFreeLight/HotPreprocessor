@@ -2,8 +2,8 @@
   "name": "hotpreprocessor",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/src/Hotpreprocessor.js",
-  "types": "./build/src/Hotpreprocessor.d.js",
+  "main": "./build/src/HotPreprocessor.js",
+  "types": "./build/src/HotPreprocessor.d.js",
   "scripts": {
     "test": "npx mocha --timeout 999999 --colors ./build/tests/**/*.js",
     "builddoc": "npx typedoc --ignoreCompilerErrors --mode file --readme README.md --out ./docs/ ./src",
