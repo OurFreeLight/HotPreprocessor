@@ -1,6 +1,6 @@
 {
   "name": "hotpreprocessor",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "main": "./build/src/HotPreprocessor.js",
   "types": "./build/src/HotPreprocessor.d.js",
@@ -9,11 +9,17 @@
     "builddoc": "typedoc --ignoreCompilerErrors --mode file --readme README.md --out ./docs/ ./src",
     "build": "tsc --build ./tsconfig.json",
     "buildweb": "webpack --mode=production",
-    "buildwebdebug": "webpack --mode=development --debug",
-    "publish": "npm publish --access public"
+    "buildwebdebug": "webpack --mode=development --debug"
+  },
+  "bugs": {
+    "url": "https://github.com/OurFreeLight/HotPreprocessor/issues"
   },
   "author": "FreeLight, Inc",
   "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/OurFreeLight/HotPreprocessor.git"
+  },
   "dependencies": {
     "@types/isomorphic-fetch": "0.0.35",
     "@types/node": "^13.13.1",
