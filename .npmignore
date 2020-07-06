@@ -1,8 +1,10 @@
 node_modules/
+db/
 
 build/tests/
-src/
+client/
 tests/
 
-webpack.config.js
+HotSite.json
+*.config.js
 *.map

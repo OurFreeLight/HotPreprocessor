@@ -49,6 +49,7 @@ export class HotPreprocessor implements IHotPreprocessor
 	<script type = "text/javascript" src = "%hotpreprocessor_js_src%"></script>
 	<script type = "text/javascript">
 		var HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
+		%load_hot_site%
 		HotPreprocessor.displayUrl ("%url%");
 	</script>
 </head>

@@ -1,19 +1,19 @@
 {
   "name": "hotpreprocessor",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "",
   "main": "./build/src/HotPreprocessor.js",
   "types": "./build/src/HotPreprocessor.d.js",
   "scripts": {
-    "test": "npx mocha --timeout 999999 --colors ./build/tests/**/*.js",
-    "builddoc": "npx typedoc --ignoreCompilerErrors --mode file --readme README.md --out ./docs/ ./src",
-    "build": "npx tsc --build ./tsconfig.json",
-    "buildweb": "npx webpack --mode=production",
-    "buildwebdebug": "npx webpack --mode=development --debug",
+    "test": "mocha --timeout 999999 --colors ./build/tests/**/*.js",
+    "builddoc": "typedoc --ignoreCompilerErrors --mode file --readme README.md --out ./docs/ ./src",
+    "build": "tsc --build ./tsconfig.json",
+    "buildweb": "webpack --mode=production",
+    "buildwebdebug": "webpack --mode=development --debug",
     "publish": "npm publish --access public"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "FreeLight, Inc",
+  "license": "MIT",
   "dependencies": {
     "@types/isomorphic-fetch": "0.0.35",
     "@types/node": "^13.13.1",
