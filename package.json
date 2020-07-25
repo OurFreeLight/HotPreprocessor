@@ -1,6 +1,6 @@
 {
   "name": "hotpreprocessor",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "",
   "main": "./build/src/HotPreprocessor.js",
   "types": "./build/src/HotPreprocessor.d.js",
@@ -17,15 +17,13 @@
   "author": "FreeLight, Inc",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/OurFreeLight/HotPreprocessor.git"
+    "type": "git",
+    "url": "https://github.com/OurFreeLight/HotPreprocessor.git"
   },
   "dependencies": {
-    "@types/isomorphic-fetch": "0.0.35",
     "@types/node": "^13.13.1",
-    "@types/node-fetch": "^2.5.6",
-    "isomorphic-fetch": "^2.2.1",
-    "node-fetch": "^2.6.0",
+    "commander": "^6.0.0",
+    "cross-fetch": "^3.0.5",
     "typescript": "^3.8.3"
   },
   "devDependencies": {
@@ -39,6 +37,6 @@
     "selenium-webdriver": "^4.0.0-alpha.7",
     "ts-loader": "^7.0.1",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.12"
   }
 }

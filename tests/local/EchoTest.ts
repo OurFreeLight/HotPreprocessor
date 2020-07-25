@@ -82,7 +82,8 @@ describe ("Echo Tests", () =>
 			});
 		it ("should process the content using HotPreprocessor.processContent", async () =>
 			{
-				let output: string = await HotPreprocessor.processContent (content, "Echo Test");
+				let processor: HotPreprocessor = new HotPreprocessor ();
+				let output: string = await HotPreprocessor.processContent (processor, content, "Echo Test");
 				const comparison: string = finalContent.replace (/\s/g, "");
 
 				output = output.replace (/\s/g, "");

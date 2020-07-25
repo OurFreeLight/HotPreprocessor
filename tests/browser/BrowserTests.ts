@@ -24,11 +24,20 @@ describe ("Browser Tests", () =>
 		after (async () =>
 			{
 				await common.driver.quit ();
-				common.shutdown ();
+				await common.shutdown ();
 			});
 
 		it ("should load the Hello World html", async () =>
 			{
+/**
+Execute this code to debug in browser:
+(async () =>
+{
+	var HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
+	await HotPreprocessor.displayUrl ("/tests/browser/HelloWorld.hott");
+})();
+*/
+
 				await common.driver.executeAsyncScript (`
 				var done = arguments[0];
 				var HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
@@ -38,9 +47,11 @@ describe ("Browser Tests", () =>
 		it ("should click the Hello World button", async () =>
 			{
 				let elm = await common.driver.wait (until.elementLocated (By.id ("helloWorld")));
-
 				expect (elm).to.not.equal (null, "Page did not load!");
-
 				await elm.click ();
+
+				elm = common.driver.findElement (By.id ("buttonClicked"));
+				let value: string = await elm.getAttribute ("innerHTML");
+				expect (value).to.equal ("Clicked", "Button was not clicked!");
 			});
 	});

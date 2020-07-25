@@ -7,10 +7,10 @@
 
 <body>
 <*
-	Hot.echo ("<button id = \"helloWorld\">Hello");
+	Hot.echo (`<button id = "helloWorld" onclick = "document.getElementById ('buttonClicked').innerHTML='Clicked';">Hello`);
 *>
 <*
-	Hot.echo ("World!</button>");
+	Hot.echo (`World!</button><div id = "buttonClicked"></div>`);
 *>
 </body>
 

@@ -1,11 +1,8 @@
-import * as ppath from "path";
-
 import { HotHTTPServer } from "../../src/HotHTTPServer";
 
 import { Builder, WebDriver, Session } from "selenium-webdriver";
 import { HotPreprocessor } from "../../src/HotPreprocessor";
 import { HotLogLevel } from "../../src/HotLog";
-import { HelloWorldAPI } from "../server/HelloWorldAPI";
 
 /**
  * Common testing features
@@ -39,7 +36,7 @@ export class Common
 		this.driver = null;
 		this.capabilities = {};
 		this.session = null;
-		this.server = null;
+		this.server = new HotHTTPServer (this.processor);
 	}
 
 	/**
@@ -76,15 +73,11 @@ export class Common
 	 */
 	async startServer (): Promise<void>
 	{
-		this.server = new HotHTTPServer (this.processor);
-
 		this.server.logger.logLevel = HotLogLevel.All;
 		this.server.staticRoutes.push ({
 				"route": "/",
-				"localPath": ppath.normalize (`${process.cwd ()}/`)
+				"localPath": `${process.cwd ()}/`
 			});
-		let api: HelloWorldAPI = new HelloWorldAPI (this.getUrl (), this.server);
-		this.server.setAPI (api);
 
 		return (this.server.listen ());
 	}

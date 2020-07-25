@@ -76,7 +76,7 @@ describe ("Simple Preprocessor Tests", () =>
 
 				expect (output).to.equal (comparison);
 			});
-		it ("should process the content using HotPreprocessor.processLocalFile", async () =>
+		it ("should process content that contains a header and a footer using HotPreprocessor.processLocalFile", async () =>
 			{
 				let output: string = await HotPreprocessor.processLocalFile ("./tests/local/include.hott");
 				const comparison: string = finalContent.replace (/\s/g, "");

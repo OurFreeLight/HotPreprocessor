@@ -5,6 +5,8 @@ Hotpreprocessor is a lightweight server-side or client-side HTML preprocessor. I
 
 It's important to keep the number of dependencies required for Hotpreprocessor down to a minimum, so as it can be used in secure environments.
 
+Hotpreprocessor is capable of processing code server-side and client-side.
+
 ## Getting started
 First you gotta install like so:
 
@@ -89,5 +91,7 @@ When used in a browser, Hotpreprocessor is meant to replace the entire page it's
 
 	</html>
 
+You can find a pre-built ```HotPreprocessor.js``` in ```node_modules/hotpreprocessor/build-web/HotPreprocessor.js```
+
 # Possible Future Compiler
-I'd like to create a CLI tool that compresses the entire public html directory into a zip file which can be downloaded and unzipped during runtime by the client's web browser then display the pages. During the compilation phase it would look for vulnerabilities and report them, for example when embedding JS files, if integrity hashes are missing, it would complain.
+I'd like to create a CLI tool that compresses the entire public html directory into a zip file which can be downloaded and unzipped during runtime by the client's web browser then display the pages. During the compilation phase it would look for vulnerabilities and report them; for example when embedding JS files, if integrity hashes are missing, it would complain.

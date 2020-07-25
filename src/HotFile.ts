@@ -1,6 +1,7 @@
 import * as fs from "fs";
 
-import fetch from "isomorphic-fetch";
+// @ts-ignore dunno what this issue is about.
+import fetch from "cross-fetch";
 
 import { Hot } from "./Hot";
 
@@ -74,22 +75,32 @@ export class HotFile implements IHotFile
 	}
 
 	/**
-	 * Load content from a url.
+	 * Make a HTTP get request.
 	 */
-	async loadUrl (): Promise<void>
+	static async httpGet (url: string)
 	{
-		let res: any = await fetch (this.url);
+		let res: any = await fetch (url);
 		let content: string = await res.text ();
 
-		this.content = content;
+		return (content);
+	}
+
+	/**
+	 * Load content from a url.
+	 */
+	async loadUrl (): Promise<string>
+	{
+		this.content = await HotFile.httpGet (this.url);
+
+		return (this.content);
 	}
 
 	/**
 	 * Load content from a local file.
 	 */
-	async loadLocalFile (): Promise<void>
+	async loadLocalFile (): Promise<string>
 	{
-		let promise: Promise<void> = new Promise (
+		let promise: Promise<string> = new Promise (
 			(resolve: any, reject: any): void =>
 			{
 				fs.readFile (this.localFile, (err: NodeJS.ErrnoException, data: Buffer): void =>
@@ -100,7 +111,7 @@ export class HotFile implements IHotFile
 						let content: string = data.toString ();
 						this.content = content;
 
-						resolve ();
+						resolve (this.content);
 					});
 			});
 
@@ -110,13 +121,17 @@ export class HotFile implements IHotFile
 	/**
 	 * Load the contents of the file.
 	 */
-	async load (): Promise<void>
+	async load (): Promise<string>
 	{
+		let content: string = "";
+
 		if (this.url !== "")
-			await this.loadUrl ();
+			content = await this.loadUrl ();
 
 		if (this.localFile !== "")
-			await this.loadLocalFile ();
+			content = await this.loadLocalFile ();
+
+		return (content);
 	}
 
 	/**
@@ -156,9 +171,27 @@ export class HotFile implements IHotFile
 				return ({ hot: Hot, output: Hot.Output, persistence: JSON.stringify (Hot.Persistence) });
 			}));`;
 
-			/// @fixme Prior to execution compile any TypeScript and make it ES5 compatible.
-			let func: Function = new Function (content);
-			let returnedOutput: any = await func.apply (this, [Hot]);
+			let returnedOutput: any = null;
+
+			try
+			{
+				/// @fixme Prior to execution compile any TypeScript and make it ES5 compatible.
+				let func: Function = new Function (content);
+				returnedOutput = await func.apply (this, [Hot]);
+			}
+			catch (ex)
+			{
+				if (ex instanceof SyntaxError)
+				{
+					/// @fixme Put what's in the content variable into a prev content variable?
+					/// Then once there's no longer any syntax errors being thrown, execute the 
+					/// code? This would also require saving any HTML outside of the *> and <* 
+					/// then echoing it out. The throw below would have to be removed as well.
+					throw ex;
+				}
+				else
+					throw ex;
+			}
 
 			Hot.Persistence = returnedOutput.hot.Persistence;
 			output += returnedOutput.output;

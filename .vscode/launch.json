@@ -5,10 +5,23 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "Debug HTTP Server",
+			"program": "${workspaceFolder}/build/src/cli.js",
+			"request": "launch",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"type": "pwa-node",
+			"outputCapture": "std",
+			"args": [
+				"-d"
+			]
+		},
+		{
 			"type": "node",
 			"request": "launch",
 			"name": "Launch HTTP Test Server",
-			"program": "${workspaceFolder}/build/tests/TestServer.js",
+			"program": "${workspaceFolder}/build/src/TestServer.js",
 			"skipFiles": [
 				"<node_internals>/**"
 			]
@@ -18,13 +31,15 @@
 			"request": "launch",
 			"name": "Run Tests",
 			"program": "${workspaceFolder}/node_modules/mocha/bin/mocha",
+			"runtimeArgs": [
+				"--inspect=127.0.0.1:7478"
+			],
 			"port": 7478,
 			"args": [
-				"--inspect-brk=127.0.0.1:7478",
 				"--timeout",
-				"999999",
+				"5000",
 				"--colors",
-				"${workspaceFolder}/build/tests/local/*.js"
+				"${workspaceFolder}/build/tests/**/*.js"
 			],
 			"internalConsoleOptions": "openOnSessionStart",
 			"skipFiles": [

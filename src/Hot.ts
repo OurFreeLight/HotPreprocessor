@@ -76,21 +76,21 @@ export class Hot
 	/**
 	 * Get the content of a file.
 	 */
-	static async getFile (file: HotFile | string): Promise<string>
+	static async getFile (path: HotFile | string): Promise<string>
 	{
 		let tempFile: HotFile = null;
 
-		if (typeof (file) === "string")
+		if (typeof (path) === "string")
 		{
 			tempFile = new HotFile ();
 
 			if (HotPreprocessor.isWeb === true)
-				tempFile.url = file;
+				tempFile.url = path;
 			else
-				tempFile.localFile = file;
+				tempFile.localFile = path;
 		}
 		else
-			tempFile = file;
+			tempFile = path;
 
 		await tempFile.load ();
 
