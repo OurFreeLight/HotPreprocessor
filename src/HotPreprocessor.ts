@@ -265,7 +265,10 @@ export class HotPreprocessor implements IHotPreprocessor
 
 	/**
 	 * Create the Express routes from the given pages. Be sure to load the 
-	 * pages first before doing this.
+	 * pages first before doing this. This method is meant to be used for 
+	 * customized Express applications. If you wish to use the loaded routes 
+	 * from this HotPreprocessor object with HotHTTPServer, be sure to use 
+	 * the loadHotSite method in HotHTTPServer.
 	 */
 	createExpressRoutes (expressApp: any, jsSrcPath: string = "./js/HotPreprocessor.js"): void
 	{
@@ -277,6 +280,7 @@ export class HotPreprocessor implements IHotPreprocessor
 				{
 					tempContent = tempContent.replace (/\%title\%/g, page.name);
 					tempContent = tempContent.replace (/\%hotpreprocessor\_js\_src\%/g, jsSrcPath);
+					tempContent = tempContent.replace (/\%load_hot_site\%/g, "");
 					tempContent = tempContent.replace (/\%url\%/g, page.files[0].url);
 
 					return (tempContent);

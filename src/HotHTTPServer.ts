@@ -1,5 +1,6 @@
 import * as http from "http";
 import * as https from "https";
+import * as ppath from "path";
 
 import express from "express";
 
@@ -63,7 +64,13 @@ export class HotHTTPServer extends HotServer
 		}
 
 		if (process.env.USE_HTTP != null)
-			this.ssl = null;
+		{
+			this.ssl = {
+					cert: "",
+					key: "",
+					ca: ""
+				};
+		}
 
 		if (process.env.HTTP_PORT != null)
 		{
@@ -127,7 +134,7 @@ export class HotHTTPServer extends HotServer
 	registerStaticRoute (route: StaticRoute): void
 	{
 		this.clearErrorHandlingRoutes ();
-		this.expressApp.use (route.route, express.static (route.localPath));
+		this.expressApp.use (route.route, express.static (ppath.normalize (route.localPath)));
 		this.setErrorHandlingRoutes ();
 	}
 
@@ -293,6 +300,15 @@ export class HotHTTPServer extends HotServer
 				}
 			}
 		}
+	}
+
+	/**
+	 * Start listening for requests.
+	 */
+	async loadHotSite (path: string): Promise<void>
+	{
+		await this.processor.loadHotSite (ppath.normalize (path));
+		this.processor.createExpressRoutes (this.expressApp);
 	}
 
 	/**
