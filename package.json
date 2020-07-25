@@ -1,6 +1,6 @@
 {
   "name": "hotpreprocessor",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "",
   "main": "./build/src/api.js",
   "types": "./build/src/api.d.js",
