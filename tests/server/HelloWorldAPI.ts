@@ -10,9 +10,9 @@ export class HelloWorldAPI extends HotAPI
 	{
 		super(baseUrl, connection, db);
 
-		this.addRoute (new HotRoute (connection, "hello_world", [
-				new HotRouteMethod ("hello", this.helloCalled)
-			]));
+		let route: HotRoute = new HotRoute (connection, "hello_world");
+		route.addMethod ("hello", this.helloCalled);
+		this.addRoute (route);
 	}
 
 	/**

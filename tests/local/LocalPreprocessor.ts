@@ -1,11 +1,9 @@
 import "mocha";
 import { expect, should } from "chai";
 
-import { HotPreprocessor } from "../../src/HotPreprocessor";
-import { HotPage } from "../../src/HotPage";
-import { HotFile } from "../../src/HotFile";
+import { HotPreprocessor, HotPage, HotFile } from "../../src/api";
 
-describe ("Simple Preprocessor Tests", () =>
+describe ("Local Preprocessor Tests", () =>
 	{
 		let processor: HotPreprocessor = null;
 		let finalContent: string = `<!DOCTYPE html>

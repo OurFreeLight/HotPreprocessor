@@ -1,6 +1,5 @@
 import * as fs from "fs";
 
-// @ts-ignore dunno what this issue is about.
 import fetch from "cross-fetch";
 
 import { HotPage } from "./HotPage";
@@ -8,6 +7,63 @@ import { HotFile } from "./HotFile";
 
 import { HotComponent } from "./HotComponent";
 import { HotLog, HotLogLevel } from "./HotLog";
+import { HotServer, HotClient, HotAPI } from "./HotPreprocessorWeb";
+
+/**
+ * A HotSite to load.
+ */
+export interface HotSite
+{
+	/**
+	 * The routes to load.
+	 */
+	routes: {
+			[routeName: string]: {
+					/**
+					 * The name of the route. Will appear in the title.
+					 */
+					name: string;
+					/**
+					 * The url to the file to load.
+					 */
+					url: string;
+					/**
+					 * The name of the API to use.
+					 */
+					api?: string;
+				};
+		};
+	/**
+	 * The api to load.
+	 */
+	apis?: {
+			[name: string]: {
+					/**
+					 * The JS API file to load.
+					 */
+					jsapi: string;
+					/**
+					 * The JS exported name to use.
+					 */
+					exportedName: string;
+					/**
+					 * The name of the api to use.
+					 */
+					apiName: string;
+				};
+		};
+	/**
+	 * The components to load.
+	 */
+	components?: {
+			[name: string]: {
+					/**
+					 * The url to the component to load.
+					 */
+					url: string;
+				};
+		};
+}
 
 /**
  * The main class that handles all HTML preprocessing, then outputs the 
@@ -16,6 +72,10 @@ import { HotLog, HotLogLevel } from "./HotLog";
 export class IHotPreprocessor
 {
 	/**
+	 * The api that's used to communicate with.
+	 */
+	api?: HotAPI;
+	/**
 	 * The pages that can be constructed.
 	 */
 	pages?: { [name: string]: HotPage };
@@ -23,6 +83,10 @@ export class IHotPreprocessor
 	 * The components that can be constructed.
 	 */
 	components?: { [name: string]: HotComponent };
+	/**
+	 * The loaded hotsite.
+	 */
+	hotSite?: HotSite;
 }
 
 /**
@@ -36,6 +100,10 @@ export class HotPreprocessor implements IHotPreprocessor
 	 */
 	static isWeb: boolean = false;
 	/**
+	 * The api that's used to communicate with.
+	 */
+	api: HotAPI;
+	/**
 	 * The pages that can be constructed.
 	 */
 	pages: { [name: string]: HotPage };
@@ -44,7 +112,15 @@ export class HotPreprocessor implements IHotPreprocessor
 	 */
 	components: { [name: string]: HotComponent };
 	/**
-	 * The page content to use when .
+	 * The loaded hotsite.
+	 */
+	hotSite: HotSite;
+	/**
+	 * The api content to use when about to load HotPreprocessor.
+	 */
+	apiContent: string;
+	/**
+	 * The page content to use when about to load HotPreprocessor.
 	 */
 	pageContent: string;
 	/**
@@ -54,8 +130,16 @@ export class HotPreprocessor implements IHotPreprocessor
 
 	constructor (copy: IHotPreprocessor = {})
 	{
+		this.api = copy.api || null;
 		this.pages = copy.pages || {};
 		this.components = copy.components || {};
+		this.hotSite = copy.hotSite || null;
+		this.apiContent = `
+		var %api_name% = %api_exported_name%.%api_name%;
+		var newHotClient = new HotClient (processor);
+		var newapi = new %api_name% ("%base_url%", newHotClient);
+		newHotClient.api = newapi;
+		processor.api = newapi;`;
 		this.pageContent = 
 `<!DOCTYPE html>
 <html>
@@ -64,10 +148,21 @@ export class HotPreprocessor implements IHotPreprocessor
 	<title>%title%</title>
 
 	<script type = "text/javascript" src = "%hotpreprocessor_js_src%"></script>
+
+%apis_to_load%
+
 	<script type = "text/javascript">
-		var HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
+		window.HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
+		window.HotClient = HotPreprocessorWeb.HotClient;
+		window.Hot = HotPreprocessorWeb.Hot;
+
 		%load_hot_site%
-		HotPreprocessor.displayUrl ("%url%");
+
+		var processor = new HotPreprocessor ();
+
+		%api_code%
+
+		HotPreprocessor.displayUrl ("%url%", "%title%", processor);
 	</script>
 </head>
 
@@ -245,8 +340,8 @@ export class HotPreprocessor implements IHotPreprocessor
 				});
 		}
 
-		let jsonObj = JSON.parse (jsonStr);
-		let routes = jsonObj["routes"];
+		this.hotSite = JSON.parse (jsonStr);
+		let routes = this.hotSite["routes"];
 
 		for (let key in routes)
 		{
@@ -275,12 +370,49 @@ export class HotPreprocessor implements IHotPreprocessor
 		for (let key in this.pages)
 		{
 			let page: HotPage = this.pages[key];
+			let apiScripts: string = "";
+			let apiCode: string = "";
+
+			// Load the API string.
+			if (this.hotSite != null)
+			{
+				if (this.hotSite.apis != null)
+				{
+					let route = this.hotSite.routes[page.route];
+
+					if (route.api != null)
+					{
+						let api = this.hotSite.apis[route.api];
+
+						if (api == null)
+							throw new Error (`Unable to find API ${route.api}`);
+
+						let jsapipath = api.jsapi;
+						apiScripts += `\t<script type = "text/javascript" src = "${jsapipath}"></script>\n`;
+
+						let baseUrl: string = "";
+
+						if (this.api != null)
+							baseUrl = this.api.baseUrl;
+
+						let tempAPIContent: string = this.apiContent;
+						tempAPIContent = tempAPIContent.replace (/\%api\_name\%/g, api.apiName);
+						tempAPIContent = tempAPIContent.replace (/\%api\_exported\_name\%/g, api.exportedName);
+						tempAPIContent = tempAPIContent.replace (/\%base\_url\%/g, baseUrl);
+
+						apiCode += tempAPIContent;
+					}
+				}
+			}
+
 			let content: string = this.pageContent;
 			let fixContent = (tempContent: string) =>
 				{
 					tempContent = tempContent.replace (/\%title\%/g, page.name);
 					tempContent = tempContent.replace (/\%hotpreprocessor\_js\_src\%/g, jsSrcPath);
-					tempContent = tempContent.replace (/\%load_hot_site\%/g, "");
+					tempContent = tempContent.replace (/\%apis\_to\_load\%/g, apiScripts);
+					tempContent = tempContent.replace (/\%load\_hot\_site\%/g, "");
+					tempContent = tempContent.replace (/\%api\_code\%/g, apiCode);
 					tempContent = tempContent.replace (/\%url\%/g, page.files[0].url);
 
 					return (tempContent);
@@ -334,6 +466,7 @@ export class HotPreprocessor implements IHotPreprocessor
 		let file: HotFile = new HotFile ({
 			"url": url
 		});
+
 		await file.load ();
 		let page: HotPage = new HotPage ({
 				"processor": processor,

@@ -1,5 +1,5 @@
 import { HotServer } from "./HotServer";
-import { HotRouteMethod } from "./HotRouteMethod";
+import { HotRouteMethod, HTTPMethod } from "./HotRouteMethod";
 import { HotClient } from "./HotClient";
 
 /**
@@ -56,10 +56,14 @@ export class HotRoute
 	/**
 	 * Add an API method to this route.
 	 */
-	addMethod (method: HotRouteMethod)
+	addMethod (
+		method: HotRouteMethod | string, 
+		executeFunction: (req: any, res: any, authorizedValue: any, jsonObj: any, queryObj: any) => Promise<any> = null,
+		type: HTTPMethod = HTTPMethod.POST
+		): void
 	{
-		if (! (method instanceof HotRouteMethod))
-			method = new HotRouteMethod (method);
+		if (typeof (method) === "string")
+			method = new HotRouteMethod (this, method, executeFunction, type);
 
 		this.methods.push (method);
 	}

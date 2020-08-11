@@ -9,11 +9,17 @@
 				"$tsc-watch"
 			],
 			"group": "build",
+			"runOptions": {
+				"instanceLimit": 1
+			},
 			"label": "Build"
 		},
 		{
 			"type": "shell",
 			"group": "build",
+			"runOptions": {
+				"instanceLimit": 1
+			},
 			"problemMatcher": [],
 			"label": "Build web debug",
 			"command": "npx webpack --mode=development --debug --watch"
@@ -21,9 +27,23 @@
 		{
 			"type": "shell",
 			"group": "build",
+			"runOptions": {
+				"instanceLimit": 1
+			},
 			"problemMatcher": [],
 			"label": "Build web tests",
 			"command": "npx webpack --mode=development --config=webpack.config.tests.js --debug --watch"
+		},
+		{
+			"type": "process",
+			"group": "build",
+			"runOptions": {
+				"instanceLimit": 1,
+				"runOn": "folderOpen"
+			},
+			"problemMatcher": [],
+			"label": "Build all",
+			"dependsOn":["Build", "Build web debug", "Build web tests", ""]
 		}
 	]
 }

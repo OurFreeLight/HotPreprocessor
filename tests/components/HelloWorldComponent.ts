@@ -1,5 +1,5 @@
-import { HotComponent, IHotComponent } from "../../src/HotComponent";
-import { HotPreprocessor } from "../../src/HotPreprocessor";
+import { HotPreprocessor, HotComponent, IHotComponent } from "../../src/HotPreprocessorWeb";
+
 import { HelloWorldAPI } from "../server/HelloWorldAPI";
 
 export class HelloWorld extends HotComponent
@@ -24,7 +24,7 @@ export class HelloWorld extends HotComponent
 			let message: string = (<HTMLInputElement>document.getElementById ("message")).value;
 			let result: string = await this.api.sayHello (message);
 	
-			document.getElementById ("buttonClicked").innerHTML = result;
+			document.getElementById ("buttonClicked").innerHTML = JSON.stringify (result);
 		}
 	}
 

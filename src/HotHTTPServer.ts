@@ -47,11 +47,10 @@ export class HotHTTPServer extends HotServer
 	 */
 	staticRoutes: StaticRoute[];
 
-	constructor (processor: HotPreprocessor)
+	constructor (processor: HotPreprocessor | HotServer)
 	{
 		super (processor);
 
-		this.processor = processor;
 		this.expressApp = express ();
 		this.httpListener = null;
 		this.httpsListener = null;
@@ -198,9 +197,9 @@ export class HotHTTPServer extends HotServer
 
 					this.logger.verbose (`${req.method} ${methodName}, JSON: ${JSON.stringify (jsonObj)}, Query: ${JSON.stringify (queryObj)}`);
 
-					if (method.onAuthorize != null)
+					if (method.onServerAuthorize != null)
 					{
-						authorizationValue = await method.onAuthorize (req, res);
+						authorizationValue = await method.onServerAuthorize (req, res);
 
 						if (authorizationValue === undefined)
 							hasAuthorization = false;
@@ -220,9 +219,9 @@ export class HotHTTPServer extends HotServer
 
 					if (hasAuthorization === true)
 					{
-						if (method.onExecute != null)
+						if (method.onServerExecute != null)
 						{
-							let result: any = await method.onExecute (req, res, authorizationValue, jsonObj, queryObj);
+							let result: any = await method.onServerExecute (req, res, authorizationValue, jsonObj, queryObj);
 
 							this.logger.verbose (`${req.method} ${methodName}, Response: ${result}`);
 
@@ -264,8 +263,17 @@ export class HotHTTPServer extends HotServer
 		{
 			handleOther = (err: any, req: express.Request, res: express.Response, next: any): void =>
 				{
-					this.logger.verbose (`500 Server error ${JSON.stringify (err)}`);
-					res.status (500).send ({ error: "Server error." });
+					let stack: string = "";
+					let msg: string = "";
+
+					if (err != null)
+					{
+						stack = err.stack;
+						msg = err.message;
+					}
+
+					this.logger.verbose (`500 Server error ${JSON.stringify (stack)}`);
+					res.status (500).send ({ error: `Server error: ${msg}` });
 				};
 		}
 
@@ -303,12 +311,15 @@ export class HotHTTPServer extends HotServer
 	}
 
 	/**
-	 * Start listening for requests.
+	 * Load a HotSite JSON file. Be sure to call this after attaching 
+	 * your api!
 	 */
-	async loadHotSite (path: string): Promise<void>
+	async loadHotSite (path: string): Promise<HotPreprocessor>
 	{
 		await this.processor.loadHotSite (ppath.normalize (path));
 		this.processor.createExpressRoutes (this.expressApp);
+
+		return (this.processor);
 	}
 
 	/**
@@ -322,11 +333,15 @@ export class HotHTTPServer extends HotServer
 				let completedSetup = () =>
 					{
 						let protocol: string = "http";
+						let port: number = this.ports.http;
 
-						if (this.ssl != null)
+						if (this.ssl.cert !== "")
+						{
 							protocol = "https";
+							port = this.ports.https;
+						}
 
-						this.logger.info (`Server running at ${protocol}://${this.listenAddress}:${this.ports.http}/`);
+						this.logger.info (`Server running at ${protocol}://${this.listenAddress}:${port}/`);
 						resolve ();
 					};
 

@@ -8,7 +8,7 @@ import { HotPreprocessor } from "../../src/HotPreprocessor";
 import { HotHTTPServer } from "../../src/HotHTTPServer";
 import { HelloWorldAPI } from "./HelloWorldAPI";
 
-describe ("Server Tests", () =>
+describe ("Database Tests", () =>
 	{
 		let common: Common = null;
 		let processor: HotPreprocessor = null;

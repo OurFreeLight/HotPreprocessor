@@ -1,11 +1,9 @@
 import * as ppath from "path";
 
-import { HotHTTPServer } from "../../src/HotHTTPServer";
+import { HotPreprocessor, HotHTTPServer, HotLogLevel } from "../../src/api";
+import { HelloWorldAPI } from "../server/HelloWorldAPI";
 
 import { Builder, WebDriver, Session } from "selenium-webdriver";
-import { HotPreprocessor } from "../../src/HotPreprocessor";
-import { HotLogLevel } from "../../src/HotLog";
-import { HelloWorldAPI } from "../server/HelloWorldAPI";
 
 /**
  * Common testing features

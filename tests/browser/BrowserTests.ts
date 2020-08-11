@@ -4,7 +4,7 @@ import { By, until } from "selenium-webdriver";
 
 import { Common } from "./Common";
 
-import { HotPreprocessor } from "../../src/HotPreprocessor";
+import { HotPreprocessor } from "../../src/api";
 
 describe ("Browser Tests", () =>
 	{
@@ -33,15 +33,27 @@ describe ("Browser Tests", () =>
 Execute this code to debug in browser:
 (async () =>
 {
-	var HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
+	window.HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
+	window.Hot = HotPreprocessorWeb.Hot;
+	var helloWorldAPI = new HelloWorldAPI ("${common.getUrl ()}");
+	helloWorldAPI.connection = new HotClient (processor);
+	helloWorldAPI.connection.api = helloWorldAPI;
 	await HotPreprocessor.displayUrl ("/tests/browser/HelloWorld.hott");
 })();
 */
 
 				await common.driver.executeAsyncScript (`
 				var done = arguments[0];
-				var HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
-				await HotPreprocessor.displayUrl ("/tests/browser/HelloWorld.hott");
+				window.HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
+				var HotClient = HotPreprocessorWeb.HotClient;
+				var HelloWorldAPI = HotPreprocessorTests.HelloWorldAPI;
+				var processor = new HotPreprocessor ();
+				window.Hot = HotPreprocessorWeb.Hot;
+				var helloWorldAPI = new HelloWorldAPI ("${common.getUrl ()}");
+				helloWorldAPI.connection = new HotClient (processor);
+				helloWorldAPI.connection.api = helloWorldAPI;
+				processor.api = helloWorldAPI;
+				await HotPreprocessor.displayUrl ("/tests/browser/HelloWorld.hott", "Hello World!", processor);
 				done ();`);
 			});
 		it ("should click the Hello World button", async () =>
@@ -53,5 +65,30 @@ Execute this code to debug in browser:
 				elm = common.driver.findElement (By.id ("buttonClicked"));
 				let value: string = await elm.getAttribute ("innerHTML");
 				expect (value).to.equal ("Clicked", "Button was not clicked!");
+			});
+		it ("should send a hi to the hello world api", async () =>
+			{
+				let elm = await common.driver.wait (until.elementLocated (By.id ("message")));
+				await elm.sendKeys ("hi");
+
+				// Tests Hot.apiCall
+				elm = await common.driver.wait (until.elementLocated (By.id ("testHelloWorldAPI")));
+				await elm.click ();
+
+				elm = common.driver.findElement (By.id ("buttonClicked"));
+				let value: string = await elm.getAttribute ("innerHTML");
+				let jsonObj = JSON.parse (value);
+
+				expect (jsonObj).to.equal ("Hello!");
+
+				// Tests the constructed API call route method functions
+				elm = await common.driver.wait (until.elementLocated (By.id ("testHelloWorldAPI2")));
+				await elm.click ();
+
+				elm = common.driver.findElement (By.id ("buttonClicked"));
+				value = await elm.getAttribute ("innerHTML");
+				jsonObj = JSON.parse (value);
+
+				expect (jsonObj).to.equal ("Hello!");
 			});
 	});

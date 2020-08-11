@@ -1,15 +1,19 @@
 import * as fs from "fs";
 
-// @ts-ignore dunno what this issue is about.
 import fetch from "cross-fetch";
 
 import { Hot } from "./Hot";
+import { HotPage } from "./HotPage";
 
 /**
  * A file to process.
  */
 export interface IHotFile
 {
+	/**
+	 * The parent page.
+	 */
+	page?: HotPage;
 	/**
 	 * The name of the file.
 	 */
@@ -34,6 +38,10 @@ export interface IHotFile
 export class HotFile implements IHotFile
 {
 	/**
+	 * The parent page.
+	 */
+	page: HotPage;
+	/**
 	 * The name of the file.
 	 */
 	name: string;
@@ -52,6 +60,7 @@ export class HotFile implements IHotFile
 
 	constructor (copy: IHotFile = {})
 	{
+		this.page = copy.page || null;
 		this.name = copy.name || "";
 		this.url = copy.url || "";
 		this.localFile = copy.localFile || "";
@@ -144,6 +153,9 @@ export class HotFile implements IHotFile
 		let thisContent: string = this.content;
 		let result: RegExpExecArray = regex.exec (thisContent);
 		let previousIndex: number = 0;
+
+		Hot.CurrentPage = this.page;
+		Hot.API = this.page.getAPI ();
 
 		// Begin parsing Javascript sections.
 		while (result != null)

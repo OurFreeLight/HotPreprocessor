@@ -34,6 +34,9 @@ module.exports = {
 		node: {
 			fs: "empty"
 		},
+		externals: {
+			hotpreprocessor: "empty"
+		},
 		output: {
 			filename: "HotPreprocessorTests.js",
 			path: ppath.resolve (process.cwd (), "build-web"),

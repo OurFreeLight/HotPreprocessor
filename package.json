@@ -1,7 +1,10 @@
 {
   "name": "hotpreprocessor",
-  "version": "0.3.3",
+  "version": "0.3.5",
   "description": "",
+  "bin": {
+    "hotpreprocessor": "./bin/hotpreprocessor"
+  },
   "main": "./build/src/api.js",
   "types": "./build/src/api.d.js",
   "scripts": {

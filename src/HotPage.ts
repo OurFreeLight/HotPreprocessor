@@ -1,6 +1,7 @@
 import { Hot } from "./Hot";
 import { HotFile } from "./HotFile";
 import { HotPreprocessor } from "./HotPreprocessor";
+import { HotAPI } from "./HotAPI";
 
 /**
  * A page to preprocess.
@@ -73,7 +74,17 @@ export class HotPage implements IHotPage
 	 */
 	async addFile (file: HotFile): Promise<void>
 	{
+		file.page = this;
+
 		this.files.push (file);
+	}
+
+	/**
+	 * Get the API associated with this page.
+	 */
+	getAPI (): HotAPI
+	{
+		return (this.processor.api);
 	}
 
 	/**
@@ -102,6 +113,7 @@ export class HotPage implements IHotPage
 			let file: HotFile = this.files[iIdx];
 
 			Hot.Output = "";
+			file.page = this;
 
 			output += await file.process ();
 		}

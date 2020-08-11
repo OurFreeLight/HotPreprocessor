@@ -1,6 +1,7 @@
 import { HotFile } from "./HotFile";
 import { HotPage } from "./HotPage";
 import { HotPreprocessor } from "./HotPreprocessor";
+import { HotAPI } from "./HotAPI";
 
 /**
  * A CSS object to embed.
@@ -23,9 +24,13 @@ export interface CSSObject
 export class Hot
 {
 	/**
-	 * Contains the buffer to output. This is cleared between every file processed.
+	 * The currently generated page being displayed. This is cleared between every file processed.
 	 */
 	static CurrentPage: HotPage = null;
+	/**
+	 *The current API used on this page. This is cleared between every file processed.
+	 */
+	static API: HotAPI = null;
 	/**
 	 * Contains the buffer to output. This is cleared between every file processed.
 	 */
@@ -94,9 +99,32 @@ export class Hot
 
 		await tempFile.load ();
 
+		tempFile.page = this.CurrentPage;
 		let content: string = await tempFile.process ();
 
 		return (content);
+	}
+
+	/**
+	 * Make an api call.
+	 */
+	static async apiCall (route: string, data: any = null, httpMethod: string = "POST"): Promise<any>
+	{
+		let result: any = null;
+
+		if (Hot.CurrentPage == null)
+			throw new Error ("Current page is null!");
+
+		if (Hot.CurrentPage.processor == null)
+			throw new Error ("Current page's processor is null!");
+
+		if (Hot.CurrentPage.processor.api == null)
+			throw new Error ("Current page's processor api is null!");
+
+		if (Hot.CurrentPage.processor.api != null)
+			result = await Hot.CurrentPage.processor.api.call (route, data, httpMethod);
+
+		return (result);
 	}
 
 	/**

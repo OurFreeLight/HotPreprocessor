@@ -15,7 +15,62 @@ export enum HotServerType
 /**
  * The server.
  */
-export abstract class HotServer
+export interface IHotServer
+{
+	/**
+	 * The processor to use.
+	 */
+	processor: HotPreprocessor;
+	/**
+	 * The API to use.
+	 */
+	api: HotAPI;
+	/**
+	 * The network address to listen on.
+	 */
+	listenAddress: string;
+	/**
+	 * The ports to use.
+	 */
+	ports: {
+			http: number;
+			https: number;
+		};
+	/**
+	 * SSL settings.
+	 */
+	ssl: {
+			/**
+			 * The SSL certificate to use.
+			 */
+			cert: string;
+			/**
+			 * The SSL certificate key to use.
+			 */
+			key: string;
+			/**
+			 * The SSL certificate CA to use.
+			 */
+			ca: string;
+		};
+	/**
+	 * Redirect HTTP traffic to HTTPS.
+	 */
+	redirectHTTPtoHTTPS: boolean;
+	/**
+	 * The type of server.
+	 */
+	type: HotServerType;
+	/**
+	 * The logger.
+	 */
+	logger: HotLog;
+}
+
+/**
+ * The server.
+ */
+export class HotServer implements IHotServer
 {
 	/**
 	 * The processor to use.
@@ -66,23 +121,44 @@ export abstract class HotServer
 	 */
 	logger: HotLog;
 
-	constructor (processor: HotPreprocessor)
+	constructor (processor: HotPreprocessor | HotServer)
 	{
-		this.processor = processor;
-		this.api = null;
-		this.listenAddress = "0.0.0.0";
-		this.ports = {
-				http: 80,
-				https: 443
-			};
-		this.ssl = {
-				cert: "",
-				key: "",
-				ca: ""
-			};
-		this.redirectHTTPtoHTTPS = true;
-		this.type = HotServerType.HTTP;
-		this.logger = processor.logger;
+		if (processor instanceof HotPreprocessor)
+		{
+			this.processor = processor;
+			this.api = null;
+			this.listenAddress = "0.0.0.0";
+			this.ports = {
+					http: 80,
+					https: 443
+				};
+			this.ssl = {
+					cert: "",
+					key: "",
+					ca: ""
+				};
+			this.redirectHTTPtoHTTPS = true;
+			this.type = HotServerType.HTTP;
+			this.logger = processor.logger;
+		}
+		else
+		{
+			this.processor = processor.processor;
+			this.api = processor.api || null;
+			this.listenAddress = processor.listenAddress || "0.0.0.0";
+			this.ports = processor.ports || {
+					http: 80,
+					https: 443
+				};
+			this.ssl = processor.ssl || {
+					cert: "",
+					key: "",
+					ca: ""
+				};
+			this.redirectHTTPtoHTTPS = processor.redirectHTTPtoHTTPS || true;
+			this.type = processor.type || HotServerType.HTTP;
+			this.logger = processor.logger;
+		}
 	}
 
 	/**
@@ -97,15 +173,15 @@ export abstract class HotServer
 	/**
 	 * Register a route with the server.
 	 */
-	abstract registerRoute (route: HotRoute): void;
+	registerRoute? (route: HotRoute): void;
 
 	/**
 	 * Start listening for requests.
 	 */
-	abstract async listen (): Promise<void>;
+	async listen? (): Promise<void>;
 
 	/**
 	 * Shutdown the server.
 	 */
-	abstract async shutdown (): Promise<void>;
+	async shutdown? (): Promise<void>;
 }

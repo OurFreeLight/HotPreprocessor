@@ -4,7 +4,7 @@ import { By, until } from "selenium-webdriver";
 
 import { Common } from "./Common";
 
-import { HotPreprocessor } from "../../src/HotPreprocessor";
+import { HotPreprocessor } from "../../src/HotPreprocessorWeb";
 
 describe ("Component Tests", () =>
 	{
@@ -34,9 +34,14 @@ Execute this code to debug in browser:
 (async () =>
 {
 	var HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
+	var HotClient = HotPreprocessorWeb.HotClient;
 	var HelloWorld = HotPreprocessorTests.HelloWorld;
+	var HelloWorldAPI = HotPreprocessorTests.HelloWorldAPI;
 	var processor = new HotPreprocessor ();
-	processor.addComponent (new HelloWorld (processor));
+	var helloWorldAPI = new HelloWorldAPI ("${common.getUrl ()}");
+	helloWorldAPI.connection = new HotClient (processor);
+	helloWorldAPI.connection.api = helloWorldAPI;
+	processor.addComponent (new HelloWorld (processor, helloWorldAPI));
 	await HotPreprocessor.displayUrl ("/tests/browser/ComponentTests.hott", processor);
 })();
 */
@@ -51,7 +56,7 @@ Execute this code to debug in browser:
 				helloWorldAPI.connection = new HotClient (processor);
 				helloWorldAPI.connection.api = helloWorldAPI;
 				processor.addComponent (new HelloWorld (processor, helloWorldAPI));
-				await HotPreprocessor.displayUrl ("/tests/browser/ComponentTests.hott", processor);
+				await HotPreprocessor.displayUrl ("/tests/browser/ComponentTests.hott", "Hello World Components!", processor);
 				done ();`);
 			});
 		it ("should click the Hello World button", async () =>
@@ -82,6 +87,7 @@ Execute this code to debug in browser:
 
 				elm = common.driver.findElement (By.id ("buttonClicked"));
 				let value: string = await elm.getAttribute ("innerHTML");
-				expect (value).to.equal ("Hello!");
+				let jsonObj = JSON.parse (value);
+				expect (jsonObj).to.equal ("Hello!");
 			});
 	});

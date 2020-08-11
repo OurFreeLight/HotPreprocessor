@@ -37,7 +37,7 @@
 			"port": 7478,
 			"args": [
 				"--timeout",
-				"5000",
+				"500000",
 				"--colors",
 				"${workspaceFolder}/build/tests/**/*.js"
 			],
