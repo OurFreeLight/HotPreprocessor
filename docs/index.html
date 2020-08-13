@@ -1,0 +1,336 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>hotpreprocessor</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">hotpreprocessor</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>hotpreprocessor</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#hotpreprocessor" id="hotpreprocessor" style="color: inherit; text-decoration: none;">
+					<h1>Hotpreprocessor</h1>
+				</a>
+				<p>Need something similar to PHP in Node.js? We got you barely covered then ;)</p>
+				<p>Hotpreprocessor is a lightweight server-side or client-side HTML preprocessor. In order to keep Node.js running efficiently, it&#39;s best to have Hotpreprocessor execute hott scripts client-side in the client&#39;s web browser. Unfortunately, as of 4/23/2020, ES6 is required in the client&#39;s web browser in order to execute. This of course will be fixed eventually, so Internet Explorer 11 will be able to execute as well.</p>
+				<p>It&#39;s important to keep the number of dependencies required for Hotpreprocessor down to a minimum, so as it can be used in secure environments.</p>
+				<p>Hotpreprocessor is capable of processing code server-side and client-side.</p>
+				<a href="#getting-started" id="getting-started" style="color: inherit; text-decoration: none;">
+					<h2>Getting started</h2>
+				</a>
+				<p>First you gotta install like so:</p>
+				<pre><code>npm <span class="hljs-keyword">install</span> hotpreprocessor</code></pre><p>Then you can create your first hott script! So create a file called <code>HelloWorld.hott</code>, inside it, enter your HTML:</p>
+				<pre><code><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Hello World Page<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">*</span>
+    <span class="hljs-attr">Hot.echo</span> ("<span class="hljs-attr">Hello</span>");
+*&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">*</span>
+    <span class="hljs-attr">Hot.echo</span> ("<span class="hljs-attr">World</span>!");
+*&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre><p>To process the above hott script from the server-side you&#39;d do:</p>
+				<pre><code><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">processScript</span> (<span class="hljs-params"></span>)
+</span>{
+    <span class="hljs-keyword">let</span> output = <span class="hljs-keyword">await</span> HotPreprocessor.processLocalFile (<span class="hljs-string">"./HelloWorld.hott"</span>);
+
+    <span class="hljs-built_in">console</span>.log (output);
+}
+
+processScript ();</code></pre>
+				<a href="#express-processing-example" id="express-processing-example" style="color: inherit; text-decoration: none;">
+					<h2>Express processing example</h2>
+				</a>
+				<p>Here&#39;s a sample Express app to test the above hott script:</p>
+				<pre><code><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span> (<span class="hljs-string">"express"</span>);
+
+<span class="hljs-keyword">const</span> app = express ();
+<span class="hljs-keyword">const</span> port = <span class="hljs-number">80</span>;
+
+app.use (express.static (<span class="hljs-string">"./public/"</span>));
+app.get (<span class="hljs-string">"/"</span>, <span class="hljs-keyword">async</span> (req, res) =&gt; 
+    {
+        <span class="hljs-comment">// Process HelloWorld.hott from the server-side. Warning! This should never be done</span>
+        <span class="hljs-comment">// due to performance reasons.</span>
+        <span class="hljs-keyword">let</span> output = <span class="hljs-keyword">await</span> HotPreprocessor.processLocalFile (<span class="hljs-string">"./HelloWorld.hott"</span>);
+
+        res.send (output);
+    });
+app.listen (port, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+    {
+        <span class="hljs-built_in">console</span>.log (<span class="hljs-string">`Running on port http://127.0.0.1:<span class="hljs-subst">${port}</span>/`</span>);
+    });</code></pre><p>This assumes all your HTML content and images are being served out of the <code>./public/</code> directory.</p>
+				<p>The above Express example should never be done, mostly to keep Node.js running efficiently. The best method is to always have hott scripts process in the browser on the client side in the next example.</p>
+				<a href="#web-browser-processing-example-preferred-method" id="web-browser-processing-example-preferred-method" style="color: inherit; text-decoration: none;">
+					<h2>Web browser processing example (Preferred method)</h2>
+				</a>
+				<p>When used in a browser, Hotpreprocessor is meant to replace the entire page it&#39;s on, and continue to control the navigation of the pages. To use it, create a new HTML file and enter:</p>
+				<pre><code><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Page<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span> = <span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span> = <span class="hljs-string">"./HotPreprocessor.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span> = <span class="hljs-string">"text/javascript"</span>&gt;</span><span class="actionscript">
+        <span class="hljs-keyword">var</span> HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
+        HotPreprocessor.displayUrl (<span class="hljs-string">"./HelloWorld.hott"</span>);
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre><p>You can find a pre-built <code>HotPreprocessor.js</code> in <code>node_modules/hotpreprocessor/build-web/HotPreprocessor.js</code></p>
+				<a href="#possible-future-compiler" id="possible-future-compiler" style="color: inherit; text-decoration: none;">
+					<h1>Possible Future Compiler</h1>
+				</a>
+				<p>I&#39;d like to create a CLI tool that compresses the entire public html directory into a zip file which can be downloaded and unzipped during runtime by the client&#39;s web browser then display the pages. During the compilation phase it would look for vulnerabilities and report them; for example when embedding JS files, if integrity hashes are missing, it would complain.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/httpmethod.html" class="tsd-kind-icon">HTTPMethod</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/hotloglevel.html" class="tsd-kind-icon">Hot<wbr>Log<wbr>Level</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/hotservertype.html" class="tsd-kind-icon">Hot<wbr>Server<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hot.html" class="tsd-kind-icon">Hot</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hotapi.html" class="tsd-kind-icon">HotAPI</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hotclient.html" class="tsd-kind-icon">Hot<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hotcomponent.html" class="tsd-kind-icon">Hot<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hotdb.html" class="tsd-kind-icon">HotDB</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hotdbschema.html" class="tsd-kind-icon">HotDBSchema</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hotfile.html" class="tsd-kind-icon">Hot<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hothttpserver.html" class="tsd-kind-icon">HotHTTPServer</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hotlog.html" class="tsd-kind-icon">Hot<wbr>Log</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hotpage.html" class="tsd-kind-icon">Hot<wbr>Page</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hotpreprocessor.html" class="tsd-kind-icon">Hot<wbr>Preprocessor</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hotroute.html" class="tsd-kind-icon">Hot<wbr>Route</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hotroutemethod.html" class="tsd-kind-icon">Hot<wbr>Route<wbr>Method</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hotserver.html" class="tsd-kind-icon">Hot<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/ihotpreprocessor.html" class="tsd-kind-icon">IHot<wbr>Preprocessor</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/mysqlschema.html" class="tsd-kind-icon">MySQLSchema</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/mysqlschemafield.html" class="tsd-kind-icon">MySQLSchema<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/mysqlschematable.html" class="tsd-kind-icon">MySQLSchema<wbr>Table</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/cssobject.html" class="tsd-kind-icon">CSSObject</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/hotsite.html" class="tsd-kind-icon">Hot<wbr>Site</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ihotcomponent.html" class="tsd-kind-icon">IHot<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ihotfile.html" class="tsd-kind-icon">IHot<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ihotpage.html" class="tsd-kind-icon">IHot<wbr>Page</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ihotserver.html" class="tsd-kind-icon">IHot<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/mysqlschemafieldresult.html" class="tsd-kind-icon">MySQLSchema<wbr>Field<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/staticroute.html" class="tsd-kind-icon">Static<wbr>Route</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#clientexecutionfunction" class="tsd-kind-icon">Client<wbr>Execution<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#serverauthorizationfunction" class="tsd-kind-icon">Server<wbr>Authorization<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#serverexecutionfunction" class="tsd-kind-icon">Server<wbr>Execution<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#start" class="tsd-kind-icon">start</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

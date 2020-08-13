@@ -9,6 +9,7 @@
   "types": "./build/src/api.d.js",
   "scripts": {
     "test": "mocha --timeout 999999 --colors ./build/tests/**/*.js",
+    "prepublishOnly": "tsc --build ./tsconfig.json && webpack --mode=production && typedoc --ignoreCompilerErrors --mode file --readme README.md --out ./docs/ ./src",
     "builddoc": "typedoc --ignoreCompilerErrors --mode file --readme README.md --out ./docs/ ./src",
     "build": "tsc --build ./tsconfig.json",
     "buildweb": "webpack --mode=production",
@@ -24,12 +25,12 @@
     "url": "https://github.com/OurFreeLight/HotPreprocessor.git"
   },
   "dependencies": {
-    "@types/express": "^4.17.7",
     "commander": "^6.0.0",
     "cross-fetch": "^3.0.5",
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "@types/express": "^4.17.7",
     "@types/chai": "^4.2.12",
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.13.15",
