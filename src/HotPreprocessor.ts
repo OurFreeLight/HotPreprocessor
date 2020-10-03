@@ -8,6 +8,7 @@ import { HotFile } from "./HotFile";
 import { HotComponent } from "./HotComponent";
 import { HotLog, HotLogLevel } from "./HotLog";
 import { HotServer, HotClient, HotAPI } from "./HotPreprocessorWeb";
+import { tryParse } from "selenium-webdriver/http";
 
 /**
  * A HotSite to load.
@@ -171,6 +172,43 @@ export class HotPreprocessor implements IHotPreprocessor
 
 </html>`;
 		this.logger = new HotLog (HotLogLevel.None);
+	}
+
+	/**
+	 * Parse a boolean value.
+	 */
+	static parseBoolean (value: string): boolean
+	{
+		value = value.toLowerCase ();
+
+		if (value === "true")
+			return (true);
+
+		if (value === "false")
+			return (false);
+
+		if (value === "yes")
+			return (true);
+
+		if (value === "no")
+			return (false);
+
+		if (value === "yep")
+			return (true);
+
+		if (value === "nah")
+			return (false);
+
+		try
+		{
+			if (parseInt (value) != 0)
+				return (true);
+		}
+		catch (ex)
+		{
+		}
+
+		return (false);
 	}
 
 	/**

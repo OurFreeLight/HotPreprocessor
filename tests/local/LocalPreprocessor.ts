@@ -27,6 +27,16 @@ describe ("Local Preprocessor Tests", () =>
 			</body>
 			
 			</html>`;
+		let ifFinalContent: string = `<!DOCTYPE html>
+		<html>
+		
+		
+		
+			This will display only if 1 === 1!
+		
+		
+		
+		</html>`;
 		let nestedFinalContent: string = `<!DOCTYPE html>
 			<html>
 			
@@ -74,7 +84,7 @@ describe ("Local Preprocessor Tests", () =>
 
 				expect (output).to.equal (comparison);
 			});
-		it ("should process content that contains a header and a footer using HotPreprocessor.processLocalFile", async () =>
+		it ("HotPreprocessor.processLocalFile: should process content that contains a header and a footer ", async () =>
 			{
 				let output: string = await HotPreprocessor.processLocalFile ("./tests/local/include.hott");
 				const comparison: string = finalContent.replace (/\s/g, "");
@@ -83,7 +93,16 @@ describe ("Local Preprocessor Tests", () =>
 
 				expect (output).to.equal (comparison);
 			});
-		it ("should process nested content using HotPreprocessor.processLocalFile", async () =>
+		it ("HotPreprocessor.processLocalFile: should process content that contains an if statement", async () =>
+			{
+				let output: string = await HotPreprocessor.processLocalFile ("./tests/local/if.hott");
+				const comparison: string = ifFinalContent.replace (/\s/g, "");
+
+				output = output.replace (/\s/g, "");
+
+				expect (output).to.equal (comparison);
+			});
+		it ("HotPreprocessor.processLocalFile: should process nested content", async () =>
 			{
 				let output: string = await HotPreprocessor.processLocalFile ("./tests/local/nested1.hott");
 				const comparison: string = nestedFinalContent.replace (/\s/g, "");

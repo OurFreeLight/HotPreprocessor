@@ -39,8 +39,15 @@
 				"--timeout",
 				"500000",
 				"--colors",
-				"${workspaceFolder}/build/tests/**/*.js"
+				"${workspaceFolder}/build/tests/db/*.js"
 			],
+			"env": {
+				"HTTP_PORT": "3123",
+				"DATABASE_SERVER": "127.0.0.1",
+				"DATABASE_USERNAME": "root",
+				"DATABASE_PASSWORD": "cdO1KjwiC8ksOqCV1s0",
+				"DATABASE_SCHEMA": "freelight"
+			},
 			"internalConsoleOptions": "openOnSessionStart",
 			"skipFiles": [
 				"<node_internals>/**"

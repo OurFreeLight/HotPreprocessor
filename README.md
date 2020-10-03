@@ -93,5 +93,12 @@ When used in a browser, Hotpreprocessor is meant to replace the entire page it's
 
 You can find a pre-built ```HotPreprocessor.js``` in ```node_modules/hotpreprocessor/build-web/HotPreprocessor.js```
 
-# Possible Future Compiler
+## Running database tests
+To run the database tests, you'll have to run a MySQL (or MariaDB) docker container in the background like so:
+
+	docker run -d --name=mariadb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cdO1KjwiC8ksOqCV1s0 -e MYSQL_DATABASE=freelight mariadb
+
+This will run the MariaDB container with the MySQL root password set to ```cdO1KjwiC8ksOqCV1s0``` and will create the initial starting database to ```freelight```.
+
+## Possible Future Compiler
 I'd like to create a CLI tool that compresses the entire public html directory into a zip file which can be downloaded and unzipped during runtime by the client's web browser then display the pages. During the compilation phase it would look for vulnerabilities and report them; for example when embedding JS files, if integrity hashes are missing, it would complain.

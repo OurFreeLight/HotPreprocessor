@@ -1,3 +1,5 @@
+import { HotPreprocessor } from "../../HotPreprocessor";
+
 /**
  * The resulting data from a generated field.
  */
@@ -6,23 +8,23 @@ export interface MySQLSchemaFieldResult
 	/**
 	 * The field to be entered.
 	 */
-	field: string;
+	field?: string;
 	/**
 	 * The primary key to be added.
 	 */
-	primaryKey: string;
+	primaryKey?: string;
 	/**
 	 * The key to be added.
 	 */
-	key: string;
+	key?: string;
 	/**
 	 * The constraint to be added.
 	 */
-	constraint: string;
+	constraint?: string;
 	/**
 	 * The foreign key to be added.
 	 */
-	foreignKey: string;
+	foreignKey?: string;
 }
 
 /**
@@ -76,19 +78,88 @@ export class MySQLSchemaField
 	 */
 	defaultValue: string;
 
-	constructor (name: string = "", dataType: string = "")
+	constructor (name: string = "", dataType: string = "", defaultValue: string = "", 
+		primaryKey: boolean = false, notNull: boolean = true, uniqueIndex: boolean = false, 
+		binaryColumn: boolean = false, unsignedDataType: boolean = false, 
+		fillZeroes: boolean = false, autoIncrement: boolean = false, 
+		generatedColumn: boolean = false)
 	{
 		this.name = name;
 		this.dataType = dataType;
-		this.primaryKey = false;
-		this.notNull = true;
-		this.uniqueIndex = false;
-		this.binaryColumn = false;
-		this.unsignedDataType = false;
-		this.fillZeroes = false;
-		this.autoIncrement = false;
-		this.generatedColumn = false;
-		this.defaultValue = "";
+		this.primaryKey = primaryKey;
+		this.notNull = notNull;
+		this.uniqueIndex = uniqueIndex;
+		this.binaryColumn = binaryColumn;
+		this.unsignedDataType = unsignedDataType;
+		this.fillZeroes = fillZeroes;
+		this.autoIncrement = autoIncrement;
+		this.generatedColumn = generatedColumn;
+		this.defaultValue = defaultValue;
+	}
+
+	/**
+	 * Parse a JSON object and get a MySQLSchemaField object from it.
+	 * Warning! This is only partially implemented. This will not check 
+	 * the following fields:
+	 * * Binary column
+	 * * unique
+	 * * zero-filled
+	 */
+	static parse (json: any): MySQLSchemaField
+	{
+		let result: MySQLSchemaField = new MySQLSchemaField ();
+
+		if (json["name"] != null)
+			result.name = json["name"];
+
+		if (json["Name"] != null)
+			result.name = json["Name"];
+
+		if (json["field"] != null)
+			result.name = json["field"];
+
+		if (json["Field"] != null)
+			result.name = json["Field"];
+
+		if (json["Type"] != null)
+		{
+			result.dataType = json["Type"];
+			const pos: number = result.dataType.indexOf ("unsigned");
+
+			if (pos > -1)
+			{
+				result.dataType = result.dataType.substr (0, (pos - 1));
+				result.unsignedDataType = true;
+			}
+		}
+
+		if (json["Null"] != null)
+			result.notNull = !HotPreprocessor.parseBoolean (json["Null"]);
+
+		if (json["Key"] != null)
+		{
+			let keyType: string = json["Key"];
+
+			keyType = keyType.toLowerCase ();
+
+			if (keyType === "pri")
+				result.primaryKey = true;
+		}
+
+		if (json["Extra"] != null)
+		{
+			let extraValue: string = json["Extra"];
+
+			extraValue = extraValue.toLowerCase ();
+
+			if (extraValue === "auto_increment")
+				result.autoIncrement = true;
+		}
+
+		if (json["Default"] != null)
+			result.defaultValue = json["Default"];
+
+		return (result);
 	}
 
 	/**

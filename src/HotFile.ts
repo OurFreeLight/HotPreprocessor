@@ -144,7 +144,10 @@ export class HotFile implements IHotFile
 	}
 
 	/**
-	 * Process the content in this file.
+	 * Process the content in this file. This treats each file as one large JavaScript
+	 * file. Any text outside of the <* *> areas will be treated as:
+	 * 
+	 * 		Hot.echo ("text");
 	 */
 	async process (): Promise<string>
 	{
@@ -157,7 +160,7 @@ export class HotFile implements IHotFile
 		Hot.CurrentPage = this.page;
 		Hot.API = this.page.getAPI ();
 
-		// Begin parsing Javascript sections.
+		// Assemble the JS file.
 		while (result != null)
 		{
 			let start: number = result.index - 2;
@@ -167,15 +170,32 @@ export class HotFile implements IHotFile
 			let prevContent: string = thisContent.substr (previousIndex, (start - previousIndex));
 			previousIndex = end;
 
-			output += prevContent;
+			let escapedContent: string = JSON.stringify (prevContent);
+			output += `Hot.echo (${escapedContent});\n`;
+			output += `${result[0]}\n`;
 
-			let content: string = `
+			// Move on to the next section to parse for Javascript.
+			result = regex.exec (thisContent);
+		}
+
+		// Append whatever else is after the last parsed section.
+		let lastContent: string = thisContent.substr (previousIndex);
+		let lastEscapedContent: string = JSON.stringify (lastContent);
+
+		output += `Hot.echo (${lastEscapedContent});\n`;
+
+		// Execute the assembled JS file.
+		let returnedOutput: any = null;
+
+		try
+		{
+			let executionContent: string = `
 			var Hot = arguments[0];
 
 			async function runContent ()
 			{`;
-			content += result[0];
-			content += `
+			executionContent += output;
+			executionContent += `
 			}
 
 			return (runContent ().then (() =>
@@ -183,40 +203,28 @@ export class HotFile implements IHotFile
 				return ({ hot: Hot, output: Hot.Output, persistence: JSON.stringify (Hot.Persistence) });
 			}));`;
 
-			let returnedOutput: any = null;
-
-			try
+			/// @fixme Prior to execution compile any TypeScript and make it ES5 compatible.
+			let func: Function = new Function (executionContent);
+			returnedOutput = await func.apply (this, [Hot]);
+		}
+		catch (ex)
+		{
+			if (ex instanceof SyntaxError)
 			{
-				/// @fixme Prior to execution compile any TypeScript and make it ES5 compatible.
-				let func: Function = new Function (content);
-				returnedOutput = await func.apply (this, [Hot]);
+				/// @fixme Put what's in the content variable into a prev content variable?
+				/// Then once there's no longer any syntax errors being thrown, execute the 
+				/// code? This would also require saving any HTML outside of the *> and <* 
+				/// then echoing it out. The throw below would have to be removed as well.
+				throw ex;
 			}
-			catch (ex)
-			{
-				if (ex instanceof SyntaxError)
-				{
-					/// @fixme Put what's in the content variable into a prev content variable?
-					/// Then once there's no longer any syntax errors being thrown, execute the 
-					/// code? This would also require saving any HTML outside of the *> and <* 
-					/// then echoing it out. The throw below would have to be removed as well.
-					throw ex;
-				}
-				else
-					throw ex;
-			}
-
-			Hot.Persistence = returnedOutput.hot.Persistence;
-			output += returnedOutput.output;
-
-			Hot.Output = "";
-
-			// Move on to the next section to parse for Javascript.
-			result = regex.exec (thisContent);
+			else
+				throw ex;
 		}
 
-		// Append whatever else is after the last parsed section.
-		output += thisContent.substr (previousIndex);
+		Hot.Persistence = returnedOutput.hot.Persistence;
+		let finalOutput: string = returnedOutput.output;
+		Hot.Output = "";
 
-		return (output);
+		return (finalOutput);
 	}
 }

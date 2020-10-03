@@ -1,3 +1,9 @@
+export enum HotDBGenerationType
+{
+	Create,
+	Modify
+}
+
 /**
  * The parent database schema.
  */

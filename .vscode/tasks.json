@@ -36,14 +36,21 @@
 		},
 		{
 			"type": "process",
-			"group": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
 			"runOptions": {
 				"instanceLimit": 1,
 				"runOn": "folderOpen"
 			},
 			"problemMatcher": [],
 			"label": "Build all",
-			"dependsOn":["Build", "Build web debug", "Build web tests", ""]
+			"dependsOn": [
+				"Build",
+				"Build web debug",
+				"Build web tests"
+			]
 		}
 	]
 }

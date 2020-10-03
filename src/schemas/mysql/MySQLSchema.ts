@@ -1,6 +1,7 @@
 import { MySQLSchemaTable } from "./MySQLSchemaTable";
 import { MySQLSchemaField } from "./MySQLSchemaField";
-import { HotDBSchema } from "../HotDBSchema";
+import { HotDBSchema, HotDBGenerationType } from "../HotDBSchema";
+import { HotDBMySQL } from "../HotMySQL";
 
 /**
  * The MySQL schema.
@@ -32,13 +33,32 @@ export class MySQLSchema extends HotDBSchema
 	 */
 	addFieldToTable (tableName: string, field: MySQLSchemaField)
 	{
-		this.tables[tableName].fields[field.name] = field;
+		if (this.tables[tableName] == null)
+			throw new Error (`Table ${tableName} does not exist!`);
+
+		this.tables[tableName].fields.push (field);
 	}
 
 	/**
-	 * Generate the db structure.
+	 * Add a field to a table.
 	 */
-	async generateStructure (): Promise<string>
+	addFieldsToTable (tableName: string, fields: MySQLSchemaField[])
+	{
+		if (this.tables[tableName] == null)
+			throw new Error (`Table ${tableName} does not exist!`);
+
+		for (let iIdx = 0; iIdx < fields.length; iIdx++)
+		{
+			let field: MySQLSchemaField = fields[iIdx];
+			this.tables[tableName].fields.push (field);
+		}
+	}
+
+	/**
+	 * Generate the db structure. If type is set to modify, you must pass a db with an 
+	 * active connection.
+	 */
+	async generateStructure (type: HotDBGenerationType = HotDBGenerationType.Create, db: HotDBMySQL = null): Promise<string>
 	{
 		let result: string = "";
 
@@ -46,7 +66,7 @@ export class MySQLSchema extends HotDBSchema
 		{
 			let table: MySQLSchemaTable = this.tables[key];
 
-			await table.generate ();
+			result += await table.generate (type, db);
 		}
 
 		return (result);

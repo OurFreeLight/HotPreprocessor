@@ -6,7 +6,6 @@
 
 	if (obj === 1)
 	{
-		/* @fixme This feature isn't available yet. */
 *>
 
 	This will display only if 1 === 1!

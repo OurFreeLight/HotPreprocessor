@@ -33,7 +33,7 @@ export abstract class HotAPI
 	 */
 	routes: { [name: string]: HotRoute };
 
-	constructor (baseUrl: string, connection: HotServer | HotClient = null, db: any = null)
+	constructor (baseUrl: string, connection: HotServer | HotClient = null, db: HotDB = null)
 	{
 		this.connection = connection;
 		this.baseUrl = baseUrl;
