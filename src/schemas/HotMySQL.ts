@@ -69,6 +69,44 @@ export class HotDBMySQL extends HotDB
 	}
 
 	/**
+	 * Make multiple queries. Warning! This can be a security vulnerability 
+	 * if misused! Ideally this should only be used when make changes to tables!
+	 */
+	async multiQuery (queryStrings: string[] | { query: string; values: any[]; }[]): 
+		Promise<{ results: any, fields: mysql.FieldInfo[] }[]>
+	{
+		this.dbCheck ();
+
+		let alldbresults: { results: any, fields: mysql.FieldInfo[] }[] = [];
+		let promises = [];
+
+		for (let iIdx = 0; iIdx < queryStrings.length; iIdx++)
+		{
+			promises.push (new Promise<any> ((resolve, reject) =>
+				{
+					let queryString: string | { query: string; values: any[]; } = queryStrings[iIdx];
+					let queryValues: any[] = [];
+
+					if (typeof (queryString) !== "string")
+					{
+						queryValues = queryString.values;
+						queryString = queryString.query;
+					}
+
+					this.db.query (queryString, queryValues, 
+						(err: mysql.MysqlError, results: any, fields: mysql.FieldInfo[]) =>
+						{
+							resolve ({ results: results, fields: fields });
+						});
+				}));
+		}
+
+		alldbresults = await Promise.all (promises);
+
+		return (alldbresults);
+	}
+
+	/**
 	 * Disconnect from the server.
 	 */
 	async disconnect (): Promise<void>

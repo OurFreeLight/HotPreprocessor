@@ -62,20 +62,21 @@ export class MySQLSchemaTable
 	 * active connection. Since field parsing isn't completely implemented yet, not all 
 	 * fields will be modified correctly. Use modifiying with caution. This will 
 	 * skip checking for:
-	 * * Binary column
+	 * * Binary columnexistingFields
 	 * * unique
 	 * * zero-filled
+	 * * generated column
 	 */
-	async generate (type: HotDBGenerationType = HotDBGenerationType.Create, db: HotDBMySQL = null): Promise<string>
+	async generate (type: HotDBGenerationType = HotDBGenerationType.Create, db: HotDBMySQL = null): Promise<string[]>
 	{
-		let result: string = "";
+		let output: string[] = [];
 
 		if (type === HotDBGenerationType.Create)
 		{
 			let primaryKeys: string[] = [];
 			let keys: string[] = [];
 
-			result = `CREATE TABLE IF NOT EXISTS ${this.name} (\n`;
+			let result: string = `CREATE TABLE IF NOT EXISTS ${this.name} (\n`;
 
 			// Generate the fields.
 			for (let iIdx = 0; iIdx < this.fields.length; iIdx++)
@@ -121,6 +122,8 @@ export class MySQLSchemaTable
 
 			result = result.substr (0, (result.length - 2));
 			result += `) ENGINE=${this.engine} DEFAULT CHARSET=${this.charset};\n\n`;
+
+			output.push (result);
 		}
 
 		if (type === HotDBGenerationType.Modify)
@@ -130,6 +133,16 @@ export class MySQLSchemaTable
 
 			let dbresult = await db.query ("describe testTable;");
 			let existingFields: MySQLSchemaField[] = [];
+			let existingFieldsNames: string[] = [];
+			let thisFieldsNames: string[] = [];
+
+			// Get this fields names.
+			for (let iIdx = 0; iIdx < this.fields.length; iIdx++)
+			{
+				let thisField: MySQLSchemaField = this.fields[iIdx];
+
+				thisFieldsNames.push (thisField.name);
+			}
 
 			// Get the fields.
 			for (let iIdx = 0; iIdx < dbresult.results.length; iIdx++)
@@ -137,9 +150,110 @@ export class MySQLSchemaTable
 				let jsonField = dbresult.results[iIdx];
 				let dbfield: MySQLSchemaField = MySQLSchemaField.parse (jsonField);
 
+				existingFieldsNames.push (dbfield.name);
 				existingFields.push (dbfield);
 			}
-debugger;
+
+			let ignoreFields: string[] = [];
+
+			// Delete any fields missing from this.fields
+			for (let iIdx = 0; iIdx < existingFields.length; iIdx++)
+			{
+				let existingField: MySQLSchemaField = existingFields[iIdx];
+				let pos: number = thisFieldsNames.indexOf (existingField.name);
+
+				if (pos < 0)
+				{
+					let tempAlter: string = 
+						`ALTER TABLE ${this.name} DROP COLUMN \`${existingField.name}\`;`;
+					ignoreFields.push (existingField.name);
+					let result: string = tempAlter;
+
+					output.push (result);
+				}
+			}
+
+			// Add any fields missing from this.fields
+			for (let iIdx = 0; iIdx < this.fields.length; iIdx++)
+			{
+				let thisField: MySQLSchemaField = this.fields[iIdx];
+				let pos: number = existingFieldsNames.indexOf (thisField.name);
+
+				if (pos < 0)
+				{
+					let generatedField: MySQLSchemaFieldResult = await thisField.generate ();
+					let position: string = "";
+
+					if (iIdx === 0)
+						position = "FIRST";
+					else
+					{
+						/// @fixme I could see this causing issues with an existing field's 
+						/// name being changed down below. Maybe? Maybe not.
+						let prevName: string = existingFieldsNames[(iIdx - 1)];
+
+						if (prevName == null)
+						{
+							// Is this correct? Since the previous name doesn't exist. Then 
+							// the previous name must be the previous this.fields name? 
+							// Basically the previous newly added field name?
+							if (this.fields[(iIdx - 1)] != null)
+								prevName = this.fields[(iIdx - 1)].name;
+							else
+							{
+								/// @fixme Gotta fix this...
+								debugger;
+							}
+						}
+
+						position = `AFTER \`${prevName}\``;
+					}
+
+					let tempAlter: string = 
+						`ALTER TABLE ${this.name} ADD COLUMN ${generatedField.field} ${position};`;
+					ignoreFields.push (thisField.name);
+					let result: string = tempAlter;
+
+					output.push (result);
+				}
+			}
+
+			// See if any columns have moved.
+			for (let iIdx = 0; iIdx < existingFields.length; iIdx++)
+			{
+				let existingField: MySQLSchemaField = existingFields[iIdx];
+				let pos: number = thisFieldsNames.indexOf (existingField.name);
+
+				// This field has been added/deleted, ignore it.
+				if (ignoreFields.indexOf (existingField.name) > -1)
+					continue;
+
+				if (pos > -1)
+				{
+					if (iIdx !== pos)
+					{
+						let tempAlter: string = 
+							`ALTER TABLE ${this.name} CHANGE COLUMN \`${existingField.name}\` \`${existingField.name}\` `;
+
+						let generatedField: MySQLSchemaFieldResult = await existingField.generate ();
+						let position: string = "";
+
+						if (pos === 0)
+							position = "FIRST";
+						else
+							position = `AFTER \`${existingFields[iIdx].name}\``;
+
+						tempAlter += `${generatedField.field} ${position};\n`;
+						let result: string = tempAlter;
+
+						output.push (result);
+					}
+				}
+			}
+
+			let checkKeysInFields: string[] = ["name", "dataType", "primaryKey", "notNull", 
+				"unsignedDataType", "autoIncrement", "defaultValue"];
+
 			/**
 			 * Check for any differences between the two tables.
 			 * Since MySQLSchemaField.parse is missing some fields, this will 
@@ -147,6 +261,7 @@ debugger;
 			 * * Binary column
 			 * * unique
 			 * * zero-filled
+			 * * generated column
 			 */
 			for (let iIdx = 0; iIdx < existingFields.length; iIdx++)
 			{
@@ -154,11 +269,19 @@ debugger;
 				let existingFieldName: string = existingField.name.toLowerCase ();
 				let existingFieldDataType: string = existingField.dataType.toLowerCase ();
 
+				// This field has been added/deleted, ignore it.
+				if (ignoreFields.indexOf (existingField.name) > -1)
+					continue;
+
 				if (this.fields[iIdx] != null)
 				{
 					let newField: MySQLSchemaField = this.fields[iIdx];
 					let newFieldName: string = newField.name.toLowerCase ();
 					let newFieldDataType: string = newField.dataType.toLowerCase ();
+
+					// Check to see if both are exactly the same. If they are, skip.
+					if (MySQLSchemaField.compare (existingField, newField, checkKeysInFields) === true)
+						continue;
 
 					let tempAlter: string = `ALTER TABLE ${this.name} CHANGE COLUMN \`${existingField.name}\` `;
 
@@ -215,11 +338,13 @@ debugger;
 					}
 
 					tempAlter += ';\n';
-					result += tempAlter;
+					let result: string = tempAlter;
+
+					output.push (result);
 				}
 			}
 		}
 
-		return (result);
+		return (output);
 	}
 }

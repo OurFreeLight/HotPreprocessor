@@ -58,15 +58,16 @@ export class MySQLSchema extends HotDBSchema
 	 * Generate the db structure. If type is set to modify, you must pass a db with an 
 	 * active connection.
 	 */
-	async generateStructure (type: HotDBGenerationType = HotDBGenerationType.Create, db: HotDBMySQL = null): Promise<string>
+	async generateStructure (type: HotDBGenerationType = HotDBGenerationType.Create, db: HotDBMySQL = null): Promise<string[][]>
 	{
-		let result: string = "";
+		let result: string[][] = [];
 
 		for (let key in this.tables)
 		{
 			let table: MySQLSchemaTable = this.tables[key];
+			let generatedStructure: string[] = await table.generate (type, db);
 
-			result += await table.generate (type, db);
+			result.push (generatedStructure);
 		}
 
 		return (result);

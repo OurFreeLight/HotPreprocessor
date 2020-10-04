@@ -57,8 +57,8 @@ describe ("Database - MySQL Tests", () =>
 					]));
 				api.db.schema = schema;
 
-				let structure: string = await schema.generateStructure ();
-				let results = await api.db.query (structure, []);
+				let structure: string[][] = await schema.generateStructure ();
+				let results = await api.db.query (structure[0][0], []);
 
 				expect (results.results, "Did not create a table!");
 			});
@@ -71,11 +71,10 @@ describe ("Database - MySQL Tests", () =>
 						new MySQLSchemaField ("description", "VARCHAR(255)", "")
 					]);
 
-				let structure: string = await schema.generateStructure (
-						HotDBGenerationType.Modify, (<HotDBMySQL>api.db));
-				debugger;
-				let results = await api.db.query (structure, []);
+				let structure: string[][] = 
+					await schema.generateStructure (HotDBGenerationType.Modify, (<HotDBMySQL>api.db));
+				let results = await api.db.multiQuery (structure[0]);
 
-				expect (results.results, "Did not create a table!");
+				expect (results[0].results, "Did not create a table!");
 			});
 	});

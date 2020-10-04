@@ -36,6 +36,10 @@ export abstract class HotDB<DBType = any, DBResultType = any, DBSchema = HotDBSc
      * The query to make.
      */
 	abstract async query (queryString: string, values?: any[]): Promise<DBResultType>;
+    /**
+     * Make multiple queries.
+     */
+	abstract async multiQuery (queryStrings: string[] | { query: string; values: any[]; }[]): Promise<DBResultType[]>;
 	/**
      * Disconnect from the server.
      */

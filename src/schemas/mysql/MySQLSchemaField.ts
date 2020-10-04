@@ -98,12 +98,55 @@ export class MySQLSchemaField
 	}
 
 	/**
+	 * Compare two different fields.
+	 * 
+	 * @param field1 The first field to compare.
+	 * @param field2 The second field to compare.
+	 * @param onlyKeys Only compare using the provided keys. If set to null, this will compare 
+	 * using all of the keys in these objects.
+	 * @param caseInsensitive If set to true, all detected string values will be compared as 
+	 * case insensitive.
+	 */
+	static compare (field1: MySQLSchemaField, field2: MySQLSchemaField, 
+		onlyKeys: string[] = null, caseInsensitive: boolean = true): boolean
+	{
+		if (onlyKeys == null)
+		{
+			onlyKeys = ["name", "dataType", "primaryKey", "notNull", 
+				"uniqueIndex", "binaryColumn", "unsignedDataType", 
+				"fillZeroes", "autoIncrement", "generatedColumn", 
+				"defaultValue"];
+		}
+
+		for (let iIdx = 0; iIdx < onlyKeys.length; iIdx++)
+		{
+			let key: string = onlyKeys[iIdx];
+			// @ts-ignore
+			let field1Value = field1[key];
+			// @ts-ignore
+			let field2Value = field2[key];
+
+			if (typeof (field1Value) === "string")
+			{
+				field1Value = field1Value.toLowerCase ();
+				field2Value = field2Value.toLowerCase ();
+			}
+
+			if (field1Value !== field2Value)
+				return (false);
+		}
+
+		return (true);
+	}
+
+	/**
 	 * Parse a JSON object and get a MySQLSchemaField object from it.
 	 * Warning! This is only partially implemented. This will not check 
 	 * the following fields:
 	 * * Binary column
 	 * * unique
 	 * * zero-filled
+	 * * generated column
 	 */
 	static parse (json: any): MySQLSchemaField
 	{
