@@ -397,27 +397,23 @@ export class HotPreprocessor implements IHotPreprocessor
 	}
 
 	/**
-	 * Create the Express routes from the given pages. Be sure to load the 
-	 * pages first before doing this. This method is meant to be used for 
-	 * customized Express applications. If you wish to use the loaded routes 
-	 * from this HotPreprocessor object with HotHTTPServer, be sure to use 
-	 * the loadHotSite method in HotHTTPServer.
+	 * Generate the content to send to a client.
 	 */
-	createExpressRoutes (expressApp: any, jsSrcPath: string = "./js/HotPreprocessor.js"): void
+	generateContent (routeKey: string, name: string = "", url: string = "./",
+			jsSrcPath: string = "./js/HotPreprocessor.js"): string
 	{
-		for (let key in this.pages)
+		let apiScripts: string = "";
+		let apiCode: string = "";
+
+		// Load the API string.
+		if (this.hotSite != null)
 		{
-			let page: HotPage = this.pages[key];
-			let apiScripts: string = "";
-			let apiCode: string = "";
-
-			// Load the API string.
-			if (this.hotSite != null)
+			if (this.hotSite.apis != null)
 			{
-				if (this.hotSite.apis != null)
-				{
-					let route = this.hotSite.routes[page.route];
+				let route = this.hotSite.routes[routeKey];
 
+				if (route != null)
+				{
 					if (route.api != null)
 					{
 						let api = this.hotSite.apis[route.api];
@@ -442,20 +438,38 @@ export class HotPreprocessor implements IHotPreprocessor
 					}
 				}
 			}
+		}
 
-			let content: string = this.pageContent;
-			let fixContent = (tempContent: string) =>
-				{
-					tempContent = tempContent.replace (/\%title\%/g, page.name);
-					tempContent = tempContent.replace (/\%hotpreprocessor\_js\_src\%/g, jsSrcPath);
-					tempContent = tempContent.replace (/\%apis\_to\_load\%/g, apiScripts);
-					tempContent = tempContent.replace (/\%load\_hot\_site\%/g, "");
-					tempContent = tempContent.replace (/\%api\_code\%/g, apiCode);
-					tempContent = tempContent.replace (/\%url\%/g, page.files[0].url);
+		let content: string = this.pageContent;
+		let fixContent = (tempContent: string) =>
+			{
+				tempContent = tempContent.replace (/\%title\%/g, name);
+				tempContent = tempContent.replace (/\%hotpreprocessor\_js\_src\%/g, jsSrcPath);
+				tempContent = tempContent.replace (/\%apis\_to\_load\%/g, apiScripts);
+				tempContent = tempContent.replace (/\%load\_hot\_site\%/g, "");
+				tempContent = tempContent.replace (/\%api\_code\%/g, apiCode);
+				tempContent = tempContent.replace (/\%url\%/g, url);
 
-					return (tempContent);
-				};
-			content = fixContent (content);
+				return (tempContent);
+			};
+		content = fixContent (content);
+
+		return (content);
+	}
+
+	/**
+	 * Create the Express routes from the given pages. Be sure to load the 
+	 * pages first before doing this. This method is meant to be used for 
+	 * customized Express applications. If you wish to use the loaded routes 
+	 * from this HotPreprocessor object with HotHTTPServer, be sure to use 
+	 * the loadHotSite method in HotHTTPServer.
+	 */
+	createExpressRoutes (expressApp: any, jsSrcPath: string = "./js/HotPreprocessor.js"): void
+	{
+		for (let key in this.pages)
+		{
+			let page: HotPage = this.pages[key];
+			const content: string = this.generateContent (page.route, page.name, page.files[0].url, jsSrcPath);
 
 			expressApp.get (page.route, (req: any, res: any) =>
 				{

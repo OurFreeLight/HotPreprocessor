@@ -14,7 +14,12 @@
 			"type": "pwa-node",
 			"outputCapture": "std",
 			"args": [
-				"-d"
+				"-d",
+				"--js-url",
+				"/build-web/HotPreprocessor.js",
+				"--serve-hott-files",
+				"-h",
+				"8080"
 			]
 		},
 		{

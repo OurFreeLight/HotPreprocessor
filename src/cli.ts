@@ -22,6 +22,29 @@ async function start ()
 		program.description (`Copyright(c) 2020, FreeLight, Inc. Under the MIT License.`);
 		let command: commander.Command = program.version (packageJSON.version);
 
+		command.option ("-r, --route <route_and_path>", "Add a static route. Example: -r \"/=/var/www\"", 
+			(routeAndPath: string, previous: any) =>
+			{
+				let pos: number = routeAndPath.indexOf ("=");
+				let route: string = "";
+				let path: string = "";
+
+				if (pos > -1)
+				{
+					route = routeAndPath.substr (0, pos);
+					path = routeAndPath.substr (pos + 1);
+				}
+
+				server.addStaticRoute (route, path);
+			});
+		command.option ("--serve-hott-files", "Serve Hott files", (port: string, previous: any) =>
+			{
+				server.serveHottFiles = true;
+			});
+		command.option ("--js-url <url>", "The url to the HotPreprocessor JS", (url: string, previous: any) =>
+			{
+				server.hottFilesAssociatedInfo.jsSrcPath = url;
+			});
 		command.option ("-h, --http-port <port>", "Set the HTTP port", (port: string, previous: any) =>
 			{
 				server.ports.http = parseInt (port);
@@ -71,6 +94,9 @@ async function start ()
 
 		if (process.argv.length > 2)
 			program.parse (process.argv);
+
+		if (server.staticRoutes.length < 1)
+			server.addStaticRoute ("/", process.cwd ());
 
 		await server.listen ();
 	}

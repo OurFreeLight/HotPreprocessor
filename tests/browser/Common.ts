@@ -79,7 +79,7 @@ export class Common
 	/**
 	 * Start the web server.
 	 */
-	async startServer (): Promise<void>
+	async startServer (serveHottFiles: boolean = false): Promise<void>
 	{
 		this.server = new HotHTTPServer (this.processor);
 
@@ -88,6 +88,8 @@ export class Common
 				"route": "/",
 				"localPath": ppath.normalize (`${process.cwd ()}/`)
 			});
+		this.server.serveHottFiles = serveHottFiles;
+		this.server.hottFilesAssociatedInfo.jsSrcPath = "/build-web/HotPreprocessor.js";
 		let api: HelloWorldAPI = new HelloWorldAPI (this.getUrl (), this.server);
 		this.server.setAPI (api);
 

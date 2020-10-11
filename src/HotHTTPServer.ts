@@ -8,6 +8,7 @@ import { HotServer } from "./HotServer";
 import { HotPreprocessor } from "./HotPreprocessor";
 import { HotRoute } from "./HotRoute";
 import { HotRouteMethod } from "./HotRouteMethod";
+import { IO } from "libbuildci";
 
 /**
  * A static route.
@@ -50,6 +51,23 @@ export class HotHTTPServer extends HotServer
 	 * Serve hott files when requested.
 	 */
 	serveHottFiles: boolean;
+	/**
+	 * The associated info with any hott files served.
+	 */
+	hottFilesAssociatedInfo: {
+			/**
+			 * The default name for a served Hott file.
+			 */
+			name: string;
+			/**
+			 * The base url for a hott file.
+			 */
+			url: string;
+			/**
+			 * The JavaScript source path.
+			 */
+			jsSrcPath: string;
+		};
 
 	constructor (processor: HotPreprocessor | HotServer, httpPort: number = null, httpsPort: number = null)
 	{
@@ -59,7 +77,12 @@ export class HotHTTPServer extends HotServer
 		this.httpListener = null;
 		this.httpsListener = null;
 		this.staticRoutes = [];
-		this.serveHottFiles = true;
+		this.serveHottFiles = false;
+		this.hottFilesAssociatedInfo = {
+				name: "",
+				url: "./",
+				jsSrcPath: "./js/HotPreprocessor.js"
+			};
 
 		if (process.env.LISTEN_ADDR != null)
 		{
@@ -270,14 +293,49 @@ export class HotHTTPServer extends HotServer
 		{
 			this.expressApp.use ((req: express.Request, res: express.Response, next: any): void =>
 				{
-					const requestedUrl: string = `${req.protocol}://${req.hostname}${req.originalUrl}`;
-					let url: URL = new URL (requestedUrl);
-					let pathname: string = ppath.basename (url.pathname);
+					(async () =>
+					{
+						const requestedUrl: string = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
+						let url: URL = new URL (requestedUrl);
+						let sendContent = (fullUrl: URL, path: string): void =>
+							{
+								fullUrl.searchParams.append ("hpserve", "nahfam");
 
-					if (pathname === "Test.hott")
-						debugger;
+								const content: string = this.processor.generateContent (path, 
+									this.hottFilesAssociatedInfo.name,
+									fullUrl.toString (),
+									this.hottFilesAssociatedInfo.jsSrcPath);
+								res.send (content);
+							};
 
-					next ();
+						if (url.pathname.indexOf (".hott") > -1)
+						{
+							let result: string = "";
+							let hpserve = url.searchParams.get ("hpserve");
+
+							if (hpserve != null)
+								result = hpserve;
+
+							if (result !== "nahfam")
+							{
+								if (await IO.fileExists (url.pathname) === true)
+								{
+									sendContent (url, url.pathname);
+
+									return;
+								}
+
+								if (await IO.fileExists (ppath.normalize (`${process.cwd ()}/${url.pathname}`)) === true)
+								{
+									sendContent (url, url.pathname);
+
+									return;
+								}
+							}
+						}
+
+						next ();
+					})();
 				});
 		}
 	}
