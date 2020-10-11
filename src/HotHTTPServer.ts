@@ -46,8 +46,12 @@ export class HotHTTPServer extends HotServer
 	 * The static files and folders to serve.
 	 */
 	staticRoutes: StaticRoute[];
+	/**
+	 * Serve hott files when requested.
+	 */
+	serveHottFiles: boolean;
 
-	constructor (processor: HotPreprocessor | HotServer)
+	constructor (processor: HotPreprocessor | HotServer, httpPort: number = null, httpsPort: number = null)
 	{
 		super (processor);
 
@@ -55,6 +59,7 @@ export class HotHTTPServer extends HotServer
 		this.httpListener = null;
 		this.httpsListener = null;
 		this.staticRoutes = [];
+		this.serveHottFiles = true;
 
 		if (process.env.LISTEN_ADDR != null)
 		{
@@ -70,6 +75,12 @@ export class HotHTTPServer extends HotServer
 					ca: ""
 				};
 		}
+
+		if (httpPort != null)
+			this.ports.http = httpPort;
+
+		if (httpsPort != null)
+			this.ports.https = httpsPort;
 
 		if (process.env.HTTP_PORT != null)
 		{
@@ -109,7 +120,7 @@ export class HotHTTPServer extends HotServer
 	/**
 	 * Add a static route.
 	 */
-	addStaticRoute (route: string | StaticRoute, localPath: string): void
+	addStaticRoute (route: string | StaticRoute, localPath: string = "."): void
 	{
 		let staticRoute: StaticRoute = null;
 
@@ -133,6 +144,7 @@ export class HotHTTPServer extends HotServer
 	registerStaticRoute (route: StaticRoute): void
 	{
 		this.clearErrorHandlingRoutes ();
+		this.preregisterRoute ();
 		this.expressApp.use (route.route, express.static (ppath.normalize (route.localPath)));
 		this.setErrorHandlingRoutes ();
 	}
@@ -165,6 +177,7 @@ export class HotHTTPServer extends HotServer
 	registerRoute (route: HotRoute): void
 	{
 		this.clearErrorHandlingRoutes ();
+		this.preregisterRoute ();
 
 		for (let iIdx = 0; iIdx < route.methods.length; iIdx++)
 		{
@@ -238,6 +251,35 @@ export class HotHTTPServer extends HotServer
 		}
 
 		this.setErrorHandlingRoutes ();
+	}
+
+	/**
+	 * The routes to add before registering a route.
+	 */
+	preregisterRoute (): void
+	{
+		this.expressApp.use ((req: express.Request, res: express.Response, next: any): void =>
+			{
+				const url: string = `${req.protocol}://${req.hostname}${req.originalUrl}`;
+				this.logger.verbose (`Requested: ${url}`);
+
+				next ();
+			});
+
+		if (this.serveHottFiles === true)
+		{
+			this.expressApp.use ((req: express.Request, res: express.Response, next: any): void =>
+				{
+					const requestedUrl: string = `${req.protocol}://${req.hostname}${req.originalUrl}`;
+					let url: URL = new URL (requestedUrl);
+					let pathname: string = ppath.basename (url.pathname);
+
+					if (pathname === "Test.hott")
+						debugger;
+
+					next ();
+				});
+		}
 	}
 
 	/**
@@ -389,6 +431,45 @@ export class HotHTTPServer extends HotServer
 			});
 
 		return (promise);
+	}
+
+	/**
+	 * Start the server.
+	 * 
+	 * @param localStaticPath The public path that contains the HTML, Hott files, images, and 
+	 * all public content. This can also be an array of StaticRoutes.
+	 * @param httpPort The HTTP port to listen on .
+	 * @param httpsPort The HTTPS port to listen on.
+	 * @param processor The HotPreprocessor or parent server being used for communication.
+	 */
+	static async startServer (localStaticPath: string | StaticRoute[] = null, 
+		httpPort: number = 80, httpsPort: number = 443, 
+		processor: HotServer | HotPreprocessor = null,): 
+			Promise<{ processor: HotServer | HotPreprocessor; server: HotHTTPServer; }>
+	{
+		if (processor == null)
+			processor = new HotPreprocessor ();
+
+		let webServer: HotHTTPServer = new HotHTTPServer (processor, httpPort, httpsPort);
+
+		if (localStaticPath == null)
+			localStaticPath = process.cwd ();
+
+		if (typeof (localStaticPath) === "string")
+			webServer.addStaticRoute ("/", localStaticPath);
+		else
+		{
+			for (let iIdx = 0; iIdx < localStaticPath.length; iIdx++)
+			{
+				let staticRoute: StaticRoute = localStaticPath[iIdx];
+
+				webServer.addStaticRoute (staticRoute);
+			}
+		}
+
+		await webServer.listen ();
+
+		return ({ processor: processor, server: webServer });
 	}
 
 	/**

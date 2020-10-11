@@ -1,4 +1,5 @@
 import * as ppath from "path";
+import * as oss from "os";
 
 import { HotPreprocessor, HotHTTPServer, HotLogLevel } from "../../src/api";
 import { HelloWorldAPI } from "../server/HelloWorldAPI";
@@ -50,6 +51,12 @@ export class Common
 				platformName: "windows"
 			};
 
+		if (oss.platform () === "linux")
+			this.capabilities["platformName"] = "linux";
+
+		if (oss.platform () === "darwin")
+			this.capabilities["platformName"] = "mac";
+
 		if (process.env.NODE_TLS_REJECT_UNAUTHORIZED != null)
 		{
 			if (process.env.NODE_TLS_REJECT_UNAUTHORIZED == "0")
@@ -70,7 +77,7 @@ export class Common
 	}
 
 	/**
-	 * Start the micro web server.
+	 * Start the web server.
 	 */
 	async startServer (): Promise<void>
 	{

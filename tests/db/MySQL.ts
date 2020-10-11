@@ -12,6 +12,11 @@ import { MySQLSchemaField } from "../../src/schemas/mysql/MySQLSchemaField";
 import { HotDBMySQL } from "../../src/schemas/HotMySQL";
 import { HotDBGenerationType } from "../../src/schemas/HotDBSchema";
 
+/**
+ * This needs more test cases!!
+ * 
+ * It needs to test adding, removing, moving, renaming, and more.
+ */
 describe ("Database - MySQL Tests", () =>
 	{
 		let common: Common = null;

@@ -30,16 +30,13 @@
 			"type": "node",
 			"request": "launch",
 			"name": "Run Tests",
-			"program": "${workspaceFolder}/node_modules/mocha/bin/mocha",
-			"runtimeArgs": [
-				"--inspect=127.0.0.1:7478"
-			],
+			"program": "${workspaceFolder}/node_modules/buildci/bin/buildci",
 			"port": 7478,
 			"args": [
-				"--timeout",
-				"500000",
-				"--colors",
-				"${workspaceFolder}/build/tests/db/*.js"
+				"run",
+				"tests",
+				"7478",
+				"all"
 			],
 			"env": {
 				"HTTP_PORT": "3123",

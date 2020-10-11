@@ -12,7 +12,7 @@ First you gotta install like so:
 
 	npm install hotpreprocessor
 
-Then you can create your first hott script! So create a file called ```HelloWorld.hott```, inside it, enter your HTML:
+Then you can create your first hott script! Create a file called ```HelloWorld.hott```, inside it, enter your HTML:
 
 	<!DOCTYPE html>
 	<html>
@@ -32,16 +32,11 @@ Then you can create your first hott script! So create a file called ```HelloWorl
 	
 	</html>
 
-To process the above hott script from the server-side you'd do:
+Save the file as index.hott, then start serving the current directory by using:
 
-	async function processScript ()
-	{
-		let output = await HotPreprocessor.processLocalFile ("./HelloWorld.hott");
+	import { HotHTTPServer } from "hotpreprocessor";
 
-		console.log (output);
-	}
-
-	processScript ();
+	HotHTTPServer.startServer ();
 
 ## Express processing example
 Here's a sample Express app to test the above hott script:

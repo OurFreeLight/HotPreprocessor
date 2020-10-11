@@ -1,0 +1,24 @@
+{
+    "name": "hotpreprocessor",
+    "dependencies": [
+        { "program": "docker", "cmd": "docker" },
+        { "program": "npm", "cmd": "npm" },
+        { "program": "node", "cmd": "node" },
+        { "program": "chrome", "cmd": "google-chrome" },
+        { "program": "chromedriver", "cmd": "chromedriver" }
+    ],
+    "builds": [{
+            "name": "node",
+            "cmd": "tsc --build ./tsconfig.json"
+        },
+        {
+            "name": "web",
+            "cmd": "webpack --mode=production"
+        }],
+    "scripts": {
+            "tests": {
+                "name": "Tests",
+                "onCmd": "./build/src/buildci/RunTests.js"
+            }
+        }
+}
