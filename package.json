@@ -10,7 +10,7 @@
   "scripts": {
     "test": "mocha --timeout 999999 --colors ./build/tests/**/*.js",
     "prepublishOnly": "tsc --build ./tsconfig.json && webpack --mode=production && typedoc --ignoreCompilerErrors --mode file --readme README.md --out ./docs/ ./src",
-    "builddoc": "typedoc --ignoreCompilerErrors --mode file --readme README.md --out ./docs/ ./src",
+    "builddoc": "typedoc --ignoreCompilerErrors --mode file --theme markdown --readme README.md --out ./docs/ ./src",
     "build": "tsc --build ./tsconfig.json",
     "buildweb": "webpack --mode=production",
     "buildwebdebug": "webpack --mode=development --debug"
@@ -43,6 +43,8 @@
     "mocha": "^7.2.0",
     "selenium-webdriver": "^4.0.0-alpha.7",
     "ts-loader": "^7.0.5",
+    "typedoc": "^0.19.2",
+    "typedoc-plugin-markdown": "^3.0.8",
     "typescript": "^3.9.7",
     "webpack": "^4.44.0",
     "webpack-cli": "^3.3.12"

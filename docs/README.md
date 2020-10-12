@@ -1,3 +1,7 @@
+**[hotpreprocessor](README.md)**
+
+> [Globals](globals.md)
+
 # Hotpreprocessor
 Need something similar to PHP in Node.js? We got you barely covered then ;)
 
@@ -6,10 +10,6 @@ Hotpreprocessor is a lightweight server-side or client-side HTML preprocessor. I
 It's important to keep the number of dependencies required for Hotpreprocessor down to a minimum, so as it can be used in secure environments.
 
 Hotpreprocessor is capable of processing code server-side and client-side.
-
-[Hott Reference](./docs/classes/hot.md)
-
-[Server Reference](./docs/globals.md)
 
 ## Getting started
 First you gotta install like so:
@@ -42,7 +42,7 @@ Save the file as index.hott, then start serving the current directory by using:
 
 	HotHTTPServer.startServer ();
 
-## Custom Express processing example
+## Express processing example
 Here's a sample Express app to test the above hott script:
 
 	const express = require ("express");
