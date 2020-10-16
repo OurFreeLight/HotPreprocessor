@@ -7,7 +7,7 @@ import express from "express";
 import { HotServer } from "./HotServer";
 import { HotPreprocessor } from "./HotPreprocessor";
 import { HotRoute } from "./HotRoute";
-import { HotRouteMethod } from "./HotRouteMethod";
+import { HotRouteMethod, HTTPMethod } from "./HotRouteMethod";
 import { IO } from "libbuildci";
 
 /**
@@ -48,6 +48,25 @@ export class HotHTTPServer extends HotServer
 	 */
 	staticRoutes: StaticRoute[];
 	/**
+	 * Any non-static routes that need to be added. These 
+	 * will be added during the preregistration phase, before 
+	 * all API routes are added.
+	 */
+	routes: {
+			/**
+			 * The type of route.
+			 */
+			type: HTTPMethod;
+			/**
+			 * The type of route.
+			 */
+			route: string;
+			/**
+			 * The method to execute when this route is hit.
+			 */
+			method: (req: express.Request, res: express.Response) => Promise<void>;
+		}[];
+	/**
 	 * Serve hott files when requested.
 	 */
 	serveHottFiles: boolean;
@@ -77,6 +96,7 @@ export class HotHTTPServer extends HotServer
 		this.httpListener = null;
 		this.httpsListener = null;
 		this.staticRoutes = [];
+		this.routes = [];
 		this.serveHottFiles = false;
 		this.hottFilesAssociatedInfo = {
 				name: "",
@@ -159,6 +179,21 @@ export class HotHTTPServer extends HotServer
 
 		this.staticRoutes.push (staticRoute);
 		this.registerStaticRoute (staticRoute);
+	}
+
+	/**
+	 * Add a route. This will be registered before any APIs are registered.
+	 */
+	addRoute (route: string, method: (req: express.Request, res: express.Response) => Promise<void>, 
+				type: HTTPMethod = HTTPMethod.GET): void
+	{
+		let newRoute = {
+				type: type,
+				route: route,
+				method: method
+			};
+
+		this.routes.push (newRoute);
 	}
 
 	/**
@@ -308,6 +343,13 @@ export class HotHTTPServer extends HotServer
 
 				next ();
 			});
+
+		for (let iIdx = 0; iIdx < this.routes.length; iIdx++)
+		{
+			let route = this.routes[iIdx];
+
+			this.expressApp[route.type] (route.route, route.method);
+		}
 
 		if (this.serveHottFiles === true)
 		{
