@@ -162,6 +162,14 @@ export class HotHTTPServer extends HotServer
 	}
 
 	/**
+	 * Serve a directory. This is an alias for addStaticRoute.
+	 */
+	serveDirectory (route: string | StaticRoute, localPath: string = "."): void
+	{
+		this.addStaticRoute (route, localPath);
+	}
+
+	/**
 	 * Register a static route with Express.
 	 */
 	registerStaticRoute (route: StaticRoute): void
@@ -197,8 +205,14 @@ export class HotHTTPServer extends HotServer
 	/**
 	 * Register a route.
 	 */
-	registerRoute (route: HotRoute): void
+	async registerRoute (route: HotRoute): Promise<void>
 	{
+		if (route.onRegister != null)
+		{
+			if (await route.onRegister () === false)
+				return;
+		}
+
 		this.clearErrorHandlingRoutes ();
 		this.preregisterRoute ();
 
@@ -208,6 +222,12 @@ export class HotHTTPServer extends HotServer
 
 			if (method.isRegistered === true)
 				continue;
+
+			if (method.onRegister != null)
+			{
+				if (await method.onRegister () === false)
+					continue;
+			}
 
 			let methodName: string = "/";
 

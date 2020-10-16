@@ -59,7 +59,7 @@ results.
 
 \+ **new HotPreprocessor**(`copy`: [IHotPreprocessor](ihotpreprocessor.md)): [HotPreprocessor](hotpreprocessor.md)
 
-*Defined in [HotPreprocessor.ts:130](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L130)*
+*Defined in [HotPreprocessor.ts:130](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L130)*
 
 #### Parameters:
 
@@ -75,7 +75,7 @@ Name | Type | Default value |
 
 •  **api**: [HotAPI](hotapi.md)
 
-*Defined in [HotPreprocessor.ts:106](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L106)*
+*Defined in [HotPreprocessor.ts:106](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L106)*
 
 The api that's used to communicate with.
 
@@ -85,7 +85,7 @@ ___
 
 •  **apiContent**: string
 
-*Defined in [HotPreprocessor.ts:122](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L122)*
+*Defined in [HotPreprocessor.ts:122](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L122)*
 
 The api content to use when about to load HotPreprocessor.
 
@@ -95,7 +95,7 @@ ___
 
 •  **components**: { [name:string]: [HotComponent](hotcomponent.md);  }
 
-*Defined in [HotPreprocessor.ts:114](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L114)*
+*Defined in [HotPreprocessor.ts:114](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L114)*
 
 The components that can be constructed.
 
@@ -105,7 +105,7 @@ ___
 
 •  **hotSite**: [HotSite](../interfaces/hotsite.md)
 
-*Defined in [HotPreprocessor.ts:118](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L118)*
+*Defined in [HotPreprocessor.ts:118](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L118)*
 
 The loaded hotsite.
 
@@ -115,7 +115,7 @@ ___
 
 •  **logger**: [HotLog](hotlog.md)
 
-*Defined in [HotPreprocessor.ts:130](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L130)*
+*Defined in [HotPreprocessor.ts:130](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L130)*
 
 The logger.
 
@@ -125,7 +125,7 @@ ___
 
 •  **pageContent**: string
 
-*Defined in [HotPreprocessor.ts:126](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L126)*
+*Defined in [HotPreprocessor.ts:126](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L126)*
 
 The page content to use when about to load HotPreprocessor.
 
@@ -135,7 +135,7 @@ ___
 
 •  **pages**: { [name:string]: [HotPage](hotpage.md);  }
 
-*Defined in [HotPreprocessor.ts:110](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L110)*
+*Defined in [HotPreprocessor.ts:110](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L110)*
 
 The pages that can be constructed.
 
@@ -145,7 +145,7 @@ ___
 
 ▪ `Static` **isWeb**: boolean = false
 
-*Defined in [HotPreprocessor.ts:102](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L102)*
+*Defined in [HotPreprocessor.ts:102](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L102)*
 
 Indicates if this is a web build.
 
@@ -155,7 +155,7 @@ Indicates if this is a web build.
 
 ▸ **addComponent**(`component`: [HotComponent](hotcomponent.md)): void
 
-*Defined in [HotPreprocessor.ts:233](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L233)*
+*Defined in [HotPreprocessor.ts:233](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L233)*
 
 Add and register a component.
 
@@ -173,7 +173,7 @@ ___
 
 ▸ **addPage**(`page`: [HotPage](hotpage.md)): void
 
-*Defined in [HotPreprocessor.ts:217](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L217)*
+*Defined in [HotPreprocessor.ts:217](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L217)*
 
 Add a page.
 
@@ -191,7 +191,7 @@ ___
 
 ▸ **createExpressRoutes**(`expressApp`: any, `jsSrcPath`: string): void
 
-*Defined in [HotPreprocessor.ts:467](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L467)*
+*Defined in [HotPreprocessor.ts:467](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L467)*
 
 Create the Express routes from the given pages. Be sure to load the
 pages first before doing this. This method is meant to be used for
@@ -214,7 +214,7 @@ ___
 
 ▸ **generateContent**(`routeKey`: string, `name`: string, `url`: string, `jsSrcPath`: string): string
 
-*Defined in [HotPreprocessor.ts:402](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L402)*
+*Defined in [HotPreprocessor.ts:402](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L402)*
 
 Generate the content to send to a client.
 
@@ -235,7 +235,7 @@ ___
 
 ▸ **getComponent**(`name`: string): [HotComponent](hotcomponent.md)
 
-*Defined in [HotPreprocessor.ts:303](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L303)*
+*Defined in [HotPreprocessor.ts:303](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L303)*
 
 Get a component to process.
 
@@ -253,7 +253,7 @@ ___
 
 ▸ **getPage**(`pageName`: string): [HotPage](hotpage.md)
 
-*Defined in [HotPreprocessor.ts:225](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L225)*
+*Defined in [HotPreprocessor.ts:225](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L225)*
 
 Get a page to process.
 
@@ -271,7 +271,7 @@ ___
 
 ▸ **loadHotSite**(`path`: string): Promise\<void>
 
-*Defined in [HotPreprocessor.ts:348](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L348)*
+*Defined in [HotPreprocessor.ts:348](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L348)*
 
 Load from a HotSite.json file.
 
@@ -289,7 +289,7 @@ ___
 
 ▸ **process**(`pageName`: string): Promise\<string>
 
-*Defined in [HotPreprocessor.ts:484](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L484)*
+*Defined in [HotPreprocessor.ts:484](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L484)*
 
 Process a page and get the result.
 
@@ -307,7 +307,7 @@ ___
 
 ▸ **registerComponent**(`component`: [HotComponent](hotcomponent.md)): void
 
-*Defined in [HotPreprocessor.ts:242](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L242)*
+*Defined in [HotPreprocessor.ts:242](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L242)*
 
 Register a component for use as a HTML tag.
 
@@ -325,7 +325,7 @@ ___
 
 ▸ `Static`**addHtml**(`parent`: string \| HTMLElement, `html`: string \| HTMLElement): HTMLElement \| HTMLElement[]
 
-*Defined in [HotPreprocessor.ts:311](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L311)*
+*Defined in [HotPreprocessor.ts:311](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L311)*
 
 Add a new HTML element(s) to the current document.
 
@@ -344,7 +344,7 @@ ___
 
 ▸ `Static`**displayContent**(`content`: string, `name`: string, `processor`: [HotPreprocessor](hotpreprocessor.md)): Promise\<[HotPreprocessor](hotpreprocessor.md)>
 
-*Defined in [HotPreprocessor.ts:602](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L602)*
+*Defined in [HotPreprocessor.ts:602](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L602)*
 
 Process and replace the current HTML page with the hott script.
 This is meant for web browser use only.
@@ -365,7 +365,7 @@ ___
 
 ▸ `Static`**displayUrl**(`url`: string, `name`: string, `processor`: [HotPreprocessor](hotpreprocessor.md)): Promise\<[HotPreprocessor](hotpreprocessor.md)>
 
-*Defined in [HotPreprocessor.ts:581](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L581)*
+*Defined in [HotPreprocessor.ts:581](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L581)*
 
 Process and replace the current HTML page with the hott script from the given url.
 This is meant for web browser use only.
@@ -386,7 +386,7 @@ ___
 
 ▸ `Static`**onReady**(`readyFunc`: () => void): void
 
-*Defined in [HotPreprocessor.ts:558](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L558)*
+*Defined in [HotPreprocessor.ts:558](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L558)*
 
 When the window has finished loading, execute the function.
 This is meant for web browser use only.
@@ -405,7 +405,7 @@ ___
 
 ▸ `Static`**parseBoolean**(`value`: string): boolean
 
-*Defined in [HotPreprocessor.ts:180](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L180)*
+*Defined in [HotPreprocessor.ts:180](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L180)*
 
 Parse a boolean value.
 
@@ -423,7 +423,7 @@ ___
 
 ▸ `Static`**processContent**(`processor`: [HotPreprocessor](hotpreprocessor.md), `content`: string, `name`: string): Promise\<string>
 
-*Defined in [HotPreprocessor.ts:537](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L537)*
+*Defined in [HotPreprocessor.ts:537](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L537)*
 
 Process content and get the result.
 
@@ -443,7 +443,7 @@ ___
 
 ▸ `Static`**processLocalFile**(`localFilepath`: string, `name`: string): Promise\<string>
 
-*Defined in [HotPreprocessor.ts:495](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L495)*
+*Defined in [HotPreprocessor.ts:495](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L495)*
 
 Process a local file and get the result.
 
@@ -462,7 +462,7 @@ ___
 
 ▸ `Static`**processUrl**(`processor`: [HotPreprocessor](hotpreprocessor.md), `url`: string, `name`: string): Promise\<string>
 
-*Defined in [HotPreprocessor.ts:516](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L516)*
+*Defined in [HotPreprocessor.ts:516](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L516)*
 
 Process a url and get the result.
 
@@ -482,7 +482,7 @@ ___
 
 ▸ `Static`**useOutput**(`output`: string): void
 
-*Defined in [HotPreprocessor.ts:570](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L570)*
+*Defined in [HotPreprocessor.ts:570](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L570)*
 
 Replace the current HTML page with the output.
 This is meant for web browser use only.

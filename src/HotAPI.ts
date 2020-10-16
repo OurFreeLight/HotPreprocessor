@@ -5,6 +5,7 @@ import { HotRoute } from "./HotRoute";
 import { HotClient } from "./HotClient";
 import { HotRouteMethod } from "./HotPreprocessorWeb";
 import { HotDB } from "./HotDB";
+import { ServerRegistrationFunction } from "./HotRouteMethod";
 
 /**
  * The API to use.
@@ -44,6 +45,13 @@ export abstract class HotAPI
 
 	/**
 	 * Add a route.
+	 * 
+	 * @param route The route to add. Can be either a full HotRoute object, or just 
+	 * the route's name.
+	 * @param routeMethod The route's method to add. If the route parameter is a string, 
+	 * it will be interpreted as the route's name, and this will be the method added to 
+	 * the new route.
+	 * @param executeFunction The function to execute when routeMethod is called by the API.
 	 */
 	addRoute (
 		route: HotRoute | string,

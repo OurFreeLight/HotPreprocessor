@@ -34,7 +34,7 @@ The logger.
 
 \+ **new HotLog**(`logLevel`: [HotLogLevel](../enums/hotloglevel.md)): [HotLog](hotlog.md)
 
-*Defined in [HotLog.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotLog.ts#L40)*
+*Defined in [HotLog.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotLog.ts#L40)*
 
 #### Parameters:
 
@@ -50,7 +50,7 @@ Name | Type | Default value |
 
 •  **logLevel**: [HotLogLevel](../enums/hotloglevel.md)
 
-*Defined in [HotLog.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotLog.ts#L40)*
+*Defined in [HotLog.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotLog.ts#L40)*
 
 The logging level.
 
@@ -60,7 +60,7 @@ The logging level.
 
 ▸ **error**(`message`: string): void
 
-*Defined in [HotLog.ts:136](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotLog.ts#L136)*
+*Defined in [HotLog.ts:136](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotLog.ts#L136)*
 
 Log an error message.
 
@@ -78,7 +78,7 @@ ___
 
 ▸ **info**(`message`: string): void
 
-*Defined in [HotLog.ts:110](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotLog.ts#L110)*
+*Defined in [HotLog.ts:110](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotLog.ts#L110)*
 
 Log a message.
 
@@ -96,7 +96,7 @@ ___
 
 ▸ **log**(`level`: [HotLogLevel](../enums/hotloglevel.md), `message`: string): void
 
-*Defined in [HotLog.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotLog.ts#L50)*
+*Defined in [HotLog.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotLog.ts#L50)*
 
 Log a message.
 
@@ -115,7 +115,7 @@ ___
 
 ▸ **verbose**(`message`: string): void
 
-*Defined in [HotLog.ts:101](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotLog.ts#L101)*
+*Defined in [HotLog.ts:101](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotLog.ts#L101)*
 
 Log a verbose message.
 
@@ -133,7 +133,7 @@ ___
 
 ▸ **warning**(`message`: string): void
 
-*Defined in [HotLog.ts:123](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotLog.ts#L123)*
+*Defined in [HotLog.ts:123](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotLog.ts#L123)*
 
 Log a warning.
 

@@ -2,13 +2,19 @@ import * as ppath from "path";
 
 import { IO, BuildBundle, BuildMeBuild, OS, utils, Application, Settings, libBuildCI } from "libbuildci";
 
-module.exports = async function (buildBundle: BuildBundle, build: BuildMeBuild, another: any, 
-		inspectorPort: string = "7478", debugType: string = "browser")
+module.exports = async function (buildBundle: BuildBundle, build: BuildMeBuild, 
+		inspectorPortStr: string = "7478", debugType: string = "all", launchContainerStr: string = "true")
 	{
-		let settings: Settings = buildBundle.settings;
 		const cwd: string = process.cwd ();
-		let startApp: string = `node --inspect=127.0.0.1:${inspectorPort} ${cwd}/node_modules/mocha/bin/mocha `;
+		let inspectorPort: number = parseInt (inspectorPortStr);
+		let inspector: string = "";
+
+		if (inspectorPort > 0)
+			inspector = `--inspect=127.0.0.1:${inspectorPort} `;
+
+		let startApp: string = `node ${inspector}${cwd}/node_modules/mocha/bin/mocha `;
 		let args: string = `--timeout 10000 --colors "`;
+		let launchContainer: boolean = utils.parseBoolean (launchContainerStr);
 
 		if (debugType === "all")
 			args += `${cwd}/build/tests/**/*.js`;
@@ -29,26 +35,32 @@ module.exports = async function (buildBundle: BuildBundle, build: BuildMeBuild, 
 
 		let shutdownContainer = async () =>
 			{
-				await libBuildCI.exec (buildBundle, `docker stop maraidb-hotpreprocessor-tests`);
-				await libBuildCI.exec (buildBundle, `docker rm maraidb-hotpreprocessor-tests`);
+				await libBuildCI.exec (buildBundle, `docker stop mariadb-hotpreprocessor-tests`);
+				await libBuildCI.exec (buildBundle, `docker rm mariadb-hotpreprocessor-tests`);
 			};
 
-		if ((debugType === "all") || (debugType === "db"))
+		if (launchContainer === true)
 		{
-			let result = await libBuildCI.exec (buildBundle, `docker ps -a --filter "Name=maraidb-hotpreprocessor-tests" --format "{{.ID}}"`);
+			if ((debugType === "all") || (debugType === "db"))
+			{
+				let result = await libBuildCI.exec (buildBundle, `docker ps -a --filter "Name=mariadb-hotpreprocessor-tests" --format "{{.ID}}"`);
 
-			if (result.result.stdout !== "")
-				await shutdownContainer ();
+				if (result.result.stdout !== "")
+					await shutdownContainer ();
+			}
+
+			await libBuildCI.exec (buildBundle, `docker run -d --name="mariadb-hotpreprocessor-tests" -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cdO1KjwiC8ksOqCV1s0 -e MYSQL_DATABASE=freelight mariadb`);
+
+			// Wait for the container to start.
+			if ((debugType === "all") || (debugType === "db"))
+				await libBuildCI.sleep (5000);
 		}
 
-		await libBuildCI.exec (buildBundle, `docker run -d --name="maraidb-hotpreprocessor-tests" -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cdO1KjwiC8ksOqCV1s0 -e MYSQL_DATABASE=freelight mariadb`);
+		await libBuildCI.exec (buildBundle, `${startApp}${args}`, cwd, { cwd: cwd, shell: true, env: process.env }, true);
 
-		// Wait for the container to start.
-		if ((debugType === "all") || (debugType === "db"))
-			await libBuildCI.sleep (5000);
-
-		await libBuildCI.exec (buildBundle, `${startApp}${args}`, cwd, { cwd: cwd, shell: true, env: process.env });
-
-		if ((debugType === "all") || (debugType === "db"))
-			await shutdownContainer ();
+		if (launchContainer === true)
+		{
+			if ((debugType === "all") || (debugType === "db"))
+				await shutdownContainer ();
+		}
 	};

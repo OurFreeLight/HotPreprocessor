@@ -29,6 +29,7 @@ The MySQL schema.
 * [addFieldsToTable](mysqlschema.md#addfieldstotable)
 * [addTable](mysqlschema.md#addtable)
 * [generateStructure](mysqlschema.md#generatestructure)
+* [generateTableStructure](mysqlschema.md#generatetablestructure)
 
 ## Constructors
 
@@ -38,7 +39,7 @@ The MySQL schema.
 
 *Overrides [HotDBSchema](hotdbschema.md).[constructor](hotdbschema.md#constructor)*
 
-*Defined in [schemas/mysql/MySQLSchema.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/schemas/mysql/MySQLSchema.ts#L14)*
+*Defined in [schemas/mysql/MySQLSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/mysql/MySQLSchema.ts#L15)*
 
 #### Parameters:
 
@@ -56,7 +57,7 @@ Name | Type |
 
 *Inherited from [HotDBSchema](hotdbschema.md).[name](hotdbschema.md#name)*
 
-*Defined in [schemas/HotDBSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/schemas/HotDBSchema.ts#L15)*
+*Defined in [schemas/HotDBSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/HotDBSchema.ts#L15)*
 
 The name of this schema.
 
@@ -66,7 +67,7 @@ ___
 
 •  **tables**: { [name:string]: [MySQLSchemaTable](mysqlschematable.md);  }
 
-*Defined in [schemas/mysql/MySQLSchema.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/schemas/mysql/MySQLSchema.ts#L14)*
+*Defined in [schemas/mysql/MySQLSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/mysql/MySQLSchema.ts#L15)*
 
 The tables in this schema.
 
@@ -76,7 +77,7 @@ The tables in this schema.
 
 ▸ **addFieldToTable**(`tableName`: string, `field`: [MySQLSchemaField](mysqlschemafield.md)): void
 
-*Defined in [schemas/mysql/MySQLSchema.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/schemas/mysql/MySQLSchema.ts#L34)*
+*Defined in [schemas/mysql/MySQLSchema.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/mysql/MySQLSchema.ts#L35)*
 
 Add a field to a table.
 
@@ -95,7 +96,7 @@ ___
 
 ▸ **addFieldsToTable**(`tableName`: string, `fields`: [MySQLSchemaField](mysqlschemafield.md)[]): void
 
-*Defined in [schemas/mysql/MySQLSchema.ts:45](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/schemas/mysql/MySQLSchema.ts#L45)*
+*Defined in [schemas/mysql/MySQLSchema.ts:46](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/mysql/MySQLSchema.ts#L46)*
 
 Add a field to a table.
 
@@ -114,7 +115,7 @@ ___
 
 ▸ **addTable**(`table`: [MySQLSchemaTable](mysqlschematable.md)): void
 
-*Defined in [schemas/mysql/MySQLSchema.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/schemas/mysql/MySQLSchema.ts#L26)*
+*Defined in [schemas/mysql/MySQLSchema.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/mysql/MySQLSchema.ts#L27)*
 
 Add a table to this schema.
 
@@ -132,9 +133,9 @@ ___
 
 ▸ **generateStructure**(`type`: [HotDBGenerationType](../enums/hotdbgenerationtype.md), `db`: [HotDBMySQL](hotdbmysql.md)): Promise\<string[][]>
 
-*Defined in [schemas/mysql/MySQLSchema.ts:61](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/schemas/mysql/MySQLSchema.ts#L61)*
+*Defined in [schemas/mysql/MySQLSchema.ts:78](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/mysql/MySQLSchema.ts#L78)*
 
-Generate the db structure. If type is set to modify, you must pass a db with an
+Generate the entire db structure. If type is set to modify, you must pass a db with an
 active connection.
 
 #### Parameters:
@@ -145,3 +146,24 @@ Name | Type | Default value |
 `db` | [HotDBMySQL](hotdbmysql.md) | null |
 
 **Returns:** Promise\<string[][]>
+
+___
+
+### generateTableStructure
+
+▸ **generateTableStructure**(`tableName`: string, `type`: [HotDBGenerationType](../enums/hotdbgenerationtype.md), `db`: [HotDBMySQL](hotdbmysql.md)): Promise\<string[]>
+
+*Defined in [schemas/mysql/MySQLSchema.ts:62](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/mysql/MySQLSchema.ts#L62)*
+
+Generate a table's structure. If type is set to modify, you must pass a db with an
+active connection.
+
+#### Parameters:
+
+Name | Type | Default value |
+------ | ------ | ------ |
+`tableName` | string | - |
+`type` | [HotDBGenerationType](../enums/hotdbgenerationtype.md) | HotDBGenerationType.Create |
+`db` | [HotDBMySQL](hotdbmysql.md) | null |
+
+**Returns:** Promise\<string[]>

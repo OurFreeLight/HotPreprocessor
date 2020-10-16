@@ -155,7 +155,7 @@ export class HotServer implements IHotServer
 					key: "",
 					ca: ""
 				};
-			this.redirectHTTPtoHTTPS = processor.redirectHTTPtoHTTPS || true;
+			this.redirectHTTPtoHTTPS = processor.redirectHTTPtoHTTPS != null ? processor.redirectHTTPtoHTTPS : true;
 			this.type = processor.type || HotServerType.HTTP;
 			this.logger = processor.logger;
 		}

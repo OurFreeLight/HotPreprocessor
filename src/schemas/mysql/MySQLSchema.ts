@@ -2,6 +2,7 @@ import { MySQLSchemaTable } from "./MySQLSchemaTable";
 import { MySQLSchemaField } from "./MySQLSchemaField";
 import { HotDBSchema, HotDBGenerationType } from "../HotDBSchema";
 import { HotDBMySQL } from "../HotMySQL";
+import { table } from "console";
 
 /**
  * The MySQL schema.
@@ -55,7 +56,23 @@ export class MySQLSchema extends HotDBSchema
 	}
 
 	/**
-	 * Generate the db structure. If type is set to modify, you must pass a db with an 
+	 * Generate a table's structure. If type is set to modify, you must pass a db with an 
+	 * active connection.
+	 */
+	async generateTableStructure (tableName: string, 
+		type: HotDBGenerationType = HotDBGenerationType.Create, db: HotDBMySQL = null): Promise<string[]>
+	{
+		if (this.tables[tableName] == null)
+			throw new Error (`Unable to generate table structure for ${tableName}. Table doesn't exist.`);
+
+		let table: MySQLSchemaTable = this.tables[tableName];
+		let generatedStructure: string[] = await table.generate (type, db);
+
+		return (generatedStructure);
+	}
+
+	/**
+	 * Generate the entire db structure. If type is set to modify, you must pass a db with an 
 	 * active connection.
 	 */
 	async generateStructure (type: HotDBGenerationType = HotDBGenerationType.Create, db: HotDBMySQL = null): Promise<string[][]>
@@ -64,8 +81,7 @@ export class MySQLSchema extends HotDBSchema
 
 		for (let key in this.tables)
 		{
-			let table: MySQLSchemaTable = this.tables[key];
-			let generatedStructure: string[] = await table.generate (type, db);
+			let generatedStructure: string[] = await this.generateTableStructure (key, type, db);
 
 			result.push (generatedStructure);
 		}

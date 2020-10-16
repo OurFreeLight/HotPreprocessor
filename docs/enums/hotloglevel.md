@@ -23,7 +23,7 @@ The logging level.
 
 •  **All**: 
 
-*Defined in [HotLog.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotLog.ts#L25)*
+*Defined in [HotLog.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotLog.ts#L25)*
 
 Prints all messages, except verbose.
 
@@ -33,7 +33,7 @@ ___
 
 •  **Error**: 
 
-*Defined in [HotLog.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotLog.ts#L17)*
+*Defined in [HotLog.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotLog.ts#L17)*
 
 Prints only error messages.
 
@@ -43,7 +43,7 @@ ___
 
 •  **Info**: 
 
-*Defined in [HotLog.ts:9](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotLog.ts#L9)*
+*Defined in [HotLog.ts:9](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotLog.ts#L9)*
 
 Prints only info messages.
 
@@ -53,7 +53,7 @@ ___
 
 •  **None**: 
 
-*Defined in [HotLog.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotLog.ts#L29)*
+*Defined in [HotLog.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotLog.ts#L29)*
 
 Doesn't print any message.
 
@@ -63,7 +63,7 @@ ___
 
 •  **Verbose**: 
 
-*Defined in [HotLog.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotLog.ts#L21)*
+*Defined in [HotLog.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotLog.ts#L21)*
 
 Prints all messages.
 
@@ -73,6 +73,6 @@ ___
 
 •  **Warning**: 
 
-*Defined in [HotLog.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotLog.ts#L13)*
+*Defined in [HotLog.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotLog.ts#L13)*
 
 Prints only warning messages.

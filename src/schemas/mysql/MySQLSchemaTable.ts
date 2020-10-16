@@ -131,10 +131,13 @@ export class MySQLSchemaTable
 			if (db == null)
 				throw new Error ("Cannot modify a database structure when db is null.");
 
-			let dbresult = await db.query ("describe testTable;");
+			let dbresult = await db.query (`describe ${this.name};`);
 			let existingFields: MySQLSchemaField[] = [];
 			let existingFieldsNames: string[] = [];
 			let thisFieldsNames: string[] = [];
+
+			if (dbresult.error != null)
+				throw new Error (`Error while modifying structure ${this.name}, error: ${dbresult.error}`);
 
 			// Get this fields names.
 			for (let iIdx = 0; iIdx < this.fields.length; iIdx++)
@@ -201,7 +204,7 @@ export class MySQLSchemaTable
 								prevName = this.fields[(iIdx - 1)].name;
 							else
 							{
-								/// @fixme Gotta fix this...
+								/// @fixme Gotta fix this someday...
 								debugger;
 							}
 						}

@@ -29,7 +29,7 @@ A client connected to a server.
 
 \+ **new HotClient**(`processor`: [HotPreprocessor](hotpreprocessor.md)): [HotClient](hotclient.md)
 
-*Defined in [HotClient.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotClient.ts#L26)*
+*Defined in [HotClient.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotClient.ts#L26)*
 
 #### Parameters:
 
@@ -45,7 +45,7 @@ Name | Type |
 
 •  **api**: [HotAPI](hotapi.md)
 
-*Defined in [HotClient.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotClient.ts#L18)*
+*Defined in [HotClient.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotClient.ts#L18)*
 
 The API to use.
 
@@ -55,7 +55,7 @@ ___
 
 •  **logger**: [HotLog](hotlog.md)
 
-*Defined in [HotClient.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotClient.ts#L26)*
+*Defined in [HotClient.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotClient.ts#L26)*
 
 The logger.
 
@@ -65,7 +65,7 @@ ___
 
 •  **processor**: [HotPreprocessor](hotpreprocessor.md)
 
-*Defined in [HotClient.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotClient.ts#L14)*
+*Defined in [HotClient.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotClient.ts#L14)*
 
 The processor to use.
 
@@ -75,6 +75,6 @@ ___
 
 •  **type**: [HotServerType](../enums/hotservertype.md)
 
-*Defined in [HotClient.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotClient.ts#L22)*
+*Defined in [HotClient.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotClient.ts#L22)*
 
 The type of server.

@@ -29,7 +29,7 @@ A page to preprocess.
 
 • `Optional` **files**: [HotFile](../classes/hotfile.md)[]
 
-*Defined in [HotPage.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPage.ts#L27)*
+*Defined in [HotPage.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPage.ts#L27)*
 
 The name of the page. File ordering matters here.
 Every file is processed incrementally.
@@ -40,7 +40,7 @@ ___
 
 • `Optional` **name**: string
 
-*Defined in [HotPage.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPage.ts#L18)*
+*Defined in [HotPage.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPage.ts#L18)*
 
 The name of the page.
 
@@ -50,7 +50,7 @@ ___
 
 •  **processor**: [HotPreprocessor](../classes/hotpreprocessor.md)
 
-*Defined in [HotPage.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPage.ts#L14)*
+*Defined in [HotPage.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPage.ts#L14)*
 
 The processor to use.
 
@@ -60,6 +60,6 @@ ___
 
 • `Optional` **route**: string
 
-*Defined in [HotPage.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPage.ts#L22)*
+*Defined in [HotPage.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPage.ts#L22)*
 
 The route used to get to this page.

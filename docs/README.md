@@ -11,6 +11,10 @@ It's important to keep the number of dependencies required for Hotpreprocessor d
 
 Hotpreprocessor is capable of processing code server-side and client-side.
 
+[Hott Reference](./docs/classes/hot.md)
+
+[Server Reference](./docs/globals.md)
+
 ## Getting started
 First you gotta install like so:
 
@@ -42,7 +46,7 @@ Save the file as index.hott, then start serving the current directory by using:
 
 	HotHTTPServer.startServer ();
 
-## Express processing example
+## Custom Express processing example
 Here's a sample Express app to test the above hott script:
 
 	const express = require ("express");
@@ -93,7 +97,11 @@ When used in a browser, Hotpreprocessor is meant to replace the entire page it's
 You can find a pre-built ```HotPreprocessor.js``` in ```node_modules/hotpreprocessor/build-web/HotPreprocessor.js```
 
 ## Running database tests
-To run the database tests, you'll have to run a MySQL (or MariaDB) docker container in the background like so:
+Make sure you have Docker installed, then do:
+
+	buildci run tests
+
+If you need to debug any issues with the tests, you'll have to run a MySQL (or MariaDB) docker container in the background like so:
 
 	docker run -d --name=mariadb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cdO1KjwiC8ksOqCV1s0 -e MYSQL_DATABASE=freelight mariadb
 

@@ -2,6 +2,16 @@ import { HotDBSchema } from "./schemas/HotDBSchema";
 import { HotDBConnectionInterface } from "./HotDBConnectionInterface";
 
 /**
+ * The database connection status.
+ */
+export enum ConnectionStatus
+{
+	Disconnected,
+	Connecting,
+	Connected
+}
+
+/**
  * The server-side database connection.
  */
 export abstract class HotDB<DBType = any, DBResultType = any, DBSchema = HotDBSchema>
@@ -15,6 +25,10 @@ export abstract class HotDB<DBType = any, DBResultType = any, DBSchema = HotDBSc
 	 */
 	db: DBType;
 	/**
+	 * The connection status.
+	 */
+	connectionStatus: ConnectionStatus;
+	/**
 	 * The db schema. This will generate a database structure 
 	 * and keep it maintained as needed.
 	 */
@@ -24,6 +38,7 @@ export abstract class HotDB<DBType = any, DBResultType = any, DBSchema = HotDBSc
 	{
 		this.type = type;
 		this.db = db;
+		this.connectionStatus = ConnectionStatus.Disconnected;
 		this.schema = schema;
 	}
 
@@ -32,6 +47,19 @@ export abstract class HotDB<DBType = any, DBResultType = any, DBSchema = HotDBSc
      * if db is null.
      */
 	abstract async connect (connectionInfo: HotDBConnectionInterface): Promise<any[]>;
+    /**
+     * Synchronize all tables.
+     */
+	abstract async syncAllTables (throwErrors?: boolean): Promise<boolean>;
+    /**
+     * Synchronize a table. This will create/modify the table based on whether it 
+	 * exists, and if there's been any changes to any fields.
+     */
+	abstract async syncTable (tableName: string, throwErrors?: boolean): Promise<boolean>;
+    /**
+     * Checks if the table exists.
+     */
+	abstract async tableCheck (tableName: string): Promise<boolean>;
     /**
      * The query to make.
      */

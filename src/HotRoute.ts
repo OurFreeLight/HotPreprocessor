@@ -69,6 +69,12 @@ export class HotRoute
 	}
 
 	/**
+	 * Executes when first registering this route with Express. If 
+	 * this returns false, the route will not be registered.
+	 */
+	onRegister: () => Promise<boolean> = null;
+
+	/**
 	 * Executes when authorizing a called method.
 	 * The value returned from here will be passed to onExecute in the 
 	 * called HotRouteMethod. Undefined returning from here will mean 

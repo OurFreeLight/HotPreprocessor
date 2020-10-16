@@ -24,7 +24,7 @@ A HotSite to load.
 
 • `Optional` **apis**: { [name:string]: { apiName: string ; exportedName: string ; jsapi: string  };  }
 
-*Defined in [HotPreprocessor.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L40)*
+*Defined in [HotPreprocessor.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L40)*
 
 The api to load.
 
@@ -34,7 +34,7 @@ ___
 
 • `Optional` **components**: { [name:string]: { url: string  };  }
 
-*Defined in [HotPreprocessor.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L59)*
+*Defined in [HotPreprocessor.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L59)*
 
 The components to load.
 
@@ -44,6 +44,6 @@ ___
 
 •  **routes**: { [routeName:string]: { api?: string ; name: string ; url: string  };  }
 
-*Defined in [HotPreprocessor.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotPreprocessor.ts#L21)*
+*Defined in [HotPreprocessor.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L21)*
 
 The routes to load.

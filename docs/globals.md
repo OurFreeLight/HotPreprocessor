@@ -8,6 +8,7 @@
 
 ### Enumerations
 
+* [ConnectionStatus](enums/connectionstatus.md)
 * [HTTPMethod](enums/httpmethod.md)
 * [HotDBGenerationType](enums/hotdbgenerationtype.md)
 * [HotLogLevel](enums/hotloglevel.md)
@@ -44,6 +45,8 @@
 * [IHotFile](interfaces/ihotfile.md)
 * [IHotPage](interfaces/ihotpage.md)
 * [IHotServer](interfaces/ihotserver.md)
+* [IMySQLSchemaField](interfaces/imysqlschemafield.md)
+* [MySQLResults](interfaces/mysqlresults.md)
 * [MySQLSchemaFieldResult](interfaces/mysqlschemafieldresult.md)
 * [StaticRoute](interfaces/staticroute.md)
 
@@ -52,6 +55,7 @@
 * [ClientExecutionFunction](globals.md#clientexecutionfunction)
 * [ServerAuthorizationFunction](globals.md#serverauthorizationfunction)
 * [ServerExecutionFunction](globals.md#serverexecutionfunction)
+* [ServerRegistrationFunction](globals.md#serverregistrationfunction)
 
 ### Functions
 
@@ -63,7 +67,7 @@
 
 Ƭ  **ClientExecutionFunction**: (...args: any[]) => Promise\<any>
 
-*Defined in [HotRouteMethod.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotRouteMethod.ts#L21)*
+*Defined in [HotRouteMethod.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L27)*
 
 A function that will be executed by the client.
 
@@ -73,7 +77,7 @@ ___
 
 Ƭ  **ServerAuthorizationFunction**: (req: any,res: any) => Promise\<any>
 
-*Defined in [HotRouteMethod.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotRouteMethod.ts#L25)*
+*Defined in [HotRouteMethod.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L31)*
 
 A function that will be executed by the server for authorization.
 
@@ -83,9 +87,20 @@ ___
 
 Ƭ  **ServerExecutionFunction**: (req: any,res: any,authorizedValue: any,jsonObj: any,queryObj: any) => Promise\<any>
 
-*Defined in [HotRouteMethod.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotRouteMethod.ts#L16)*
+*Defined in [HotRouteMethod.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L22)*
 
 A function that will be executed by the server.
+
+___
+
+### ServerRegistrationFunction
+
+Ƭ  **ServerRegistrationFunction**: () => Promise\<boolean>
+
+*Defined in [HotRouteMethod.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L18)*
+
+A function that will be executed by the server when first registering with Express.
+If this returns false, this route method will not be registered.
 
 ## Functions
 
@@ -93,6 +108,6 @@ A function that will be executed by the server.
 
 ▸ **start**(): Promise\<void>
 
-*Defined in [cli.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/cli.ts#L10)*
+*Defined in [cli.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/cli.ts#L10)*
 
 **Returns:** Promise\<void>

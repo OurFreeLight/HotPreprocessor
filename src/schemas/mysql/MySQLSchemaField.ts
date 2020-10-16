@@ -30,7 +30,65 @@ export interface MySQLSchemaFieldResult
 /**
  * The database field.
  */
-export class MySQLSchemaField
+export interface IMySQLSchemaField
+{
+	/**
+	 * The name of the field.
+	 */
+	name: string;
+	/**
+	 * The data type, be sure to include the length of the 
+	 * data type here as well.
+	 */
+	dataType: string;
+	/**
+	 * Set as a primary key.
+	 */
+	primaryKey?: boolean;
+	/**
+	 * Set as a not null.
+	 */
+	notNull?: boolean;
+	/**
+	 * Set as a unique index.
+	 */
+	uniqueIndex?: boolean;
+	/**
+	 * Set as a binary column.
+	 */
+	binaryColumn?: boolean;
+	/**
+	 * Set as an unsigned data type.
+	 */
+	unsignedDataType?: boolean;
+	/**
+	 * If this column is a number, fill with zeroes.
+	 */
+	fillZeroes?: boolean;
+	/**
+	 * Set as an auto incrementing column.
+	 */
+	autoIncrement?: boolean;
+	/**
+	 * Set as a generated column.
+	 */
+	generatedColumn?: boolean;
+	/**
+	 * Set the default value. If this is set to null, a 
+	 * MySQL NULL value will be used.
+	 */
+	defaultValue?: string;
+	/**
+	 * Set the string to be used when setting the default 
+	 * value. The default is: '
+	 */
+	strAroundDefaultValue?: string;
+}
+
+/**
+ * The database field.
+ */
+export class MySQLSchemaField implements IMySQLSchemaField
 {
 	/**
 	 * The name of the field.
@@ -74,41 +132,74 @@ export class MySQLSchemaField
 	 */
 	generatedColumn: boolean;
 	/**
-	 * Set the default value.
+	 * Set the default value. If this is set to null, a 
+	 * MySQL NULL value will be used.
 	 */
 	defaultValue: string;
+	/**
+	 * Set the string to be used when setting the default 
+	 * value. The default is: '
+	 */
+	strAroundDefaultValue: string;
 
-	constructor (name: string = "", dataType: string = "", defaultValue: string = "", 
+	constructor (name: string | IMySQLSchemaField, dataType: string = "", defaultValue: string = "", 
 		primaryKey: boolean = false, notNull: boolean = true, uniqueIndex: boolean = false, 
 		binaryColumn: boolean = false, unsignedDataType: boolean = false, 
 		fillZeroes: boolean = false, autoIncrement: boolean = false, 
-		generatedColumn: boolean = false)
+		generatedColumn: boolean = false, strAroundDefaultValue: string = "'")
 	{
-		this.name = name;
-		this.dataType = dataType;
-		this.primaryKey = primaryKey;
-		this.notNull = notNull;
-		this.uniqueIndex = uniqueIndex;
-		this.binaryColumn = binaryColumn;
-		this.unsignedDataType = unsignedDataType;
-		this.fillZeroes = fillZeroes;
-		this.autoIncrement = autoIncrement;
-		this.generatedColumn = generatedColumn;
-		this.defaultValue = defaultValue;
+		if (typeof (name) === "string")
+		{
+			this.name = name;
+			this.dataType = dataType;
+			this.primaryKey = primaryKey;
+			this.notNull = notNull;
+			this.uniqueIndex = uniqueIndex;
+			this.binaryColumn = binaryColumn;
+			this.unsignedDataType = unsignedDataType;
+			this.fillZeroes = fillZeroes;
+			this.autoIncrement = autoIncrement;
+			this.generatedColumn = generatedColumn;
+			this.defaultValue = defaultValue;
+			this.strAroundDefaultValue = strAroundDefaultValue;
+		}
+		else
+		{
+			this.name = name.name;
+			this.dataType = name.dataType;
+			this.primaryKey = name.primaryKey != null ? name.primaryKey :  primaryKey;
+			this.notNull = name.notNull != null ? name.notNull : notNull;
+			this.uniqueIndex = name.uniqueIndex != null ? name.uniqueIndex : uniqueIndex;
+			this.binaryColumn = name.binaryColumn != null ? name.binaryColumn : binaryColumn;
+			this.unsignedDataType = name.unsignedDataType != null ? name.unsignedDataType : unsignedDataType;
+			this.fillZeroes = name.fillZeroes != null ? name.fillZeroes : fillZeroes;
+			this.autoIncrement = name.autoIncrement != null ? name.autoIncrement : autoIncrement;
+			this.generatedColumn = name.generatedColumn != null ? name.generatedColumn : generatedColumn;
+			this.defaultValue = name.defaultValue === undefined ? defaultValue : name.defaultValue;
+			this.strAroundDefaultValue = 
+				name.strAroundDefaultValue === undefined ? strAroundDefaultValue : name.strAroundDefaultValue;
+		}
+
+		if (this.dataType == null)
+			throw new Error (`No data type given for field ${this.name}`)
 	}
 
 	/**
-	 * Compare two different fields.
+	 * Compare two different fields. This will iterate through all keys in each field. Any 
+	 * string values found will have stringFilter applied to it, removing everything that 
+	 * is in that stringFilter regex. Additionally for any empty strings found it will 
+	 * compare to any undefined/null on the other side, and treat them as the same.
 	 * 
 	 * @param field1 The first field to compare.
 	 * @param field2 The second field to compare.
 	 * @param onlyKeys Only compare using the provided keys. If set to null, this will compare 
 	 * using all of the keys in these objects.
-	 * @param caseInsensitive If set to true, all detected string values will be compared as 
-	 * case insensitive.
+	 * @param stringFilter The regex to be used to help make any filters on any detected 
+	 * strings. The default regex provided will remove any whitespaces, single/doube quotes, 
+	 * back ticks, and parenthesis. If this is set to null, it will not be used.
 	 */
-	static compare (field1: MySQLSchemaField, field2: MySQLSchemaField, 
-		onlyKeys: string[] = null, caseInsensitive: boolean = true): boolean
+	static compare (field1: MySQLSchemaField, field2: MySQLSchemaField, onlyKeys: string[] = null, 
+		stringFilter: RegExp = new RegExp ("(\\s+|\\'+|\\\"+|\\`+|\\(+|\\)+)", "g")): boolean
 	{
 		if (onlyKeys == null)
 		{
@@ -118,6 +209,7 @@ export class MySQLSchemaField
 				"defaultValue"];
 		}
 
+		// Go through each key in both fields and compare the values.
 		for (let iIdx = 0; iIdx < onlyKeys.length; iIdx++)
 		{
 			let key: string = onlyKeys[iIdx];
@@ -126,10 +218,33 @@ export class MySQLSchemaField
 			// @ts-ignore
 			let field2Value = field2[key];
 
-			if (typeof (field1Value) === "string")
+			if (stringFilter != null)
 			{
-				field1Value = field1Value.toLowerCase ();
-				field2Value = field2Value.toLowerCase ();
+				// If the key is a string, make them lowercase, remove any 
+				// spaces and compare.
+				if (typeof (field1Value) === "string")
+				{
+					if ((field1Value != null) && (field2Value != null))
+					{
+						field1Value = field1Value.toLowerCase ();
+						field2Value = field2Value.toLowerCase ();
+						field1Value = field1Value.replace (stringFilter, "");
+						field2Value = field2Value.replace (stringFilter, "");
+					}
+
+					// Make exceptions here for when field1Value or field2Value is null
+					if (field1Value == "")
+					{
+						if (field2Value == null)
+							continue;
+					}
+
+					if (field2Value == "")
+					{
+						if (field1Value == null)
+							continue;
+					}
+				}
 			}
 
 			if (field1Value !== field2Value)
@@ -150,7 +265,7 @@ export class MySQLSchemaField
 	 */
 	static parse (json: any): MySQLSchemaField
 	{
-		let result: MySQLSchemaField = new MySQLSchemaField ();
+		let result: MySQLSchemaField = new MySQLSchemaField ("");
 
 		if (json["name"] != null)
 			result.name = json["name"];
@@ -220,6 +335,7 @@ export class MySQLSchemaField
 
 		let additionalStr: string = "";
 		let defaultValue: string = this.defaultValue;
+		let strAroundDefaultValue: string = this.strAroundDefaultValue;
 
 		if (this.unsignedDataType === true)
 			additionalStr += "unsigned ";
@@ -229,23 +345,30 @@ export class MySQLSchemaField
 			additionalStr += "NOT NULL ";
 
 			if (defaultValue !== "")
-				defaultValue = `'${defaultValue}'`;
+				defaultValue = `${strAroundDefaultValue}${defaultValue}${strAroundDefaultValue}`;
 		}
 		else
 		{
-			if (defaultValue === "")
+			additionalStr += "NULL ";
+
+			if (defaultValue === null)
 				defaultValue = "NULL";
 			else
-				defaultValue = `'${defaultValue}'`;
+				defaultValue = `${strAroundDefaultValue}${defaultValue}${strAroundDefaultValue}`;
 		}
 
 		if (this.autoIncrement === true)
 			additionalStr += "AUTO_INCREMENT ";
 
-		if (defaultValue !== "")
-			additionalStr += `DEFAULT ${defaultValue}`;
+		if (defaultValue === "")
+			defaultValue = `${strAroundDefaultValue}${strAroundDefaultValue}`;
 
-		result.field = `\`${this.name}\` ${this.dataType} ${additionalStr}`;
+		let defaultValueStr: string = "";
+
+		if (this.autoIncrement === false)
+			defaultValueStr = ` DEFAULT ${defaultValue}`;
+
+		result.field = `\`${this.name}\` ${this.dataType} ${additionalStr}${defaultValueStr}`;
 
 		if (this.primaryKey === true)
 			result.primaryKey = `${this.name}`;

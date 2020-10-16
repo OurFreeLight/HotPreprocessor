@@ -26,7 +26,7 @@ The resulting data from a generated field.
 
 • `Optional` **constraint**: string
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/schemas/mysql/MySQLSchemaField.ts#L23)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/mysql/MySQLSchemaField.ts#L23)*
 
 The constraint to be added.
 
@@ -36,7 +36,7 @@ ___
 
 • `Optional` **field**: string
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:11](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/schemas/mysql/MySQLSchemaField.ts#L11)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:11](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/mysql/MySQLSchemaField.ts#L11)*
 
 The field to be entered.
 
@@ -46,7 +46,7 @@ ___
 
 • `Optional` **foreignKey**: string
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/schemas/mysql/MySQLSchemaField.ts#L27)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/mysql/MySQLSchemaField.ts#L27)*
 
 The foreign key to be added.
 
@@ -56,7 +56,7 @@ ___
 
 • `Optional` **key**: string
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/schemas/mysql/MySQLSchemaField.ts#L19)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/mysql/MySQLSchemaField.ts#L19)*
 
 The key to be added.
 
@@ -66,6 +66,6 @@ ___
 
 • `Optional` **primaryKey**: string
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/schemas/mysql/MySQLSchemaField.ts#L15)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/mysql/MySQLSchemaField.ts#L15)*
 
 The primary key to be added.

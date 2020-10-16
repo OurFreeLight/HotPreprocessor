@@ -1,6 +1,6 @@
 {
   "name": "hotpreprocessor",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "",
   "bin": {
     "hotpreprocessor": "./bin/hotpreprocessor"
@@ -9,7 +9,7 @@
   "types": "./build/src/api.d.js",
   "scripts": {
     "test": "mocha --timeout 999999 --colors ./build/tests/**/*.js",
-    "prepublishOnly": "tsc --build ./tsconfig.json && webpack --mode=production && typedoc --ignoreCompilerErrors --mode file --readme README.md --out ./docs/ ./src",
+    "prepublishOnly": "tsc --build ./tsconfig.json && webpack --mode=production && typedoc --ignoreCompilerErrors --mode file --theme markdown --readme README.md --out ./docs/ ./src",
     "builddoc": "typedoc --ignoreCompilerErrors --mode file --theme markdown --readme README.md --out ./docs/ ./src",
     "build": "tsc --build ./tsconfig.json",
     "buildweb": "webpack --mode=production",

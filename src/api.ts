@@ -10,7 +10,17 @@ import { HotRouteMethod, HTTPMethod, ServerAuthorizationFunction, ServerExecutio
 import { HotServer } from "./HotServer";
 import { HotHTTPServer } from "./HotHTTPServer";
 import { HotClient } from "./HotClient";
-import { HotDB } from "./HotDB";
+import { HotDB, ConnectionStatus } from "./HotDB";
+
+// Database stuff
+import { HotDBConnectionInterface } from "./HotDBConnectionInterface";
+import { HotDBGenerationType, HotDBSchema } from "./schemas/HotDBSchema";
+
+// MySQL specific database stuff
+import { HotDBMySQL } from "./schemas/HotMySQL";
+import { MySQLSchema } from "./schemas/mysql/MySQLSchema";
+import { MySQLSchemaFieldResult, MySQLSchemaField } from "./schemas/mysql/MySQLSchemaField";
+import { MySQLSchemaTable } from "./schemas/mysql/MySQLSchemaTable";
 
 HotPreprocessor.isWeb = false;
 
@@ -26,6 +36,7 @@ export {
 		HotLogLevel,
 		HotPage,
 		HotDB,
+		ConnectionStatus,
 		HotRoute,
 		HotRouteMethod,
 		HTTPMethod,
@@ -33,5 +44,13 @@ export {
 		ServerExecutionFunction,
 		HotServer,
 		HotHTTPServer,
-		HotClient
+		HotClient,
+		HotDBGenerationType,
+		HotDBConnectionInterface,
+		HotDBSchema,
+		HotDBMySQL,
+		MySQLSchema,
+		MySQLSchemaFieldResult,
+		MySQLSchemaField,
+		MySQLSchemaTable
 	};

@@ -26,7 +26,7 @@ The database connection info.
 
 • `Optional` **database**: string
 
-*Defined in [HotDBConnectionInterface.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotDBConnectionInterface.ts#L25)*
+*Defined in [HotDBConnectionInterface.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotDBConnectionInterface.ts#L25)*
 
 The database to use.
 
@@ -36,7 +36,7 @@ ___
 
 • `Optional` **password**: string
 
-*Defined in [HotDBConnectionInterface.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotDBConnectionInterface.ts#L21)*
+*Defined in [HotDBConnectionInterface.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotDBConnectionInterface.ts#L21)*
 
 The password to use.
 
@@ -46,7 +46,7 @@ ___
 
 • `Optional` **port**: number
 
-*Defined in [HotDBConnectionInterface.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotDBConnectionInterface.ts#L13)*
+*Defined in [HotDBConnectionInterface.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotDBConnectionInterface.ts#L13)*
 
 The server's port.
 
@@ -56,7 +56,7 @@ ___
 
 • `Optional` **server**: string
 
-*Defined in [HotDBConnectionInterface.ts:9](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotDBConnectionInterface.ts#L9)*
+*Defined in [HotDBConnectionInterface.ts:9](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotDBConnectionInterface.ts#L9)*
 
 The server's address.
 
@@ -66,6 +66,6 @@ ___
 
 • `Optional` **username**: string
 
-*Defined in [HotDBConnectionInterface.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/5d07e7d/src/HotDBConnectionInterface.ts#L17)*
+*Defined in [HotDBConnectionInterface.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotDBConnectionInterface.ts#L17)*
 
 The username to use to connect.

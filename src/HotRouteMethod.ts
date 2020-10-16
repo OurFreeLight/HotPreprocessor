@@ -10,6 +10,12 @@ export enum HTTPMethod
 	POST = "post"
 }
 
+
+/**
+ * A function that will be executed by the server when first registering with Express.
+ * If this returns false, this route method will not be registered.
+ */
+export type ServerRegistrationFunction = () => Promise<boolean>;
 /**
  * A function that will be executed by the server.
  */
@@ -46,21 +52,34 @@ export class HotRouteMethod
 	 * prevents the method from being reregistered.
 	 */
 	isRegistered: boolean;
+	/**
+	 * Has this method been registered with the server? This 
+	 * prevents the method from being reregistered.
+	 */
+	executeSetup: boolean;
 
 	constructor (route: HotRoute, name: string, onExecute: ServerExecutionFunction | ClientExecutionFunction = null, 
-		type: HTTPMethod = HTTPMethod.POST, onAuthorize: ServerAuthorizationFunction = null)
+		type: HTTPMethod = HTTPMethod.POST, onAuthorize: ServerAuthorizationFunction = null, 
+		onRegister: ServerRegistrationFunction = null)
 	{
 		this.parentRoute = route;
 		this.name = name;
 		this.type = type;
 		this.isRegistered = false;
 		this.onServerAuthorize = onAuthorize;
+		this.onRegister = onRegister;
 
 		if (this.parentRoute.connection instanceof HotServer)
 			this.onServerExecute = onExecute;
 		//else
 			//this.onClientExecute = onExecute;
 	}
+
+	/**
+	 * Executes when first registering this method with Express. If 
+	 * this returns false, the method will not be registered.
+	 */
+	onRegister?: ServerRegistrationFunction;
 
 	/**
 	 * Executes when authorizing a called method. If this method 
