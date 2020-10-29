@@ -65,6 +65,10 @@ export interface IHotServer
 	 * The logger.
 	 */
 	logger: HotLog;
+	/**
+	 * Any secrets associated with this server.
+	 */
+	secrets: any;
 }
 
 /**
@@ -120,6 +124,10 @@ export class HotServer implements IHotServer
 	 * The logger.
 	 */
 	logger: HotLog;
+	/**
+	 * Any secrets associated with this server.
+	 */
+	secrets: any;
 
 	constructor (processor: HotPreprocessor | HotServer)
 	{
@@ -140,6 +148,7 @@ export class HotServer implements IHotServer
 			this.redirectHTTPtoHTTPS = true;
 			this.type = HotServerType.HTTP;
 			this.logger = processor.logger;
+			this.secrets = {};
 		}
 		else
 		{
@@ -158,6 +167,7 @@ export class HotServer implements IHotServer
 			this.redirectHTTPtoHTTPS = processor.redirectHTTPtoHTTPS != null ? processor.redirectHTTPtoHTTPS : true;
 			this.type = processor.type || HotServerType.HTTP;
 			this.logger = processor.logger;
+			this.secrets = processor.secrets || {};
 		}
 	}
 

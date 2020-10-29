@@ -7,7 +7,7 @@ import { HotFile } from "./HotFile";
 
 import { HotComponent } from "./HotComponent";
 import { HotLog, HotLogLevel } from "./HotLog";
-import { HotServer, HotClient, HotAPI } from "./HotPreprocessorWeb";
+import { HotClient, HotAPI, HotServer } from "./HotPreprocessorWeb";
 import { tryParse } from "selenium-webdriver/http";
 
 /**
@@ -51,6 +51,18 @@ export interface HotSite
 					 * The name of the api to use.
 					 */
 					apiName: string;
+				};
+		};
+	/**
+	 * Secrets that can be publicly embedded into the page.
+	 */
+	publicSecrets?: {
+			[name: string]: string | {
+					/**
+					 * The key of an API secret to pass to the site to 
+					 * be used publicly.
+					 */
+					passSecretFromAPI?: string;
 				};
 		};
 	/**
@@ -128,6 +140,10 @@ export class HotPreprocessor implements IHotPreprocessor
 	 * The logger.
 	 */
 	logger: HotLog;
+	/**
+	 * The secrets that can be exposed publicly.
+	 */
+	publicSecrets: any;
 
 	constructor (copy: IHotPreprocessor = {})
 	{
@@ -163,6 +179,8 @@ export class HotPreprocessor implements IHotPreprocessor
 
 		%api_code%
 
+		%public_secrets%
+
 		HotPreprocessor.displayUrl ("%url%", "%title%", processor);
 	</script>
 </head>
@@ -172,6 +190,7 @@ export class HotPreprocessor implements IHotPreprocessor
 
 </html>`;
 		this.logger = new HotLog (HotLogLevel.None);
+		this.publicSecrets = {};
 	}
 
 	/**
@@ -404,6 +423,7 @@ export class HotPreprocessor implements IHotPreprocessor
 	{
 		let apiScripts: string = "";
 		let apiCode: string = "";
+		let publicSecrets: string = "";
 
 		// Load the API string.
 		if (this.hotSite != null)
@@ -438,6 +458,35 @@ export class HotPreprocessor implements IHotPreprocessor
 					}
 				}
 			}
+
+			if (this.hotSite.publicSecrets != null)
+			{
+				for (let key in this.hotSite.publicSecrets)
+				{
+					let secret = this.hotSite.publicSecrets[key];
+					let value: string = "";
+
+					if (typeof (secret) === "string")
+						value = JSON.stringify (secret);
+					else
+					{
+						if (HotPreprocessor.isWeb === false)
+						{
+							if (secret.passSecretFromAPI != null)
+							{
+								if (this.api.connection == null)
+									throw new Error (`Cannot pass secrets from the API if there's no connection!`);
+
+								let serverConn: HotServer = (<HotServer>this.api.connection);
+
+								value = JSON.stringify (serverConn.secrets[key]);
+							}
+						}
+					}
+
+					publicSecrets += `processor.publicSecrets["${key}"] = ${value};\n`;
+				}
+			}
 		}
 
 		let content: string = this.pageContent;
@@ -448,6 +497,7 @@ export class HotPreprocessor implements IHotPreprocessor
 				tempContent = tempContent.replace (/\%apis\_to\_load\%/g, apiScripts);
 				tempContent = tempContent.replace (/\%load\_hot\_site\%/g, "");
 				tempContent = tempContent.replace (/\%api\_code\%/g, apiCode);
+				tempContent = tempContent.replace (/\%public\_secrets\%/g, publicSecrets);
 				tempContent = tempContent.replace (/\%url\%/g, url);
 
 				return (tempContent);
@@ -481,10 +531,10 @@ export class HotPreprocessor implements IHotPreprocessor
 	/**
 	 * Process a page and get the result.
 	 */
-	async process (pageName: string): Promise<string>
+	async process (pageName: string, args: any = null): Promise<string>
 	{
 		let page: HotPage = this.getPage (pageName);
-		let result: string = await page.process ();
+		let result: string = await page.process (args);
 
 		return (result);
 	}
@@ -492,7 +542,7 @@ export class HotPreprocessor implements IHotPreprocessor
 	/**
 	 * Process a local file and get the result.
 	 */
-	static async processLocalFile (localFilepath: string, name: string = localFilepath): Promise<string>
+	static async processLocalFile (localFilepath: string, name: string = localFilepath, args: any = null): Promise<string>
 	{
 		let processor: HotPreprocessor = new HotPreprocessor ();
 		let file: HotFile = new HotFile ({
@@ -505,7 +555,7 @@ export class HotPreprocessor implements IHotPreprocessor
 				"files": [file]
 			});
 		processor.addPage (page);
-		let result: string = await processor.process (name);
+		let result: string = await processor.process (name, args);
 
 		return (result);
 	}
@@ -513,7 +563,8 @@ export class HotPreprocessor implements IHotPreprocessor
 	/**
 	 * Process a url and get the result.
 	 */
-	static async processUrl (processor: HotPreprocessor, url: string, name: string = url): Promise<string>
+	static async processUrl (processor: HotPreprocessor, 
+		url: string, name: string = url, args: any = null): Promise<string>
 	{
 		let file: HotFile = new HotFile ({
 			"url": url
@@ -526,7 +577,7 @@ export class HotPreprocessor implements IHotPreprocessor
 				"files": [file]
 			});
 		processor.addPage (page);
-		let result: string = await processor.process (name);
+		let result: string = await processor.process (name, args);
 
 		return (result);
 	}
@@ -534,7 +585,8 @@ export class HotPreprocessor implements IHotPreprocessor
 	/**
 	 * Process content and get the result.
 	 */
-	static async processContent (processor: HotPreprocessor, content: string, name: string): Promise<string>
+	static async processContent (processor: HotPreprocessor, 
+		content: string, name: string, args: any = null): Promise<string>
 	{
 		let file: HotFile = new HotFile ({
 			"content": content
@@ -546,7 +598,7 @@ export class HotPreprocessor implements IHotPreprocessor
 				"files": [file]
 			});
 		processor.addPage (page);
-		let result: string = await processor.process (name);
+		let result: string = await processor.process (name, args);
 
 		return (result);
 	}
@@ -578,7 +630,8 @@ export class HotPreprocessor implements IHotPreprocessor
 	 * Process and replace the current HTML page with the hott script from the given url.
 	 * This is meant for web browser use only.
 	 */
-	static async displayUrl (url: string, name: string = url, processor: HotPreprocessor = null): Promise<HotPreprocessor>
+	static async displayUrl (url: string, name: string = url, 
+		processor: HotPreprocessor = null, args: any = null): Promise<HotPreprocessor>
 	{
 		return (new Promise<HotPreprocessor> ((resolve, reject) =>
 			{
@@ -587,7 +640,7 @@ export class HotPreprocessor implements IHotPreprocessor
 						if (processor == null)
 							processor = new HotPreprocessor ();
 
-						let output: string = await HotPreprocessor.processUrl (processor, url, name);
+						let output: string = await HotPreprocessor.processUrl (processor, url, name, args);
 
 						HotPreprocessor.useOutput (output);
 						resolve (processor);

@@ -46,7 +46,7 @@ The server.
 
 \+ **new HotServer**(`processor`: [HotPreprocessor](hotpreprocessor.md) \| [HotServer](hotserver.md)): [HotServer](hotserver.md)
 
-*Defined in [HotServer.ts:122](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotServer.ts#L122)*
+*Defined in [HotServer.ts:122](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotServer.ts#L122)*
 
 #### Parameters:
 
@@ -64,7 +64,7 @@ Name | Type |
 
 *Implementation of [IHotServer](../interfaces/ihotserver.md).[api](../interfaces/ihotserver.md#api)*
 
-*Defined in [HotServer.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotServer.ts#L82)*
+*Defined in [HotServer.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotServer.ts#L82)*
 
 The API to use.
 
@@ -76,7 +76,7 @@ ___
 
 *Implementation of [IHotServer](../interfaces/ihotserver.md).[listenAddress](../interfaces/ihotserver.md#listenaddress)*
 
-*Defined in [HotServer.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotServer.ts#L86)*
+*Defined in [HotServer.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotServer.ts#L86)*
 
 The network address to listen on.
 
@@ -88,7 +88,7 @@ ___
 
 *Implementation of [IHotServer](../interfaces/ihotserver.md).[logger](../interfaces/ihotserver.md#logger)*
 
-*Defined in [HotServer.ts:122](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotServer.ts#L122)*
+*Defined in [HotServer.ts:122](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotServer.ts#L122)*
 
 The logger.
 
@@ -100,7 +100,7 @@ ___
 
 *Implementation of [IHotServer](../interfaces/ihotserver.md).[ports](../interfaces/ihotserver.md#ports)*
 
-*Defined in [HotServer.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotServer.ts#L90)*
+*Defined in [HotServer.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotServer.ts#L90)*
 
 The ports to use.
 
@@ -119,7 +119,7 @@ ___
 
 *Implementation of [IHotServer](../interfaces/ihotserver.md).[processor](../interfaces/ihotserver.md#processor)*
 
-*Defined in [HotServer.ts:78](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotServer.ts#L78)*
+*Defined in [HotServer.ts:78](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotServer.ts#L78)*
 
 The processor to use.
 
@@ -131,7 +131,7 @@ ___
 
 *Implementation of [IHotServer](../interfaces/ihotserver.md).[redirectHTTPtoHTTPS](../interfaces/ihotserver.md#redirecthttptohttps)*
 
-*Defined in [HotServer.ts:114](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotServer.ts#L114)*
+*Defined in [HotServer.ts:114](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotServer.ts#L114)*
 
 Redirect HTTP traffic to HTTPS.
 
@@ -143,7 +143,7 @@ ___
 
 *Implementation of [IHotServer](../interfaces/ihotserver.md).[ssl](../interfaces/ihotserver.md#ssl)*
 
-*Defined in [HotServer.ts:97](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotServer.ts#L97)*
+*Defined in [HotServer.ts:97](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotServer.ts#L97)*
 
 SSL settings.
 
@@ -163,7 +163,7 @@ ___
 
 *Implementation of [IHotServer](../interfaces/ihotserver.md).[type](../interfaces/ihotserver.md#type)*
 
-*Defined in [HotServer.ts:118](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotServer.ts#L118)*
+*Defined in [HotServer.ts:118](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotServer.ts#L118)*
 
 The type of server.
 
@@ -173,7 +173,7 @@ The type of server.
 
 ▸ `Optional`**listen**(): Promise\<void>
 
-*Defined in [HotServer.ts:181](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotServer.ts#L181)*
+*Defined in [HotServer.ts:181](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotServer.ts#L181)*
 
 Start listening for requests.
 
@@ -185,7 +185,7 @@ ___
 
 ▸ `Optional`**registerRoute**(`route`: [HotRoute](hotroute.md)): void
 
-*Defined in [HotServer.ts:176](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotServer.ts#L176)*
+*Defined in [HotServer.ts:176](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotServer.ts#L176)*
 
 Register a route with the server.
 
@@ -203,7 +203,7 @@ ___
 
 ▸ **setAPI**(`api`: [HotAPI](hotapi.md)): void
 
-*Defined in [HotServer.ts:167](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotServer.ts#L167)*
+*Defined in [HotServer.ts:167](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotServer.ts#L167)*
 
 Set an API to this server.
 
@@ -221,7 +221,7 @@ ___
 
 ▸ `Optional`**shutdown**(): Promise\<void>
 
-*Defined in [HotServer.ts:186](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotServer.ts#L186)*
+*Defined in [HotServer.ts:186](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotServer.ts#L186)*
 
 Shutdown the server.
 

@@ -8,7 +8,7 @@ import { MySQLSchema } from "./mysql/MySQLSchema";
 /**
  * The database results.
  */
-interface MySQLResults
+export interface MySQLResults
 {
 	error: any;
 	results: any;
@@ -112,7 +112,7 @@ export class HotDBMySQL extends HotDB<mysql.Connection, MySQLResults, MySQLSchem
 		}
 		else
 		{
-			let structure: string[] = await this.schema.generateTableStructure (
+			/*let structure: string[] = await this.schema.generateTableStructure (
 										tableName, HotDBGenerationType.Modify, this);
 			let tempResults = await this.multiQuery (structure);
 
@@ -129,7 +129,7 @@ export class HotDBMySQL extends HotDB<mysql.Connection, MySQLResults, MySQLSchem
 				}
 				else
 					madeModifications = true;
-			}
+			}*/
 		}
 
 		return (madeModifications);
@@ -172,6 +172,30 @@ export class HotDBMySQL extends HotDB<mysql.Connection, MySQLResults, MySQLSchem
 					(err: mysql.MysqlError, results: any, fields: mysql.FieldInfo[]) =>
 					{
 						resolve ({ error: err, results: results, fields: fields });
+					});
+			});
+
+		return (dbresults);
+	}
+
+	/**
+	 * Make a single query. If there are no results, null will be in MySQLResults.results
+	 */
+	async queryOne (queryString: string, values: any[] = []): Promise<MySQLResults>
+	{
+		this.dbCheck ();
+
+		let dbresults: MySQLResults = await new Promise<MySQLResults> ((resolve, reject) =>
+			{
+				this.db.query (queryString, values, 
+					(err: mysql.MysqlError, results: any, fields: mysql.FieldInfo[]) =>
+					{
+						let tempResults = null;
+
+						if (results.length > 0)
+							tempResults = results[0];
+
+						resolve ({ error: err, results: tempResults, fields: fields });
 					});
 			});
 

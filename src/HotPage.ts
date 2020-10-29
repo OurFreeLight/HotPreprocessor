@@ -104,7 +104,7 @@ export class HotPage implements IHotPage
 	/**
 	 * Process a page and get the result.
 	 */
-	async process (): Promise<string>
+	async process (args: any = null): Promise<string>
 	{
 		let output: string = "";
 
@@ -115,7 +115,7 @@ export class HotPage implements IHotPage
 			Hot.Output = "";
 			file.page = this;
 
-			output += await file.process ();
+			output += await file.process (args);
 		}
 
 		return (output);

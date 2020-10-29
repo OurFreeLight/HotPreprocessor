@@ -28,7 +28,7 @@ The parent database schema.
 
 \+ **new HotDBSchema**(`name`: string): [HotDBSchema](hotdbschema.md)
 
-*Defined in [schemas/HotDBSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/HotDBSchema.ts#L15)*
+*Defined in [schemas/HotDBSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotDBSchema.ts#L15)*
 
 #### Parameters:
 
@@ -44,6 +44,6 @@ Name | Type |
 
 •  **name**: string
 
-*Defined in [schemas/HotDBSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/HotDBSchema.ts#L15)*
+*Defined in [schemas/HotDBSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotDBSchema.ts#L15)*
 
 The name of this schema.

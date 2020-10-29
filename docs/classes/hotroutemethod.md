@@ -34,7 +34,7 @@ An API method to make.
 
 \+ **new HotRouteMethod**(`route`: [HotRoute](hotroute.md), `name`: string, `onExecute`: [ServerExecutionFunction](../globals.md#serverexecutionfunction) \| [ClientExecutionFunction](../globals.md#clientexecutionfunction), `type`: [HTTPMethod](../enums/httpmethod.md), `onAuthorize`: [ServerAuthorizationFunction](../globals.md#serverauthorizationfunction), `onRegister`: [ServerRegistrationFunction](../globals.md#serverregistrationfunction)): [HotRouteMethod](hotroutemethod.md)
 
-*Defined in [HotRouteMethod.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L59)*
+*Defined in [HotRouteMethod.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotRouteMethod.ts#L59)*
 
 #### Parameters:
 
@@ -55,7 +55,7 @@ Name | Type | Default value |
 
 •  **executeSetup**: boolean
 
-*Defined in [HotRouteMethod.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L59)*
+*Defined in [HotRouteMethod.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotRouteMethod.ts#L59)*
 
 Has this method been registered with the server? This
 prevents the method from being reregistered.
@@ -66,7 +66,7 @@ ___
 
 •  **isRegistered**: boolean
 
-*Defined in [HotRouteMethod.ts:54](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L54)*
+*Defined in [HotRouteMethod.ts:54](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotRouteMethod.ts#L54)*
 
 Has this method been registered with the server? This
 prevents the method from being reregistered.
@@ -77,7 +77,7 @@ ___
 
 •  **name**: string
 
-*Defined in [HotRouteMethod.ts:45](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L45)*
+*Defined in [HotRouteMethod.ts:45](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotRouteMethod.ts#L45)*
 
 The api call name.
 
@@ -87,7 +87,7 @@ ___
 
 • `Optional` **onClientExecute**: [ClientExecutionFunction](../globals.md#clientexecutionfunction)
 
-*Defined in [HotRouteMethod.ts:103](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L103)*
+*Defined in [HotRouteMethod.ts:103](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotRouteMethod.ts#L103)*
 
 Executes when executing a called method from the client side.
 
@@ -99,7 +99,7 @@ ___
 
 • `Optional` **onRegister**: [ServerRegistrationFunction](../globals.md#serverregistrationfunction)
 
-*Defined in [HotRouteMethod.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L82)*
+*Defined in [HotRouteMethod.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotRouteMethod.ts#L82)*
 
 Executes when first registering this method with Express. If
 this returns false, the method will not be registered.
@@ -110,7 +110,7 @@ ___
 
 • `Optional` **onServerAuthorize**: [ServerAuthorizationFunction](../globals.md#serverauthorizationfunction)
 
-*Defined in [HotRouteMethod.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L90)*
+*Defined in [HotRouteMethod.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotRouteMethod.ts#L90)*
 
 Executes when authorizing a called method. If this method
 is set, this will not call onAuthorize for the parent HotRoute.
@@ -123,7 +123,7 @@ ___
 
 • `Optional` **onServerExecute**: [ServerExecutionFunction](../globals.md#serverexecutionfunction)
 
-*Defined in [HotRouteMethod.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L98)*
+*Defined in [HotRouteMethod.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotRouteMethod.ts#L98)*
 
 Executes when executing a called method from the server side.
 This will stringify any JSON object and send it as a JSON response.
@@ -136,7 +136,7 @@ ___
 
 •  **parentRoute**: [HotRoute](hotroute.md)
 
-*Defined in [HotRouteMethod.ts:41](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L41)*
+*Defined in [HotRouteMethod.ts:41](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotRouteMethod.ts#L41)*
 
 The parent route.
 
@@ -146,6 +146,6 @@ ___
 
 •  **type**: [HTTPMethod](../enums/httpmethod.md)
 
-*Defined in [HotRouteMethod.ts:49](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L49)*
+*Defined in [HotRouteMethod.ts:49](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotRouteMethod.ts#L49)*
 
 The api call name.

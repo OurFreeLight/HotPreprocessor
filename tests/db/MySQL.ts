@@ -9,7 +9,7 @@ import { MySQLSchema } from "../../src/schemas/mysql/MySQLSchema";
 import { HelloWorldAPI } from "../server/HelloWorldAPI";
 import { MySQLSchemaTable } from "../../src/schemas/mysql/MySQLSchemaTable";
 import { MySQLSchemaField } from "../../src/schemas/mysql/MySQLSchemaField";
-import { HotDBMySQL } from "../../src/schemas/HotMySQL";
+import { HotDBMySQL } from "../../src/schemas/HotDBMySQL";
 import { HotDBGenerationType } from "../../src/schemas/HotDBSchema";
 
 /**

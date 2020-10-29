@@ -37,7 +37,7 @@ The API to use.
 
 \+ **new HotAPI**(`baseUrl`: string, `connection`: [HotServer](hotserver.md) \| [HotClient](hotclient.md), `db`: [HotDB](hotdb.md)): [HotAPI](hotapi.md)
 
-*Defined in [HotAPI.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotAPI.ts#L35)*
+*Defined in [HotAPI.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotAPI.ts#L35)*
 
 #### Parameters:
 
@@ -55,7 +55,7 @@ Name | Type | Default value |
 
 •  **baseUrl**: string
 
-*Defined in [HotAPI.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotAPI.ts#L22)*
+*Defined in [HotAPI.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotAPI.ts#L22)*
 
 The base url for the server.
 
@@ -65,7 +65,7 @@ ___
 
 •  **connection**: [HotServer](hotserver.md) \| [HotClient](hotclient.md)
 
-*Defined in [HotAPI.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotAPI.ts#L18)*
+*Defined in [HotAPI.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotAPI.ts#L18)*
 
 The server connection.
 
@@ -75,7 +75,7 @@ ___
 
 •  **createFunctions**: boolean
 
-*Defined in [HotAPI.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotAPI.ts#L27)*
+*Defined in [HotAPI.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotAPI.ts#L27)*
 
 If set, this will create the route variables and functions for
 easy client/server calling.
@@ -86,7 +86,7 @@ ___
 
 •  **db**: [HotDB](hotdb.md)
 
-*Defined in [HotAPI.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotAPI.ts#L31)*
+*Defined in [HotAPI.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotAPI.ts#L31)*
 
 The database connection.
 
@@ -96,7 +96,7 @@ ___
 
 •  **routes**: { [name:string]: [HotRoute](hotroute.md);  }
 
-*Defined in [HotAPI.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotAPI.ts#L35)*
+*Defined in [HotAPI.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotAPI.ts#L35)*
 
 The database connection.
 
@@ -106,7 +106,7 @@ The database connection.
 
 ▸ **addRoute**(`route`: [HotRoute](hotroute.md) \| string, `routeMethod`: [HotRouteMethod](hotroutemethod.md) \| string, `executeFunction`: (req: any,res: any,authorizedValue: any,jsonObj: any,queryObj: any) => Promise\<any>): void
 
-*Defined in [HotAPI.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotAPI.ts#L56)*
+*Defined in [HotAPI.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotAPI.ts#L56)*
 
 Add a route.
 
@@ -126,7 +126,7 @@ ___
 
 ▸ **call**(`route`: string, `data`: any, `httpMethod`: string): Promise\<any>
 
-*Defined in [HotAPI.ts:168](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotAPI.ts#L168)*
+*Defined in [HotAPI.ts:168](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotAPI.ts#L168)*
 
 Make a call to the API.
 
@@ -146,7 +146,7 @@ ___
 
 ▸ **registerRoute**(`route`: [HotRoute](hotroute.md)): void
 
-*Defined in [HotAPI.ts:146](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotAPI.ts#L146)*
+*Defined in [HotAPI.ts:146](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotAPI.ts#L146)*
 
 Register a route with the server.
 
@@ -164,7 +164,7 @@ ___
 
 ▸ **registerRoutes**(): void
 
-*Defined in [HotAPI.ts:155](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotAPI.ts#L155)*
+*Defined in [HotAPI.ts:155](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotAPI.ts#L155)*
 
 Register all routes with the server.
 

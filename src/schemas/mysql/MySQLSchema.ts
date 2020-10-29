@@ -1,7 +1,7 @@
 import { MySQLSchemaTable } from "./MySQLSchemaTable";
 import { MySQLSchemaField } from "./MySQLSchemaField";
 import { HotDBSchema, HotDBGenerationType } from "../HotDBSchema";
-import { HotDBMySQL } from "../HotMySQL";
+import { HotDBMySQL } from "../HotDBMySQL";
 import { table } from "console";
 
 /**

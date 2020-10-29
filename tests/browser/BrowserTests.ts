@@ -53,7 +53,8 @@ Execute this code to debug in browser:
 				helloWorldAPI.connection = new HotClient (processor);
 				helloWorldAPI.connection.api = helloWorldAPI;
 				processor.api = helloWorldAPI;
-				await HotPreprocessor.displayUrl ("/tests/browser/HelloWorld.hott", "Hello World!", processor);
+				await HotPreprocessor.displayUrl (
+					"/tests/browser/HelloWorld.hott", "Hello World!", processor, { testData: "TESTING" });
 				done ();`);
 			});
 		it ("should click the Hello World button", async () =>
@@ -90,5 +91,11 @@ Execute this code to debug in browser:
 				jsonObj = JSON.parse (value);
 
 				expect (jsonObj).to.equal ("Hello!");
+			});
+		it ("should test the placeholder test attribute", async () =>
+			{
+				let elm = await common.driver.wait (until.elementLocated (By.id ("message")));
+				let value: string = await elm.getAttribute ("data-test");
+				expect (value).to.equal ("TESTING", "Test attribute was incorrect!");
 			});
 	});

@@ -17,7 +17,8 @@ module.exports = {
 					use: [{
 							loader: "ts-loader",
 							options: {
-									transpileOnly: true
+									transpileOnly: true,
+									configFile: "tsconfig-web.json"
 								}
 						}],
 					exclude: new RegExp ("node_modules")
@@ -26,6 +27,9 @@ module.exports = {
 		plugins: [
 			new webpack.DefinePlugin ({
 					__VERSION__: `\"${packageVersion}\"`
+				}),
+			new webpack.ProvidePlugin ({
+					Cookies: "js-cookie/src/js.cookie.js"
 				})
 		],
 		resolve: {

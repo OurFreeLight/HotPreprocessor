@@ -30,6 +30,10 @@ export interface IHotFile
 	 * The content of the file to process.
 	 */
 	content?: string;
+	/**
+	 * Force all errors to be thrown.
+	 */
+	throwAllErrors?: boolean;
 }
 
 /**
@@ -57,6 +61,10 @@ export class HotFile implements IHotFile
 	 * The content of the file to process.
 	 */
 	content: string;
+	/**
+	 * Force all errors to be thrown.
+	 */
+	throwAllErrors: boolean;
 
 	constructor (copy: IHotFile = {})
 	{
@@ -65,6 +73,7 @@ export class HotFile implements IHotFile
 		this.url = copy.url || "";
 		this.localFile = copy.localFile || "";
 		this.content = copy.content || "";
+		this.throwAllErrors = copy.throwAllErrors || false;
 	}
 
 	/**
@@ -86,12 +95,23 @@ export class HotFile implements IHotFile
 	/**
 	 * Make a HTTP get request.
 	 */
-	static async httpGet (url: string)
+	static async httpGet (url: string): Promise<string>
 	{
-		let res: any = await fetch (url);
-		let content: string = await res.text ();
+		try
+		{
+			let res: Response = await fetch (url);
 
-		return (content);
+			if (res.ok === false)
+				throw new Error (`${res.status}: ${res.statusText}`);
+
+			let content: string = await res.text ();
+
+			return (content);
+		}
+		catch (ex)
+		{
+			return (JSON.stringify ({ "error": `${ex.message} - Could not fetch ${url}` }));
+		}
 	}
 
 	/**
@@ -144,45 +164,104 @@ export class HotFile implements IHotFile
 	}
 
 	/**
+	 * Process string content. This will take in a regular expression and 
+	 * parse the content based on the regex. When the regex content is found 
+	 * contentProcessor will be executed with the regex content found. When 
+	 * the regex content is not found, offContentProcessor will be called with 
+	 * the content outside of the regex.
+	 * 
+	 * @param content The content to parse.
+	 * @param contentRegex The regex to use to parse the content.
+	 * @param contentProcessor The content found inside the regex.
+	 * @param offContentProcessor The content found outside of the regex.
+	 * @param numRemoveFromBeginning The number of characters to remove from the 
+	 * beginning of the found content.
+	 * @param numRemoveFromEnd The number of characters to remove from the end of 
+	 * the found content.
+	 */
+	processContent (content: string, contentRegex: RegExp,
+		contentProcessor: (regexFound: string) => string,
+		offContentProcessor: (offContent: string) => string,
+		numRemoveFromBeginning: number = 2,
+		numRemoveFromEnd: number = 2): string
+	{
+		let result: RegExpExecArray = contentRegex.exec (content);
+		let previousIndex: number = 0;
+		let output: string = "";
+
+		while (result != null)
+		{
+			let start: number = result.index - numRemoveFromBeginning;
+			let end: number = contentRegex.lastIndex + numRemoveFromEnd;
+
+			// Get the previous section.
+			let prevContent: string = content.substr (previousIndex, (start - previousIndex));
+			previousIndex = end;
+
+			output += offContentProcessor (prevContent);
+
+			// Process the content found from the regex
+			let contentFound: string = result[0];
+			output += contentProcessor (contentFound);
+
+			// Move on to the next section to parse.
+			result = contentRegex.exec (content);
+		}
+
+		// Append whatever else is after the last parsed section.
+		let lastContent: string = content.substr (previousIndex);
+
+		output += offContentProcessor (lastContent);
+
+		return (output);
+	}
+
+	/**
 	 * Process the content in this file. This treats each file as one large JavaScript
 	 * file. Any text outside of the <* *> areas will be treated as:
 	 * 
 	 * 		Hot.echo ("text");
 	 */
-	async process (): Promise<string>
+	async process (args: any = null): Promise<string>
 	{
 		let output: string = "";
-		let regex: RegExp = new RegExp ("(?<=\\<\\*)([\\s\\S]*?)(?=\\*\\>)", "g");
 		let thisContent: string = this.content;
-		let result: RegExpExecArray = regex.exec (thisContent);
-		let previousIndex: number = 0;
 
 		Hot.CurrentPage = this.page;
+		Hot.PublicSecrets = this.page.processor.publicSecrets;
 		Hot.API = this.page.getAPI ();
 
-		// Assemble the JS file.
-		while (result != null)
-		{
-			let start: number = result.index - 2;
-			let end: number = regex.lastIndex + 2;
+		// Assemble the JS to evaluate. This will take all content outside of 
+		// <* and *> and wrap a Hot.echo around it. Any JS found inside of the 
+		// <* and *> will be executed.
+		output = this.processContent (thisContent, 
+			new RegExp ("(?<=\\<\\*)([\\s\\S]*?)(?=\\*\\>)", "g"), 
+			(regexFound: string): string =>
+			{
+				return (`${regexFound}\n`);
+			}, 
+			(offContent: string): string =>
+			{
+				let tempOutput: string = this.processContent (offContent, 
+					new RegExp ("(?<=\\$\\{)([\\s\\S]*?)(?=\\})", "g"), 
+					(regexFound2: string): string =>
+					{
+						let out: string = `try { Hot.echo (${regexFound2}); }catch (ex){Hot.echo ("");}\n`;
 
-			// Get the previous JS section.
-			let prevContent: string = thisContent.substr (previousIndex, (start - previousIndex));
-			previousIndex = end;
+						if (this.throwAllErrors === true)
+							out = `Hot.echo (${regexFound2});\n`;
 
-			let escapedContent: string = JSON.stringify (prevContent);
-			output += `Hot.echo (${escapedContent});\n`;
-			output += `${result[0]}\n`;
+						return (out);
+					}, 
+					(offContent2: string): string =>
+					{
+						let escapedContent: string = JSON.stringify (offContent2);
 
-			// Move on to the next section to parse for Javascript.
-			result = regex.exec (thisContent);
-		}
+						return (`Hot.echo (${escapedContent});\n`);
+					}, 2, 1);
 
-		// Append whatever else is after the last parsed section.
-		let lastContent: string = thisContent.substr (previousIndex);
-		let lastEscapedContent: string = JSON.stringify (lastContent);
-
-		output += `Hot.echo (${lastEscapedContent});\n`;
+				return (tempOutput);
+			});
 
 		// Execute the assembled JS file.
 		let returnedOutput: any = null;
@@ -191,6 +270,20 @@ export class HotFile implements IHotFile
 		{
 			let executionContent: string = `
 			var Hot = arguments[0];
+			`;
+
+			for (let key in args)
+			{
+				let newVar: string = "";
+				let newVarValue: any = args[key];
+				let newVarValueStr: string = JSON.stringify (newVarValue);
+
+				newVar = `var ${key} = ${newVarValueStr};\n`;
+
+				executionContent += newVar;
+			}
+
+			executionContent += `
 
 			async function runContent ()
 			{`;
@@ -200,7 +293,11 @@ export class HotFile implements IHotFile
 
 			return (runContent ().then (() =>
 			{
-				return ({ hot: Hot, output: Hot.Output, persistence: JSON.stringify (Hot.Persistence) });
+				return ({
+						hot: Hot,
+						output: Hot.Output,
+						persistence: JSON.stringify (Hot.Persistence)
+					});
 			}));`;
 
 			/// @fixme Prior to execution compile any TypeScript and make it ES5 compatible.

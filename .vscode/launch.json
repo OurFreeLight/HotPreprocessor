@@ -25,35 +25,25 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch HTTP Test Server",
-			"program": "${workspaceFolder}/build/src/TestServer.js",
+			"name": "Run Tests",
 			"skipFiles": [
 				"<node_internals>/**"
-			]
-		},
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Run Tests",
-			"program": "${workspaceFolder}/node_modules/buildci/bin/buildci",
-			"port": 7478,
+			],
+			"program": "${workspaceFolder}/node_modules/buildci/build/src/index.js",
 			"args": [
 				"run",
 				"tests",
 				"7478",
 				"all"
 			],
+			"cwd": "${workspaceFolder}",
 			"env": {
 				"HTTP_PORT": "3123",
 				"DATABASE_SERVER": "127.0.0.1",
 				"DATABASE_USERNAME": "root",
 				"DATABASE_PASSWORD": "cdO1KjwiC8ksOqCV1s0",
 				"DATABASE_SCHEMA": "freelight"
-			},
-			"internalConsoleOptions": "openOnSessionStart",
-			"skipFiles": [
-				"<node_internals>/**"
-			]
+			}
 		}
 	]
 }

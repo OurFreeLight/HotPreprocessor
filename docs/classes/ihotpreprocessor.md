@@ -30,7 +30,7 @@ results.
 
 • `Optional` **api**: [HotAPI](hotapi.md)
 
-*Defined in [HotPreprocessor.ts:78](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L78)*
+*Defined in [HotPreprocessor.ts:78](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotPreprocessor.ts#L78)*
 
 The api that's used to communicate with.
 
@@ -40,7 +40,7 @@ ___
 
 • `Optional` **components**: { [name:string]: [HotComponent](hotcomponent.md);  }
 
-*Defined in [HotPreprocessor.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L86)*
+*Defined in [HotPreprocessor.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotPreprocessor.ts#L86)*
 
 The components that can be constructed.
 
@@ -50,7 +50,7 @@ ___
 
 • `Optional` **hotSite**: [HotSite](../interfaces/hotsite.md)
 
-*Defined in [HotPreprocessor.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L90)*
+*Defined in [HotPreprocessor.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotPreprocessor.ts#L90)*
 
 The loaded hotsite.
 
@@ -60,6 +60,6 @@ ___
 
 • `Optional` **pages**: { [name:string]: [HotPage](hotpage.md);  }
 
-*Defined in [HotPreprocessor.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotPreprocessor.ts#L82)*
+*Defined in [HotPreprocessor.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotPreprocessor.ts#L82)*
 
 The pages that can be constructed.

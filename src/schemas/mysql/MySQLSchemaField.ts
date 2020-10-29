@@ -335,7 +335,22 @@ export class MySQLSchemaField implements IMySQLSchemaField
 
 		let additionalStr: string = "";
 		let defaultValue: string = this.defaultValue;
+		const lowerDataType: string = this.dataType.toLowerCase ();
 		let strAroundDefaultValue: string = this.strAroundDefaultValue;
+
+		if ((lowerDataType.indexOf ("int") > 0) || 
+			(lowerDataType.indexOf ("float") > 0) || 
+			(lowerDataType.indexOf ("decimal") > 0))
+		{
+			strAroundDefaultValue = "";
+		}
+
+		if ((lowerDataType.indexOf ("date") > 0) || 
+			(lowerDataType.indexOf ("time") > 0) || 
+			(lowerDataType.indexOf ("year") > 0))
+		{
+			strAroundDefaultValue = "";
+		}
 
 		if (this.unsignedDataType === true)
 			additionalStr += "unsigned ";
@@ -361,7 +376,16 @@ export class MySQLSchemaField implements IMySQLSchemaField
 			additionalStr += "AUTO_INCREMENT ";
 
 		if (defaultValue === "")
-			defaultValue = `${strAroundDefaultValue}${strAroundDefaultValue}`;
+		{
+			if ((lowerDataType.indexOf ("int") > 0) || 
+				(lowerDataType.indexOf ("float") > 0) || 
+				(lowerDataType.indexOf ("decimal") > 0))
+			{
+				defaultValue = `0`;
+			}
+			else
+				defaultValue = `${strAroundDefaultValue}${strAroundDefaultValue}`;
+		}
 
 		let defaultValueStr: string = "";
 

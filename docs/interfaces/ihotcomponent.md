@@ -34,7 +34,7 @@ A component to preprocess.
 
 • `Optional` **api**: [HotAPI](../classes/hotapi.md)
 
-*Defined in [HotComponent.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotComponent.ts#L28)*
+*Defined in [HotComponent.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L28)*
 
 The connected API.
 
@@ -44,7 +44,7 @@ ___
 
 • `Optional` **elementOptions**: ElementDefinitionOptions
 
-*Defined in [HotComponent.ts:32](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotComponent.ts#L32)*
+*Defined in [HotComponent.ts:32](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L32)*
 
 The options to include with registering this component.
 
@@ -54,7 +54,7 @@ ___
 
 • `Optional` **events**: { [name:string]: { func: Function ; options?: any ; type: string  };  }
 
-*Defined in [HotComponent.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotComponent.ts#L44)*
+*Defined in [HotComponent.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L44)*
 
 The events to trigger.
 
@@ -64,7 +64,7 @@ ___
 
 • `Optional` **htmlElement**: HTMLElement
 
-*Defined in [HotComponent.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotComponent.ts#L16)*
+*Defined in [HotComponent.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L16)*
 
 The associated HTMLElement.
 
@@ -74,7 +74,7 @@ ___
 
 • `Optional` **name**: string
 
-*Defined in [HotComponent.ts:20](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotComponent.ts#L20)*
+*Defined in [HotComponent.ts:20](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L20)*
 
 The name of the page.
 
@@ -84,7 +84,7 @@ ___
 
 •  **processor**: [HotPreprocessor](../classes/hotpreprocessor.md)
 
-*Defined in [HotComponent.ts:12](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotComponent.ts#L12)*
+*Defined in [HotComponent.ts:12](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L12)*
 
 The processor to use.
 
@@ -94,7 +94,7 @@ ___
 
 • `Optional` **tag**: string
 
-*Defined in [HotComponent.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotComponent.ts#L24)*
+*Defined in [HotComponent.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L24)*
 
 The name of the tag.
 
@@ -104,7 +104,7 @@ ___
 
 • `Optional` **type**: string
 
-*Defined in [HotComponent.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotComponent.ts#L36)*
+*Defined in [HotComponent.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L36)*
 
 The type of component.
 
@@ -114,6 +114,6 @@ ___
 
 • `Optional` **value**: any
 
-*Defined in [HotComponent.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotComponent.ts#L40)*
+*Defined in [HotComponent.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L40)*
 
 The value of the component.

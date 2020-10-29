@@ -30,7 +30,7 @@ A file to process.
 
 • `Optional` **content**: string
 
-*Defined in [HotFile.ts:32](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotFile.ts#L32)*
+*Defined in [HotFile.ts:32](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L32)*
 
 The content of the file to process.
 
@@ -40,7 +40,7 @@ ___
 
 • `Optional` **localFile**: string
 
-*Defined in [HotFile.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotFile.ts#L28)*
+*Defined in [HotFile.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L28)*
 
 The path to the local file to get.
 
@@ -50,7 +50,7 @@ ___
 
 • `Optional` **name**: string
 
-*Defined in [HotFile.ts:20](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotFile.ts#L20)*
+*Defined in [HotFile.ts:20](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L20)*
 
 The name of the file.
 
@@ -60,7 +60,7 @@ ___
 
 • `Optional` **page**: [HotPage](../classes/hotpage.md)
 
-*Defined in [HotFile.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotFile.ts#L16)*
+*Defined in [HotFile.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L16)*
 
 The parent page.
 
@@ -70,6 +70,6 @@ ___
 
 • `Optional` **url**: string
 
-*Defined in [HotFile.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotFile.ts#L24)*
+*Defined in [HotFile.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L24)*
 
 The url to the file to get.

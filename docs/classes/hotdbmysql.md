@@ -44,7 +44,7 @@ The MySQL database connection.
 
 *Overrides [HotDB](hotdb.md).[constructor](hotdb.md#constructor)*
 
-*Defined in [schemas/HotMySQL.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/HotMySQL.ts#L22)*
+*Defined in [schemas/HotMySQL.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L22)*
 
 #### Parameters:
 
@@ -64,7 +64,7 @@ Name | Type | Default value |
 
 *Inherited from [HotDB](hotdb.md).[connectionStatus](hotdb.md#connectionstatus)*
 
-*Defined in [HotDB.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotDB.ts#L30)*
+*Defined in [HotDB.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L30)*
 
 The connection status.
 
@@ -76,7 +76,7 @@ ___
 
 *Inherited from [HotDB](hotdb.md).[db](hotdb.md#db)*
 
-*Defined in [HotDB.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotDB.ts#L26)*
+*Defined in [HotDB.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L26)*
 
 The connection to the database (or the driver).
 
@@ -88,7 +88,7 @@ ___
 
 *Inherited from [HotDB](hotdb.md).[schema](hotdb.md#schema)*
 
-*Defined in [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotDB.ts#L35)*
+*Defined in [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L35)*
 
 The db schema. This will generate a database structure
 and keep it maintained as needed.
@@ -101,7 +101,7 @@ ___
 
 *Inherited from [HotDB](hotdb.md).[type](hotdb.md#type)*
 
-*Defined in [HotDB.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotDB.ts#L22)*
+*Defined in [HotDB.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L22)*
 
 The database type.
 
@@ -113,7 +113,7 @@ The database type.
 
 *Overrides [HotDB](hotdb.md).[connect](hotdb.md#connect)*
 
-*Defined in [schemas/HotMySQL.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/HotMySQL.ts#L31)*
+*Defined in [schemas/HotMySQL.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L31)*
 
 Connect to the database.
 
@@ -131,7 +131,7 @@ ___
 
 ▸ `Protected`**dbCheck**(): void
 
-*Defined in [schemas/HotMySQL.ts:61](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/HotMySQL.ts#L61)*
+*Defined in [schemas/HotMySQL.ts:61](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L61)*
 
 Checks to see if this has a database connection.
 
@@ -145,7 +145,7 @@ ___
 
 *Overrides [HotDB](hotdb.md).[disconnect](hotdb.md#disconnect)*
 
-*Defined in [schemas/HotMySQL.ts:226](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/HotMySQL.ts#L226)*
+*Defined in [schemas/HotMySQL.ts:226](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L226)*
 
 Disconnect from the server.
 
@@ -159,7 +159,7 @@ ___
 
 *Overrides [HotDB](hotdb.md).[multiQuery](hotdb.md#multiquery)*
 
-*Defined in [schemas/HotMySQL.ts:187](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/HotMySQL.ts#L187)*
+*Defined in [schemas/HotMySQL.ts:187](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L187)*
 
 Make multiple queries. **Warning! This can be a security vulnerability
 if misused! Ideally this should only be used when make changes to tables!
@@ -182,7 +182,7 @@ ___
 
 *Overrides [HotDB](hotdb.md).[query](hotdb.md#query)*
 
-*Defined in [schemas/HotMySQL.ts:165](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/HotMySQL.ts#L165)*
+*Defined in [schemas/HotMySQL.ts:165](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L165)*
 
 The query to make.
 
@@ -203,7 +203,7 @@ ___
 
 *Overrides [HotDB](hotdb.md).[syncAllTables](hotdb.md#syncalltables)*
 
-*Defined in [schemas/HotMySQL.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/HotMySQL.ts#L70)*
+*Defined in [schemas/HotMySQL.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L70)*
 
 Synchronize all tables.
 
@@ -223,7 +223,7 @@ ___
 
 *Overrides [HotDB](hotdb.md).[syncTable](hotdb.md#synctable)*
 
-*Defined in [schemas/HotMySQL.ts:91](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/HotMySQL.ts#L91)*
+*Defined in [schemas/HotMySQL.ts:91](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L91)*
 
 Synchronize a table. This will create/modify the table based on whether it
 exists, and if there's been any changes to any fields.
@@ -245,7 +245,7 @@ ___
 
 *Overrides [HotDB](hotdb.md).[tableCheck](hotdb.md#tablecheck)*
 
-*Defined in [schemas/HotMySQL.ts:141](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/schemas/HotMySQL.ts#L141)*
+*Defined in [schemas/HotMySQL.ts:141](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L141)*
 
 Checks if the table exists.
 

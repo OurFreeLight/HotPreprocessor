@@ -1,6 +1,6 @@
 {
     "name": "hotpreprocessor",
-    "dependencies": [
+    "dependenciesDONTUSETHISOBJECTYET": [
         { "program": "docker", "cmd": "docker" },
         { "program": "npm", "cmd": "npm" },
         { "program": "node", "cmd": "node" },
@@ -18,7 +18,9 @@
     "scripts": {
             "tests": {
                 "name": "Tests",
-                "onCmd": "./build/src/buildci/RunTests.js"
+                "onCmd": {
+                    "file": "./build/src/buildci/RunTests.js"
+                }
             }
         }
 }

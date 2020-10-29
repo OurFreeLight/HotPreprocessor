@@ -1,6 +1,6 @@
 import { MySQLSchemaField, MySQLSchemaFieldResult } from "./MySQLSchemaField";
 import { HotDBGenerationType } from "../HotDBSchema";
-import { HotDBMySQL } from "../HotMySQL";
+import { HotDBMySQL } from "../HotDBMySQL";
 
 /**
  * The database table.

@@ -12,7 +12,7 @@
 <*
 	Hot.echo (`World!</button><div id = "buttonClicked"></div>`);
 *>
-	<input id = "message" value = "" />
+	<input id = "message" data-test = "${testData}" value = "" />
 	<button id = "testHelloWorldAPI" onclick = "(async () => { let result = await Hot.apiCall ('/v1/hello_world/hello', { message: 'hi' }); document.getElementById ('buttonClicked').innerHTML=JSON.stringify (result); })();">Send</button>
 	<button id = "testHelloWorldAPI2" onclick = "(async () => { let result = await Hot.CurrentPage.getAPI ().hello_world.hello ({ message: 'hi' }); document.getElementById ('buttonClicked').innerHTML=JSON.stringify (result); })();">Send2</button>
 </body>

@@ -20,7 +20,7 @@ The database connection status.
 
 •  **Connected**: 
 
-*Defined in [HotDB.ts:11](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotDB.ts#L11)*
+*Defined in [HotDB.ts:11](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L11)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 •  **Connecting**: 
 
-*Defined in [HotDB.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotDB.ts#L10)*
+*Defined in [HotDB.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L10)*
 
 ___
 
@@ -36,4 +36,4 @@ ___
 
 •  **Disconnected**: 
 
-*Defined in [HotDB.ts:9](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotDB.ts#L9)*
+*Defined in [HotDB.ts:9](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L9)*

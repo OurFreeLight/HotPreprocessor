@@ -290,7 +290,8 @@ export class HotHTTPServer extends HotServer
 
 					if (method.onServerAuthorize != null)
 					{
-						authorizationValue = await method.onServerAuthorize (req, res);
+						authorizationValue = 
+							await method.onServerAuthorize.call (route, req, res, jsonObj, queryObj);
 
 						if (authorizationValue === undefined)
 							hasAuthorization = false;
@@ -312,7 +313,7 @@ export class HotHTTPServer extends HotServer
 					{
 						if (method.onServerExecute != null)
 						{
-							let result: any = await method.onServerExecute (req, res, authorizationValue, jsonObj, queryObj);
+							let result: any = await method.onServerExecute.call (route, req, res, authorizationValue, jsonObj, queryObj);
 
 							this.logger.verbose (`${req.method} ${methodName}, Response: ${result}`);
 

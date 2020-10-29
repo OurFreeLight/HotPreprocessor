@@ -26,9 +26,13 @@ export type ServerExecutionFunction =
  */
 export type ClientExecutionFunction = (...args: any[]) => Promise<any>;
 /**
- * A function that will be executed by the server for authorization.
+ * A function that will be executed by the server for authorization. Any value 
+ * returned from this function will be passed to the ServerExecutionFunction.
+ * If an undefined value is returned, this indicates the server was not able 
+ * to authenticate the user, so the ServerExecutionFunction will not be 
+ * executed.
  */
-export type ServerAuthorizationFunction = (req: any, res: any) => Promise<any>;
+export type ServerAuthorizationFunction = (req: any, res: any, jsonObj: any, queryObj: any) => Promise<any>;
 
 /**
  * An API method to make.

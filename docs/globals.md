@@ -67,7 +67,7 @@
 
 Ƭ  **ClientExecutionFunction**: (...args: any[]) => Promise\<any>
 
-*Defined in [HotRouteMethod.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L27)*
+*Defined in [HotRouteMethod.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotRouteMethod.ts#L27)*
 
 A function that will be executed by the client.
 
@@ -77,7 +77,7 @@ ___
 
 Ƭ  **ServerAuthorizationFunction**: (req: any,res: any) => Promise\<any>
 
-*Defined in [HotRouteMethod.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L31)*
+*Defined in [HotRouteMethod.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotRouteMethod.ts#L31)*
 
 A function that will be executed by the server for authorization.
 
@@ -87,7 +87,7 @@ ___
 
 Ƭ  **ServerExecutionFunction**: (req: any,res: any,authorizedValue: any,jsonObj: any,queryObj: any) => Promise\<any>
 
-*Defined in [HotRouteMethod.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L22)*
+*Defined in [HotRouteMethod.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotRouteMethod.ts#L22)*
 
 A function that will be executed by the server.
 
@@ -97,7 +97,7 @@ ___
 
 Ƭ  **ServerRegistrationFunction**: () => Promise\<boolean>
 
-*Defined in [HotRouteMethod.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/HotRouteMethod.ts#L18)*
+*Defined in [HotRouteMethod.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotRouteMethod.ts#L18)*
 
 A function that will be executed by the server when first registering with Express.
 If this returns false, this route method will not be registered.
@@ -108,6 +108,6 @@ If this returns false, this route method will not be registered.
 
 ▸ **start**(): Promise\<void>
 
-*Defined in [cli.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/cli.ts#L10)*
+*Defined in [cli.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/cli.ts#L10)*
 
 **Returns:** Promise\<void>

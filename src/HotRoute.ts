@@ -1,6 +1,7 @@
 import { HotServer } from "./HotServer";
 import { HotRouteMethod, HTTPMethod } from "./HotRouteMethod";
 import { HotClient } from "./HotClient";
+import { HotLog } from "./HotLog";
 
 /**
  * The route to use.
@@ -11,6 +12,10 @@ export class HotRoute
 	 * The server that maintains the connections.
 	 */
 	connection: HotServer | HotClient;
+	/**
+	 * The associated logger.
+	 */
+	logger: HotLog;
 	/**
 	 * The route.
 	 */
@@ -36,6 +41,14 @@ export class HotRoute
 	constructor (connection: HotServer | HotClient, route: string, methods: HotRouteMethod[] = [])
 	{
 		this.connection = connection;
+		this.logger = null;
+
+		if (this.connection != null)
+		{
+			if (this.connection.processor != null)
+				this.logger = this.connection.processor.logger;
+		}
+
 		this.route = route;
 		this.version = "v1";
 		this.prefix = "";

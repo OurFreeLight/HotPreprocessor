@@ -41,7 +41,7 @@ The api used during processing.
 
 ▪ `Static` **API**: [HotAPI](hotapi.md) = null
 
-*Defined in [Hot.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L33)*
+*Defined in [Hot.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L33)*
 
 The current API used on this page. This is cleared between every file processed.
 
@@ -51,7 +51,7 @@ ___
 
 ▪ `Static` **CSS**: string[] = []
 
-*Defined in [Hot.ts:52](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L52)*
+*Defined in [Hot.ts:52](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L52)*
 
 The CSS files to use in the current page being generated.
 
@@ -64,7 +64,7 @@ ___
 
 ▪ `Static` **CurrentPage**: [HotPage](hotpage.md) = null
 
-*Defined in [Hot.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L29)*
+*Defined in [Hot.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L29)*
 
 The currently generated page being displayed. This is cleared between every file processed.
 
@@ -74,7 +74,7 @@ ___
 
 ▪ `Static` **JSFiles**: any[] = []
 
-*Defined in [Hot.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L59)*
+*Defined in [Hot.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L59)*
 
 The JavaScript files to use in the current page being generated.
 
@@ -87,7 +87,7 @@ ___
 
 ▪ `Static` **JSScripts**: any[] = []
 
-*Defined in [Hot.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L63)*
+*Defined in [Hot.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L63)*
 
 The JavaScript inline code to use in the current page being generated.
 
@@ -97,7 +97,7 @@ ___
 
 ▪ `Static` **Output**: string = ""
 
-*Defined in [Hot.ts:37](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L37)*
+*Defined in [Hot.ts:37](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L37)*
 
 Contains the buffer to output. This is cleared between every file processed.
 
@@ -107,7 +107,7 @@ ___
 
 ▪ `Static` **Persistence**: any
 
-*Defined in [Hot.ts:41](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L41)*
+*Defined in [Hot.ts:41](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L41)*
 
 The data to share across all the different files and pages.
 
@@ -117,7 +117,7 @@ ___
 
 ▪ `Static` **cssStr**: string = \`\<link rel = "stylesheet" href = "%CSS\_FILE%" />\`
 
-*Defined in [Hot.ts:45](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L45)*
+*Defined in [Hot.ts:45](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L45)*
 
 The CSS string to use when echoing out the CSS files.
 
@@ -127,7 +127,7 @@ ___
 
 ▪ `Static` **jsFileStr**: string = \`\<script type = "text/javascript" src = "%JS\_FILE%">\</script>\`
 
-*Defined in [Hot.ts:67](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L67)*
+*Defined in [Hot.ts:67](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L67)*
 
 The JavaScript string to use when echoing out the Scripts files.
 
@@ -137,7 +137,7 @@ ___
 
 ▪ `Static` **jsScriptsStr**: string = \`\<script type = "text/javascript">%JS\_CODE%\</script>\`
 
-*Defined in [Hot.ts:71](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L71)*
+*Defined in [Hot.ts:71](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L71)*
 
 The JavaScript string to use when echoing out the Scripts files.
 
@@ -147,7 +147,7 @@ The JavaScript string to use when echoing out the Scripts files.
 
 ▸ `Static`**apiCall**(`route`: string, `data`: any, `httpMethod`: string): Promise\<any>
 
-*Defined in [Hot.ts:111](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L111)*
+*Defined in [Hot.ts:111](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L111)*
 
 Make an api call.
 
@@ -167,7 +167,7 @@ ___
 
 ▸ `Static`**displayCSS**(): void
 
-*Defined in [Hot.ts:141](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L141)*
+*Defined in [Hot.ts:141](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L141)*
 
 Echo out the CSS for the current page being generated.
 
@@ -179,7 +179,7 @@ ___
 
 ▸ `Static`**displayJSFiles**(): void
 
-*Defined in [Hot.ts:157](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L157)*
+*Defined in [Hot.ts:157](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L157)*
 
 Echo out the JS files for the current page being generated.
 
@@ -191,7 +191,7 @@ ___
 
 ▸ `Static`**displayJSScripts**(): void
 
-*Defined in [Hot.ts:173](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L173)*
+*Defined in [Hot.ts:173](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L173)*
 
 Echo out the JS scripts for the current page being generated.
 
@@ -203,7 +203,7 @@ ___
 
 ▸ `Static`**echo**(`message`: string): void
 
-*Defined in [Hot.ts:133](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L133)*
+*Defined in [Hot.ts:133](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L133)*
 
 Echo out some output.
 
@@ -221,7 +221,7 @@ ___
 
 ▸ `Static`**getFile**(`path`: [HotFile](hotfile.md) \| string): Promise\<string>
 
-*Defined in [Hot.ts:84](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L84)*
+*Defined in [Hot.ts:84](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L84)*
 
 Get the content of a file.
 
@@ -239,7 +239,7 @@ ___
 
 ▸ `Static`**include**(`file`: [HotFile](hotfile.md) \| string): Promise\<void>
 
-*Defined in [Hot.ts:76](https://github.com/OurFreeLight/HotPreprocessor/blob/4cb6771/src/Hot.ts#L76)*
+*Defined in [Hot.ts:76](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/Hot.ts#L76)*
 
 Retrieve a file and echo out it's contents.
 

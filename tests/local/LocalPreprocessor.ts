@@ -111,4 +111,14 @@ describe ("Local Preprocessor Tests", () =>
 
 				expect (output).to.equal (comparison);
 			});
+		it ("HotPreprocessor.processLocalFile: should process a string placeholder", async () =>
+			{
+				let output: string = await HotPreprocessor.processLocalFile (
+							"./tests/local/placeholder.hott", "Test", { TEST2: "TEST2" });
+				const comparison: string = `TEST1\nTEST2\nTEST3`.replace (/\s/g, "");
+
+				output = output.replace (/\s/g, "");
+
+				expect (output).to.equal (comparison);
+			});
 	});

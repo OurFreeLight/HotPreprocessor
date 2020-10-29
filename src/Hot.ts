@@ -3,6 +3,8 @@ import { HotPage } from "./HotPage";
 import { HotPreprocessor } from "./HotPreprocessor";
 import { HotAPI } from "./HotAPI";
 
+import Cookies from "js-cookie";
+
 /**
  * A CSS object to embed.
  */
@@ -40,6 +42,14 @@ export class Hot
 	 */
 	static Persistence: any = {};
 	/**
+	 * The cookies to use between pages.
+	 */
+	static Cookies: Cookies.CookiesStatic = Cookies;
+	/**
+	 * Any secrets that can be shown publicly. These can be passed from HotSite.json.
+	 */
+	static PublicSecrets: any = {};
+	/**
 	 * The CSS string to use when echoing out the CSS files.
 	 */
 	static cssStr: string = `<link rel = "stylesheet" href = "%CSS_FILE%" />`;
@@ -73,15 +83,15 @@ export class Hot
 	/**
 	 * Retrieve a file and echo out it's contents.
 	 */
-	static async include (file: HotFile | string): Promise<void>
+	static async include (file: HotFile | string, args: any[] = null): Promise<void>
 	{
-		Hot.echo (await Hot.getFile (file));
+		Hot.echo (await Hot.getFile (file, args));
 	}
 
 	/**
 	 * Get the content of a file.
 	 */
-	static async getFile (path: HotFile | string): Promise<string>
+	static async getFile (path: HotFile | string, args: any[] = null): Promise<string>
 	{
 		let tempFile: HotFile = null;
 
@@ -100,7 +110,7 @@ export class Hot
 		await tempFile.load ();
 
 		tempFile.page = this.CurrentPage;
-		let content: string = await tempFile.process ();
+		let content: string = await tempFile.process (args);
 
 		return (content);
 	}
