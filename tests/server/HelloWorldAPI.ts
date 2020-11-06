@@ -3,6 +3,7 @@ import { HotRoute } from "../../src/HotRoute";
 import { HotRouteMethod } from "../../src/HotRouteMethod";
 import { HotClient } from "../../src/HotClient";
 import { HotServer } from "../../src/HotServer";
+import { HotHTTPServer } from "../../src/api";
 
 export class HelloWorldAPI extends HotAPI
 {
@@ -12,11 +13,12 @@ export class HelloWorldAPI extends HotAPI
 
 		let route: HotRoute = new HotRoute (connection, "hello_world");
 		route.addMethod ("hello", this.helloCalled);
+		route.addMethod ("file_upload", this.fileUpload);
 		this.addRoute (route);
 	}
 
 	/**
-	 * This executes from the server side, 
+	 * This executes a response saying Hello from the server side.
 	 */
 	async helloCalled (req: any, res: any, authorizedValue: any, jsonObj: any, queryObj: any): Promise<any>
 	{
@@ -32,6 +34,27 @@ export class HelloWorldAPI extends HotAPI
 			return ("Hello!");
 
 		return ({ error: "You didn't say hi." });
+	}
+
+	/**
+	 * This accepts a file upload.
+	 */
+	async fileUpload (req: any, res: any, authorizedValue: any, jsonObj: any, queryObj: any): Promise<any>
+	{
+		let filename: string = "";
+		let filepath: string = "";
+		let results = await HotHTTPServer.getFileUploads (req);
+
+		for (let key in results)
+		{
+			let file = results[key];
+			filename = file.name;
+			filepath = file.path;
+
+			break;
+		}
+
+		return ({ msg: `File ${filename} uploaded to ${filepath}!`, path: filepath });
 	}
 
 	/**

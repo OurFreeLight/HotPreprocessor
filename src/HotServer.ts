@@ -174,16 +174,16 @@ export class HotServer implements IHotServer
 	/**
 	 * Set an API to this server.
 	 */
-	setAPI (api: HotAPI): void
+	async setAPI (api: HotAPI): Promise<void>
 	{
 		this.api = api;
-		this.api.registerRoutes ();
+		await this.api.registerRoutes ();
 	}
 
 	/**
 	 * Register a route with the server.
 	 */
-	registerRoute? (route: HotRoute): void;
+	async registerRoute? (route: HotRoute): Promise<void>;
 
 	/**
 	 * Start listening for requests.

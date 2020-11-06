@@ -38,9 +38,9 @@ export class Hot
 	 */
 	static Output: string = "";
 	/**
-	 * The data to share across all the different files and pages.
+	 * The data to share across all the different files and pages. This data will be public.
 	 */
-	static Persistence: any = {};
+	static Data: any = {};
 	/**
 	 * The cookies to use between pages.
 	 */

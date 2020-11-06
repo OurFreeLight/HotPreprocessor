@@ -3,6 +3,7 @@ import * as https from "https";
 import * as ppath from "path";
 
 import express from "express";
+import { Fields, Files, IncomingForm } from "formidable";
 
 import { HotServer } from "./HotServer";
 import { HotPreprocessor } from "./HotPreprocessor";
@@ -290,8 +291,19 @@ export class HotHTTPServer extends HotServer
 
 					if (method.onServerAuthorize != null)
 					{
-						authorizationValue = 
-							await method.onServerAuthorize.call (route, req, res, jsonObj, queryObj);
+						try
+						{
+							authorizationValue = 
+								await method.onServerAuthorize.call (route, req, res, jsonObj, queryObj);
+						}
+						catch (ex)
+						{
+							this.logger.verbose (`Authorization error: ${ex.message}`);
+							res.json ({ error: ex.message });
+							hasAuthorization = false;
+
+							return;
+						}
 
 						if (authorizationValue === undefined)
 							hasAuthorization = false;
@@ -313,12 +325,22 @@ export class HotHTTPServer extends HotServer
 					{
 						if (method.onServerExecute != null)
 						{
-							let result: any = await method.onServerExecute.call (route, req, res, authorizationValue, jsonObj, queryObj);
+							try
+							{
+								let result: any = 
+									await method.onServerExecute.call (
+										route, req, res, authorizationValue, jsonObj, queryObj);
 
-							this.logger.verbose (`${req.method} ${methodName}, Response: ${result}`);
+								this.logger.verbose (`${req.method} ${methodName}, Response: ${result}`);
 
-							if (result !== undefined)
-								res.json (result);
+								if (result !== undefined)
+									res.json (result);
+							}
+							catch (ex)
+							{
+								this.logger.verbose (`Execution error: ${ex.message}`);
+								res.json ({ error: ex.message });
+							}
 						}
 					}
 					else
@@ -401,6 +423,25 @@ export class HotHTTPServer extends HotServer
 					})();
 				});
 		}
+	}
+
+	/**
+	 * Get all files uploaded.
+	 */
+	static async getFileUploads (req: express.Request, options: any = { multiples: true }): Promise<Files>
+	{
+		const form = new IncomingForm (options);
+
+		return (await new Promise<Files> ((resolve, reject) =>
+			{
+				form.parse (req, (err: any, fields: Fields, files: Files) =>
+					{
+						if (err != null)
+							throw err;
+		
+						resolve (files);
+					});
+			}));
 	}
 
 	/**
@@ -516,7 +557,25 @@ export class HotHTTPServer extends HotServer
 				}
 
 				if (this.api != null)
-					this.api.registerRoutes ();
+				{
+					if (this.api.onPreRegister != null)
+					{
+						let continueRegistering: boolean = await this.api.onPreRegister ();
+
+						if (continueRegistering === false)
+							return;
+					}
+
+					await this.api.registerRoutes ();
+
+					if (this.api.onPostRegister != null)
+					{
+						let continueOn: boolean = await this.api.onPostRegister ();
+
+						if (continueOn === false)
+							return;
+					}
+				}
 
 				if (this.ssl.cert === "")
 				{

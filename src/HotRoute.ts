@@ -29,6 +29,11 @@ export class HotRoute
 	 */
 	prefix: string;
 	/**
+	 * The authorization credentials to be used by the client 
+	 * when connecting to the server.
+	 */
+	authCredentials: any;
+	/**
 	 * The calls that can be made.
 	 */
 	methods: HotRouteMethod[];
@@ -52,6 +57,7 @@ export class HotRoute
 		this.route = route;
 		this.version = "v1";
 		this.prefix = "";
+		this.authCredentials = null;
 		this.methods = methods;
 		this.errors = {
 				"not_authorized": HotRoute.createError ("Not authorized.")

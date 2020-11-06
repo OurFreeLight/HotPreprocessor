@@ -37,7 +37,7 @@ describe ("Database - MySQL Tests", () =>
 
 				api = new HelloWorldAPI (common.getUrl (), server);
 				api.db = new HotDBMySQL ();
-				server.setAPI (api);
+				await server.setAPI (api);
 			});
 		after (async () =>
 			{

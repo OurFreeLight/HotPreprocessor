@@ -91,7 +91,7 @@ export class Common
 		this.server.serveHottFiles = serveHottFiles;
 		this.server.hottFilesAssociatedInfo.jsSrcPath = "/build-web/HotPreprocessor.js";
 		let api: HelloWorldAPI = new HelloWorldAPI (this.getUrl (), this.server);
-		this.server.setAPI (api);
+		await this.server.setAPI (api);
 
 		return (this.server.listen ());
 	}

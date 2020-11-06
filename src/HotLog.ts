@@ -133,13 +133,26 @@ export class HotLog
 	/**
 	 * Log an error message.
 	 */
-	error (message: string)
+	error (message: string | Error)
 	{
 		if ((this.logLevel === HotLogLevel.All) || 
 			(this.logLevel === HotLogLevel.Verbose) || 
 			(this.logLevel === HotLogLevel.Error))
 		{
-			console.error (message);
+			let msg: string = "";
+
+			if (typeof (message) === "string")
+				msg = message;
+			else
+			{
+				if (message.message != null)
+					msg = message.message;
+
+				if (message.stack != null)
+					msg = message.stack;
+			}
+
+			console.error (msg);
 		}
 	}
 }

@@ -1,6 +1,10 @@
 import "mocha";
 import { expect, should } from "chai";
 import fetch from "cross-fetch";
+import FormData from "form-data";
+
+import * as fs from "fs";
+import * as ppath from "path";
 
 import { Common } from "./Common";
 
@@ -47,7 +51,7 @@ describe ("Server Tests", () =>
 		it ("should set the HelloWorldAPI then call it without saying hi", async () =>
 			{
 				api = new HelloWorldAPI (common.getUrl (), server);
-				server.setAPI (api);
+				await server.setAPI (api);
 
 				let result: any = await api.call ("/v1/hello_world/hello", {});
 
@@ -58,5 +62,23 @@ describe ("Server Tests", () =>
 				let result: any = await api.sayHello ("hi");
 
 				expect (result).to.equal ("Hello!");
+			});
+		it ("should upload a file to HelloWorldAPI and delete it", async () =>
+			{
+				const filepath: string = ppath.normalize (`${process.cwd ()}/tests/browser/index.htm`);
+				let stream: fs.ReadStream = fs.createReadStream (filepath);
+				const formData: FormData = new FormData ();
+
+				formData.append ("index.html", stream);
+
+				let res: Response = await fetch (`${url}/v1/hello_world/file_upload`, {
+						method: "POST",
+						// @ts-ignore
+						body: formData
+					});
+				let jsonRes = await res.json ();
+
+				expect (fs.existsSync (jsonRes.path)).to.equal (true);
+				fs.unlinkSync (jsonRes.path);
 			});
 	});

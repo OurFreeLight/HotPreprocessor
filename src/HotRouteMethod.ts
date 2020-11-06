@@ -61,15 +61,22 @@ export class HotRouteMethod
 	 * prevents the method from being reregistered.
 	 */
 	executeSetup: boolean;
+	/**
+	 * The authorization credentials to be used by the client 
+	 * when connecting to the server.
+	 */
+	authCredentials: any;
 
 	constructor (route: HotRoute, name: string, onExecute: ServerExecutionFunction | ClientExecutionFunction = null, 
 		type: HTTPMethod = HTTPMethod.POST, onAuthorize: ServerAuthorizationFunction = null, 
-		onRegister: ServerRegistrationFunction = null)
+		onRegister: ServerRegistrationFunction = null, authCredentials: any = null)
 	{
 		this.parentRoute = route;
 		this.name = name;
 		this.type = type;
 		this.isRegistered = false;
+		this.executeSetup = false;
+		this.authCredentials = authCredentials;
 		this.onServerAuthorize = onAuthorize;
 		this.onRegister = onRegister;
 
@@ -90,6 +97,9 @@ export class HotRouteMethod
 	 * is set, this will not call onAuthorize for the parent HotRoute.
 	 * The value returned from here will be passed to onExecute. 
 	 * Undefined returning from here will mean the authorization failed.
+	 * If any exceptions are thrown from this function, they will be sent 
+	 * to the server as an { error: string; } object with the exception 
+	 * message as the error.
 	 */
 	onServerAuthorize?: ServerAuthorizationFunction;
 
@@ -98,6 +108,9 @@ export class HotRouteMethod
 	 * This will stringify any JSON object and send it as a JSON response. 
 	 * If undefined is returned no response will be sent to the server. 
 	 * So the developer would have to send a response using "res".
+	 * If any exceptions are thrown from this function, they will be sent 
+	 * to the server as an { error: string; } object with the exception 
+	 * message as the error.
 	 */
 	onServerExecute?: ServerExecutionFunction;
 	/**

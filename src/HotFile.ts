@@ -270,6 +270,7 @@ export class HotFile implements IHotFile
 		{
 			let executionContent: string = `
 			var Hot = arguments[0];
+
 			`;
 
 			for (let key in args)
@@ -296,7 +297,7 @@ export class HotFile implements IHotFile
 				return ({
 						hot: Hot,
 						output: Hot.Output,
-						persistence: JSON.stringify (Hot.Persistence)
+						data: JSON.stringify (Hot.Data)
 					});
 			}));`;
 
@@ -318,7 +319,7 @@ export class HotFile implements IHotFile
 				throw ex;
 		}
 
-		Hot.Persistence = returnedOutput.hot.Persistence;
+		Hot.Data = returnedOutput.hot.Data;
 		let finalOutput: string = returnedOutput.output;
 		Hot.Output = "";
 
