@@ -1,5 +1,5 @@
 import { HotServer } from "./HotServer";
-import { HotRouteMethod, HTTPMethod } from "./HotRouteMethod";
+import { HotRouteMethod, HTTPMethod, ServerExecutionFunction } from "./HotRouteMethod";
 import { HotClient } from "./HotClient";
 import { HotLog } from "./HotLog";
 
@@ -77,7 +77,7 @@ export class HotRoute
 	 */
 	addMethod (
 		method: HotRouteMethod | string, 
-		executeFunction: (req: any, res: any, authorizedValue: any, jsonObj: any, queryObj: any) => Promise<any> = null,
+		executeFunction: ServerExecutionFunction = null,
 		type: HTTPMethod = HTTPMethod.POST
 		): void
 	{
@@ -99,5 +99,5 @@ export class HotRoute
 	 * called HotRouteMethod. Undefined returning from here will mean 
 	 * the authorization failed.
 	 */
-	onAuthorize: (req: any, res: any) => Promise<any> = null;
+	onAuthorizeUser: (req: any, res: any) => Promise<any> = null;
 }

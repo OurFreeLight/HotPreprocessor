@@ -6,7 +6,7 @@ import { Common } from "./Common";
 
 import { HotPreprocessor } from "../../src/api";
 
-describe ("Browser Tests", () =>
+describe ("Browser Tests - Development Mode", () =>
 	{
 		let common: Common = null;
 		let processor: HotPreprocessor = null;
@@ -48,6 +48,7 @@ Execute this code to debug in browser:
 				var HotClient = HotPreprocessorWeb.HotClient;
 				var HelloWorldAPI = HotPreprocessorTests.HelloWorldAPI;
 				var processor = new HotPreprocessor ();
+				processor.mode = HotPreprocessorWeb.DeveloperMode.Development;
 				window.Hot = HotPreprocessorWeb.Hot;
 				var client = new HotClient (processor);
 				var helloWorldAPI = new HelloWorldAPI ("${common.getUrl ()}", client);
@@ -111,6 +112,6 @@ Execute this code to debug in browser:
 				let elm = await common.driver.wait (until.elementLocated (By.id ("message")));
 				let value: string = await elm.getAttribute ("data-test-object-name");
 
-				expect (value).to.equal (value, "Test object name was incorrect!");
+				expect (value).to.equal ("messageTestObjectName", "Test object name was incorrect!");
 			});
 	});

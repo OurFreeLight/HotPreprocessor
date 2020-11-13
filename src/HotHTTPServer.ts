@@ -310,9 +310,9 @@ export class HotHTTPServer extends HotServer
 					}
 					else
 					{
-						if (route.onAuthorize != null)
+						if (route.onAuthorizeUser != null)
 						{
-							authorizationValue = await route.onAuthorize (req, res);
+							authorizationValue = await route.onAuthorizeUser (req, res);
 
 							if (authorizationValue === undefined)
 								hasAuthorization = false;
@@ -430,10 +430,10 @@ export class HotHTTPServer extends HotServer
 	 */
 	static async getFileUploads (req: express.Request, options: any = { multiples: true }): Promise<Files>
 	{
-		const form = new IncomingForm (options);
-
 		return (await new Promise<Files> ((resolve, reject) =>
 			{
+				const form = new IncomingForm (options);
+		
 				form.parse (req, (err: any, fields: Fields, files: Files) =>
 					{
 						if (err != null)

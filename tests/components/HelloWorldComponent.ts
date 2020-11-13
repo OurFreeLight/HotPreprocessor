@@ -1,4 +1,5 @@
-import { HotPreprocessor, HotComponent, IHotComponent } from "../../src/HotPreprocessorWeb";
+import { HotPreprocessor } from "../../src/HotPreprocessor";
+import { HotComponent, IHotComponent } from "../../src/HotComponent";
 
 import { HelloWorldAPI } from "../server/HelloWorldAPI";
 

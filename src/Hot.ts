@@ -2,8 +2,26 @@ import { HotFile } from "./HotFile";
 import { HotPage } from "./HotPage";
 import { HotPreprocessor } from "./HotPreprocessor";
 import { HotAPI } from "./HotAPI";
+import { HotTestElement } from "./HotTestElement";
 
 import Cookies from "js-cookie";
+
+/**
+ * The available developer modes.
+ */
+export enum DeveloperMode
+{
+	/**
+	 * The default developer mode. No tests will be executed and 
+	 * any test related data will be ignored.
+	 */
+	Production,
+	/**
+	 * For use during development/debugging. All test data will 
+	 * be collected and executed if necessary.
+	 */
+	Development
+}
 
 /**
  * A CSS object to embed.
@@ -29,6 +47,25 @@ export class Hot
 	 * The currently generated page being displayed. This is cleared between every file processed.
 	 */
 	static CurrentPage: HotPage = null;
+	/**
+	 * The arguments passed.
+	 */
+	static Arguments: any = null;
+	/**
+	 * The mode in which this application is running. If it's set to development mode, all testing
+	 * related data will be collected, parsed, and executed if necessary.
+	 */
+	static DeveloperMode = DeveloperMode;
+	/**
+	 * The mode in which this application is running. If it's set to development mode, all testing
+	 * related data will be collected, parsed, and executed if necessary.
+	 */
+	static HotTestElement = HotTestElement;
+	/**
+	 * The mode in which this application is running. If it's set to development mode, all testing
+	 * related data will be collected, parsed, and executed if necessary.
+	 */
+	static Mode: DeveloperMode = DeveloperMode.Production;
 	/**
 	 *The current API used on this page. This is cleared between every file processed.
 	 */

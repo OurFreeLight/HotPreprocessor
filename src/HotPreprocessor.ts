@@ -7,8 +7,9 @@ import { HotFile } from "./HotFile";
 
 import { HotComponent } from "./HotComponent";
 import { HotLog, HotLogLevel } from "./HotLog";
-import { HotClient, HotAPI, HotServer } from "./HotPreprocessorWeb";
-import { tryParse } from "selenium-webdriver/http";
+import { HotAPI } from "./HotAPI";
+import { HotServer } from "./HotServer";
+import { DeveloperMode } from "./Hot";
 
 /**
  * A HotSite to load.
@@ -89,6 +90,10 @@ export class IHotPreprocessor
 	 */
 	api?: HotAPI;
 	/**
+	 * Indicates what type of execution this is.
+	 */
+	mode?: DeveloperMode;
+	/**
 	 * The pages that can be constructed.
 	 */
 	pages?: { [name: string]: HotPage };
@@ -112,6 +117,10 @@ export class HotPreprocessor implements IHotPreprocessor
 	 * Indicates if this is a web build.
 	 */
 	static isWeb: boolean = false;
+	/**
+	 * Indicates what type of execution this is.
+	 */
+	mode: DeveloperMode;
 	/**
 	 * The api that's used to communicate with.
 	 */
@@ -148,6 +157,7 @@ export class HotPreprocessor implements IHotPreprocessor
 	constructor (copy: IHotPreprocessor = {})
 	{
 		this.api = copy.api || null;
+		this.mode = copy.mode || DeveloperMode.Production;
 		this.pages = copy.pages || {};
 		this.components = copy.components || {};
 		this.hotSite = copy.hotSite || null;
@@ -169,6 +179,11 @@ export class HotPreprocessor implements IHotPreprocessor
 %apis_to_load%
 
 	<script type = "text/javascript">
+		let tempMode = 0;
+
+		if (window["Hot"] != null)
+			tempMode = Hot.Mode;
+
 		window.HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
 		window.HotClient = HotPreprocessorWeb.HotClient;
 		window.Hot = HotPreprocessorWeb.Hot;
@@ -176,12 +191,14 @@ export class HotPreprocessor implements IHotPreprocessor
 		%load_hot_site%
 
 		var processor = new HotPreprocessor ();
+		%developer_mode%
 
 		%api_code%
 
 		%public_secrets%
 
-		HotPreprocessor.displayUrl ("%url%", "%title%", processor);
+		processor.mode = tempMode;
+		HotPreprocessor.displayUrl ("%url%", "%title%", processor, %args%);
 	</script>
 </head>
 
@@ -419,7 +436,8 @@ export class HotPreprocessor implements IHotPreprocessor
 	 * Generate the content to send to a client.
 	 */
 	generateContent (routeKey: string, name: string = "", url: string = "./",
-			jsSrcPath: string = "./js/HotPreprocessor.js"): string
+			jsSrcPath: string = "./js/HotPreprocessor.js", passArgs: boolean = true, 
+			args: any = null): string
 	{
 		let apiScripts: string = "";
 		let apiCode: string = "";
@@ -492,8 +510,21 @@ export class HotPreprocessor implements IHotPreprocessor
 		let content: string = this.pageContent;
 		let fixContent = (tempContent: string) =>
 			{
+				let developerModeStr: string = "";
+
+				if (this.mode === DeveloperMode.Development)
+					developerModeStr = `processor.mode = HotPreprocessorWeb.DeveloperMode.Development;`;
+
 				tempContent = tempContent.replace (/\%title\%/g, name);
+
+				if (passArgs === true)
+					tempContent = tempContent.replace (/\%args\%/g, "Hot.Arguments");
+
+				if (args != null)
+					tempContent = tempContent.replace (/\%args\%/g, JSON.stringify (args));
+
 				tempContent = tempContent.replace (/\%hotpreprocessor\_js\_src\%/g, jsSrcPath);
+				tempContent = tempContent.replace (/\%developer\_mode\%/g, developerModeStr);
 				tempContent = tempContent.replace (/\%apis\_to\_load\%/g, apiScripts);
 				tempContent = tempContent.replace (/\%load\_hot\_site\%/g, "");
 				tempContent = tempContent.replace (/\%api\_code\%/g, apiCode);

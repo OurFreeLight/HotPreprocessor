@@ -3,7 +3,8 @@ import * as ppath from "path";
 import { IO, BuildBundle, BuildMeBuild, OS, utils, Application, Settings, libBuildCI } from "libbuildci";
 
 module.exports = async function (buildBundle: BuildBundle, build: BuildMeBuild, 
-		inspectorPortStr: string = "7478", debugType: string = "all", launchContainerStr: string = "true")
+		inspectorPortStr: string = "7478", debugType: string = "all", 
+		launchContainerStr: string = "true", databasePort: string = "3309")
 	{
 		const cwd: string = process.cwd ();
 		let inspectorPort: number = parseInt (inspectorPortStr);
@@ -18,6 +19,9 @@ module.exports = async function (buildBundle: BuildBundle, build: BuildMeBuild,
 
 		if (debugType === "all")
 			args += `${cwd}/build/tests/**/*.js`;
+
+		if (debugType === "parsing")
+			args += `${cwd}/build/tests/parsing/**/*.js`;
 
 		if (debugType === "browser")
 			args += `${cwd}/build/tests/browser/**/*.js`;
@@ -35,6 +39,7 @@ module.exports = async function (buildBundle: BuildBundle, build: BuildMeBuild,
 
 		let shutdownContainer = async () =>
 			{
+				this.settings.info ("Stopping docker container: mariadb-hotpreprocessor-tests");
 				await libBuildCI.exec (buildBundle, `docker stop mariadb-hotpreprocessor-tests`);
 				await libBuildCI.exec (buildBundle, `docker rm mariadb-hotpreprocessor-tests`);
 			};
@@ -49,7 +54,8 @@ module.exports = async function (buildBundle: BuildBundle, build: BuildMeBuild,
 					await shutdownContainer ();
 			}
 
-			await libBuildCI.exec (buildBundle, `docker run -d --name="mariadb-hotpreprocessor-tests" -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cdO1KjwiC8ksOqCV1s0 -e MYSQL_DATABASE=freelight mariadb`);
+			this.settings.info ("Starting docker container: mariadb-hotpreprocessor-tests");
+			await libBuildCI.exec (buildBundle, `docker run -d --name="mariadb-hotpreprocessor-tests" -p ${databasePort}:3306 -e MYSQL_ROOT_PASSWORD=cdO1KjwiC8ksOqCV1s0 -e MYSQL_DATABASE=freelight mariadb`);
 
 			// Wait for the container to start.
 			if ((debugType === "all") || (debugType === "db"))

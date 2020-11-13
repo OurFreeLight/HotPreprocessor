@@ -17,10 +17,11 @@ module.exports = {
 					use: [{
 							loader: "ts-loader",
 							options: {
-									transpileOnly: true
+									transpileOnly: true,
+									configFile: "tsconfig-web.json"
 								}
 						}],
-					exclude: new RegExp ("node_modules")
+					exclude: /node_modules/
 				}]
 		},
 		plugins: [
@@ -32,10 +33,15 @@ module.exports = {
 			extensions: [".tsx", ".ts", ".js"]
 		},
 		node: {
-			fs: "empty"
+			fs: "empty",
+			crypto: "empty",
+			stream: "empty",
+			net: "empty",
+			tls: "empty",
+			child_process: "empty"
 		},
 		externals: {
-			hotpreprocessor: "empty"
+			hotpreprocessor: "HotPreprocessorWeb"
 		},
 		output: {
 			filename: "HotPreprocessorTests.js",

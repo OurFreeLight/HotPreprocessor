@@ -65,6 +65,7 @@
   },
   "include": [
     "./src/",
+    "./src/HotSetAsWeb.ts",
     "./tests/"
   ],
   "exclude": [

@@ -2,6 +2,13 @@ import { Hot } from "./Hot";
 import { HotFile } from "./HotFile";
 import { HotPreprocessor } from "./HotPreprocessor";
 import { HotAPI } from "./HotAPI";
+import { HotTestElement } from "./HotTestElement";
+import { HotTestExecutor } from "./HotTestExecutor";
+
+/**
+ * Create a test path for later execution.
+ */
+export type HotTestPath = (executor: HotTestExecutor, ...args: any) => Promise<any>;
 
 /**
  * A page to preprocess.
@@ -25,6 +32,14 @@ export interface IHotPage
 	 * Every file is processed incrementally.
 	 */
 	files?: HotFile[];
+	/**
+	 * The elements to test on this page.
+	 */
+	testElements?: { [name: string]: HotTestElement; };
+	/**
+	 * The test paths to test on this page.
+	 */
+	testPaths?: { [name: string]: HotTestPath; };
 }
 
 /**
@@ -49,6 +64,14 @@ export class HotPage implements IHotPage
 	 * Every file is processed incrementally.
 	 */
 	files: HotFile[];
+	/**
+	 * The elements to test on this page.
+	 */
+	testElements: { [name: string]: HotTestElement; };
+	/**
+	 * The test paths to test on this page.
+	 */
+	testPaths: { [name: string]: HotTestPath; };
 
 	constructor (copy: IHotPage | HotPreprocessor)
 	{
@@ -58,6 +81,8 @@ export class HotPage implements IHotPage
 			this.name = "";
 			this.route = "";
 			this.files = [];
+			this.testElements = {};
+			this.testPaths = {};
 		}
 		else
 		{
@@ -65,6 +90,8 @@ export class HotPage implements IHotPage
 			this.name = copy.name || "";
 			this.route = copy.route || "";
 			this.files = copy.files || [];
+			this.testElements = copy.testElements || {};
+			this.testPaths = copy.testPaths || {};
 		}
 	}
 
@@ -119,5 +146,16 @@ export class HotPage implements IHotPage
 		}
 
 		return (output);
+	}
+
+	/**
+	 * Create a test path.
+	 */
+	async createTestPath (pathName: string, executorFunc: HotTestPath): Promise<void>
+	{
+		if (this.testPaths[pathName] != null)
+			throw new Error (`Test path ${pathName} already exists!`);
+
+		this.testPaths[pathName] = executorFunc;
 	}
 }

@@ -1,9 +1,27 @@
+/**
+ * This file can be used for both server/client side at the same time. So because of that, 
+ * weird tricks have to be done with WebPack to get it to work properly. Still looking for 
+ * ideas on how to make this work more seamlessly.
+ */
 import { HotAPI } from "../../src/HotAPI";
 import { HotRoute } from "../../src/HotRoute";
-import { HotRouteMethod } from "../../src/HotRouteMethod";
 import { HotClient } from "../../src/HotClient";
 import { HotServer } from "../../src/HotServer";
+<<<<<<< Updated upstream
 import { HotHTTPServer } from "../../src/api";
+=======
+import { HotPreprocessor } from "../../src/HotPreprocessor";
+
+/// @fixme This weirdness is due to WebPack. Gotta find another way around this...
+var HotHTTPServer: any = null;
+
+// @ts-ignore
+if (typeof (HotPreprocessorWeb) === "undefined")
+{
+	if (HotPreprocessor.isWeb === false)
+		HotHTTPServer = require ("../../src/HotHTTPServer").HotHTTPServer;
+}
+>>>>>>> Stashed changes
 
 export class HelloWorldAPI extends HotAPI
 {

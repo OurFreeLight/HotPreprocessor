@@ -3,7 +3,7 @@ import * as fs from "fs";
 
 import * as commander from "commander";
 
-import { HotPreprocessor } from "./HotPreprocessorWeb";
+import { HotPreprocessor } from "./HotPreprocessor";
 import { HotHTTPServer } from "./HotHTTPServer";
 import { HotLogLevel } from "./HotLog";
 

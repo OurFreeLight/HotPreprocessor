@@ -3,9 +3,8 @@ import fetch from "cross-fetch";
 import { HotServer } from "./HotServer";
 import { HotRoute } from "./HotRoute";
 import { HotClient } from "./HotClient";
-import { HotRouteMethod } from "./HotPreprocessorWeb";
+import { HotRouteMethod } from "./HotRouteMethod";
 import { HotDB } from "./HotDB";
-import { ServerRegistrationFunction } from "./HotRouteMethod";
 
 /**
  * The API to use.

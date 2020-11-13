@@ -1,5 +1,5 @@
 import { HotPreprocessor, HotSite } from "./HotPreprocessor";
-import { Hot } from "./Hot";
+import { Hot, DeveloperMode } from "./Hot";
 import { HotComponent, IHotComponent } from "./HotComponent";
 import { HotAPI } from "./HotAPI";
 import { HotFile } from "./HotFile";
@@ -9,6 +9,7 @@ import { HotRoute } from "./HotRoute";
 import { HotRouteMethod, HTTPMethod, ServerAuthorizationFunction, ServerExecutionFunction } from "./HotRouteMethod";
 import { HotServer } from "./HotServer";
 import { HotClient } from "./HotClient";
+import { IHotTestElement, HotTestElement } from "./HotTestElement";
 
 HotPreprocessor.isWeb = true;
 
@@ -16,6 +17,7 @@ export {
 		HotPreprocessor,
 		HotSite,
 		Hot,
+		DeveloperMode,
 		HotComponent,
 		IHotComponent,
 		HotAPI,
@@ -28,5 +30,7 @@ export {
 		ServerAuthorizationFunction,
 		ServerExecutionFunction,
 		HotServer,
-		HotClient
+		HotClient,
+		HotTestElement,
+		IHotTestElement
 	};

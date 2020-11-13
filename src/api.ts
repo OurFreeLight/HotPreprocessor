@@ -1,5 +1,5 @@
 import { HotPreprocessor, HotSite } from "./HotPreprocessor";
-import { Hot } from "./Hot";
+import { Hot, DeveloperMode } from "./Hot";
 import { HotComponent, IHotComponent } from "./HotComponent";
 import { HotAPI } from "./HotAPI";
 import { HotFile } from "./HotFile";
@@ -11,6 +11,7 @@ import { HotServer } from "./HotServer";
 import { HotHTTPServer } from "./HotHTTPServer";
 import { HotClient } from "./HotClient";
 import { HotDB, ConnectionStatus } from "./HotDB";
+import { IHotTestElement, HotTestElement } from "./HotTestElement";
 
 // Database stuff
 import { HotDBConnectionInterface } from "./HotDBConnectionInterface";
@@ -28,6 +29,7 @@ export {
 		HotPreprocessor,
 		HotSite,
 		Hot,
+		DeveloperMode,
 		HotComponent,
 		IHotComponent,
 		HotAPI,
@@ -45,6 +47,8 @@ export {
 		HotServer,
 		HotHTTPServer,
 		HotClient,
+		HotTestElement,
+		IHotTestElement,
 		HotDBGenerationType,
 		HotDBConnectionInterface,
 		HotDBSchema,

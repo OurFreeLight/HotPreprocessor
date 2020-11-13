@@ -1,11 +1,13 @@
 # Hotpreprocessor
 Need something similar to PHP in Node.js? We got you barely covered then ;)
 
-Hotpreprocessor is a lightweight server-side or client-side HTML preprocessor. In order to keep Node.js running efficiently, it's best to have Hotpreprocessor execute hott scripts client-side in the client's web browser. Unfortunately, as of 4/23/2020, ES6 is required in the client's web browser in order to execute. This of course will be fixed eventually, so Internet Explorer 11 will be able to execute as well.
+Hotpreprocessor is a server-side or client-side HTML preprocessor. In order to keep Node.js running efficiently, it's best to have Hotpreprocessor execute hott scripts client-side in the client's web browser. Unfortunately, ES6 is currently required in the client's web browser in order to execute. This of course will be fixed eventually, so Internet Explorer 11 will be able to execute as well. Gross, yes, I know.
 
 It's important to keep the number of dependencies required for Hotpreprocessor down to a minimum, so as it can be used in secure environments.
 
 Hotpreprocessor is capable of processing code server-side and client-side.
+
+This project started off originally as just a simple HTML preprocessor, but has grown into something much much more.
 
 [Hott Reference](./docs/classes/hot.md)
 

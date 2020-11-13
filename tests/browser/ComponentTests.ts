@@ -4,7 +4,7 @@ import { By, until } from "selenium-webdriver";
 
 import { Common } from "./Common";
 
-import { HotPreprocessor } from "../../src/HotPreprocessorWeb";
+import { HotPreprocessor } from "../../src/HotPreprocessor";
 
 describe ("Component Tests", () =>
 	{
@@ -52,8 +52,8 @@ Execute this code to debug in browser:
 				var HelloWorld = HotPreprocessorTests.HelloWorld;
 				var HelloWorldAPI = HotPreprocessorTests.HelloWorldAPI;
 				var processor = new HotPreprocessor ();
-				var helloWorldAPI = new HelloWorldAPI ("${common.getUrl ()}");
-				helloWorldAPI.connection = new HotClient (processor);
+				var client = new HotClient (processor);
+				var helloWorldAPI = new HelloWorldAPI ("${common.getUrl ()}", client);
 				helloWorldAPI.connection.api = helloWorldAPI;
 				processor.addComponent (new HelloWorld (processor, helloWorldAPI));
 				await HotPreprocessor.displayUrl ("/tests/browser/ComponentTests.hott", "Hello World Components!", processor);

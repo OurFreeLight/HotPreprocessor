@@ -1,3 +1,4 @@
+import { DeveloperMode } from "./Hot";
 import { HotRoute } from "./HotRoute";
 import { HotServer } from "./HotServer";
 
@@ -9,7 +10,6 @@ export enum HTTPMethod
 	GET = "get",
 	POST = "post"
 }
-
 
 /**
  * A function that will be executed by the server when first registering with Express.
@@ -33,6 +33,24 @@ export type ClientExecutionFunction = (...args: any[]) => Promise<any>;
  * executed.
  */
 export type ServerAuthorizationFunction = (req: any, res: any, jsonObj: any, queryObj: any) => Promise<any>;
+/**
+ * The test case function to execute.
+ */
+export type TestCaseFunction = ((...args: any[]) => Promise<any>) | ((...args: any[]) => any);
+/**
+ * The test case object to pass.
+ */
+export interface TestCaseObject
+{
+	/**
+	 * The name of the test case.
+	 */
+	name: string;
+	/**
+	 * The function to execute.
+	 */
+	func: TestCaseFunction;
+}
 
 /**
  * An API method to make.
@@ -66,10 +84,16 @@ export class HotRouteMethod
 	 * when connecting to the server.
 	 */
 	authCredentials: any;
+	/**
+	 * The test case objects to execute during tests.
+	 */
+	testCases: TestCaseObject[];
 
-	constructor (route: HotRoute, name: string, onExecute: ServerExecutionFunction | ClientExecutionFunction = null, 
-		type: HTTPMethod = HTTPMethod.POST, onAuthorize: ServerAuthorizationFunction = null, 
-		onRegister: ServerRegistrationFunction = null, authCredentials: any = null)
+	constructor (route: HotRoute, name: string, 
+		onExecute: ServerExecutionFunction | ClientExecutionFunction = null, 
+		type: HTTPMethod = HTTPMethod.POST, onServerAuthorize: ServerAuthorizationFunction = null, 
+		onRegister: ServerRegistrationFunction = null, authCredentials: any = null, 
+		testCases: (string | TestCaseFunction)[] | TestCaseFunction[] | TestCaseObject[] = null)
 	{
 		this.parentRoute = route;
 		this.name = name;
@@ -77,8 +101,31 @@ export class HotRouteMethod
 		this.isRegistered = false;
 		this.executeSetup = false;
 		this.authCredentials = authCredentials;
-		this.onServerAuthorize = onAuthorize;
+		this.onServerAuthorize = onServerAuthorize;
 		this.onRegister = onRegister;
+		this.testCases = [];
+
+		if (this.parentRoute.connection.processor.mode === DeveloperMode.Development)
+		{
+			if (testCases != null)
+			{
+				for (let iIdx = 0; iIdx < testCases.length; iIdx++)
+				{
+					let obj = testCases[iIdx];
+
+					if (typeof (obj) === "string")
+					{
+						const name: string = obj;
+						const func: TestCaseFunction = (<TestCaseFunction>testCases[iIdx + 1]);
+
+						this.addTestCase (name, func);
+						iIdx++;
+					}
+					else
+						this.addTestCase (obj);
+				}
+			}
+		}
 
 		if (this.parentRoute.connection instanceof HotServer)
 			this.onServerExecute = onExecute;
@@ -118,4 +165,41 @@ export class HotRouteMethod
 	 * @fixme Is this necessary?
 	 */
 	onClientExecute?: ClientExecutionFunction;
+
+	/**
+	 * Add a new test case.
+	 */
+	addTestCase (newTestCase: TestCaseObject | string | TestCaseFunction, 
+			testCaseFunction: TestCaseFunction = null): void
+	{
+		if (typeof (newTestCase) === "string")
+		{
+			const name: string = newTestCase;
+			const func: TestCaseFunction = testCaseFunction;
+
+			this.testCases.push ({
+					name: name,
+					func: func
+				});
+
+			return;
+		}
+
+		if (typeof (newTestCase) === "function")
+		{
+			const testCaseId: number = this.testCases.length;
+			const name: string = `${this.parentRoute.route}/${this.name} test case ${testCaseId}`;
+			const func: TestCaseFunction = (<TestCaseFunction>newTestCase);
+
+			this.testCases.push ({
+				name: name,
+				func: func
+			});
+
+			return;
+		}
+
+		const testCase: TestCaseObject = (<TestCaseObject>newTestCase);
+		this.testCases.push (testCase);
+	}
 }
