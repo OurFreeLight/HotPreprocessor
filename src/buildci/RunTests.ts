@@ -1,4 +1,5 @@
 import * as ppath from "path";
+import * as child_process from "child_process";
 
 import { IO, BuildBundle, BuildMeBuild, OS, utils, Application, Settings, libBuildCI } from "libbuildci";
 
@@ -54,12 +55,40 @@ module.exports = async function (buildBundle: BuildBundle, build: BuildMeBuild,
 					await shutdownContainer ();
 			}
 
-			this.settings.info ("Starting docker container: mariadb-hotpreprocessor-tests");
-			await libBuildCI.exec (buildBundle, `docker run -d --name="mariadb-hotpreprocessor-tests" -p ${databasePort}:3306 -e MYSQL_ROOT_PASSWORD=cdO1KjwiC8ksOqCV1s0 -e MYSQL_DATABASE=freelight mariadb`);
+			this.settings.info (`Starting docker container: mariadb-hotpreprocessor-tests on port ${databasePort}`);
+			let results = await libBuildCI.exec (buildBundle, 
+				`docker run -d --name="mariadb-hotpreprocessor-tests" -p ${databasePort}:3306 -e MYSQL_ROOT_PASSWORD=cdO1KjwiC8ksOqCV1s0 -e MYSQL_DATABASE=freelight mariadb`
+			);
+			let containerId: string = results.result.stdout;
+			containerId = containerId.trim ();
+			this.settings.info (`Started container with id: ${containerId}`);
 
 			// Wait for the container to start.
 			if ((debugType === "all") || (debugType === "db"))
-				await libBuildCI.sleep (5000);
+			{
+				this.settings.info (`Waiting for container ${containerId} to finish loading...`);
+
+				while (true)
+				{
+					results = await libBuildCI.exec (buildBundle, 
+						`docker exec mariadb-hotpreprocessor-tests mysql --password=cdO1KjwiC8ksOqCV1s0 freelight`
+					);
+					let logs: string = results.result.stdout;
+
+					if (logs === "")
+					{
+						if (results.result.stderr !== "")
+							logs = results.result.stderr;
+					}
+
+					logs = logs.trim ();
+
+					if (logs === "")
+						break;
+
+					await libBuildCI.sleep (100);
+				}
+			}
 		}
 
 		await libBuildCI.exec (buildBundle, `${startApp}${args}`, cwd, { cwd: cwd, shell: true, env: process.env }, true);

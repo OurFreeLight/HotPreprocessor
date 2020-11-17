@@ -10,7 +10,7 @@ describe ("Parsing Tests", () =>
 	{
 		let basePath: string = ppath.normalize (`${process.cwd ()}/tests/parsing/`);
 
-		/*it ("should parse a Hott file correctly", async () =>
+		it ("should parse a Hott file correctly", async () =>
 			{
 				let correctContent: string = fs.readFileSync (
 					ppath.normalize (`${basePath}/hott-files/CorrectHottParseAndExecuteTest.hott`)).toString ();
@@ -109,7 +109,7 @@ describe ("Parsing Tests", () =>
                 let output: string = await processor.process ("Test Page");
 
                 expect (output).to.equal (correctContent);
-            });*/
+            });
             it ("should parse off content straight JS in development mode, ex: ?(JS_Content)", async () =>
                 {
                     let correctContent: string = fs.readFileSync (

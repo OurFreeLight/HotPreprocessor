@@ -93,7 +93,7 @@ export class Common
 		let api: HelloWorldAPI = new HelloWorldAPI (this.getUrl (), this.server);
 		await this.server.setAPI (api);
 
-		return (this.server.listen ());
+		return (await this.server.listen ());
 	}
 
 	/**

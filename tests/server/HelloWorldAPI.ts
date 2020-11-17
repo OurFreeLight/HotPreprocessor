@@ -7,9 +7,6 @@ import { HotAPI } from "../../src/HotAPI";
 import { HotRoute } from "../../src/HotRoute";
 import { HotClient } from "../../src/HotClient";
 import { HotServer } from "../../src/HotServer";
-<<<<<<< Updated upstream
-import { HotHTTPServer } from "../../src/api";
-=======
 import { HotPreprocessor } from "../../src/HotPreprocessor";
 
 /// @fixme This weirdness is due to WebPack. Gotta find another way around this...
@@ -21,7 +18,6 @@ if (typeof (HotPreprocessorWeb) === "undefined")
 	if (HotPreprocessor.isWeb === false)
 		HotHTTPServer = require ("../../src/HotHTTPServer").HotHTTPServer;
 }
->>>>>>> Stashed changes
 
 export class HelloWorldAPI extends HotAPI
 {

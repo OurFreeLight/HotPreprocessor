@@ -33,7 +33,7 @@ describe ("Browser-Server Tests", () =>
 				expect (elm).to.not.equal (null, "Page did not load!");
 				await elm.click ();
 
-				elm = common.driver.findElement (By.id ("testButton"));
+				elm = await common.driver.findElement (By.id ("testButton"));
 				let value: string = await elm.getAttribute ("value");
 				expect (value).to.equal ("Worked!", "Button was not clicked!");
 			});

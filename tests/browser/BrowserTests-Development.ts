@@ -64,7 +64,7 @@ Execute this code to debug in browser:
 				expect (elm).to.not.equal (null, "Page did not load!");
 				await elm.click ();
 
-				elm = common.driver.findElement (By.id ("buttonClicked"));
+				elm = await common.driver.findElement (By.id ("buttonClicked"));
 				let value: string = await elm.getAttribute ("innerHTML");
 				expect (value).to.equal ("Clicked", "Button was not clicked!");
 			});
@@ -77,7 +77,7 @@ Execute this code to debug in browser:
 				elm = await common.driver.wait (until.elementLocated (By.id ("testHelloWorldAPI")));
 				await elm.click ();
 
-				elm = common.driver.findElement (By.id ("buttonClicked"));
+				elm = await common.driver.findElement (By.id ("buttonClicked"));
 				let value: string = await elm.getAttribute ("innerHTML");
 				let jsonObj = JSON.parse (value);
 
@@ -87,7 +87,7 @@ Execute this code to debug in browser:
 				elm = await common.driver.wait (until.elementLocated (By.id ("testHelloWorldAPI2")));
 				await elm.click ();
 
-				elm = common.driver.findElement (By.id ("buttonClicked"));
+				elm = await common.driver.findElement (By.id ("buttonClicked"));
 				value = await elm.getAttribute ("innerHTML");
 				jsonObj = JSON.parse (value);
 
