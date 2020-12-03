@@ -172,10 +172,12 @@ export class HotServer implements IHotServer
 	}
 
 	/**
-	 * Set an API to this server.
+	 * Set an API to this server. This will also set the associated 
+	 * processor to this API as well.
 	 */
 	async setAPI (api: HotAPI): Promise<void>
 	{
+		this.processor.api = api;
 		this.api = api;
 		await this.api.registerRoutes ();
 	}

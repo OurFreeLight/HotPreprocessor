@@ -6,6 +6,8 @@ import * as commander from "commander";
 import { HotPreprocessor } from "./HotPreprocessor";
 import { HotHTTPServer } from "./HotHTTPServer";
 import { HotLogLevel } from "./HotLog";
+import { DeveloperMode } from "./Hot";
+import { HotTesterServer } from "./HotTesterServer";
 
 async function start ()
 {
@@ -44,6 +46,11 @@ async function start ()
 		command.option ("--js-url <url>", "The url to the HotPreprocessor JS", (url: string, previous: any) =>
 			{
 				server.hottFilesAssociatedInfo.jsSrcPath = url;
+			});
+		command.option ("--development-mode", "Set to execute in development mode. This will allow for testing data to be collected and executed", 
+			(value: string, previous: any) =>
+			{
+				processor.mode = DeveloperMode.Development;
 			});
 		command.option ("-h, --http-port <port>", "Set the HTTP port", (port: string, previous: any) =>
 			{
@@ -97,6 +104,9 @@ async function start ()
 
 		if (server.staticRoutes.length < 1)
 			server.addStaticRoute ("/", process.cwd ());
+
+		if (processor.mode === DeveloperMode.Development)
+			await HotTesterServer.startServer ();
 
 		await server.listen ();
 	}

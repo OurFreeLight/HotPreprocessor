@@ -10,6 +10,9 @@ import { HotLog, HotLogLevel } from "./HotLog";
 import { HotAPI } from "./HotAPI";
 import { HotServer } from "./HotServer";
 import { DeveloperMode } from "./Hot";
+import { HotTester } from "./HotTester";
+import { HotTesterAPI } from "./HotTesterAPI";
+import { HotClient } from "./HotClient";
 
 /**
  * A HotSite to load.
@@ -80,15 +83,54 @@ export interface HotSite
 }
 
 /**
+ * The options to use when starting a page.
+ */
+export interface HotStartOptions
+{
+	/**
+	 * The Hott site to load.
+	 */
+	url: string;
+	/**
+	 * The name of the page to load.
+	 */
+	name?: string;
+	/**
+	 * The processor to use to load the page.
+	 */
+	processor?: HotPreprocessor;
+	/**
+	 * Any arguments to pass to the new page.
+	 */
+	args?: any;
+	/**
+	 * The name of the tester to use.
+	 */
+	testerName?: string;
+	/**
+	 * The name of the tester map to use.
+	 */
+	testerMap?: string;
+	/**
+	 * The base url for the tester api.
+	 */
+	testerAPIBaseUrl?: string;
+}
+
+/**
  * The main class that handles all HTML preprocessing, then outputs the 
  * results.
  */
-export class IHotPreprocessor
+export interface IHotPreprocessor
 {
 	/**
 	 * The api that's used to communicate with.
 	 */
 	api?: HotAPI;
+	/**
+	 * The tester api that's used to communicate with.
+	 */
+	testerAPI?: HotAPI;
 	/**
 	 * Indicates what type of execution this is.
 	 */
@@ -118,6 +160,14 @@ export class HotPreprocessor implements IHotPreprocessor
 	 */
 	static isWeb: boolean = false;
 	/**
+	 * Indicates if this is ready for testing.
+	 */
+	static isReadyForTesting: boolean = false;
+	/**
+	 * Executes this event when this page is ready for testing.
+	 */
+	static onReadyForTesting: () => Promise<void> = null;
+	/**
 	 * Indicates what type of execution this is.
 	 */
 	mode: DeveloperMode;
@@ -125,6 +175,10 @@ export class HotPreprocessor implements IHotPreprocessor
 	 * The api that's used to communicate with.
 	 */
 	api: HotAPI;
+	/**
+	 * The tester api that's used to communicate with.
+	 */
+	testerAPI: HotAPI;
 	/**
 	 * The pages that can be constructed.
 	 */
@@ -142,6 +196,10 @@ export class HotPreprocessor implements IHotPreprocessor
 	 */
 	apiContent: string;
 	/**
+	 * The tester api content to use when about to load HotPreprocessor.
+	 */
+	testerApiContent: string;
+	/**
 	 * The page content to use when about to load HotPreprocessor.
 	 */
 	pageContent: string;
@@ -153,10 +211,15 @@ export class HotPreprocessor implements IHotPreprocessor
 	 * The secrets that can be exposed publicly.
 	 */
 	publicSecrets: any;
+	/**
+	 * The secrets that can be exposed publicly.
+	 */
+	testers: { [name: string]: HotTester };
 
 	constructor (copy: IHotPreprocessor = {})
 	{
 		this.api = copy.api || null;
+		this.testerAPI = copy.testerAPI || null;
 		this.mode = copy.mode || DeveloperMode.Production;
 		this.pages = copy.pages || {};
 		this.components = copy.components || {};
@@ -164,9 +227,15 @@ export class HotPreprocessor implements IHotPreprocessor
 		this.apiContent = `
 		var %api_name% = %api_exported_name%.%api_name%;
 		var newHotClient = new HotClient (processor);
-		var newapi = new %api_name% ("%base_url%", newHotClient);
+		var newapi = new %api_name% (%base_url%, newHotClient);
 		newHotClient.api = newapi;
 		processor.api = newapi;`;
+		this.testerApiContent = `
+		var HotTesterAPI = HotPreprocessorWeb.HotTesterAPI;
+		var newHotClient = new HotClient (processor);
+		var newapi = new HotTesterAPI (%base_url%, newHotClient);
+		newHotClient.testerAPI = newapi;
+		processor.testerAPI = newapi;`;
 		this.pageContent = 
 `<!DOCTYPE html>
 <html>
@@ -196,6 +265,7 @@ export class HotPreprocessor implements IHotPreprocessor
 		%api_code%
 
 		%public_secrets%
+		%tester_api%
 
 		processor.mode = tempMode;
 		HotPreprocessor.displayUrl ("%url%", "%title%", processor, %args%);
@@ -208,6 +278,7 @@ export class HotPreprocessor implements IHotPreprocessor
 </html>`;
 		this.logger = new HotLog (HotLogLevel.None);
 		this.publicSecrets = {};
+		this.testers = {};
 	}
 
 	/**
@@ -245,6 +316,20 @@ export class HotPreprocessor implements IHotPreprocessor
 		}
 
 		return (false);
+	}
+
+	/**
+	 * Wait for a number of milliseconds.
+	 */
+	static async wait (numMilliseconds: number): Promise<void>
+	{
+		return (await new Promise ((resolve, reject) =>
+			{
+				setTimeout (() =>
+					{
+						resolve ();
+					}, numMilliseconds);
+			}));
 	}
 
 	/**
@@ -462,10 +547,10 @@ export class HotPreprocessor implements IHotPreprocessor
 						let jsapipath = api.jsapi;
 						apiScripts += `\t<script type = "text/javascript" src = "${jsapipath}"></script>\n`;
 
-						let baseUrl: string = "";
+						let baseUrl: string = "\"\"";
 
 						if (this.api != null)
-							baseUrl = this.api.baseUrl;
+							baseUrl = `\"${this.api.baseUrl}\"`;
 
 						let tempAPIContent: string = this.apiContent;
 						tempAPIContent = tempAPIContent.replace (/\%api\_name\%/g, api.apiName);
@@ -511,9 +596,19 @@ export class HotPreprocessor implements IHotPreprocessor
 		let fixContent = (tempContent: string) =>
 			{
 				let developerModeStr: string = "";
+				let testerAPIStr: string = "";
 
 				if (this.mode === DeveloperMode.Development)
-					developerModeStr = `processor.mode = HotPreprocessorWeb.DeveloperMode.Development;`;
+				{
+					developerModeStr = `tempMode = HotPreprocessorWeb.DeveloperMode.Development;`;
+					testerAPIStr = this.testerApiContent;
+					let baseUrl: string = "location.protocol + \"//\" + location.hostname + \":8182\"";
+
+					if (this.api != null)
+						baseUrl = `\"${this.api.baseUrl}\"`;
+
+					testerAPIStr = testerAPIStr.replace (/\%base\_url\%/g, baseUrl);
+				}
 
 				tempContent = tempContent.replace (/\%title\%/g, name);
 
@@ -525,6 +620,7 @@ export class HotPreprocessor implements IHotPreprocessor
 
 				tempContent = tempContent.replace (/\%hotpreprocessor\_js\_src\%/g, jsSrcPath);
 				tempContent = tempContent.replace (/\%developer\_mode\%/g, developerModeStr);
+				tempContent = tempContent.replace (/\%tester\_api\%/g, testerAPIStr);
 				tempContent = tempContent.replace (/\%apis\_to\_load\%/g, apiScripts);
 				tempContent = tempContent.replace (/\%load\_hot\_site\%/g, "");
 				tempContent = tempContent.replace (/\%api\_code\%/g, apiCode);
@@ -557,6 +653,27 @@ export class HotPreprocessor implements IHotPreprocessor
 					res.send (content);
 				});
 		}
+	}
+
+	/**
+	 * Add a tester for use later.
+	 */
+	addTester (tester: HotTester): void
+	{
+		this.testers[tester.name] = tester;
+	}
+
+	/**
+	 * Execute tests.
+	 */
+	async executeTests (testerName: string, mapName: string): Promise<void>
+	{
+		let tester: HotTester = this.testers[testerName];
+
+		if (tester == null)
+			throw new Error (`Unable to execute tests. Tester ${testerName} does not exist!`);
+
+		await tester.execute (mapName);
 	}
 
 	/**
@@ -594,21 +711,22 @@ export class HotPreprocessor implements IHotPreprocessor
 	/**
 	 * Process a url and get the result.
 	 */
-	static async processUrl (processor: HotPreprocessor, 
-		url: string, name: string = url, args: any = null): Promise<string>
+	static async processUrl (options: HotStartOptions): Promise<string>
 	{
 		let file: HotFile = new HotFile ({
-			"url": url
+			"url": options.url
 		});
 
 		await file.load ();
 		let page: HotPage = new HotPage ({
-				"processor": processor,
-				"name": name,
-				"files": [file]
+				"processor": options.processor,
+				"name": options.name,
+				"files": [file],
+				"testerName": options.testerName,
+				"testerMap": options.testerMap
 			});
-		processor.addPage (page);
-		let result: string = await processor.process (name, args);
+		options.processor.addPage (page);
+		let result: string = await options.processor.process (options.name, options.args);
 
 		return (result);
 	}
@@ -640,7 +758,7 @@ export class HotPreprocessor implements IHotPreprocessor
 	 */
 	static onReady (readyFunc: () => void): void
 	{
-		if (document.readyState === "complete")
+		if ((document.readyState === "complete") || (document.readyState === "interactive"))
 			readyFunc ();
 		else
 			window.addEventListener ("load", readyFunc);
@@ -658,20 +776,157 @@ export class HotPreprocessor implements IHotPreprocessor
 	}
 
 	/**
+	 * Wait for testers to load.
+	 */
+	static async waitForTesters (): Promise<void>
+	{
+		while (HotPreprocessor.isReadyForTesting === false)
+			await HotPreprocessor.wait (10);
+
+		if (HotPreprocessor.onReadyForTesting != null)
+			await HotPreprocessor.onReadyForTesting ();
+	}
+
+	/**
 	 * Process and replace the current HTML page with the hott script from the given url.
 	 * This is meant for web browser use only.
 	 */
-	static async displayUrl (url: string, name: string = url, 
+	static async displayUrl (url: string | HotStartOptions, name: string = null, 
 		processor: HotPreprocessor = null, args: any = null): Promise<HotPreprocessor>
 	{
 		return (new Promise<HotPreprocessor> ((resolve, reject) =>
 			{
 				HotPreprocessor.onReady (async () =>
 					{
+						let options: HotStartOptions = {
+								"url": ""
+							};
+
+						if (name == null)
+						{
+							if (typeof (url) === "string")
+								options.name = url;
+							else
+								options.name = url.name;
+						}
+						else
+							options.name = name;
+
+						if (options.name === "")
+						{
+							if (typeof (url) === "string")
+								options.name = url;
+							else
+								options.name = url.name;
+						}
+
+						if (typeof (url) === "string")
+							options.url = url;
+						else
+						{
+							options.url = url.url;
+
+							if (processor == null)
+							{
+								if (url.processor != null)
+									processor = url.processor;
+							}
+
+							if (args == null)
+							{
+								if (url.args != null)
+									args = url.args;
+							}
+
+							if (url.testerMap != null)
+								options.testerMap = url.testerMap;
+
+							if (url.testerName != null)
+								options.testerName = url.testerName;
+
+							if (url.testerAPIBaseUrl != null)
+								options.testerAPIBaseUrl = url.testerAPIBaseUrl;
+						}
+
 						if (processor == null)
 							processor = new HotPreprocessor ();
 
-						let output: string = await HotPreprocessor.processUrl (processor, url, name, args);
+						if (processor.mode === DeveloperMode.Development)
+						{
+							if (options.testerAPIBaseUrl == null)
+								options.testerAPIBaseUrl = "";
+
+							if (options.testerAPIBaseUrl === "")
+								options.testerAPIBaseUrl = "http://127.0.0.1:8182";
+
+							let client: HotClient = new HotClient (processor);
+							let testerAPI: HotTesterAPI = new HotTesterAPI (options.testerAPIBaseUrl, client);
+							testerAPI.connection.api = testerAPI;
+							processor.testerAPI = testerAPI;
+						}
+
+						options.processor = processor;
+						options.args = args;
+
+						let output: string = await HotPreprocessor.processUrl (options);
+
+						if (processor.mode === DeveloperMode.Development)
+						{
+							output += 
+`<script type = "text/javascript">
+	function hotpreprocessor_isDocumentReady ()
+	{
+		if (window["Hot"] != null)
+		{
+			if (Hot.Mode === HotPreprocessorWeb.DeveloperMode.Development)
+			{
+				let func = async function ()
+					{
+						if (Hot.TesterAPI != null)
+						{
+							let testPaths = {};
+							let testElements = JSON.stringify (Hot.CurrentPage.testElements);
+							let testMaps = JSON.stringify (Hot.CurrentPage.testMaps);
+
+							for (let key in Hot.CurrentPage.testPaths)
+							{
+								let testPath = Hot.CurrentPage.testPaths[key];
+
+								testPaths[key] = testPath.toString ();
+							}
+
+							let testPathsStr = JSON.stringify (testPaths);
+
+							Hot.TesterAPI.tester.pageLoaded ({
+									testerName: Hot.CurrentPage.testerName,
+									testerMap: Hot.CurrentPage.testerMap,
+									pageName: Hot.CurrentPage.name,
+									testElements: testElements,
+									testPaths: testPathsStr
+								}).then (function (resp)
+									{
+										if (resp.error != null)
+										{
+											if (resp.error !== "")
+												throw new Error (resp.error);
+										}
+
+										HotPreprocessorWeb.HotPreprocessor.isReadyForTesting = true;
+									});
+						}
+					};
+
+				if ((document.readyState === "complete") || (document.readyState === "interactive"))
+					func ();
+				else
+					document.addEventListener ("DOMContentLoaded", func);
+			}
+		}
+	}
+
+	hotpreprocessor_isDocumentReady ();
+</script>`;
+						}
 
 						HotPreprocessor.useOutput (output);
 						resolve (processor);

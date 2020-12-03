@@ -1,10 +1,11 @@
 import * as ppath from "path";
 import * as oss from "os";
 
-import { HotPreprocessor, HotHTTPServer, HotLogLevel } from "../../src/api";
+import { HotPreprocessor, HotHTTPServer, HotLogLevel, DeveloperMode } from "../../src/api";
 import { HelloWorldAPI } from "../server/HelloWorldAPI";
 
 import { Builder, WebDriver, Session } from "selenium-webdriver";
+import { HotTesterServer } from "../../src/HotTesterServer";
 
 /**
  * Common testing features
@@ -31,14 +32,19 @@ export class Common
 	 * The HTTP server.
 	 */
 	server: HotHTTPServer;
+	/**
+	 * The tester server.
+	 */
+	testerServer: HotTesterServer;
 
-	constructor ()
+	constructor (processor: HotPreprocessor = new HotPreprocessor ())
 	{
-		this.processor = new HotPreprocessor ();
+		this.processor = processor;
 		this.driver = null;
 		this.capabilities = {};
 		this.session = null;
 		this.server = null;
+		this.testerServer = null;
 	}
 
 	/**
@@ -93,6 +99,12 @@ export class Common
 		let api: HelloWorldAPI = new HelloWorldAPI (this.getUrl (), this.server);
 		await this.server.setAPI (api);
 
+		if (this.processor.mode === DeveloperMode.Development)
+		{
+			let serverStarter = await HotTesterServer.startServer ();
+			this.testerServer = serverStarter.server;
+		}
+
 		return (await this.server.listen ());
 	}
 
@@ -101,6 +113,9 @@ export class Common
 	 */
 	async shutdown (): Promise<void>
 	{
+		if (this.processor.mode === DeveloperMode.Development)
+			await this.testerServer.shutdown ();
+
 		await this.server.shutdown ();
 	}
 }

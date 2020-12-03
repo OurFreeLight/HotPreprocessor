@@ -4,5 +4,7 @@ db/
 client/
 tests/
 
+build-web/HotPreprocessorTests.js
+
 HotSite.json
 *.config.js

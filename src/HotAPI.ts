@@ -7,6 +7,16 @@ import { HotRouteMethod } from "./HotRouteMethod";
 import { HotDB } from "./HotDB";
 
 /**
+ * The type of object to use during event executions.
+ */
+export enum EventExecutionType
+{
+	HotRoute,
+	HotMethod,
+	HotAPI
+}
+
+/**
  * The API to use.
  */
 export abstract class HotAPI
@@ -24,6 +34,10 @@ export abstract class HotAPI
 	 * easy client/server calling.
 	 */
 	createFunctions: boolean;
+	/**
+	 * The database connection.
+	 */
+	executeEventsUsing: EventExecutionType;
 	/**
 	 * The database connection.
 	 */
@@ -52,6 +66,7 @@ export abstract class HotAPI
 		this.connection = connection;
 		this.baseUrl = baseUrl;
 		this.createFunctions = true;
+		this.executeEventsUsing = EventExecutionType.HotRoute;
 		this.db = db;
 		this.authCredentials = null;
 		this.routes = {};
@@ -142,12 +157,15 @@ export abstract class HotAPI
 				let currentRoute: HotRoute = this.routes[routeName];
 				let newRouteMethod: HotRouteMethod = this.routes[routeName].methods[iIdx];
 
+				/*
+				/// @fixme Is this really necessary? A HTTP call is much more preferable, 
+				/// especially for accruate testing.
 				if (this.connection instanceof HotServer)
 				{
 					if (newRouteMethod.onServerExecute != null)
 						newRoute[newRouteMethod.name] = newRouteMethod.onServerExecute;
 				}
-				else
+				else*/
 				{
 					/*
 					/// @fixme Is onClientExecute necessary? I'm thinking the dev can just simply create 
@@ -195,16 +213,24 @@ export abstract class HotAPI
 								if (authCredentials == null)
 								{
 									// @ts-ignore
-									if (Hot != null)
+									if (typeof (Hot) !== "undefined")
 									{
 										// @ts-ignore
-										if (Hot.API[currentRoute.route] != null)
+										if (Hot != null)
 										{
 											// @ts-ignore
-											if (Hot.API[currentRoute.route].authCredentials != null)
+											if (Hot.API != null)
 											{
 												// @ts-ignore
-												authCredentials = Hot.API[currentRoute.route].authCredentials;
+												if (Hot.API[currentRoute.route] != null)
+												{
+													// @ts-ignore
+													if (Hot.API[currentRoute.route].authCredentials != null)
+													{
+														// @ts-ignore
+														authCredentials = Hot.API[currentRoute.route].authCredentials;
+													}
+												}
 											}
 										}
 									}
@@ -290,7 +316,17 @@ export abstract class HotAPI
 			fetchObj["body"] = JSON.stringify (data);
 		}
 
-		let res: any = await fetch (url, fetchObj);
+		let res: any = null;
+		
+		try
+		{
+			res = await fetch (url, fetchObj);
+		}
+		catch (ex)
+		{
+			throw ex;
+		}
+
 		let jsonObj: any = await res.json ();
 
 		return (jsonObj);

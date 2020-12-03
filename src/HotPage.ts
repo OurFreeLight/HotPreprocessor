@@ -3,12 +3,7 @@ import { HotFile } from "./HotFile";
 import { HotPreprocessor } from "./HotPreprocessor";
 import { HotAPI } from "./HotAPI";
 import { HotTestElement } from "./HotTestElement";
-import { HotTestExecutor } from "./HotTestExecutor";
-
-/**
- * Create a test path for later execution.
- */
-export type HotTestPath = (executor: HotTestExecutor, ...args: any) => Promise<any>;
+import { HotTestMap, HotTestPath } from "./HotTestMap";
 
 /**
  * A page to preprocess.
@@ -32,6 +27,14 @@ export interface IHotPage
 	 * Every file is processed incrementally.
 	 */
 	files?: HotFile[];
+	/**
+	 * The associated tester name.
+	 */
+	testerName?: string;
+	/**
+	 * The associated tester map.
+	 */
+	testerMap?: string;
 	/**
 	 * The elements to test on this page.
 	 */
@@ -65,6 +68,14 @@ export class HotPage implements IHotPage
 	 */
 	files: HotFile[];
 	/**
+	 * The associated tester name.
+	 */
+	testerName: string;
+	/**
+	 * The associated tester map.
+	 */
+	testerMap: string;
+	/**
 	 * The elements to test on this page.
 	 */
 	testElements: { [name: string]: HotTestElement; };
@@ -79,6 +90,8 @@ export class HotPage implements IHotPage
 		{
 			this.processor = copy;
 			this.name = "";
+			this.testerName = "";
+			this.testerMap = "";
 			this.route = "";
 			this.files = [];
 			this.testElements = {};
@@ -88,6 +101,8 @@ export class HotPage implements IHotPage
 		{
 			this.processor = copy.processor;
 			this.name = copy.name || "";
+			this.testerName = copy.testerName || "";
+			this.testerMap = copy.testerMap || "";
 			this.route = copy.route || "";
 			this.files = copy.files || [];
 			this.testElements = copy.testElements || {};
@@ -112,6 +127,14 @@ export class HotPage implements IHotPage
 	getAPI (): HotAPI
 	{
 		return (this.processor.api);
+	}
+
+	/**
+	 * Get the tester API associated with this page.
+	 */
+	getTesterAPI (): HotAPI
+	{
+		return (this.processor.testerAPI);
 	}
 
 	/**
@@ -149,13 +172,35 @@ export class HotPage implements IHotPage
 	}
 
 	/**
+	 * Add a test element.
+	 */
+	addTestElement (elm: HotTestElement): void
+	{
+		if (this.testElements[elm.name] != null)
+			throw new Error (`Test element ${elm.name} already exists!`);
+
+		this.testElements[elm.name] = elm;
+	}
+
+	/**
+	 * Get a test element.
+	 */
+	getTestElement (name: string): HotTestElement
+	{
+		if (this.testElements[name] == null)
+			throw new Error (`Test element ${name} doest not exist!`);
+
+		return (this.testElements[name]);
+	}
+
+	/**
 	 * Create a test path.
 	 */
-	async createTestPath (pathName: string, executorFunc: HotTestPath): Promise<void>
+	createTestPath (pathName: string, driverFunc: HotTestPath): void
 	{
 		if (this.testPaths[pathName] != null)
 			throw new Error (`Test path ${pathName} already exists!`);
 
-		this.testPaths[pathName] = executorFunc;
+		this.testPaths[pathName] = driverFunc;
 	}
 }

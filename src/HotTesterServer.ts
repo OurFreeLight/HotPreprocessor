@@ -1,38 +1,24 @@
 import * as http from "http";
 import * as https from "https";
-import * as ppath from "path";
 import * as fs from "fs";
 import { F_OK } from "constants";
 
 import express from "express";
-import { Fields, Files, IncomingForm } from "formidable";
 
 import { HotServer } from "./HotServer";
 import { HotPreprocessor } from "./HotPreprocessor";
 import { HotRoute } from "./HotRoute";
 import { HotRouteMethod, HTTPMethod } from "./HotRouteMethod";
+import { HotTesterAPI } from "./HotTesterAPI";
+import { DeveloperMode } from "./Hot";
+import { HotLogLevel } from "./HotLog";
 import { EventExecutionType, HotAPI } from "./HotAPI";
+import { HotTester } from "./HotTester";
 
 /**
- * A static route.
+ * An API server for use during testing.
  */
-export interface StaticRoute
-{
-	/**
-	 * The route to the files.
-	 */
-	route?: string;
-	/**
-	 * The absolute path to the location of the files to 
-	 * serve on this machine.
-	 */
-	localPath?: string;
-}
-
-/**
- * A HTTP server.
- */
-export class HotHTTPServer extends HotServer
+export class HotTesterServer extends HotServer
 {
 	/**
 	 * The express app to use.
@@ -46,10 +32,6 @@ export class HotHTTPServer extends HotServer
 	 * The HTTPS listener to use.
 	 */
 	httpsListener: https.Server;
-	/**
-	 * The static files and folders to serve.
-	 */
-	staticRoutes: StaticRoute[];
 	/**
 	 * Any non-static routes that need to be added. These 
 	 * will be added during the preregistration phase, before 
@@ -69,27 +51,6 @@ export class HotHTTPServer extends HotServer
 			 */
 			method: (req: express.Request, res: express.Response) => Promise<void>;
 		}[];
-	/**
-	 * Serve hott files when requested.
-	 */
-	serveHottFiles: boolean;
-	/**
-	 * The associated info with any hott files served.
-	 */
-	hottFilesAssociatedInfo: {
-			/**
-			 * The default name for a served Hott file.
-			 */
-			name: string;
-			/**
-			 * The base url for a hott file.
-			 */
-			url: string;
-			/**
-			 * The JavaScript source path.
-			 */
-			jsSrcPath: string;
-		};
 
 	constructor (processor: HotPreprocessor | HotServer, httpPort: number = null, httpsPort: number = null)
 	{
@@ -98,22 +59,15 @@ export class HotHTTPServer extends HotServer
 		this.expressApp = express ();
 		this.httpListener = null;
 		this.httpsListener = null;
-		this.staticRoutes = [];
 		this.routes = [];
-		this.serveHottFiles = false;
-		this.hottFilesAssociatedInfo = {
-				name: "",
-				url: "./",
-				jsSrcPath: "./js/HotPreprocessor.js"
-			};
 
-		if (process.env.LISTEN_ADDR != null)
+		if (process.env.TESTER_LISTEN_ADDR != null)
 		{
-			if (process.env.LISTEN_ADDR !== "")
-				this.listenAddress = process.env.LISTEN_ADDR;
+			if (process.env.TESTER_LISTEN_ADDR !== "")
+				this.listenAddress = process.env.TESTER_LISTEN_ADDR;
 		}
 
-		if (process.env.USE_HTTP != null)
+		if (process.env.TESTER_USE_HTTP != null)
 		{
 			this.ssl = {
 					cert: "",
@@ -128,36 +82,36 @@ export class HotHTTPServer extends HotServer
 		if (httpsPort != null)
 			this.ports.https = httpsPort;
 
-		if (process.env.HTTP_PORT != null)
+		if (process.env.TESTER_HTTP_PORT != null)
 		{
-			if (process.env.HTTP_PORT !== "")
-				this.ports.http = parseInt (process.env.HTTP_PORT);
+			if (process.env.TESTER_HTTP_PORT !== "")
+				this.ports.http = parseInt (process.env.TESTER_HTTP_PORT);
 		}
 
-		if (process.env.HTTPS_PORT != null)
+		if (process.env.TESTER_HTTPS_PORT != null)
 		{
-			if (process.env.HTTPS_PORT !== "")
-				this.ports.https = parseInt (process.env.HTTPS_PORT);
+			if (process.env.TESTER_HTTPS_PORT !== "")
+				this.ports.https = parseInt (process.env.TESTER_HTTPS_PORT);
 		}
 
-		if (process.env.HTTPS_SSL_CERT != null)
+		if (process.env.TESTER_HTTPS_SSL_CERT != null)
 		{
-			if (process.env.HTTPS_SSL_CERT !== "")
-				this.ssl.cert = process.env.HTTPS_SSL_CERT;
+			if (process.env.TESTER_HTTPS_SSL_CERT !== "")
+				this.ssl.cert = process.env.TESTER_HTTPS_SSL_CERT;
 
-			if (process.env.HTTPS_SSL_KEY !== "")
-				this.ssl.key = process.env.HTTPS_SSL_KEY;
+			if (process.env.TESTER_HTTPS_SSL_KEY !== "")
+				this.ssl.key = process.env.TESTER_HTTPS_SSL_KEY;
 
-			if (process.env.HTTPS_SSL_CA !== "")
-				this.ssl.ca = process.env.HTTPS_SSL_CA;
+			if (process.env.TESTER_HTTPS_SSL_CA !== "")
+				this.ssl.ca = process.env.TESTER_HTTPS_SSL_CA;
 		}
 
-		let JSONLimit: string = "1mb";
+		let testerJSONLimit: string = "1mb";
 
-		if (process.env.JSON_LIMIT != null)
+		if (process.env.TESTER_JSON_LIMIT != null)
 		{
-			if (process.env.JSON_LIMIT !== "")
-				JSONLimit = process.env.JSON_LIMIT;
+			if (process.env.TESTER_JSON_LIMIT !== "")
+				testerJSONLimit = process.env.TESTER_JSON_LIMIT;
 		}
 
 		this.expressApp.options ("*", (req: express.Request, res: express.Response, next: express.NextFunction) =>
@@ -173,33 +127,29 @@ export class HotHTTPServer extends HotServer
 		this.expressApp.use ((req: express.Request, res: express.Response, next: express.NextFunction) =>
 			{
 				res.header ("Access-Control-Allow-Origin", "*");
+				res.header ("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
 				res.header ("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
 				next ();
 			});
 		this.expressApp.use (express.urlencoded ({ "extended": true }));
-		this.expressApp.use (express.json ({ "limit": JSONLimit }));
+		this.expressApp.use (express.json ({ "limit": testerJSONLimit }));
 	}
 
 	/**
-	 * Add a static route.
+	 * Add a tester for use later.
 	 */
-	addStaticRoute (route: string | StaticRoute, localPath: string = "."): void
+	addTester (tester: HotTester): void
 	{
-		let staticRoute: StaticRoute = null;
+		this.processor.addTester (tester);
+	}
 
-		if (typeof (route) === "string")
-		{
-			staticRoute = {
-					"route": route,
-					"localPath": localPath
-				};
-		}
-		else
-			staticRoute = route;
-
-		this.staticRoutes.push (staticRoute);
-		this.registerStaticRoute (staticRoute);
+	/**
+	 * Execute tests.
+	 */
+	async executeTests (testerName: string, mapName: string): Promise<void>
+	{
+		return (this.processor.executeTests (testerName, mapName));
 	}
 
 	/**
@@ -215,47 +165,6 @@ export class HotHTTPServer extends HotServer
 			};
 
 		this.routes.push (newRoute);
-	}
-
-	/**
-	 * Serve a directory. This is an alias for addStaticRoute.
-	 */
-	serveDirectory (route: string | StaticRoute, localPath: string = "."): void
-	{
-		this.addStaticRoute (route, localPath);
-	}
-
-	/**
-	 * Register a static route with Express.
-	 */
-	registerStaticRoute (route: StaticRoute): void
-	{
-		this.clearErrorHandlingRoutes ();
-		this.preregisterRoute ();
-		this.expressApp.use (route.route, express.static (ppath.normalize (route.localPath)));
-		this.setErrorHandlingRoutes ();
-	}
-
-	/**
-	 * Get a static route.
-	 */
-	getStaticRoute (route: string): StaticRoute
-	{
-		let foundRoute: StaticRoute = null;
-
-		for (let iIdx = 0; iIdx < this.staticRoutes.length; iIdx++)
-		{
-			let tempRoute: StaticRoute = this.staticRoutes[iIdx];
-
-			if (tempRoute.route === route)
-			{
-				foundRoute = tempRoute;
-
-				break;
-			}
-		}
-
-		return (foundRoute);
 	}
 
 	/**
@@ -418,76 +327,6 @@ export class HotHTTPServer extends HotServer
 
 			this.expressApp[route.type] (route.route, route.method);
 		}
-
-		if (this.serveHottFiles === true)
-		{
-			this.expressApp.use ((req: express.Request, res: express.Response, next: any): void =>
-				{
-					(async () =>
-					{
-						const requestedUrl: string = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
-						let url: URL = new URL (requestedUrl);
-						let sendContent = (fullUrl: URL, path: string): void =>
-							{
-								fullUrl.searchParams.append ("hpserve", "nahfam");
-
-								const content: string = this.processor.generateContent (path, 
-									this.hottFilesAssociatedInfo.name,
-									fullUrl.toString (),
-									this.hottFilesAssociatedInfo.jsSrcPath);
-								res.send (content);
-							};
-
-						if (url.pathname.indexOf (".hott") > -1)
-						{
-							let result: string = "";
-							let hpserve = url.searchParams.get ("hpserve");
-
-							if (hpserve != null)
-								result = hpserve;
-
-							if (result !== "nahfam")
-							{
-								if (await HotHTTPServer.checkIfFileExists (url.pathname) === true)
-								{
-									sendContent (url, url.pathname);
-
-									return;
-								}
-
-								if (await HotHTTPServer.checkIfFileExists (
-									ppath.normalize (`${process.cwd ()}/${url.pathname}`)) === true)
-								{
-									sendContent (url, url.pathname);
-
-									return;
-								}
-							}
-						}
-
-						next ();
-					})();
-				});
-		}
-	}
-
-	/**
-	 * Get all files uploaded.
-	 */
-	static async getFileUploads (req: express.Request, options: any = { multiples: true }): Promise<Files>
-	{
-		return (await new Promise<Files> ((resolve, reject) =>
-			{
-				const form = new IncomingForm (options);
-		
-				form.parse (req, (err: any, fields: Fields, files: Files) =>
-					{
-						if (err != null)
-							throw err;
-		
-						resolve (files);
-					});
-			}));
 	}
 
 	/**
@@ -504,7 +343,7 @@ export class HotHTTPServer extends HotServer
 		{
 			handle404 = (req: express.Request, res: express.Response, next: any): void =>
 				{
-					this.logger.verbose (`404 ${JSON.stringify (req.url)}`);
+					this.logger.verbose (`404 ${JSON.stringify (req.url)} Method: ${req.method}`);
 					res.status (404).send ({ error: "404" });
 				};
 		}
@@ -561,18 +400,6 @@ export class HotHTTPServer extends HotServer
 	}
 
 	/**
-	 * Load a HotSite JSON file. Be sure to call this after attaching 
-	 * your api!
-	 */
-	async loadHotSite (path: string): Promise<HotPreprocessor>
-	{
-		await this.processor.loadHotSite (ppath.normalize (path));
-		this.processor.createExpressRoutes (this.expressApp);
-
-		return (this.processor);
-	}
-
-	/**
 	 * Start listening for requests.
 	 */
 	async listen (): Promise<void>
@@ -591,16 +418,9 @@ export class HotHTTPServer extends HotServer
 							port = this.ports.https;
 						}
 
-						this.logger.info (`Server running at ${protocol}://${this.listenAddress}:${port}/`);
+						this.logger.info (`Tester server running at ${protocol}://${this.listenAddress}:${port}/`);
 						resolve ();
 					};
-
-				for (let iIdx = 0; iIdx < this.staticRoutes.length; iIdx++)
-				{
-					let staticRoute: StaticRoute = this.staticRoutes[iIdx];
-
-					this.registerStaticRoute (staticRoute);
-				}
 
 				if (this.api != null)
 				{
@@ -660,39 +480,37 @@ export class HotHTTPServer extends HotServer
 	}
 
 	/**
+	 * Setup the tester api.
+	 */
+	async setupTesterAPI (baseUrl: string): Promise<void>
+	{
+		let api: HotTesterAPI = new HotTesterAPI (baseUrl, this);
+		await this.setAPI (api);
+	}
+
+	/**
 	 * Start the server.
 	 * 
-	 * @param localStaticPath The public path that contains the HTML, Hott files, images, and 
-	 * all public content. This can also be an array of StaticRoutes.
-	 * @param httpPort The HTTP port to listen on .
+	 * @param httpPort The HTTP port to listen on.
 	 * @param httpsPort The HTTPS port to listen on.
 	 * @param processor The HotPreprocessor or parent server being used for communication.
 	 */
-	static async startServer (localStaticPath: string | StaticRoute[] = null, 
-		httpPort: number = 80, httpsPort: number = 443, 
-		processor: HotServer | HotPreprocessor = null,): 
-			Promise<{ processor: HotServer | HotPreprocessor; server: HotHTTPServer; }>
+	static async startServer (baseUrl: string = `http://127.0.0.1:8182`, 
+		httpPort: number = 8182, httpsPort: number = 4142, 
+		processor: HotServer | HotPreprocessor = null, 
+		logLevel: HotLogLevel = HotLogLevel.Info): 
+			Promise<{ processor: HotServer | HotPreprocessor; server: HotTesterServer; }>
 	{
 		if (processor == null)
-			processor = new HotPreprocessor ();
-
-		let webServer: HotHTTPServer = new HotHTTPServer (processor, httpPort, httpsPort);
-
-		if (localStaticPath == null)
-			localStaticPath = process.cwd ();
-
-		if (typeof (localStaticPath) === "string")
-			webServer.addStaticRoute ("/", localStaticPath);
-		else
 		{
-			for (let iIdx = 0; iIdx < localStaticPath.length; iIdx++)
-			{
-				let staticRoute: StaticRoute = localStaticPath[iIdx];
-
-				webServer.addStaticRoute (staticRoute);
-			}
+			processor = new HotPreprocessor ();
+			processor.mode = DeveloperMode.Development;
 		}
 
+		let webServer: HotTesterServer = new HotTesterServer (processor, httpPort, httpsPort);
+		webServer.logger.logLevel = logLevel;
+
+		await webServer.setupTesterAPI (baseUrl);
 		await webServer.listen ();
 
 		return ({ processor: processor, server: webServer });

@@ -71,6 +71,10 @@ export class Hot
 	 */
 	static API: HotAPI = null;
 	/**
+	 * The API being used by the tester.
+	 */
+	static TesterAPI: HotAPI = null;
+	/**
 	 * Contains the buffer to output. This is cleared between every file processed.
 	 */
 	static Output: string = "";

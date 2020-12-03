@@ -24,10 +24,11 @@ describe ("Server Tests", () =>
 			{
 				common = new Common ();
 
+				await common.startServer ();
+
 				processor = common.processor;
 				server = common.server;
 
-				await common.startServer ();
 				url = common.getUrl ();
 			});
 		after (async () =>

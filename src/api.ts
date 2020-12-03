@@ -1,7 +1,7 @@
-import { HotPreprocessor, HotSite } from "./HotPreprocessor";
+import { HotPreprocessor, HotStartOptions, IHotPreprocessor, HotSite } from "./HotPreprocessor";
 import { Hot, DeveloperMode } from "./Hot";
 import { HotComponent, IHotComponent } from "./HotComponent";
-import { HotAPI } from "./HotAPI";
+import { HotAPI, EventExecutionType } from "./HotAPI";
 import { HotFile } from "./HotFile";
 import { HotLog, HotLogLevel } from "./HotLog";
 import { HotPage } from "./HotPage";
@@ -11,7 +11,10 @@ import { HotServer } from "./HotServer";
 import { HotHTTPServer } from "./HotHTTPServer";
 import { HotClient } from "./HotClient";
 import { HotDB, ConnectionStatus } from "./HotDB";
+import { HotTester } from "./HotTester";
+import { HotTesterAPI } from "./HotTesterAPI";
 import { IHotTestElement, HotTestElement } from "./HotTestElement";
+import { HotTestDriver } from "./HotTestDriver";
 
 // Database stuff
 import { HotDBConnectionInterface } from "./HotDBConnectionInterface";
@@ -26,13 +29,16 @@ import { MySQLSchemaTable } from "./schemas/mysql/MySQLSchemaTable";
 HotPreprocessor.isWeb = false;
 
 export {
-		HotPreprocessor,
+		HotPreprocessor, 
+		HotStartOptions, 
+		IHotPreprocessor,
 		HotSite,
 		Hot,
 		DeveloperMode,
 		HotComponent,
 		IHotComponent,
 		HotAPI,
+		EventExecutionType,
 		HotFile,
 		HotLog,
 		HotLogLevel,
@@ -47,8 +53,11 @@ export {
 		HotServer,
 		HotHTTPServer,
 		HotClient,
+		HotTester,
+		HotTesterAPI,
 		HotTestElement,
 		IHotTestElement,
+		HotTestDriver,
 		HotDBGenerationType,
 		HotDBConnectionInterface,
 		HotDBSchema,

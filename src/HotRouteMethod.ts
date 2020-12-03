@@ -1,4 +1,5 @@
 import { DeveloperMode } from "./Hot";
+import { HotTestDriver } from "./HotPreprocessorWeb";
 import { HotRoute } from "./HotRoute";
 import { HotServer } from "./HotServer";
 
@@ -36,7 +37,7 @@ export type ServerAuthorizationFunction = (req: any, res: any, jsonObj: any, que
 /**
  * The test case function to execute.
  */
-export type TestCaseFunction = ((...args: any[]) => Promise<any>) | ((...args: any[]) => any);
+export type TestCaseFunction = ((driver: HotTestDriver) => Promise<any>) | ((driver: HotTestDriver) => any);
 /**
  * The test case object to pass.
  */
@@ -87,7 +88,9 @@ export class HotRouteMethod
 	/**
 	 * The test case objects to execute during tests.
 	 */
-	testCases: TestCaseObject[];
+	testCases: {
+			[name: string]: TestCaseObject;
+		};
 
 	constructor (route: HotRoute, name: string, 
 		onExecute: ServerExecutionFunction | ClientExecutionFunction = null, 
@@ -103,7 +106,7 @@ export class HotRouteMethod
 		this.authCredentials = authCredentials;
 		this.onServerAuthorize = onServerAuthorize;
 		this.onRegister = onRegister;
-		this.testCases = [];
+		this.testCases = {};
 
 		if (this.parentRoute.connection.processor.mode === DeveloperMode.Development)
 		{
@@ -177,29 +180,29 @@ export class HotRouteMethod
 			const name: string = newTestCase;
 			const func: TestCaseFunction = testCaseFunction;
 
-			this.testCases.push ({
+			this.testCases[name] = {
 					name: name,
 					func: func
-				});
+				};
 
 			return;
 		}
 
 		if (typeof (newTestCase) === "function")
 		{
-			const testCaseId: number = this.testCases.length;
+			const testCaseId: number = Object.keys (this.testCases).length;
 			const name: string = `${this.parentRoute.route}/${this.name} test case ${testCaseId}`;
 			const func: TestCaseFunction = (<TestCaseFunction>newTestCase);
 
-			this.testCases.push ({
-				name: name,
-				func: func
-			});
+			this.testCases[name] = {
+					name: name,
+					func: func
+				};
 
 			return;
 		}
 
 		const testCase: TestCaseObject = (<TestCaseObject>newTestCase);
-		this.testCases.push (testCase);
+		this.testCases[testCase.name] = testCase;
 	}
 }

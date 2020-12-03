@@ -17,6 +17,10 @@ export class HotClient
 	 */
 	api: HotAPI;
 	/**
+	 * The tester API to use.
+	 */
+	testerAPI: HotAPI;
+	/**
 	 * The type of server.
 	 */
 	type: HotServerType;
@@ -29,6 +33,7 @@ export class HotClient
 	{
 		this.processor = processor;
 		this.api = null;
+		this.testerAPI = null;
 		this.type = HotServerType.HTTP;
 		this.logger = processor.logger;
 	}

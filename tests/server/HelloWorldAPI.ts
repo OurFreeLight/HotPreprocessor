@@ -8,6 +8,8 @@ import { HotRoute } from "../../src/HotRoute";
 import { HotClient } from "../../src/HotClient";
 import { HotServer } from "../../src/HotServer";
 import { HotPreprocessor } from "../../src/HotPreprocessor";
+import { HotTestDriver } from "../../src/HotTestDriver";
+import { HTTPMethod } from "../../src/HotRouteMethod";
 
 /// @fixme This weirdness is due to WebPack. Gotta find another way around this...
 var HotHTTPServer: any = null;
@@ -28,6 +30,17 @@ export class HelloWorldAPI extends HotAPI
 		let route: HotRoute = new HotRoute (connection, "hello_world");
 		route.addMethod ("hello", this.helloCalled);
 		route.addMethod ("file_upload", this.fileUpload);
+		route.addMethod ("test_response", this.testResponse, HTTPMethod.POST, [
+						"TestAPIResponse",
+						async (driver: HotTestDriver): Promise<any> =>
+						{
+							// @ts-ignore
+							let resp = await this.hello_world.test_response ({
+									message: "YAY!"
+								});
+							driver.assert (resp === "received", "Response was not received!");
+						}
+					]);
 		this.addRoute (route);
 	}
 
@@ -69,6 +82,19 @@ export class HelloWorldAPI extends HotAPI
 		}
 
 		return ({ msg: `File ${filename} uploaded to ${filepath}!`, path: filepath });
+	}
+
+	/**
+	 * Test a response from the api.
+	 */
+	async testResponse (req: any, res: any, authorizedValue: any, jsonObj: any, queryObj: any): Promise<any>
+	{
+		let message: string = jsonObj.message;
+
+		if (message !== "YAY!")
+			throw new Error ("You did not yay me bro.");
+
+		return ("received");
 	}
 
 	/**

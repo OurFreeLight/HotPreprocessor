@@ -1,8 +1,11 @@
-import { HotHTTPServer } from "../../src/HotHTTPServer";
+import * as ppath from "path";
+import * as oss from "os";
+
+import { HotPreprocessor, HotHTTPServer, HotLogLevel, DeveloperMode } from "../../src/api";
+import { HelloWorldAPI } from "../server/HelloWorldAPI";
 
 import { Builder, WebDriver, Session } from "selenium-webdriver";
-import { HotPreprocessor } from "../../src/HotPreprocessor";
-import { HotLogLevel } from "../../src/HotLog";
+import { HotTesterServer } from "../../src/HotTesterServer";
 
 /**
  * Common testing features
@@ -29,14 +32,19 @@ export class Common
 	 * The HTTP server.
 	 */
 	server: HotHTTPServer;
+	/**
+	 * The tester server.
+	 */
+	testerServer: HotTesterServer;
 
-	constructor ()
+	constructor (processor: HotPreprocessor = new HotPreprocessor ())
 	{
-		this.processor = new HotPreprocessor ();
+		this.processor = processor;
 		this.driver = null;
 		this.capabilities = {};
 		this.session = null;
-		this.server = new HotHTTPServer (this.processor);
+		this.server = null;
+		this.testerServer = null;
 	}
 
 	/**
@@ -48,6 +56,12 @@ export class Common
 				browserName: "chrome",
 				platformName: "windows"
 			};
+
+		if (oss.platform () === "linux")
+			this.capabilities["platformName"] = "linux";
+
+		if (oss.platform () === "darwin")
+			this.capabilities["platformName"] = "mac";
 
 		if (process.env.NODE_TLS_REJECT_UNAUTHORIZED != null)
 		{
@@ -69,17 +83,29 @@ export class Common
 	}
 
 	/**
-	 * Start the micro web server.
+	 * Start the web server.
 	 */
-	async startServer (): Promise<void>
+	async startServer (serveHottFiles: boolean = false): Promise<void>
 	{
+		this.server = new HotHTTPServer (this.processor);
+
 		this.server.logger.logLevel = HotLogLevel.All;
 		this.server.staticRoutes.push ({
 				"route": "/",
-				"localPath": `${process.cwd ()}/`
+				"localPath": ppath.normalize (`${process.cwd ()}/`)
 			});
+		this.server.serveHottFiles = serveHottFiles;
+		this.server.hottFilesAssociatedInfo.jsSrcPath = "/build-web/HotPreprocessor.js";
+		let api: HelloWorldAPI = new HelloWorldAPI (this.getUrl (), this.server);
+		await this.server.setAPI (api);
 
-		return (this.server.listen ());
+		if (this.processor.mode === DeveloperMode.Development)
+		{
+			let serverStarter = await HotTesterServer.startServer ();
+			this.testerServer = serverStarter.server;
+		}
+
+		return (await this.server.listen ());
 	}
 
 	/**
@@ -87,6 +113,9 @@ export class Common
 	 */
 	async shutdown (): Promise<void>
 	{
+		if (this.processor.mode === DeveloperMode.Development)
+			await this.testerServer.shutdown ();
+
 		await this.server.shutdown ();
 	}
 }

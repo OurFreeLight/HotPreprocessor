@@ -1,5 +1,5 @@
 import { HotServer } from "./HotServer";
-import { HotRouteMethod, HTTPMethod, ServerExecutionFunction } from "./HotRouteMethod";
+import { HotRouteMethod, HTTPMethod, ServerExecutionFunction, TestCaseFunction, TestCaseObject } from "./HotRouteMethod";
 import { HotClient } from "./HotClient";
 import { HotLog } from "./HotLog";
 
@@ -76,15 +76,38 @@ export class HotRoute
 	 * Add an API method to this route.
 	 */
 	addMethod (
-		method: HotRouteMethod | string, 
+		method: HotRouteMethod | string,
 		executeFunction: ServerExecutionFunction = null,
-		type: HTTPMethod = HTTPMethod.POST
+		type: HTTPMethod = HTTPMethod.POST,
+		testCases: (string | TestCaseFunction)[] | TestCaseFunction[] | TestCaseObject[] = null
 		): void
 	{
 		if (typeof (method) === "string")
-			method = new HotRouteMethod (this, method, executeFunction, type);
+			method = new HotRouteMethod (this, method, executeFunction, type, null, null, null, testCases);
 
 		this.methods.push (method);
+	}
+
+	/**
+	 * Get a method by it's name.
+	 */
+	getMethod (name: string): HotRouteMethod
+	{
+		let foundMethod: HotRouteMethod = null;
+
+		for (let iIdx = 0; iIdx < this.methods.length; iIdx++)
+		{
+			let method: HotRouteMethod = this.methods[iIdx];
+
+			if (method.name === name)
+			{
+				foundMethod = method;
+
+				break;
+			}
+		}
+
+		return (foundMethod);
 	}
 
 	/**

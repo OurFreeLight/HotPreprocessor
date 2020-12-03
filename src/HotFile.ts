@@ -337,6 +337,7 @@ export class HotFile implements IHotFile
 		Hot.CurrentPage = this.page;
 		Hot.PublicSecrets = this.page.processor.publicSecrets;
 		Hot.API = this.page.getAPI ();
+		Hot.TesterAPI = this.page.getTesterAPI ();
 
 		// Assemble the JS to evaluate. This will take all content outside of 
 		// <* and *> and wrap a Hot.echo around it. Any JS found inside of the 
@@ -546,7 +547,7 @@ Hot.echo (\`data-test-object-name = "\${testElm.name}" data-test-object-func = "
 					if (Hot.CurrentPage.testElements[testElm.name] != null)
 						throw new Error (\`Test element \${testElm.name} already exists!\`);
 
-					Hot.CurrentPage.testElements[testElm.name] = testElm;
+					Hot.CurrentPage.addTestElement (testElm);
 				}
 				catch (ex)
 				{
