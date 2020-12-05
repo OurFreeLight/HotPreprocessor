@@ -424,6 +424,7 @@ export class HotFile implements IHotFile
 
 							try
 							{
+								// Check to see if it be parsed. If so, stringify it.
 								JSON.parse (regexFound2);
 								foundStr = JSON.stringify (regexFound2);
 							}
@@ -483,6 +484,7 @@ Hot.echo (\`data-test-object-name = "\${testElm.name}" data-test-object-func = "
 		{
 			let executionContent: string = `
 			var Hot = arguments[0];
+			var PassedHotFile = arguments[1];
 
 			`;
 
@@ -499,6 +501,14 @@ Hot.echo (\`data-test-object-name = "\${testElm.name}" data-test-object-func = "
 
 				executionContent += newVar;
 			}
+
+			let contentName: string = this.name;
+
+			if (contentName === "")
+				contentName = this.localFile;
+
+			if (contentName === "")
+				contentName = this.url;
 
 			executionContent += `
 
@@ -559,13 +569,13 @@ Hot.echo (\`data-test-object-name = "\${testElm.name}" data-test-object-func = "
 				return (testElm);
 			}
 
-			async function runContent ()
+			async function runContent (CurrentHotFile)
 			{\n`;
 			executionContent += output;
 			executionContent += `
 			}
 
-			return (runContent ().then (() =>
+			return (runContent (PassedHotFile).then (() =>
 			{
 				return ({
 						hot: Hot,
@@ -576,7 +586,7 @@ Hot.echo (\`data-test-object-name = "\${testElm.name}" data-test-object-func = "
 
 			/// @fixme Prior to execution compile any TypeScript and make it ES5 compatible.
 			let func: Function = new Function (executionContent);
-			returnedOutput = await func.apply (this, [Hot]);
+			returnedOutput = await func.apply (this, [Hot, this]);
 		}
 		catch (ex)
 		{

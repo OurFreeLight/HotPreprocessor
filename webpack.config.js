@@ -30,7 +30,10 @@ module.exports = {
 				}),
 			new webpack.ProvidePlugin ({
 					Cookies: "js-cookie/src/js.cookie.js"
-				})
+				}),
+			new webpack.IgnorePlugin (
+					/HotTesterMochaSelenium|HotTestSeleniumDriver|HotTesterMocha/
+				)
 		],
 		resolve: {
 			extensions: [".tsx", ".ts", ".js"]

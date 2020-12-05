@@ -1,22 +1,31 @@
 import { HotPreprocessor, HotStartOptions, IHotPreprocessor, HotSite } from "./HotPreprocessor";
 import { Hot, DeveloperMode } from "./Hot";
 import { HotComponent, IHotComponent } from "./HotComponent";
-import { HotAPI, EventExecutionType } from "./HotAPI";
 import { HotFile } from "./HotFile";
 import { HotLog, HotLogLevel } from "./HotLog";
 import { HotPage } from "./HotPage";
+
+// Server stuff
+import { HotAPI, EventExecutionType } from "./HotAPI";
 import { HotRoute } from "./HotRoute";
 import { HotRouteMethod, HTTPMethod, ServerAuthorizationFunction, ServerExecutionFunction } from "./HotRouteMethod";
 import { HotServer } from "./HotServer";
 import { HotHTTPServer } from "./HotHTTPServer";
 import { HotClient } from "./HotClient";
-import { HotDB, ConnectionStatus } from "./HotDB";
+
+// Testing stuff
+import { HotTestDriver } from "./HotTestDriver";
+import { IHotTestElement, HotTestElement } from "./HotTestElement";
 import { HotTester } from "./HotTester";
 import { HotTesterAPI } from "./HotTesterAPI";
-import { IHotTestElement, HotTestElement } from "./HotTestElement";
-import { HotTestDriver } from "./HotTestDriver";
+import { HotTesterMocha } from "./HotTesterMocha";
+import { HotTesterMochaSelenium } from "./HotTesterMochaSelenium";
+import { HotTesterServer } from "./HotTesterServer";
+import { HotTestMap } from "./HotTestMap";
+import { HotTestSeleniumDriver } from "./HotTestSeleniumDriver";
 
 // Database stuff
+import { HotDB, ConnectionStatus } from "./HotDB";
 import { HotDBConnectionInterface } from "./HotDBConnectionInterface";
 import { HotDBGenerationType, HotDBSchema } from "./schemas/HotDBSchema";
 
@@ -53,8 +62,13 @@ export {
 		HotServer,
 		HotHTTPServer,
 		HotClient,
+		HotTesterServer,
 		HotTester,
 		HotTesterAPI,
+		HotTesterMocha,
+		HotTesterMochaSelenium,
+		HotTestMap,
+		HotTestSeleniumDriver,
 		HotTestElement,
 		IHotTestElement,
 		HotTestDriver,

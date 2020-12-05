@@ -5,7 +5,6 @@ import { HotServer } from "./HotServer";
 import { HotTestDriver } from "./HotTestDriver";
 import { HotTester } from "./HotTester";
 import { HotTestMap, HotTestPath, HotTestPage } from "./HotTestMap";
-import { HotTesterServer } from "./HotTesterServer";
 
 export class HotTesterAPI extends HotAPI
 {
@@ -60,6 +59,9 @@ export class HotTesterAPI extends HotAPI
 		let tester: HotTester = this.connection.processor.testers[testerName];
 		let testMap: HotTestMap = tester.testMaps[testerMap];
 
+		if (testMap == null)
+			throw new Error (`TesterAPI: Tester map ${testerMap} does not exist!`);
+
 		testMap.pages[pageName] = {
 				"testElements": {},
 				"testPaths": {}
@@ -84,7 +86,8 @@ export class HotTesterAPI extends HotAPI
 		if ((testerName === "") || (testerMap === ""))
 			throw new Error ("TesterAPI: Not all required json objects were passed.");
 
-		let server: HotTesterServer = (<HotTesterServer>this.connection);
+		let server: HotServer = (<HotServer>this.connection);
+		// @ts-ignore
 		await server.executeTests (testerName, testerMap);
 
 		return (true);

@@ -27,7 +27,10 @@ module.exports = {
 		plugins: [
 			new webpack.DefinePlugin ({
 					__VERSION__: `\"${packageVersion}\"`
-				})
+				}),
+			new webpack.IgnorePlugin (
+					/HotTesterMochaSelenium|HotTestSeleniumDriver|HotTesterMocha/
+				)
 		],
 		resolve: {
 			extensions: [".tsx", ".ts", ".js"]

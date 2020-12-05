@@ -56,6 +56,7 @@ export class HotTesterServer extends HotServer
 	{
 		super (processor);
 
+		this.listenAddress = "127.0.0.1";
 		this.expressApp = express ();
 		this.httpListener = null;
 		this.httpsListener = null;

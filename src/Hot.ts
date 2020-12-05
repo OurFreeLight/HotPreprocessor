@@ -130,6 +130,22 @@ export class Hot
 	}
 
 	/**
+	 * Run an already loaded file and echo out it's contents.
+	 */
+	static async runFile (fileName: string, args: any[] = null): Promise<void>
+	{
+		let file: HotFile = Hot.CurrentPage.processor.getFile (fileName);
+		/// @fixme Does the file need to be deep cloned first?
+		//let clonedFile: HotFile = new HotFile (Object.assign ({}, file));
+		let tempFile: HotFile = file;
+
+		tempFile.page = this.CurrentPage;
+		let content: string = await tempFile.process (args);
+
+		Hot.echo (content);
+	}
+
+	/**
 	 * Get the content of a file.
 	 */
 	static async getFile (path: HotFile | string, args: any[] = null): Promise<string>
