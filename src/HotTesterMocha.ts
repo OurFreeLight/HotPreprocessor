@@ -23,10 +23,6 @@ export class HotTesterMocha extends HotTester
 	 * The suite to execute.
 	 */
 	suite: Suite;
-	/**
-	 * The base url to navigate to.
-	 */
-    baseUrl: string;
     /**
      * The Mocha beforeAll event to call before any tests are executed.
      */
@@ -40,23 +36,41 @@ export class HotTesterMocha extends HotTester
 		testMaps: { [name: string]: HotTestMap; } = {},beforeAll: () => Promise<void> = null, 
 		afterAll: () => Promise<void> = null)
 	{
-		super (processor, name, driver, testMaps);
+		super (processor, name, baseUrl, driver, testMaps);
 
         this.mocha = null;
         this.timeout = 10000;
 		this.suite = null;
-        this.baseUrl = baseUrl;
         this.beforeAll = beforeAll;
         this.afterAll = afterAll;
 	}
 
 	/**
+	 * Executed when setting up the tester.
+	 */
+	async setup (): Promise<void>
+	{
+	}
+
+	/**
+	 * Executed when destroying up the tester.
+	 */
+	async destroy (): Promise<void>
+	{
+	}
+
+	/**
 	 * Executed when tests are started.
 	 */
-	async onTestStart (destination: HotDestination): Promise<boolean>
+	async onTestStart (destination: HotDestination, destinationKey: string = ""): Promise<boolean>
 	{
+		let destinationName: string = "";
+
+		if (destinationKey !== "")
+			destinationName = ` - ${destinationKey}`;
+
 		this.mocha = new Mocha ();
-		this.suite = Mocha.Suite.create (this.mocha.suite, `${destination.page} Tests`);
+		this.suite = Mocha.Suite.create (this.mocha.suite, `${destination.page}${destinationName} Tests`);
 		this.suite.timeout (this.timeout);
 
         if (this.beforeAll != null)

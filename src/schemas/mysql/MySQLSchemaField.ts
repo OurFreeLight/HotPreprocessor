@@ -359,6 +359,9 @@ export class MySQLSchemaField implements IMySQLSchemaField
 		{
 			additionalStr += "NOT NULL ";
 
+			if (defaultValue === null)
+				throw new Error (`Field ${this.name} cannot have a default value of null when notNull is set to true.`);
+
 			if (defaultValue !== "")
 				defaultValue = `${strAroundDefaultValue}${defaultValue}${strAroundDefaultValue}`;
 		}

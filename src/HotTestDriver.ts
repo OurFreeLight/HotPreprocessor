@@ -1,3 +1,4 @@
+import { HotTester } from "./HotPreprocessorWeb";
 import { HotTestElement } from "./HotTestElement";
 import { HotTestPage } from "./HotTestMap";
 
@@ -17,6 +18,34 @@ export abstract class HotTestDriver
 	}
 
 	/**
+	 * Get a test object by it's name. If a * is used, it will be used as a 
+	 * wildcard for the object's name. If a > is used, then the name will 
+	 * be treated as a CSS selector.
+	 */
+	parseTestObject (name: string): string
+	{
+		let pos: number = name.indexOf ("*");
+		let wildcard: string = "";
+
+		if (pos > -1)
+		{
+			name = name.replace (/\*/, "");
+			wildcard = "*";
+		}
+
+		let selector: string = `[data-test-object-name${wildcard}='${name}']`;
+		pos = name.indexOf (">");
+
+		if (pos > -1)
+		{
+			name = name.replace (/\>/, "");
+			selector = name;
+		}
+
+		return (selector);
+	}
+
+	/**
 	 * Wait for a number of milliseconds.
 	 */
 	async wait (numMilliseconds: number): Promise<void>
@@ -31,25 +60,38 @@ export abstract class HotTestDriver
 	}
 
 	/**
+	 * Disconnect this server or destroy anything associated with this HotTestDriver.
+	 */
+	abstract destroy (): Promise<void>;
+
+	/**
+	 * Navigate to a url.
+	 */
+	abstract navigateToUrl (url: string): Promise<void>;
+	/**
 	 * Wait for a HotTestElement to load.
 	 */
-	async waitForTestElement? (name: string | HotTestElement): Promise<any>;
+	abstract waitForTestElement (name: string | HotTestElement, mustBeVisible?: boolean): Promise<any>;
 	/**
 	 * Find a HotTestElement to utilize.
 	 */
-	async findTestElement? (name: string | HotTestElement): Promise<any>;
+	abstract findTestElement (name: string | HotTestElement, mustBeVisible?: boolean): Promise<any>;
 	/**
 	 * Run a HotTestElement command.
 	 */
-	async runCommand? (testElm: HotTestElement): Promise<any>;
+	abstract runCommand (testElm: string | HotTestElement, funcName?: string, valueStr?: string): Promise<any>;
 	/**
 	 * An expression to test.
 	 */
-	async assertElementValue? (name: string | HotTestElement, value: any, errorMessage?: string): Promise<any>;
+	abstract assertElementValue (name: string | HotTestElement, value: any, errorMessage?: string): Promise<any>;
 	/**
 	 * An expression to test.
 	 */
-	async assert? (value: any, errorMessage?: string): Promise<any>;
+	async assert (value: any, errorMessage: string = ""): Promise<any>
+	{
+		if (! (value))
+			throw new Error (errorMessage);
+	}
 
 	/**
 	 * Run a series of test elements.
@@ -68,6 +110,11 @@ export abstract class HotTestDriver
 			if (typeof (execution) === "string")
 			{
 				testElm = this.page.testElements[execution];
+
+				/// @fixme This is going to wreck selecting test elements by wildcards.
+				if (testElm == null)
+					throw new Error (`HotTestDriver: Unable to find test element ${execution}`);
+
 				func = testElm.func;
 				value = testElm.value;
 			}
@@ -77,14 +124,24 @@ export abstract class HotTestDriver
 				let name: string = execution[0];
 				testElm = this.page.testElements[name];
 
-				func = testElm.func;
-				value = testElm.value;
-
-				if (execution.length > 1)
+				// This null catch is specifically to help find wildcard test elements.
+				if (testElm == null)
+				{
+					testElm = new HotTestElement (name);
 					func = execution[1];
-
-				if (execution.length > 2)
 					value = execution[2];
+				}
+				else
+				{
+					func = testElm.func;
+					value = testElm.value;
+
+					if (execution.length > 1)
+						func = execution[1];
+
+					if (execution.length > 2)
+						value = execution[2];
+				}
 			}
 
 			testElm.func = func;

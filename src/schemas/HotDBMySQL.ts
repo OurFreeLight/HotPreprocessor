@@ -149,8 +149,11 @@ export class HotDBMySQL extends HotDB<mysql.Connection, MySQLResults, MySQLSchem
 					{
 						let result: boolean = false;
 
-						if (results.length > 0)
-							result = true;
+						if (results != null)
+						{
+							if (results.length > 0)
+								result = true;
+						}
 
 						resolve (result);
 					});
@@ -192,8 +195,11 @@ export class HotDBMySQL extends HotDB<mysql.Connection, MySQLResults, MySQLSchem
 					{
 						let tempResults = null;
 
-						if (results.length > 0)
-							tempResults = results[0];
+						if (results != null)
+						{
+							if (results.length > 0)
+								tempResults = results[0];
+						}
 
 						resolve ({ error: err, results: tempResults, fields: fields });
 					});

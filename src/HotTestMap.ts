@@ -30,6 +30,7 @@ export class HotTestMap
 	 * The order in which paths are to be taken. Each destination is a string 
 	 * in a type -> path order. The type could be either a page or api route. 
 	 * For example:
+	 * ```
 	 * [
 	 *      "page:signin_page -> signin_path",
 	 *      "page:account_page -> change_username_path",
@@ -38,12 +39,18 @@ export class HotTestMap
 	 * 		"page:account_page -> signout_path",
 	 * 		"api:account_api_route -> signout_route_method -> signout_test_path"
 	 * ]
+	 * ```
 	 * 
 	 * The first string to the left of the -> will always be the type, such as a 
 	 * page or an api route. Any strings to the right of the -> will be a path, even 
 	 * when chaining addtional ->'s.
 	 */
-	destinations: string[];
+	destinations: string[] | { [name: string]: string; };
+	/**
+	 * The order in which destinations are supposed to execute. This is 
+	 * ignored if the destinations are an array.
+	 */
+	destinationOrder: string[];
 	/**
 	 * The test pages to execute.
 	 */
@@ -51,9 +58,11 @@ export class HotTestMap
 			[name: string]: HotTestPage
 		};
 
-	constructor (destinations: string[] = [], pages: { [name: string]: HotTestPage } = {})
+	constructor (destinations: string[] | { [name: string]: string; } = [], 
+		pages: { [name: string]: HotTestPage } = {}, destinationOrder: string[] = [])
 	{
 		this.destinations = destinations;
+		this.destinationOrder = destinationOrder;
 		this.pages = pages;
 	}
 }

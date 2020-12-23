@@ -25,49 +25,75 @@ export class HotTesterAPI extends HotAPI
 	 */
 	async pageLoaded (req: any, res: any, authorizedValue: any, jsonObj: any, queryObj: any): Promise<any>
 	{
-		let testerName: string = jsonObj["testerName"];
-		let testerMap: string = jsonObj["testerMap"];
-		let pageName: string = jsonObj["pageName"];
-		let testElements = jsonObj["testElements"];
-		let testPathsStrs = jsonObj["testPaths"];
+		let testerObj: {
+				testerName: string;
+				testerMap: string;
+				pageName: string;
+				testElements: any;
+				testPathsStrs: any;
+			} = {
+				testerName: jsonObj["testerName"],
+				testerMap: jsonObj["testerMap"],
+				pageName: jsonObj["pageName"],
+				testElements: jsonObj["testElements"],
+				testPathsStrs: jsonObj["testPaths"]
+			};
 
-		if ((testerName == null) || (testerMap == null) || (pageName == null) || 
-			(testElements == null) || (testPathsStrs == null))
+		for (let key in testerObj)
 		{
-			throw new Error ("TesterAPI: Not all required json objects were passed.");
+			// @ts-ignore
+			let testObj: any = testerObj[key];
+			let throwError: boolean = false;
+
+			if (testObj == null)
+				throwError = true;
+
+			if ((testerObj.testerName == "") || 
+				(testerObj.testerMap === "") || 
+				(testerObj.testElements === "") || 
+				(testerObj.testPathsStrs === ""))
+			{
+				throwError = true;
+			}
+
+			if (throwError === true)
+				throw new Error (`TesterAPI: Object ${key} was not passed.`);
 		}
 
-		if ((testerName == null) || (testerMap === "") || (testElements === "") || 
-			(testPathsStrs === ""))
-		{
-			throw new Error ("TesterAPI: Not all required json objects were passed.");
-		}
-
-		testElements = JSON.parse (testElements);
-		testPathsStrs = JSON.parse (testPathsStrs);
+		testerObj.testElements = JSON.parse (testerObj.testElements);
+		testerObj.testPathsStrs = JSON.parse (testerObj.testPathsStrs);
 
 		let testPaths: { [name: string]: HotTestPath; } = {};
 
-		for (let key in testPathsStrs)
+		for (let key in testerObj.testPathsStrs)
 		{
 			let testPath: (driver: HotTestDriver, ...args: any) => Promise<any> = 
-				eval (testPathsStrs[key]);
+				eval (testerObj.testPathsStrs[key]);
 
 			testPaths[key] = testPath;
 		}
 
-		let tester: HotTester = this.connection.processor.testers[testerName];
-		let testMap: HotTestMap = tester.testMaps[testerMap];
+		let tester: HotTester = this.connection.processor.testers[testerObj.testerName];
+
+		if (tester == null)
+			throw new Error (`TesterAPI: Tester ${testerObj.testerMap} does not exist!`);
+
+		let testMap: HotTestMap = tester.testMaps[testerObj.testerMap];
 
 		if (testMap == null)
-			throw new Error (`TesterAPI: Tester map ${testerMap} does not exist!`);
+			throw new Error (`TesterAPI: Tester map ${testerObj.testerMap} does not exist!`);
 
-		testMap.pages[pageName] = {
+		testMap.pages[testerObj.pageName] = {
 				"testElements": {},
 				"testPaths": {}
 			};
-		testMap.pages[pageName].testElements = testElements;
-		testMap.pages[pageName].testPaths = testPaths;
+		testMap.pages[testerObj.pageName].testElements = testerObj.testElements;
+		testMap.pages[testerObj.pageName].testPaths = testPaths;
+
+		tester.finishedLoading = true;
+
+		if (tester.onFinishedLoading != null)
+			await tester.onFinishedLoading ();
 
 		return (true);
 	}
@@ -87,8 +113,13 @@ export class HotTesterAPI extends HotAPI
 			throw new Error ("TesterAPI: Not all required json objects were passed.");
 
 		let server: HotServer = (<HotServer>this.connection);
+
 		// @ts-ignore
-		await server.executeTests (testerName, testerMap);
+		if (server.executeTests != null)
+		{
+			// @ts-ignore
+			await server.executeTests (testerName, testerMap);
+		}
 
 		return (true);
 	}

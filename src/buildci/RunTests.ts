@@ -18,6 +18,9 @@ module.exports = async function (buildBundle: BuildBundle, build: BuildMeBuild,
 		let args: string = `--timeout 10000 --colors "`;
 		let launchContainer: boolean = utils.parseBoolean (launchContainerStr);
 
+		if (debugType === "database")
+			debugType = "db";
+
 		if (debugType === "all")
 			args += `${cwd}/build/tests/**/*.js`;
 
@@ -26,6 +29,9 @@ module.exports = async function (buildBundle: BuildBundle, build: BuildMeBuild,
 
 		if (debugType === "browser")
 			args += `${cwd}/build/tests/browser/**/*.js`;
+
+		if (debugType === "hotsite")
+			args += `${cwd}/build/tests/hotsite/**/*.js`;
 
 		if (debugType === "server")
 			args += `${cwd}/build/tests/server/**/*.js`;
@@ -57,7 +63,7 @@ module.exports = async function (buildBundle: BuildBundle, build: BuildMeBuild,
 
 			this.settings.info (`Starting docker container: mariadb-hotpreprocessor-tests on port ${databasePort}`);
 			let results = await libBuildCI.exec (buildBundle, 
-				`docker run -d --name="mariadb-hotpreprocessor-tests" -p ${databasePort}:3306 -e MYSQL_ROOT_PASSWORD=cdO1KjwiC8ksOqCV1s0 -e MYSQL_DATABASE=freelight mariadb`
+				`docker run -d --name="mariadb-hotpreprocessor-tests" -p ${databasePort}:3306 -e MYSQL_ROOT_PASSWORD=cdO1KjwiC8ksOqCV1s0 -e MYSQL_DATABASE=freelight -e MYSQL_USER=5NKVBAt7OrzrumQyQVs -e MYSQL_PASSWORD=1BBrZbKYRUM7oiMA5oY mariadb`
 			);
 			let containerId: string = results.result.stdout;
 			containerId = containerId.trim ();

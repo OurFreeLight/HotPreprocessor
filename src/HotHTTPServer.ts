@@ -70,11 +70,17 @@ export class HotHTTPServer extends HotServer
 			method: (req: express.Request, res: express.Response) => Promise<void>;
 		}[];
 	/**
-	 * Serve hott files when requested.
+	 * Serve hott files when requested. This value will be overwritten by whatever 
+	 * value is set to server.serveHottFiles in HotSite.json.
 	 */
 	serveHottFiles: boolean;
 	/**
-	 * The associated info with any hott files served.
+	 * Do not serve these hott files.
+	 */
+	ignoreHottFiles: { [name: string]: boolean };
+	/**
+	 * The associated info with any hott files served. All values here will be 
+	 * overwritten by whatever values are set in the server object in HotSite.json.
 	 */
 	hottFilesAssociatedInfo: {
 			/**
@@ -100,7 +106,8 @@ export class HotHTTPServer extends HotServer
 		this.httpsListener = null;
 		this.staticRoutes = [];
 		this.routes = [];
-		this.serveHottFiles = false;
+		this.serveHottFiles = true;
+		this.ignoreHottFiles = {};
 		this.hottFilesAssociatedInfo = {
 				name: "",
 				url: "./",
@@ -263,123 +270,136 @@ export class HotHTTPServer extends HotServer
 	 */
 	async registerRoute (route: HotRoute): Promise<void>
 	{
-		if (route.onRegister != null)
+		try
 		{
-			if (await route.onRegister () === false)
-				return;
-		}
-
-		this.clearErrorHandlingRoutes ();
-		this.preregisterRoute ();
-
-		for (let iIdx = 0; iIdx < route.methods.length; iIdx++)
-		{
-			let method: HotRouteMethod = route.methods[iIdx];
-
-			if (method.isRegistered === true)
-				continue;
-
-			if (method.onRegister != null)
+			if (route.onRegister != null)
 			{
-				if (await method.onRegister () === false)
-					continue;
+				if (await route.onRegister () === false)
+					return;
 			}
 
-			let methodName: string = "/";
+			this.clearErrorHandlingRoutes ();
+			this.preregisterRoute ();
 
-			if (route.version !== "")
-				methodName += `${route.version}/`;
+			for (let iIdx = 0; iIdx < route.methods.length; iIdx++)
+			{
+				let method: HotRouteMethod = route.methods[iIdx];
 
-			if (route.prefix !== "")
-				methodName += `${route.prefix}/`;
+				if (method.isRegistered === true)
+					continue;
 
-			if (route.route !== "")
-				methodName += `${route.route}/`;
-
-			methodName += method.name;
-			method.isRegistered = true;
-
-			this.expressApp[method.type] (methodName, 
-				async (req: express.Request, res: express.Response) =>
+				if (method.onRegister != null)
 				{
-					let hasAuthorization: boolean = true;
-					let authorizationValue: any = null;
-					let jsonObj: any = req.body;
-					let queryObj: any = req.query;
-					let api: HotAPI = route.connection.api;
-					let thisObj: any = route;
+					if (await method.onRegister () === false)
+						continue;
+				}
 
-					if (api.executeEventsUsing === EventExecutionType.HotAPI)
-						thisObj = api;
+				let methodName: string = "/";
 
-					if (api.executeEventsUsing === EventExecutionType.HotMethod)
-						thisObj = method;
+				if (route.version !== "")
+					methodName += `${route.version}/`;
 
-					this.logger.verbose (`${req.method} ${methodName}, JSON: ${JSON.stringify (jsonObj)}, Query: ${JSON.stringify (queryObj)}`);
+				if (route.prefix !== "")
+					methodName += `${route.prefix}/`;
 
-					if (method.onServerAuthorize != null)
+				if (route.route !== "")
+					methodName += `${route.route}/`;
+
+				methodName += method.name;
+				method.isRegistered = true;
+
+				this.expressApp[method.type] (methodName, 
+					async (req: express.Request, res: express.Response) =>
 					{
-						try
-						{
-							authorizationValue = 
-								await method.onServerAuthorize.call (thisObj, req, res, jsonObj, queryObj);
-						}
-						catch (ex)
-						{
-							this.logger.verbose (`Authorization error: ${ex.message}`);
-							res.json ({ error: ex.message });
-							hasAuthorization = false;
+						let hasAuthorization: boolean = true;
+						let authorizationValue: any = null;
+						let jsonObj: any = req.body;
+						let queryObj: any = req.query;
+						let api: HotAPI = route.connection.api;
+						let thisObj: any = route;
 
-							return;
-						}
+						if (api.executeEventsUsing === EventExecutionType.HotAPI)
+							thisObj = api;
 
-						if (authorizationValue === undefined)
-							hasAuthorization = false;
-					}
-					else
-					{
-						if (route.onAuthorizeUser != null)
+						if (api.executeEventsUsing === EventExecutionType.HotMethod)
+							thisObj = method;
+
+						this.logger.verbose (`${req.method} ${methodName}, JSON: ${JSON.stringify (jsonObj)}, Query: ${JSON.stringify (queryObj)}`);
+
+						if (method.onServerAuthorize != null)
 						{
-							authorizationValue = await route.onAuthorizeUser (req, res);
+							try
+							{
+								authorizationValue = 
+									await method.onServerAuthorize.call (thisObj, req, res, jsonObj, queryObj);
+							}
+							catch (ex)
+							{
+								this.logger.verbose (`Authorization error: ${ex.message}`);
+								res.json ({ error: ex.message });
+								hasAuthorization = false;
+
+								return;
+							}
 
 							if (authorizationValue === undefined)
 								hasAuthorization = false;
 						}
-					}
-
-					this.logger.verbose (`${req.method} ${methodName}, Authorized: ${hasAuthorization}, Authorization Value: ${authorizationValue}`);
-
-					if (hasAuthorization === true)
-					{
-						if (method.onServerExecute != null)
+						else
 						{
-							try
+							if (route.onAuthorizeUser != null)
 							{
-								let result: any = 
-									await method.onServerExecute.call (
-										thisObj, req, res, authorizationValue, jsonObj, queryObj);
+								authorizationValue = await route.onAuthorizeUser (req, res);
 
-								this.logger.verbose (`${req.method} ${methodName}, Response: ${result}`);
-
-								if (result !== undefined)
-									res.json (result);
-							}
-							catch (ex)
-							{
-								this.logger.verbose (`Execution error: ${ex.message}`);
-								res.json ({ error: ex.message });
+								if (authorizationValue === undefined)
+									hasAuthorization = false;
 							}
 						}
-					}
-					else
-					{
-						res.json (route.errors["not_authorized"]);
-						this.logger.verbose (`${req.method} ${methodName}, not_authorized`);
-					}
-				});
-		}
 
-		this.setErrorHandlingRoutes ();
+						this.logger.verbose (`${req.method} ${methodName}, Authorized: ${hasAuthorization}, Authorization Value: ${authorizationValue}`);
+
+						if (hasAuthorization === true)
+						{
+							if (method.onServerExecute != null)
+							{
+								try
+								{
+									let result: any = 
+										await method.onServerExecute.call (
+											thisObj, req, res, authorizationValue, jsonObj, queryObj);
+
+									this.logger.verbose (`${req.method} ${methodName}, Response: ${result}`);
+
+									if (result !== undefined)
+										res.json (result);
+								}
+								catch (ex)
+								{
+									this.logger.verbose (`Execution error: ${ex.message}`);
+									res.json ({ error: ex.message });
+								}
+							}
+						}
+						else
+						{
+							res.json (route.errors["not_authorized"]);
+							this.logger.verbose (`${req.method} ${methodName}, not_authorized`);
+						}
+					});
+			}
+
+			this.setErrorHandlingRoutes ();
+		}
+		catch (ex)
+		{
+			let msg: string = ex.message;
+
+			if (ex.stack != null)
+				msg = ex.stack;
+
+			this.logger.error (`HotHTTPServer error: ${msg}`);
+			throw ex;
+		}
 	}
 
 	/**
@@ -419,7 +439,31 @@ export class HotHTTPServer extends HotServer
 			this.expressApp[route.type] (route.route, route.method);
 		}
 
-		if (this.serveHottFiles === true)
+		let serveHottFiles: boolean = this.serveHottFiles;
+
+		if (this.processor.hotSite != null)
+		{
+			if (this.processor.hotSite.server != null)
+			{
+				if (this.processor.hotSite.server.serveHottFiles != null)
+					serveHottFiles = this.processor.hotSite.server.serveHottFiles;
+			}
+
+			if (this.processor.hotSite.routes != null)
+			{
+				// Ignore any hott files from any routes. The routes will return the 
+				// hott files themselves.
+				for (let key in this.processor.hotSite.routes)
+				{
+					let route = this.processor.hotSite.routes[key];
+					let filename: string = ppath.basename (route.url);
+
+					this.ignoreHottFiles[filename] = true;
+				}
+			}
+		}
+
+		if (serveHottFiles === true)
 		{
 			this.expressApp.use ((req: express.Request, res: express.Response, next: any): void =>
 				{
@@ -427,40 +471,46 @@ export class HotHTTPServer extends HotServer
 					{
 						const requestedUrl: string = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
 						let url: URL = new URL (requestedUrl);
-						let sendContent = (fullUrl: URL, path: string): void =>
-							{
-								fullUrl.searchParams.append ("hpserve", "nahfam");
+						const urlFilepath: string = url.pathname;
+						const filepath: string = ppath.basename (urlFilepath);
 
-								const content: string = this.processor.generateContent (path, 
-									this.hottFilesAssociatedInfo.name,
-									fullUrl.toString (),
-									this.hottFilesAssociatedInfo.jsSrcPath);
-								res.send (content);
-							};
-
-						if (url.pathname.indexOf (".hott") > -1)
+						if (this.ignoreHottFiles[filepath] == null)
 						{
-							let result: string = "";
-							let hpserve = url.searchParams.get ("hpserve");
+							let sendContent = (fullUrl: URL, path: string): void =>
+								{
+									fullUrl.searchParams.append ("hpserve", "nahfam");
+	
+									const content: string = this.processor.generateContent (path, 
+										this.hottFilesAssociatedInfo.name,
+										fullUrl.toString (),
+										this.hottFilesAssociatedInfo.jsSrcPath);
+									res.send (content);
+								};
 
-							if (hpserve != null)
-								result = hpserve;
-
-							if (result !== "nahfam")
+							if (urlFilepath.indexOf (".hott") > -1)
 							{
-								if (await HotHTTPServer.checkIfFileExists (url.pathname) === true)
+								let result: string = "";
+								let hpserve = url.searchParams.get ("hpserve");
+
+								if (hpserve != null)
+									result = hpserve;
+
+								if (result !== "nahfam")
 								{
-									sendContent (url, url.pathname);
+									if (await HotHTTPServer.checkIfFileExists (urlFilepath) === true)
+									{
+										sendContent (url, urlFilepath);
 
-									return;
-								}
+										return;
+									}
 
-								if (await HotHTTPServer.checkIfFileExists (
-									ppath.normalize (`${process.cwd ()}/${url.pathname}`)) === true)
-								{
-									sendContent (url, url.pathname);
+									if (await HotHTTPServer.checkIfFileExists (
+										ppath.normalize (`${process.cwd ()}/${urlFilepath}`)) === true)
+									{
+										sendContent (url, urlFilepath);
 
-									return;
+										return;
+									}
 								}
 							}
 						}
@@ -561,18 +611,6 @@ export class HotHTTPServer extends HotServer
 	}
 
 	/**
-	 * Load a HotSite JSON file. Be sure to call this after attaching 
-	 * your api!
-	 */
-	async loadHotSite (path: string): Promise<HotPreprocessor>
-	{
-		await this.processor.loadHotSite (ppath.normalize (path));
-		this.processor.createExpressRoutes (this.expressApp);
-
-		return (this.processor);
-	}
-
-	/**
 	 * Start listening for requests.
 	 */
 	async listen (): Promise<void>
@@ -580,81 +618,163 @@ export class HotHTTPServer extends HotServer
 		let promise: Promise<void> = new Promise<void> (
 			async (resolve, reject) =>
 			{
-				let completedSetup = () =>
-					{
-						let protocol: string = "http";
-						let port: number = this.ports.http;
-
-						if (this.ssl.cert !== "")
+				try
+				{
+					let completedSetup = () =>
 						{
-							protocol = "https";
-							port = this.ports.https;
+							let protocol: string = "http";
+							let port: number = this.ports.http;
+
+							if (this.ssl.cert !== "")
+							{
+								protocol = "https";
+								port = this.ports.https;
+							}
+
+							this.logger.info (`Server running at ${protocol}://${this.listenAddress}:${port}/`);
+							resolve ();
+						};
+
+					if (this.processor.hotSite != null)
+					{
+						if (this.processor.hotSite.serveDirectories != null)
+						{
+							for (let iIdx = 0; iIdx < this.processor.hotSite.serveDirectories.length; iIdx++)
+							{
+								let directory = this.processor.hotSite.serveDirectories[iIdx];
+				
+								this.staticRoutes.push ({
+										"route": directory.route,
+										"localPath": ppath.normalize (directory.localPath)
+									});
+							}
+						}
+					}
+
+					this.processor.createExpressRoutes (this.expressApp);
+
+					for (let iIdx = 0; iIdx < this.staticRoutes.length; iIdx++)
+					{
+						let staticRoute: StaticRoute = this.staticRoutes[iIdx];
+
+						this.registerStaticRoute (staticRoute);
+					}
+
+					if (this.api != null)
+					{
+						if (this.api.onPreRegister != null)
+						{
+							let continueRegistering: boolean = await this.api.onPreRegister ();
+
+							if (continueRegistering === false)
+								return;
 						}
 
-						this.logger.info (`Server running at ${protocol}://${this.listenAddress}:${port}/`);
-						resolve ();
-					};
+						// Process pre registration for the routes and methods.
+						for (let key in this.api.routes)
+						{
+							let route: HotRoute = this.api.routes[key];
 
-				for (let iIdx = 0; iIdx < this.staticRoutes.length; iIdx++)
-				{
-					let staticRoute: StaticRoute = this.staticRoutes[iIdx];
+							if (route.onPreRegister != null)
+								await route.onPreRegister ();
 
-					this.registerStaticRoute (staticRoute);
-				}
-
-				if (this.api != null)
-				{
-					if (this.api.onPreRegister != null)
-					{
-						let continueRegistering: boolean = await this.api.onPreRegister ();
-
-						if (continueRegistering === false)
-							return;
-					}
-
-					await this.api.registerRoutes ();
-
-					if (this.api.onPostRegister != null)
-					{
-						let continueOn: boolean = await this.api.onPostRegister ();
-
-						if (continueOn === false)
-							return;
-					}
-				}
-
-				if (this.ssl.cert === "")
-				{
-					this.httpListener = http.createServer (this.expressApp);
-					this.httpListener.listen (this.ports.http, this.listenAddress, completedSetup);
-				}
-				else
-				{
-					if (this.redirectHTTPtoHTTPS === true)
-					{
-						this.httpListener = http.createServer ((req: http.IncomingMessage, res: http.ServerResponse) =>
+							for (let iIdx = 0; iIdx < route.methods.length; iIdx++)
 							{
-								let host: string = req.headers["host"];
+								let method: HotRouteMethod = route.methods[iIdx];
 
-								res.writeHead (301, {
-										"Location": `https://${host}${req.url}`
-									});
-								res.end ();
-							});
-						this.httpListener.listen (this.ports.http, this.listenAddress, () =>
+								if (method.onPreRegister != null)
+									await method.onPreRegister ();
+							}
+						}
+
+						await this.api.registerRoutes ();
+
+						// Process post registration for the API.
+						if (this.api.onPostRegister != null)
+						{
+							let continueOn: boolean = await this.api.onPostRegister ();
+
+							if (continueOn === false)
+								return;
+						}
+
+						// Process post registration for the routes and methods.
+						for (let key in this.api.routes)
+						{
+							let route: HotRoute = this.api.routes[key];
+
+							if (route.onPostRegister != null)
+								await route.onPostRegister ();
+
+							for (let iIdx = 0; iIdx < route.methods.length; iIdx++)
 							{
-								this.logger.info (`Redirecting HTTP(${this.ports.http}) traffic to HTTPS(${this.ports.https})`);
-							});
+								let method: HotRouteMethod = route.methods[iIdx];
+
+								if (method.onPostRegister != null)
+									await method.onPostRegister ();
+							}
+						}
 					}
 
-					this.httpsListener = https.createServer ({
-							cert: this.ssl.cert,
-							key: this.ssl.key,
-							ca: this.ssl.ca
-						}, this.expressApp);
-					this.httpsListener.listen (this.ports.https, this.listenAddress, completedSetup);
+					if (this.ssl.cert === "")
+					{
+						this.httpListener = http.createServer (this.expressApp);
+						this.httpListener.listen (this.ports.http, this.listenAddress, completedSetup);
+					}
+					else
+					{
+						if (this.redirectHTTPtoHTTPS === true)
+						{
+							this.httpListener = http.createServer ((req: http.IncomingMessage, res: http.ServerResponse) =>
+								{
+									let host: string = req.headers["host"];
+
+									res.writeHead (301, {
+											"Location": `https://${host}${req.url}`
+										});
+									res.end ();
+								});
+							this.httpListener.listen (this.ports.http, this.listenAddress, () =>
+								{
+									this.logger.info (`Redirecting HTTP(${this.ports.http}) traffic to HTTPS(${this.ports.https})`);
+								});
+						}
+
+						this.httpsListener = https.createServer ({
+								cert: this.ssl.cert,
+								key: this.ssl.key,
+								ca: this.ssl.ca
+							}, this.expressApp);
+						this.httpsListener.listen (this.ports.https, this.listenAddress, completedSetup);
+					}
 				}
-			});
+				catch (ex)
+				{
+					let msg: string = ex.message;
+
+					if (ex.stack != null)
+						msg = ex.stack;
+
+					this.logger.error (`HotHTTPServer Error: ${msg}`);
+					throw (ex);
+				}
+			})
+			.catch ((reason: any) =>
+				{
+					let msg: string = "";
+
+					if (typeof (reason) === "string")
+						msg = reason;
+
+					if (reason.message != null)
+						msg = reason.message;
+
+					if (reason.stack != null)
+						msg = reason.stack;
+
+					this.logger.error (`HotHTTPServer Error: ${msg}`);
+					throw reason;
+				});
 
 		return (promise);
 	}
@@ -703,7 +823,17 @@ export class HotHTTPServer extends HotServer
 	 */
 	async shutdown (): Promise<void>
 	{
-		this.httpListener.close ();
-		this.expressApp = null;
+		await new Promise<void> ((resolve, reject) =>
+			{
+				this.httpListener.close ((err: Error) =>
+					{
+						this.expressApp = null;
+
+						if (err != null)
+							throw err;
+
+						resolve ();
+					});
+			});
 	}
 }

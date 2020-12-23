@@ -29,6 +29,11 @@ export class HelloWorldAPI extends HotAPI
 
 		let route: HotRoute = new HotRoute (connection, "hello_world");
 		route.addMethod ("hello", this.helloCalled);
+		route.addMethod ("is_up", 
+			async (req: any, res: any, authorizedValue: any, jsonObj: any, queryObj: any): Promise<any> =>
+			{
+				return (true);
+			}, HTTPMethod.GET);
 		route.addMethod ("file_upload", this.fileUpload);
 		route.addMethod ("test_response", this.testResponse, HTTPMethod.POST, [
 						"TestAPIResponse",

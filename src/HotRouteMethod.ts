@@ -137,10 +137,18 @@ export class HotRouteMethod
 	}
 
 	/**
+	 * Executes before all routes have been registered.
+	 */
+	onPreRegister?: () => Promise<void>;
+	/**
 	 * Executes when first registering this method with Express. If 
 	 * this returns false, the method will not be registered.
 	 */
 	onRegister?: ServerRegistrationFunction;
+	/**
+	 * Executes after all routes have been registered.
+	 */
+	onPostRegister?: () => Promise<void>;
 
 	/**
 	 * Executes when authorizing a called method. If this method 

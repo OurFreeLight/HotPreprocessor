@@ -77,9 +77,14 @@ export class Common
 	/**
 	 * Get the url for the server.
 	 */
-	getUrl (): string
+	getUrl (server: HotHTTPServer = null): string
 	{
-		return (`http://127.0.0.1:${this.server.ports.http}`);
+		let tempServer: HotHTTPServer = this.server;
+
+		if (server != null)
+			tempServer = server;
+
+		return (`http://127.0.0.1:${tempServer.ports.http}`);
 	}
 
 	/**
@@ -113,7 +118,7 @@ export class Common
 	 */
 	async shutdown (): Promise<void>
 	{
-		if (this.testerServer != null)
+		if (this.processor.mode === DeveloperMode.Development)
 			await this.testerServer.shutdown ();
 
 		await this.server.shutdown ();

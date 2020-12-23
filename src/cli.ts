@@ -16,6 +16,7 @@ async function start ()
 
 	try
 	{
+		let hotsitePath: string = "";
 		let server: HotHTTPServer = new HotHTTPServer (processor);
 		let packageJSON: any = JSON.parse (fs.readFileSync (ppath.normalize (`${process.cwd ()}/package.json`)).toString ());
 
@@ -42,6 +43,10 @@ async function start ()
 		command.option ("--serve-hott-files", "Serve Hott files", (port: string, previous: any) =>
 			{
 				server.serveHottFiles = true;
+			});
+		command.option ("-o, --hot-site <path>", "Use a HotSite.json", (path: string, previous: any) =>
+			{
+				hotsitePath = path;
 			});
 		command.option ("--js-url <url>", "The url to the HotPreprocessor JS", (url: string, previous: any) =>
 			{
@@ -104,6 +109,9 @@ async function start ()
 
 		if (server.staticRoutes.length < 1)
 			server.addStaticRoute ("/", process.cwd ());
+
+		if (hotsitePath !== "")
+			await processor.loadHotSite (hotsitePath);
 
 		if (processor.mode === DeveloperMode.Development)
 			await HotTesterServer.startServer ();

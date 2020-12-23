@@ -1,0 +1,70 @@
+{
+	"serveDirectories": [{
+            "route": "/",
+            "localPath": "./"
+		}],
+	"server": {
+			"jsSrcPath": "/build-web/HotPreprocessor.js"
+		},
+	"testing": {
+		"tester": "HotTesterMochaSelenium",
+		"createNewTester": false,
+		"testerAPIUrl": "http://127.0.0.1:8184",
+		"launchpadUrl": "http://127.0.0.1:3123",
+		"maps": [
+			"Testing",
+			"Testing2"
+		]
+	},
+	"routes": {
+			"/hello_world": {
+				"name": "Hello World",
+				"url": "/tests/hotsite/HelloWorld.hott",
+				"api": "HelloWorld"
+			},
+			"/testing": {
+				"name": "Testing",
+				"url": "/tests/hotsite/HelloWorld.hott",
+				"api": "HelloWorld",
+				"map": [
+						"page:Testing -> Testing-Test"
+					]
+			},
+			"/testing2": {
+				"name": "Testing2",
+				"url": "/tests/hotsite/HelloWorld.hott",
+				"api": "HelloWorld",
+				"map": [
+						"page:Testing2 -> Testing-Test"
+					]
+			},
+			"/files": {
+				"name": "Files",
+				"url": "/tests/hotsite/HelloWorldFiles.hott",
+				"api": "HelloWorld"
+			}
+		},
+	"apis": {
+		"HelloWorld": {
+			"jsapi": "./build-web/HotPreprocessorTests.js",
+			"exportedName": "HotPreprocessorTests",
+			"apiName": "HelloWorldAPI"
+		}
+	},
+	"publicSecrets": {
+		"Secret1": "Shh!"
+	},
+	"components": {
+			"HelloWorldComponent": {
+					"url": "./tests/components/HelloWorldComponent.ts"
+				}
+		},
+	"files": {
+			"Button": {
+					"localFile": "./tests/components/Button.hott"
+				},
+			"Content": {
+					"localFile": "./tests/hotsite/Content.hott"
+				}
+		}
+}

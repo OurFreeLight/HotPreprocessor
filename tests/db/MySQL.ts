@@ -87,6 +87,27 @@ describe ("Database - MySQL Tests", () =>
 
 				expect (results[0].results, "Did not create a table!");
 			});
+		it ("should insert data into the table", async () =>
+			{
+				let results = await api.db.query ("insert into testTable set name = ?", ["test1"]);
+				let dbresults = results.results;
+
+				expect (dbresults.insertId, "Did not insert data into the table!");
+			});
+		it ("should select data from the table", async () =>
+			{
+				let results = await api.db.queryOne ("select * from testTable where name = ?", ["test1"]);
+				let dbresults = results.results;
+
+				should ().equal (dbresults.name, "test1", "Did not select data from the table!");
+				should ().equal (dbresults.description, "", "Did not select data from the table!");
+			});
+		it ("should select data from an incorrect table", async () =>
+			{
+				let results = await api.db.queryOne ("select * from testTableBad where name = ?", ["test1"]);
+
+				expect (results.error, "Did not incorrectly select data from the table!");
+			});
 		it ("should drop the table", async () =>
 			{
 				let results = await api.db.query ("DROP TABLE testTable;", []);

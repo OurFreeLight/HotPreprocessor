@@ -30,52 +30,105 @@ export class Tester extends HotTester
 	 */
 	suite: Suite;
 	/**
-	 * The base url to navigate to.
+	 * The type of tester to execute.
 	 */
-	baseUrl: string;
+	testerType: string;
 
 	constructor (processor: HotPreprocessor, name: string, baseUrl: string, 
 		driver: TestDriver, testMaps: { [name: string]: HotTestMap; } = {})
 	{
-		super (processor, name, driver, testMaps);
+		super (processor, name, baseUrl, driver, testMaps);
 
 		this.mocha = null;
 		this.suite = null;
-		this.baseUrl = baseUrl;
+		this.testerType = "server";
+	}
+
+	/**
+	 * Executed when setting up the tester.
+	 * 
+	 * @returns If this returns true, the driver will execute whatever is after this.
+	 * For example, if the driver is HotTestSeleniumDriver, the url will be loaded.
+	 */
+	async setup (url: string = "", destinationKey: string = ""): Promise<void>
+	{
+		let testDriver: TestDriver = (<TestDriver>this.driver);
+
+		await testDriver.loadSeleniumDriver ();
+		let driver: WebDriver = testDriver.driver;
+
+		await driver.get (`${this.baseUrl}/tests/browser/index.htm`);
+
+		if (this.testerType === "server")
+		{
+			await driver.executeAsyncScript (`
+				var done = arguments[0];
+				window.HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
+				var HotClient = HotPreprocessorWeb.HotClient;
+				var HelloWorldAPI = HotPreprocessorTests.HelloWorldAPI;
+				var processor = new HotPreprocessor ();
+				processor.mode = HotPreprocessorWeb.DeveloperMode.Development;
+				window.Hot = HotPreprocessorWeb.Hot;
+				var client = new HotClient (processor);
+				var helloWorldAPI = new HelloWorldAPI ("${this.baseUrl}", client);
+				helloWorldAPI.connection.api = helloWorldAPI;
+				processor.api = helloWorldAPI;
+				await HotPreprocessor.displayUrl (
+					"/tests/browser/Testing-CustomTester.hott", "Testing!", processor);
+				done ();`);
+		}
+
+		if (this.testerType === "web")
+		{
+			await driver.executeAsyncScript (`
+				var done = arguments[0];
+				window.HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
+				var HotClient = HotPreprocessorWeb.HotClient;
+				var HelloWorldAPI = HotPreprocessorTests.HelloWorldAPI;
+				var processor = new HotPreprocessor ();
+				processor.mode = HotPreprocessorWeb.DeveloperMode.Development;
+				window.Hot = HotPreprocessorWeb.Hot;
+				var client = new HotClient (processor);
+				var helloWorldAPI = new HelloWorldAPI ("${this.baseUrl}", client);
+				helloWorldAPI.connection.api = helloWorldAPI;
+				processor.api = helloWorldAPI;
+				await HotPreprocessor.displayUrl ({
+						url: "/tests/browser/Testing-CustomTester.hott",
+						name: "testingWebPage",
+						testerName: "Tester",
+						testerMap: "testMap",
+						processor: processor
+					});
+				await HotPreprocessor.waitForTesters ();
+				done ();`);
+		}
+	}
+
+	/**
+	 * Executed when destroying up the tester.
+	 */
+	async destroy (): Promise<void>
+	{
+		if (this.driver != null)
+			await this.driver.destroy ();
 	}
 
 	/**
 	 * Executed when tests are started.
 	 */
-	async onTestStart (destination: HotDestination): Promise<boolean>
+	async onTestStart (destination: HotDestination, url: string, destinationKey: string = ""): Promise<boolean>
 	{
+		let destinationName: string = "";
+
+		if (destinationKey !== "")
+			destinationName = ` - ${destinationKey}`;
+
 		this.mocha = new Mocha ();
-		this.suite = Mocha.Suite.create (this.mocha.suite, `${destination.page} Tests`);
+		this.suite = Mocha.Suite.create (this.mocha.suite, `${destination.page}${destinationName} Tests`);
 		this.suite.timeout (10000);
 
 		this.suite.beforeAll (async () =>
 			{
-				let testDriver: TestDriver = (<TestDriver>this.driver);
-
-				await testDriver.loadSeleniumDriver ();
-				let driver: WebDriver = testDriver.driver;
-
-				await driver.get (`${this.baseUrl}/tests/browser/index.htm`);
-				await driver.executeAsyncScript (`
-					var done = arguments[0];
-					window.HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
-					var HotClient = HotPreprocessorWeb.HotClient;
-					var HelloWorldAPI = HotPreprocessorTests.HelloWorldAPI;
-					var processor = new HotPreprocessor ();
-					processor.mode = HotPreprocessorWeb.DeveloperMode.Development;
-					window.Hot = HotPreprocessorWeb.Hot;
-					var client = new HotClient (processor);
-					var helloWorldAPI = new HelloWorldAPI ("${this.baseUrl}", client);
-					helloWorldAPI.connection.api = helloWorldAPI;
-					processor.api = helloWorldAPI;
-					await HotPreprocessor.displayUrl (
-						"/tests/browser/Testing.hott", "Testing!", processor);
-					done ();`);
 			});
 
 		return (true);
@@ -99,7 +152,6 @@ export class Tester extends HotTester
 			{
 				this.suite.afterAll (async () =>
 					{
-						await (<TestDriver>this.driver).driver.quit ();
 					});
 				this.mocha.run ((failures: number) =>
 					{

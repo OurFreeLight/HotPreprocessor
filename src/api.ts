@@ -1,4 +1,4 @@
-import { HotPreprocessor, HotStartOptions, IHotPreprocessor, HotSite } from "./HotPreprocessor";
+import { HotPreprocessor, HotStartOptions, IHotPreprocessor, HotSite, HotSiteRoute } from "./HotPreprocessor";
 import { Hot, DeveloperMode } from "./Hot";
 import { HotComponent, IHotComponent } from "./HotComponent";
 import { HotFile } from "./HotFile";
@@ -16,7 +16,7 @@ import { HotClient } from "./HotClient";
 // Testing stuff
 import { HotTestDriver } from "./HotTestDriver";
 import { IHotTestElement, HotTestElement } from "./HotTestElement";
-import { HotTester } from "./HotTester";
+import { HotTester, HotTestStop, HotDestination } from "./HotTester";
 import { HotTesterAPI } from "./HotTesterAPI";
 import { HotTesterMocha } from "./HotTesterMocha";
 import { HotTesterMochaSelenium } from "./HotTesterMochaSelenium";
@@ -42,6 +42,7 @@ export {
 		HotStartOptions, 
 		IHotPreprocessor,
 		HotSite,
+		HotSiteRoute,
 		Hot,
 		DeveloperMode,
 		HotComponent,
@@ -64,6 +65,8 @@ export {
 		HotClient,
 		HotTesterServer,
 		HotTester,
+		HotTestStop,
+		HotDestination,
 		HotTesterAPI,
 		HotTesterMocha,
 		HotTesterMochaSelenium,

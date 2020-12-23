@@ -13,9 +13,7 @@ import { HotHTTPServer } from "../../src/HotHTTPServer";
 import { HelloWorldAPI } from "./HelloWorldAPI";
 import { DeveloperMode } from "../../src/Hot";
 import { HotTestMap } from "../../src/HotTestMap";
-import { HotTesterMochaSelenium } from "../../src/HotTesterMochaSelenium";
-import { HotTestElement } from "../../src/HotTestElement";
-import { HotTestDriver } from "../../src/api";
+import { HotTesterMocha, HotTestSeleniumDriver } from "../../src/api";
 
 describe ("API Testing Tests", () =>
 	{
@@ -34,8 +32,8 @@ describe ("API Testing Tests", () =>
 				await common.startServer ();
 
 				let testMap: HotTestMap = new HotTestMap (["api:hello_world -> test_response -> TestAPIResponse"]);
-				let tester: HotTesterMochaSelenium = new HotTesterMochaSelenium (processor, 
-					"Tester", common.getUrl (), { testMap: testMap });
+				let tester: HotTesterMocha = new HotTesterMocha (processor, 
+					"Tester", common.getUrl (), new HotTestSeleniumDriver (), { testMap: testMap });
 
 				common.testerServer.addTester (tester);
 

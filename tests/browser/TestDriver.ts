@@ -29,6 +29,15 @@ export class TestDriver extends HotTestDriver
 	}
 
 	/**
+	 * Disconnect the driver.
+	 */
+	async destroy (): Promise<void>
+	{
+		if (this.driver != null)
+			await this.driver.quit ();
+	}
+
+	/**
 	 * Load the selenium driver.
 	 */
 	async loadSeleniumDriver (): Promise<void>
@@ -56,9 +65,17 @@ export class TestDriver extends HotTestDriver
 	}
 
 	/**
+	 * Navigate to a url.
+	 */
+	async navigateToUrl(url: string): Promise<void>
+	{
+		await this.driver.get (url);
+	}
+
+	/**
 	 * Wait for a test element using Selenium Webdriver.
 	 */
-	async waitForTestElement (name: string | HotTestElement): Promise<WebElement>
+	async waitForTestElement (name: string | HotTestElement, mustBeVisible: boolean = true): Promise<WebElement>
 	{
 		let nameStr: string = "";
 
@@ -75,7 +92,7 @@ export class TestDriver extends HotTestDriver
 	/**
 	 * Get a test element using selenium webdriver.
 	 */
-	async findTestElement? (name: string | HotTestElement): Promise<WebElement>
+	async findTestElement (name: string | HotTestElement, mustBeVisible: boolean = true): Promise<WebElement>
 	{
 		let nameStr: string = "";
 

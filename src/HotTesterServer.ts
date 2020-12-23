@@ -154,6 +154,14 @@ export class HotTesterServer extends HotServer
 	}
 
 	/**
+	 * Execute all tests for all maps in the HotSite testing object.
+	 */
+	async executeAllTests (testerName: string): Promise<void>
+	{
+		return (this.processor.executeAllTests (testerName));
+	}
+
+	/**
 	 * Add a route. This will be registered before any APIs are registered.
 	 */
 	addRoute (route: string, method: (req: express.Request, res: express.Response) => Promise<void>, 
@@ -486,7 +494,9 @@ export class HotTesterServer extends HotServer
 	async setupTesterAPI (baseUrl: string): Promise<void>
 	{
 		let api: HotTesterAPI = new HotTesterAPI (baseUrl, this);
-		await this.setAPI (api);
+		this.processor.testerAPI = api;
+		this.api = api;
+		await this.api.registerRoutes ();
 	}
 
 	/**

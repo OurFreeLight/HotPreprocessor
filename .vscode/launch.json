@@ -24,6 +24,25 @@
 		},
 		{
 			"type": "node",
+			"name": "Debug HTTP Server - HotSite",
+			"program": "${workspaceFolder}/build/src/cli.js",
+			"request": "launch",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"outputCapture": "std",
+			"args": [
+				"-d",
+				"-o",
+				"./tests/hotsite/HotSite.json",
+				"--js-url",
+				"/build-web/HotPreprocessor.js",
+				"-h",
+				"8080"
+			]
+		},
+		{
+			"type": "node",
 			"request": "launch",
 			"name": "Debug HTTP Server - Development",
 			"program": "${workspaceFolder}/build/src/cli.js",

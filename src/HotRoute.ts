@@ -111,10 +111,18 @@ export class HotRoute
 	}
 
 	/**
+	 * Executes before all routes have been registered.
+	 */
+	onPreRegister: () => Promise<void> = null;
+	/**
 	 * Executes when first registering this route with Express. If 
 	 * this returns false, the route will not be registered.
 	 */
 	onRegister: () => Promise<boolean> = null;
+	/**
+	 * Executes after all routes have been registered.
+	 */
+	onPostRegister: () => Promise<void> = null;
 
 	/**
 	 * Executes when authorizing a called method.

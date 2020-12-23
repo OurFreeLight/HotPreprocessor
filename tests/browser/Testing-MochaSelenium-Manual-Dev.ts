@@ -1,16 +1,16 @@
 import "mocha";
 
 import { Common } from "./Common";
-import { Tester } from "./Tester";
-import { TestDriver } from "./TestDriver";
 
-import { HotPreprocessor, HotTestDriver, HotTestElement, HotTester } from "../../src/api";
+import { HotPreprocessor, HotTestDriver, HotTestElement, HotTester, HotTesterMochaSelenium } from "../../src/api";
 import { HotTestMap } from "../../src/HotTestMap";
+import { WebDriver } from "selenium-webdriver";
 
-describe ("Browser Manual Testing From Server Tests - Development Mode", () =>
+describe ("Browser Manual Testing From Server Tests - Mocha Selenium - Development Mode", () =>
 	{
 		let common: Common = null;
 		let processor: HotPreprocessor = null;
+		let tester: HotTesterMochaSelenium = null;
 
 		before (async () =>
 			{
@@ -20,8 +20,8 @@ describe ("Browser Manual Testing From Server Tests - Development Mode", () =>
 				await common.startServer ();
 
 				let testMap: HotTestMap = new HotTestMap ([
-									"page:testingManualPage -> Form-SignIn-FillOut", 
-									"page:testingManualPage -> Form-SignIn-FillOut2"
+									`page:testingManualPage -> Form-SignIn-FillOut`, 
+									`page:testingManualPage -> Form-SignIn-FillOut2`
 								],
 					{
 						"testingManualPage": {
@@ -45,10 +45,10 @@ describe ("Browser Manual Testing From Server Tests - Development Mode", () =>
 										}, 
 									"Form-SignIn-FillOut2": async (driver: HotTestDriver): Promise<any> =>
 										{
-											await driver.waitForTestElement ("username");
+											await driver.waitForTestElement ("*name");
 											await driver.run ([
-													["username", "sendKeys", "a"],
-													["password", "sendKeys", "a"],
+													["*name", "sendKeys", "a"],
+													[">#passwordText", "sendKeys", "a"],
 													["signIn", "click"],
 												]);
 											await driver.wait (50);
@@ -59,7 +59,29 @@ describe ("Browser Manual Testing From Server Tests - Development Mode", () =>
 							}
 					});
 
-				let tester: Tester = new Tester (processor, "Tester", common.getUrl (), new TestDriver (), { testMap: testMap });
+				tester = new HotTesterMochaSelenium (processor, "Tester", 
+							common.getUrl (), { testMap: testMap });
+				tester.onSetup = async (driver: WebDriver): Promise<boolean> =>
+					{
+						await driver.get (`${common.getUrl ()}/tests/browser/index.htm`);
+						await driver.executeAsyncScript (`
+							var done = arguments[0];
+							window.HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
+							var HotClient = HotPreprocessorWeb.HotClient;
+							var HelloWorldAPI = HotPreprocessorTests.HelloWorldAPI;
+							var processor = new HotPreprocessor ();
+							processor.mode = HotPreprocessorWeb.DeveloperMode.Development;
+							window.Hot = HotPreprocessorWeb.Hot;
+							var client = new HotClient (processor);
+							var helloWorldAPI = new HelloWorldAPI ("${common.getUrl ()}", client);
+							helloWorldAPI.connection.api = helloWorldAPI;
+							processor.api = helloWorldAPI;
+							await HotPreprocessor.displayUrl (
+								"/tests/browser/Testing-CustomTester.hott", "Testing!", processor);
+							done ();`);
+
+						return (false);
+					};
 
 				processor.addTester (tester);
 			});

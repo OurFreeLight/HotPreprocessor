@@ -22,15 +22,70 @@ var HotTesterMochaSelenium: any = null;
 var HotTestSeleniumDriver: any = null;
 
 /**
+ * A route used in a HotSite.
+ */
+export interface HotSiteRoute
+{
+	/**
+	 * The name of the route. Will appear in the title.
+	 */
+	name: string;
+	/**
+	 * The url to the file to load.
+	 */
+	url: string;
+	/**
+	 * The name of the API to interface with.
+	 */
+	api?: string;
+	/**
+	 * The HotTesterMap to use. This can be the name of an 
+	 * existing one attached to the selected tester, or 
+	 * can be an array of destinations that will be used to 
+	 * create a new map.
+	 */
+	map?: string | string[];
+}
+
+/**
  * A HotSite to load.
  */
 export interface HotSite
 {
 	/**
 	 * The list of directory to serve to the client from the server.
-	 * @fixme As of right now, this does nothing :)
 	 */
-	serveDirectories?: string[];
+	serveDirectories?: {
+			/**
+			 * The web route to take.
+			 */
+			route: string;
+			/**
+			 * The local filesystem path to serve pages from.
+			 */
+			localPath: string;
+		}[];
+	/**
+	 * Additional server configuration.
+	 */
+	server: {
+			/**
+			 * The default name for a served Hott file.
+			 */
+			name: string;
+			/**
+			 * Serve hott files when requested.
+			 */
+			serveHottFiles: boolean;
+			/**
+			 * The base url for a hott file.
+			 */
+			url: string;
+			/**
+			 * The JavaScript source path.
+			 */
+			jsSrcPath: string;
+		};
 	/**
 	 * Testing related functionality.
 	 */
@@ -49,42 +104,31 @@ export interface HotSite
 			 */
 			createNewTester?: boolean;
 			/**
-			 * The url that connects to the tester server.
+			 * The url that connects to the tester api server.
 			 */
-			url?: string;
+			testerAPIUrl?: string;
 			/**
 			 * The name of the test driver to use.
 			 */
 			driver?: string;
+			/**
+			 * The url to the html that loads the hott files.
+			 */
+			launchpadUrl?: string;
+			/**
+			 * The maps to test in order.
+			 */
+			maps?: string[];
 		};
 	/**
 	 * The routes to load.
 	 */
-	routes: {
-			[routeName: string]: {
-					/**
-					 * The name of the route. Will appear in the title.
-					 */
-					name: string;
-					/**
-					 * The url to the file to load.
-					 */
-					url: string;
-					/**
-					 * The name of the API to use.
-					 */
-					api?: string;
-					/**
-					 * The HotTesterMap to use. This can be the name of an 
-					 * existing one attached to the selected tester, or 
-					 * can be an array of destinations that will be used to 
-					 * create a new map.
-					 */
-					map?: string | string[];
-				};
+	routes?: {
+			[routeName: string]: HotSiteRoute;
 		};
 	/**
-	 * The api to load.
+	 * The available APIs on the server. The server must already have these 
+	 * loaded.
 	 */
 	apis?: {
 			[name: string]: {
@@ -171,6 +215,11 @@ export interface HotStartOptions
 	 * The base url for the tester api.
 	 */
 	testerAPIBaseUrl?: string;
+	/**
+	 * The url to the html that loads the hott file that's 
+	 * pointed at the url above.
+	 */
+	testerLaunchpadUrl?: string;
 }
 
 /**
@@ -290,17 +339,17 @@ export class HotPreprocessor implements IHotPreprocessor
 		this.files = copy.files || {};
 		this.hotSite = copy.hotSite || null;
 		this.apiContent = `
-		var %api_name% = %api_exported_name%.%api_name%;
-		var newHotClient = new HotClient (processor);
-		var newapi = new %api_name% (%base_url%, newHotClient);
-		newHotClient.api = newapi;
-		processor.api = newapi;`;
+			var %api_name% = %api_exported_name%.%api_name%;
+			var newHotClient = new HotClient (processor);
+			var newapi = new %api_name% (%base_url%, newHotClient);
+			newHotClient.api = newapi;
+			processor.api = newapi;`;
 		this.testerApiContent = `
-		var HotTesterAPI = HotPreprocessorWeb.HotTesterAPI;
-		var newHotTesterClient = new HotClient (processor);
-		var newtesterapi = new HotTesterAPI (%base_tester_url%, newHotTesterClient);
-		newHotTesterClient.testerAPI = newtesterapi;
-		processor.testerAPI = newtesterapi;`;
+			var HotTesterAPI = HotPreprocessorWeb.HotTesterAPI;
+			var newHotTesterClient = new HotClient (processor);
+			var newtesterapi = new HotTesterAPI (%base_tester_url%, newHotTesterClient);
+			newHotTesterClient.testerAPI = newtesterapi;
+			processor.testerAPI = newtesterapi;`;
 		this.pageContent = 
 `<!DOCTYPE html>
 <html>
@@ -313,41 +362,47 @@ export class HotPreprocessor implements IHotPreprocessor
 %apis_to_load%
 
 	<script type = "text/javascript">
-		let tempMode = 0;
+		function hotpreprocessor_startApp ()
+		{
+			let tempMode = 0;
 
-		if (window["Hot"] != null)
-			tempMode = Hot.Mode;
+			if (window["Hot"] != null)
+				tempMode = Hot.Mode;
 
-		window.HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
-		window.HotClient = HotPreprocessorWeb.HotClient;
-		window.Hot = HotPreprocessorWeb.Hot;
+			window.HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;
+			window.HotClient = HotPreprocessorWeb.HotClient;
+			window.Hot = HotPreprocessorWeb.Hot;
 
-		%load_hot_site%
+			%load_hot_site%
 
-		var processor = new HotPreprocessor ();
-		var promises = [];
-		%developer_mode%
+			var processor = new HotPreprocessor ();
+			var promises = [];
+			%developer_mode%
 
-		%api_code%
+			%api_code%
 
-		%public_secrets%
-		%tester_api%
-		%load_files%
+			%public_secrets%
+			%tester_api%
+			%load_files%
 
-		processor.mode = tempMode;
+			processor.mode = tempMode;
 
-		Promise.all (promises).then (function ()
-			{
-				HotPreprocessor.displayUrl ({
-						url: "%url%",
-						name: "%title%",
-						processor: processor,
-						args: %args%,
-						testerName: %tester_name%,
-						testerMap: %tester_map%,
-						testerAPIBaseUrl: %tester_api_base_url%
-					});
-			});
+			Promise.all (promises).then (function ()
+				{
+					HotPreprocessor.displayUrl ({
+							url: "%url%",
+							name: "%title%",
+							processor: processor,
+							args: %args%,
+							testerName: %tester_name%,
+							testerMap: %tester_map%,
+							testerAPIBaseUrl: %tester_api_base_url%,
+							testerLaunchpadUrl: %tester_launchpad_url%
+						});
+				});
+		}
+
+		hotpreprocessor_startApp ();
 	</script>
 </head>
 
@@ -570,7 +625,8 @@ export class HotPreprocessor implements IHotPreprocessor
 	}
 
 	/**
-	 * Load from a HotSite.json file.
+	 * Load from a HotSite.json file. Be sure to load and attach any testers before 
+	 * loading a HotSite.
 	 */
 	async loadHotSite (path: string): Promise<void>
 	{
@@ -622,6 +678,14 @@ export class HotPreprocessor implements IHotPreprocessor
 					if (this.hotSite.testing.createNewTester != null)
 						createNewTester = this.hotSite.testing.createNewTester;
 
+					let testerName: string = "Tester";
+
+					if (this.hotSite.testing.tester != null)
+						testerName = this.hotSite.testing.tester;
+
+					if (this.hotSite.testing.testerName != null)
+						testerName = this.hotSite.testing.testerName;
+
 					if (createNewTester === true)
 					{
 						/// @fixme Find a way to securely allow devs to use their own drivers and testers...
@@ -630,19 +694,11 @@ export class HotPreprocessor implements IHotPreprocessor
 						HotTesterMochaSelenium = require ("./HotTesterMochaSelenium").HotTesterMochaSelenium;
 						HotTestSeleniumDriver = require ("./HotTestSeleniumDriver").HotTestSeleniumDriver;
 
-						if (this.hotSite.testing.url === "")
-							testerUrl = this.hotSite.testing.url;
+						if (this.hotSite.testing.testerAPIUrl === "")
+							testerUrl = this.hotSite.testing.testerAPIUrl;
 
 						if (this.hotSite.testing.driver === "HotTestSeleniumDriver")
 							driver = new HotTestSeleniumDriver ();
-
-						let testerName: string = "Tester";
-
-						if (this.hotSite.testing.tester != null)
-							testerName = this.hotSite.testing.tester;
-
-						if (this.hotSite.testing.testerName != null)
-							testerName = this.hotSite.testing.testerName;
 
 						if (this.hotSite.testing.tester === "HotTesterMocha")
 							tester = new HotTesterMocha (this, testerName, testerUrl, driver);
@@ -650,6 +706,8 @@ export class HotPreprocessor implements IHotPreprocessor
 						if (this.hotSite.testing.tester === "HotTesterMochaSelenium")
 							tester = new HotTesterMochaSelenium (this, testerName, testerUrl);
 					}
+					else
+						tester = this.testers[testerName];
 				}
 			}
 		}
@@ -667,14 +725,13 @@ export class HotPreprocessor implements IHotPreprocessor
 
 			if (tester != null)
 			{
-				debugger;
-				if (route.map != null)
+				if (this.mode === DeveloperMode.Development)
 				{
-					if (this.mode === DeveloperMode.Development)
-					{
-						let mapName: string = route.name;
-						let testMap: HotTestMap = null;
+					let mapName: string = route.name;
+					let testMap: HotTestMap = null;
 
+					if (route.map != null)
+					{
 						if (typeof (route.map) === "string")
 						{
 							if (tester.testMaps[route.map] == null)
@@ -719,19 +776,52 @@ export class HotPreprocessor implements IHotPreprocessor
 	}
 
 	/**
-	 * Load an array of files.
+	 * Load an array of files. If a file already has content, it will not be reloaded 
+	 * unless forceContentLoading is set to true.
 	 */
-	async loadHotFiles (files: { [name: string]: { url: string; } }): Promise<void>
+	async loadHotFiles (files: { [name: string]: { url?: string; localFile?: string; content?: string; } }, 
+			forceContentLoading: boolean = false): Promise<void>
 	{
 		for (let key in files)
 		{
 			let file = files[key];
-			let fileUrl: string = file.url;
+			let newFile: HotFile = null;
 
-			let newFile: HotFile = new HotFile ({
-					"url": fileUrl
-				});
-			await newFile.load ();
+			if (HotPreprocessor.isWeb === true)
+			{
+				newFile = new HotFile ({
+						"name": key
+					});
+			}
+			else
+			{
+				newFile = new HotFile ({
+						"name": key
+					});
+			}
+
+			if (file.url != null)
+				newFile.url = file.url;
+
+			if (HotPreprocessor.isWeb === false)
+			{
+				if (file.localFile != null)
+					newFile.localFile = file.localFile;
+			}
+
+			let loadContent: boolean = true;
+
+			if (file.content != null)
+			{
+				newFile.content = file.content;
+				loadContent = false;
+			}
+
+			if (forceContentLoading === true)
+				loadContent = true;
+
+			if (loadContent === true)
+				await newFile.load ();
 
 			this.addFile (newFile);
 		}
@@ -782,6 +872,12 @@ export class HotPreprocessor implements IHotPreprocessor
 				}
 			}
 
+			if (this.hotSite.server != null)
+			{
+				if (this.hotSite.server.jsSrcPath != null)
+					jsSrcPath = this.hotSite.server.jsSrcPath;
+			}
+
 			if (this.hotSite.publicSecrets != null)
 			{
 				for (let key in this.hotSite.publicSecrets)
@@ -817,7 +913,6 @@ export class HotPreprocessor implements IHotPreprocessor
 			{
 				let developerModeStr: string = "";
 				let testerAPIStr: string = "";
-				let loadFiles: string = "";
 
 				if (this.mode === DeveloperMode.Development)
 				{
@@ -828,13 +923,15 @@ export class HotPreprocessor implements IHotPreprocessor
 					{
 						if (this.hotSite.testing != null)
 						{
-							if (this.hotSite.testing.url == null)
-								this.hotSite.testing.url = "http://127.0.0.1:8182";
+							if (this.hotSite.testing.testerAPIUrl == null)
+								this.hotSite.testing.testerAPIUrl = "http://127.0.0.1:8182";
 
-							testerAPIStr = testerAPIStr.replace (/\%base\_tester\_url\%/g, `\"${this.hotSite.testing.url}\"`);
+							testerAPIStr = testerAPIStr.replace (/\%base\_tester\_url\%/g, `\"${this.hotSite.testing.testerAPIUrl}\"`);
 						}
 					}
 				}
+
+				let loadFiles: string = "";
 
 				if (Object.keys (this.files).length > 0)
 				{
@@ -843,12 +940,25 @@ export class HotPreprocessor implements IHotPreprocessor
 					for (let key in this.files)
 					{
 						let file = this.files[key];
-						let fileUrl: string = file.url;
+						let fileUrl: string = `"${file.url}"`;
+						let fileContent: string = "";
 
-						loadFiles += `\t\tfiles["${key}"] = { url: "${fileUrl}" };\n`;
+						if (file.content !== "")
+						{
+							let escapedContent: string = JSON.stringify (file.content);
+
+							// Find any script tags and interrupt them so the HTML parsers 
+							// don't get confused.
+							escapedContent = escapedContent.replace (new RegExp ("\\<script", "gmi"), "<scr\" + \"ipt");
+							escapedContent = escapedContent.replace (new RegExp ("\\<\\/script", "gmi"), "</scr\" + \"ipt");
+
+							fileContent = `, "content": ${escapedContent}`;
+						}
+
+						loadFiles += `\t\t\tfiles["${key}"] = { "url": ${fileUrl}${fileContent} };\n`;
 					}
 
-					loadFiles += `\t\tpromises.push (processor.loadHotFiles (files));`;
+					loadFiles += `\t\t\tpromises.push (processor.loadHotFiles (files));\n`;
 				}
 
 				tempContent = tempContent.replace (/\%title\%/g, name);
@@ -859,8 +969,9 @@ export class HotPreprocessor implements IHotPreprocessor
 				if (args != null)
 					tempContent = tempContent.replace (/\%args\%/g, JSON.stringify (args));
 
-				let testerMap: string = `"${routeKey}"`;
+				let testerMap: string = routeKey;
 				let testerUrl: string = "";
+				let testerLaunchpadUrl: string = "";
 				let testerName: string = "Tester";
 
 				if (this.hotSite != null)
@@ -873,8 +984,20 @@ export class HotPreprocessor implements IHotPreprocessor
 						if (this.hotSite.testing.testerName != null)
 							testerName = this.hotSite.testing.testerName;
 
-						if (this.hotSite.testing.url != null)
-							testerUrl = this.hotSite.testing.url;
+						if (this.hotSite.testing.testerAPIUrl != null)
+							testerUrl = this.hotSite.testing.testerAPIUrl;
+
+						if (this.hotSite.testing.launchpadUrl != null)
+							testerLaunchpadUrl = this.hotSite.testing.launchpadUrl;
+					}
+
+					if (this.hotSite.routes != null)
+					{
+						if (this.hotSite.routes[routeKey] != null)
+						{
+							let route = this.hotSite.routes[routeKey];
+							testerMap = route.name;
+						}
 					}
 				}
 
@@ -888,8 +1011,9 @@ export class HotPreprocessor implements IHotPreprocessor
 				tempContent = tempContent.replace (/\%public\_secrets\%/g, publicSecrets);
 				tempContent = tempContent.replace (/\%url\%/g, url);
 				tempContent = tempContent.replace (/\%tester\_name\%/g, `"${testerName}"`);
-				tempContent = tempContent.replace (/\%tester\_map\%/g, testerMap);
+				tempContent = tempContent.replace (/\%tester\_map\%/g, `"${testerMap}"`);
 				tempContent = tempContent.replace (/\%tester\_api\_base\_url\%/g, `"${testerUrl}"`);
+				tempContent = tempContent.replace (/\%tester\_launchpad\_url\%/g, `"${testerLaunchpadUrl}"`);
 
 				return (tempContent);
 			};
@@ -928,7 +1052,96 @@ export class HotPreprocessor implements IHotPreprocessor
 	}
 
 	/**
+	 * Get the list of maps for testing from the HotSite.
+	 */
+	getTestingMaps (): string[]
+	{
+		if (this.hotSite == null)
+			throw new Error ("No HotSite was loaded!");
+
+		if (this.hotSite.testing == null)
+			throw new Error ("The HotSite does not have a testing object!");
+
+		if (this.hotSite.testing.maps == null)
+			throw new Error ("The HotSite testing object does not have any maps!");
+
+		return (this.hotSite.testing.maps);
+	}
+
+	/**
+	 * Get the list of urls for each map from the HotSite.
+	 */
+	getTestingMapUrls (): string[]
+	{
+		if (this.hotSite == null)
+			throw new Error ("No HotSite was loaded!");
+
+		if (this.hotSite.testing == null)
+			throw new Error ("The HotSite does not have a testing object!");
+
+		if (this.hotSite.testing.maps == null)
+			throw new Error ("The HotSite testing object does not have any maps!");
+
+		let maps: string[] = [];
+
+		for (let iIdx = 0; iIdx < this.hotSite.testing.maps.length; iIdx++)
+		{
+			let mapName: string = this.hotSite.testing.maps[iIdx];
+			let routeKey: string = this.getRouteKeyFromName (mapName);
+
+			
+		}
+
+		return (maps);
+	}
+
+	/**
+	 * Get a route's key from a route's name.
+	 */
+	getRouteKeyFromName (name: string): string
+	{
+		let foundKey: string = "";
+
+		if (this.hotSite != null)
+		{
+			if (this.hotSite.routes != null)
+			{
+				for (let key in this.hotSite.routes)
+				{
+					let route: HotSiteRoute = this.hotSite.routes[key];
+
+					if (route.name === name)
+					{
+						foundKey = key;
+
+						break;
+					}
+				}
+			}
+		}
+
+		return (foundKey);
+	}
+
+	/**
+	 * Get a route from a route's name.
+	 */
+	getRouteFromName (name: string): HotSiteRoute
+	{
+		let foundRoute: HotSiteRoute = null;
+		let foundKey: string = this.getRouteKeyFromName (name);
+
+		if (foundKey !== "")
+			foundRoute = this.hotSite.routes[foundKey];
+
+		return (foundRoute);
+	}
+
+	/**
 	 * Execute tests.
+	 * 
+	 * @param testerName The tester to use to execute tests.
+	 * @param mapName The map or maps to use to navigate through tests.
 	 */
 	async executeTests (testerName: string, mapName: string): Promise<void>
 	{
@@ -937,7 +1150,29 @@ export class HotPreprocessor implements IHotPreprocessor
 		if (tester == null)
 			throw new Error (`Unable to execute tests. Tester ${testerName} does not exist!`);
 
-		await tester.execute (mapName);
+		return (tester.execute (mapName));
+	}
+
+	/**
+	 * Execute all tests from the HotSite testing object.
+	 * 
+	 * @param testerName The tester to use to execute tests.
+	 * @param setupFunc The setup function to use prior to starting any tests.
+	 */
+	async executeAllTests (testerName: string): Promise<void>
+	{
+		let maps: string[] = this.getTestingMaps ();
+		let tester: HotTester = this.testers[testerName];
+
+		if (tester == null)
+			throw new Error (`Unable to execute tests. Tester ${testerName} does not exist!`);
+
+		for (let iIdx = 0; iIdx < maps.length; iIdx++)
+		{
+			let mapName: string = maps[iIdx];
+
+			await this.executeTests (testerName, mapName);
+		}
 	}
 
 	/**
@@ -1041,6 +1276,9 @@ export class HotPreprocessor implements IHotPreprocessor
 
 	/**
 	 * Wait for testers to load.
+	 * 
+	 * @fixme This does not wait for ALL testers to finish loading. Only 
+	 * the first one.
 	 */
 	static async waitForTesters (): Promise<void>
 	{
@@ -1163,7 +1401,7 @@ export class HotPreprocessor implements IHotPreprocessor
 							}
 
 							let testPathsStr = JSON.stringify (testPaths);
-debugger;
+
 							Hot.TesterAPI.tester.pageLoaded ({
 									testerName: Hot.CurrentPage.testerName,
 									testerMap: Hot.CurrentPage.testerMap,
