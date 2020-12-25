@@ -135,7 +135,7 @@ export class Tester extends HotTester
 	}
 
 	async onTestPagePathStart (destination: HotDestination, page: HotTestPage, 
-		testPathName: string, testPath: HotTestPath, driver: HotTestDriver): Promise<boolean>
+		testPathName: string, testPath: HotTestPath, continueWhenTestIsComplete: boolean = false): Promise<boolean>
 	{
 		this.suite.addTest (new Test (testPathName, async () =>
 			{

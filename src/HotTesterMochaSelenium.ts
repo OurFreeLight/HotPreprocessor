@@ -120,13 +120,28 @@ export class HotTesterMochaSelenium extends HotTester
 	}
 
 	async onTestPagePathStart (destination: HotDestination, page: HotTestPage, 
-		testPathName: string, testPath: HotTestPath, driver: HotTestSeleniumDriver): Promise<boolean>
+		testPathName: string, testPath: HotTestPath, continueWhenTestIsComplete: boolean = false): Promise<boolean>
 	{
-		this.suite.addTest (new Test (testPathName, async () =>
-			{
-				// The true is a dumb hack to prevent any recursion.
-				await this.executeTestPagePath (destination, page, testPathName, testPath, true);
-			}));
+		if (continueWhenTestIsComplete === true)
+		{
+			await new Promise<void> ((resolve, reject) =>
+				{
+					this.suite.addTest (new Test (testPathName, async () =>
+						{
+							// The true is a dumb hack to prevent any recursion.
+							await this.executeTestPagePath (destination, page, testPathName, testPath, true);
+							resolve ();
+						}));
+				});
+		}
+		else
+		{
+			this.suite.addTest (new Test (testPathName, async () =>
+				{
+					// The true is a dumb hack to prevent any recursion.
+					await this.executeTestPagePath (destination, page, testPathName, testPath, true);
+				}));
+		}
 
 		return (false);
 	}

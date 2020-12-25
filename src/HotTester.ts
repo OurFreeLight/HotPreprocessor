@@ -126,22 +126,23 @@ export abstract class HotTester
 	 * the testPath will not be immediately executed afterwards.
 	 */
 	async onTestAPIPathStart? (destination: HotDestination, method: HotRouteMethod, 
-		testName: string, driver: HotTestDriver): Promise<boolean>;
+		testName: string, continueWhenTestIsComplete?: boolean): Promise<boolean>;
 	/**
 	 * Executed when an API test path has ended.
 	 */
 	async onTestAPIPathEnd? (destination: HotDestination, method: HotRouteMethod, 
-		testName: string, driver: HotTestDriver, result: any): Promise<void>;
+		testName: string, result: any, continueWhenTestIsComplete?: boolean): Promise<void>;
 	/**
 	 * Executed when page tests are started. If this returns false, the testPath will not be 
 	 * immediately executed afterwards.
 	 */
 	async onTestPagePathStart? (destination: HotDestination, page: HotTestPage, 
-		testPathName: string, testPath: HotTestPath, driver: HotTestDriver): Promise<boolean>;
+		testPathName: string, testPath: HotTestPath, continueWhenTestIsComplete?: boolean): Promise<boolean>;
 	/**
 	 * Executed when a page test has ended.
 	 */
-	async onTestPagePathEnd? (destination: HotDestination, testPath: HotTestPath, driver: HotTestDriver, result: any): Promise<void>;
+	async onTestPagePathEnd? (destination: HotDestination, testPath: HotTestPath, 
+		result: any, continueWhenTestIsComplete?: boolean): Promise<void>;
 	/**
 	 * Executed when tests are finished.
 	 */
@@ -228,10 +229,10 @@ export abstract class HotTester
 
 			newPathStr = newPathStr.trim ();
 			newPath.dest = getType (newPathStr, "dest:");
-			newPath.url = getType (type, "url:");
-			newPath.cmd = getType (type, "cmd:");
+			newPath.url = getType (newPathStr, "url:");
+			newPath.cmd = getType (newPathStr, "cmd:");
 
-			if ((newPath.dest == "") || (newPath.url == "") || (newPath.cmd == ""))
+			if ((newPath.dest == "") && (newPath.url == "") && (newPath.cmd == ""))
 				newPath.path = newPathStr;
 
 			newDestination.paths.push (newPath);
@@ -244,7 +245,7 @@ export abstract class HotTester
 	 * Execute an API's test path.
 	 */
 	async executeTestAPIPath (destination: HotDestination, method: HotRouteMethod, 
-		testName: string, skipEventCalls: boolean = false): Promise<any>
+		testName: string, skipEventCalls: boolean = false, continueWhenTestIsComplete: boolean = false): Promise<any>
 	{
 		let runTestPath: boolean = true;
 
@@ -252,7 +253,7 @@ export abstract class HotTester
 		if (skipEventCalls === false)
 		{
 			if (this.onTestAPIPathStart != null)
-				runTestPath = await this.onTestAPIPathStart (destination, method, testName, this.driver);
+				runTestPath = await this.onTestAPIPathStart (destination, method, testName, continueWhenTestIsComplete);
 		}
 
 		let result: any = null;
@@ -270,7 +271,7 @@ export abstract class HotTester
 		if (skipEventCalls === false)
 		{
 			if (this.onTestAPIPathEnd != null)
-				await this.onTestAPIPathEnd (destination, method, testName, this.driver, result);
+				await this.onTestAPIPathEnd (destination, method, testName, result, continueWhenTestIsComplete);
 		}
 
 		return (result);
@@ -316,8 +317,8 @@ export abstract class HotTester
 	/**
 	 * Execute a test page path.
 	 */
-	async executeTestPagePath (destination: HotDestination, page: HotTestPage, 
-		testPathName: string, testPath: HotTestPath, skipEventCalls: boolean = false): Promise<any>
+	async executeTestPagePath (destination: HotDestination, page: HotTestPage, testPathName: string, 
+		testPath: HotTestPath, skipEventCalls: boolean = false, continueWhenTestIsComplete: boolean = false): Promise<any>
 	{
 		this.driver.page = page;
 		let runTestPath: boolean = true;
@@ -326,7 +327,7 @@ export abstract class HotTester
 		if (skipEventCalls === false)
 		{
 			if (this.onTestPagePathStart != null)
-				runTestPath = await this.onTestPagePathStart (destination, page, testPathName, testPath, this.driver);
+				runTestPath = await this.onTestPagePathStart (destination, page, testPathName, testPath, continueWhenTestIsComplete);
 		}
 
 		let result: any = null;
@@ -345,7 +346,7 @@ export abstract class HotTester
 		if (skipEventCalls === false)
 		{
 			if (this.onTestPagePathEnd != null)
-				await this.onTestPagePathEnd (destination, testPath, this.driver, result);
+				await this.onTestPagePathEnd (destination, testPath, result, continueWhenTestIsComplete);
 		}
 
 		return (result);
@@ -354,7 +355,7 @@ export abstract class HotTester
 	/**
 	 * Execute all test paths in a page.
 	 */
-	async executeTestPagePaths (destination: HotDestination): Promise<any[]>
+	async executeTestPagePaths (destination: HotDestination, continueWhenTestIsComplete: boolean = false): Promise<any[]>
 	{
 		let results: any[] = [];
 		let testMap: HotTestMap = this.testMaps[destination.mapName];
@@ -382,7 +383,8 @@ export abstract class HotTester
 				let destinationStr: string = testMap.destinations[stop.dest];
 				let newDestination: HotDestination = HotTester.interpretDestination (destination.mapName, destinationStr);
 
-				result = await this.executeTestPagePaths (newDestination);
+				debugger;
+				result = await this.executeTestPagePaths (newDestination, true);
 				debugger;
 			}
 
@@ -454,7 +456,7 @@ export abstract class HotTester
 			{
 				let name: string = stop.path;
 				let testPath: HotTestPath = page.testPaths[name];
-				result = await this.executeTestPagePath (destination, page, name, testPath);
+				result = await this.executeTestPagePath (destination, page, name, testPath, false, continueWhenTestIsComplete);
 			}
 
 			results.push (result);
