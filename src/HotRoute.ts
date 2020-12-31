@@ -74,6 +74,9 @@ export class HotRoute
 
 	/**
 	 * Add an API method to this route.
+	 * 
+	 * @param method The name of the method to add. If a HotRouteMethod is supplied, the 
+	 * rest of the arguments supplied will be ignored.
 	 */
 	addMethod (
 		method: HotRouteMethod | string,

@@ -349,8 +349,19 @@ export class HotHTTPServer extends HotServer
 						{
 							if (route.onAuthorizeUser != null)
 							{
-								authorizationValue = await route.onAuthorizeUser (req, res);
-
+								try
+								{
+									authorizationValue = await route.onAuthorizeUser (req, res);
+								}
+								catch (ex)
+								{
+									this.logger.verbose (`Authorization error: ${ex.message}`);
+									res.json ({ error: ex.message });
+									hasAuthorization = false;
+	
+									return;
+								}
+	
 								if (authorizationValue === undefined)
 									hasAuthorization = false;
 							}
@@ -687,6 +698,7 @@ export class HotHTTPServer extends HotServer
 							}
 						}
 
+						// Register all the routes.
 						await this.api.registerRoutes ();
 
 						// Process post registration for the API.

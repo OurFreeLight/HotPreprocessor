@@ -1,10 +1,49 @@
 import { HotTestElement } from "./HotTestElement";
 import { HotTestDriver } from "./HotTestDriver";
+import { HotSiteMapPath } from "./HotPreprocessor";
 
 /**
  * Create a test path for later execution.
  */
 export type HotTestPath = (driver: HotTestDriver, ...args: any) => Promise<any>;
+
+/**
+ * The destination to take in a map.
+ */
+export class HotTestDestination
+{
+	/**
+	 * The destination to take.
+	 */
+	destination: string;
+	/**
+	 * If set to true, this will automatically start executing it's 
+	 * tests when it's time.
+	 */
+	autoStart: boolean;
+
+	constructor (destination: string | HotTestDestination | HotSiteMapPath = "", autoStart: boolean = true)
+	{
+		if (typeof (destination) === "string")
+		{
+			this.destination = destination;
+			this.autoStart = autoStart;
+		}
+		else
+		{
+			if (destination instanceof HotTestDestination)
+			{
+				this.destination = destination.destination;
+				this.autoStart = destination.autoStart;
+			}
+			else
+			{
+				this.destination = destination.path;
+				this.autoStart = destination.autoStart;
+			}
+		}
+	}
+}
 
 /**
  * A page containing only test related info.
@@ -45,7 +84,7 @@ export class HotTestMap
 	 * page or an api route. Any strings to the right of the -> will be a path, even 
 	 * when chaining addtional ->'s.
 	 */
-	destinations: string[] | { [name: string]: string; };
+	destinations: HotTestDestination[] | { [name: string]: HotTestDestination; };
 	/**
 	 * The order in which destinations are supposed to execute. This is 
 	 * ignored if the destinations are an array.
@@ -58,10 +97,33 @@ export class HotTestMap
 			[name: string]: HotTestPage
 		};
 
-	constructor (destinations: string[] | { [name: string]: string; } = [], 
+	constructor (destinations: string[] | HotTestDestination[] | { [name: string]: string | HotTestDestination; } = [], 
 		pages: { [name: string]: HotTestPage } = {}, destinationOrder: string[] = [])
 	{
-		this.destinations = destinations;
+		// Go through and convert any strings into HotTestDestinations.
+		if (destinations instanceof Array)
+		{
+			this.destinations = [];
+
+			for (let iIdx = 0; iIdx < destinations.length; iIdx++)
+			{
+				let dest = destinations[iIdx];
+
+				this.destinations.push (new HotTestDestination (dest));
+			}
+		}
+		else
+		{
+			this.destinations = {};
+
+			for (let key in destinations)
+			{
+				let dest = destinations[key];
+
+				this.destinations[key] = new HotTestDestination (dest);
+			}
+		}
+
 		this.destinationOrder = destinationOrder;
 		this.pages = pages;
 	}

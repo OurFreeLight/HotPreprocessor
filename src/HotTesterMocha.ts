@@ -2,7 +2,7 @@ import Mocha from "mocha";
 import { Suite, Test } from "mocha";
 
 import { HotTestMap, HotTestPage, HotTestPath } from "./HotTestMap";
-import { HotDestination, HotTester } from "./HotTester";
+import { HotDestination, HotTester, HotTestStop } from "./HotTester";
 import { HotTestDriver } from "./HotTestDriver";
 import { HotPreprocessor } from "./HotPreprocessor";
 
@@ -33,7 +33,7 @@ export class HotTesterMocha extends HotTester
     afterAll: () => Promise<void>;
 
 	constructor (processor: HotPreprocessor, name: string, baseUrl: string, driver: HotTestDriver, 
-		testMaps: { [name: string]: HotTestMap; } = {},beforeAll: () => Promise<void> = null, 
+		testMaps: { [name: string]: HotTestMap; } = {}, beforeAll: () => Promise<void> = null, 
 		afterAll: () => Promise<void> = null)
 	{
 		super (processor, name, baseUrl, driver, testMaps);
@@ -80,8 +80,10 @@ export class HotTesterMocha extends HotTester
 	}
 
 	async onTestPagePathStart (destination: HotDestination, page: HotTestPage, 
-		testPathName: string, testPath: HotTestPath, continueWhenTestIsComplete: boolean = false): Promise<boolean>
+		stop: HotTestStop, continueWhenTestIsComplete: boolean = false): Promise<boolean>
 	{
+		let testPathName: string = stop.path;
+
 		if (continueWhenTestIsComplete === true)
 		{
 			await new Promise<void> ((resolve, reject) =>
@@ -89,7 +91,7 @@ export class HotTesterMocha extends HotTester
 					this.suite.addTest (new Test (testPathName, async () =>
 						{
 							// The true is a dumb hack to prevent any recursion.
-							await this.executeTestPagePath (destination, page, testPathName, testPath, true);
+							await this.executeTestPagePath (destination, stop, true);
 							resolve ();
 						}));
 				});
@@ -99,18 +101,29 @@ export class HotTesterMocha extends HotTester
 			this.suite.addTest (new Test (testPathName, async () =>
 				{
 					// The true is a dumb hack to prevent any recursion.
-					await this.executeTestPagePath (destination, page, testPathName, testPath, true);
+					await this.executeTestPagePath (destination, stop, true);
 				}));
 		}
 
 		return (false);
 	}
 
+	async onCommand (destination: HotDestination, page: HotTestPage, stop: HotTestStop, 
+		cmd: string, args: string[], cmdFunc: ((cmdArgs: string[]) => Promise<void>)): Promise<void>
+	{
+		this.suite.addTest (new Test (cmd, async () =>
+			{
+				await cmdFunc (args);
+			}));
+	}
+
 	async onTestEnd (destination: HotDestination): Promise<void>
 	{
 		return (await new Promise ((resolve, reject) =>
 			{
-				this.suite.afterAll (this.afterAll);
+				if (this.afterAll != null)
+					this.suite.afterAll (this.afterAll);
+
 				this.mocha.run ((failures: number) =>
 					{
 						resolve ();

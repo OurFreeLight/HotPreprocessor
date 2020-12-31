@@ -2,7 +2,7 @@ import Mocha from "mocha";
 import { Suite, Test } from "mocha";
 
 import { HotTestMap, HotTestPage, HotTestPath } from "../../src/HotTestMap";
-import { HotDestination, HotTester } from "../../src/HotTester";
+import { HotDestination, HotTester, HotTestStop } from "../../src/HotTester";
 import { TestDriver } from "./TestDriver";
 import { WebDriver } from "selenium-webdriver";
 import { HotTestDriver } from "../../src/HotTestDriver";
@@ -135,12 +135,14 @@ export class Tester extends HotTester
 	}
 
 	async onTestPagePathStart (destination: HotDestination, page: HotTestPage, 
-		testPathName: string, testPath: HotTestPath, continueWhenTestIsComplete: boolean = false): Promise<boolean>
+		stop: HotTestStop, continueWhenTestIsComplete: boolean = false): Promise<boolean>
 	{
+		let testPathName: string = stop.path;
+
 		this.suite.addTest (new Test (testPathName, async () =>
 			{
 				// The true is a dumb hack to prevent any recursion.
-				await this.executeTestPagePath (destination, page, testPathName, testPath, true);
+				await this.executeTestPagePath (destination, stop, true);
 			}));
 
 		return (false);

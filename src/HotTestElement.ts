@@ -1,4 +1,46 @@
 /**
+ * Hot test element options.
+ */
+export interface IHotTestElementOptions
+{
+	/**
+	 * Indicates that the test element must be visible in 
+	 * order to select it.
+	 */
+	mustBeVisible?: boolean;
+	/**
+	 * If the test element is missing, ignore the error. This 
+	 * will cause the rest of the function to return immediately 
+	 * without any exceptions being thrown.
+	 */
+	ignoreMissingElementError?: boolean;
+}
+
+/**
+ * Hot test element options.
+ */
+export class HotTestElementOptions implements IHotTestElementOptions
+{
+	/**
+	 * Indicates that the test element must be visible in 
+	 * order to select it.
+	 */
+	mustBeVisible: boolean;
+	/**
+	 * If the test element is missing, ignore the error. This 
+	 * will cause the rest of the function to return immediately 
+	 * without any exceptions being thrown.
+	 */
+	ignoreMissingElementError: boolean;
+
+	constructor (copy: IHotTestElementOptions = {})
+	{
+		this.mustBeVisible = copy.mustBeVisible || true;
+		this.ignoreMissingElementError = copy.ignoreMissingElementError || false;
+	}
+}
+
+/**
  * A test element.
  */
 export interface IHotTestElement

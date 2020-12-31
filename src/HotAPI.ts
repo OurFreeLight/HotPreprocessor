@@ -106,7 +106,8 @@ export abstract class HotAPI
 	 * Additionally it would create the endpoint: ```http://127.0.0.1:8080/v1/user/create```
 	 * 
 	 * @param route The route to add. Can be either a full HotRoute object, or just 
-	 * the route's name.
+	 * the route's name. If a HotRoute object is supplied, the rest of the parameters 
+	 * will be ignored.
 	 * @param routeMethod The route's method to add. If the route parameter is a string, 
 	 * it will be interpreted as the route's name, and this will be the method added to 
 	 * the new route.

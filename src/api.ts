@@ -1,4 +1,5 @@
-import { HotPreprocessor, HotStartOptions, IHotPreprocessor, HotSite, HotSiteRoute } from "./HotPreprocessor";
+import { HotPreprocessor, HotStartOptions, IHotPreprocessor, 
+	HotSite, HotSiteRoute, HotSiteMapPath } from "./HotPreprocessor";
 import { Hot, DeveloperMode } from "./Hot";
 import { HotComponent, IHotComponent } from "./HotComponent";
 import { HotFile } from "./HotFile";
@@ -15,13 +16,13 @@ import { HotClient } from "./HotClient";
 
 // Testing stuff
 import { HotTestDriver } from "./HotTestDriver";
-import { IHotTestElement, HotTestElement } from "./HotTestElement";
+import { IHotTestElement, HotTestElement, HotTestElementOptions, IHotTestElementOptions } from "./HotTestElement";
 import { HotTester, HotTestStop, HotDestination } from "./HotTester";
 import { HotTesterAPI } from "./HotTesterAPI";
 import { HotTesterMocha } from "./HotTesterMocha";
 import { HotTesterMochaSelenium } from "./HotTesterMochaSelenium";
 import { HotTesterServer } from "./HotTesterServer";
-import { HotTestMap } from "./HotTestMap";
+import { HotTestMap, HotTestDestination, HotTestPath, HotTestPage } from "./HotTestMap";
 import { HotTestSeleniumDriver } from "./HotTestSeleniumDriver";
 
 // Database stuff
@@ -43,6 +44,7 @@ export {
 		IHotPreprocessor,
 		HotSite,
 		HotSiteRoute,
+		HotSiteMapPath,
 		Hot,
 		DeveloperMode,
 		HotComponent,
@@ -71,9 +73,14 @@ export {
 		HotTesterMocha,
 		HotTesterMochaSelenium,
 		HotTestMap,
+		HotTestDestination,
+		HotTestPath,
+		HotTestPage,
 		HotTestSeleniumDriver,
 		HotTestElement,
 		IHotTestElement,
+		HotTestElementOptions,
+		IHotTestElementOptions,
 		HotTestDriver,
 		HotDBGenerationType,
 		HotDBConnectionInterface,

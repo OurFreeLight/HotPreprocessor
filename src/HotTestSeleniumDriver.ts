@@ -1,6 +1,6 @@
 import * as oss from "os";
 
-import { HotTestElement } from "./HotTestElement";
+import { HotTestElement, HotTestElementOptions } from "./HotTestElement";
 import { HotTestDriver } from "./HotTestDriver";
 import { HotTestPage } from "./HotTestMap";
 
@@ -51,7 +51,12 @@ export class HotTestSeleniumDriver extends HotTestDriver
 	async destroy (): Promise<void>
 	{
 		if (this.driver != null)
+		{
 			await this.driver.quit ();
+
+			this.driver = null;
+			this.session = null;
+		}
 	}
 
 	/**
@@ -127,7 +132,8 @@ export class HotTestSeleniumDriver extends HotTestDriver
 	/**
 	 * Wait for a test element using Selenium Webdriver.
 	 */
-	async waitForTestElement (name: string | HotTestElement, mustBeVisible: boolean = true): Promise<WebElement>
+	async waitForTestElement (name: string | HotTestElement, 
+		options: HotTestElementOptions = new HotTestElementOptions ()): Promise<WebElement>
 	{
 		let nameStr: string = "";
 
@@ -138,7 +144,7 @@ export class HotTestSeleniumDriver extends HotTestDriver
 
 		let foundElm: WebElement = null;
 
-		if (mustBeVisible === false)
+		if (options.mustBeVisible === false)
 			foundElm = await this.driver.wait (until.elementLocated (this.getTestObjectByName (nameStr)));
 		else
 		{
@@ -163,7 +169,8 @@ export class HotTestSeleniumDriver extends HotTestDriver
 	/**
 	 * Get a test element using selenium webdriver.
 	 */
-	async findTestElement (name: string | HotTestElement, mustBeVisible: boolean = true): Promise<WebElement>
+	async findTestElement (name: string | HotTestElement, 
+		options: HotTestElementOptions = new HotTestElementOptions ()): Promise<WebElement>
 	{
 		let nameStr: string = "";
 
@@ -174,8 +181,13 @@ export class HotTestSeleniumDriver extends HotTestDriver
 
 		let foundElm: WebElement = null;
 
-		if (mustBeVisible === false)
-			foundElm = await this.driver.findElement (this.getTestObjectByName (nameStr));
+		if (options.mustBeVisible === false)
+		{
+			let elms: WebElement[] = await this.driver.findElements (this.getTestObjectByName (nameStr));
+
+			if (elms.length > 0)
+				foundElm = elms[0];
+		}
 		else
 		{
 			let elms: WebElement[] = await this.driver.findElements (this.getTestObjectByName (nameStr));
@@ -200,7 +212,8 @@ export class HotTestSeleniumDriver extends HotTestDriver
 	 * Run a command using Selenium Webdriver.
 	 */
 	async runCommand (testElm: string | HotTestElement, funcName: string = "", 
-			valueStr: string = "", mustBeVisible: boolean = true): Promise<any>
+			valueStr: string = "", 
+			options: HotTestElementOptions = new HotTestElementOptions ()): Promise<any>
 	{
 		let name: string = "";
 		let func: string = "";
@@ -219,11 +232,16 @@ export class HotTestSeleniumDriver extends HotTestDriver
 			value = valueStr;
 		}
 
-		let elm: WebElement = await this.findTestElement (name, mustBeVisible);
+		let elm: WebElement = await this.findTestElement (name, options);
 		let result: any = null;
 
 		if (elm == null)
+		{
+			if (options.ignoreMissingElementError === true)
+				return (result);
+
 			throw new Error (`HotTestSeleniumDriver: Unable to find test element ${name}!`);
+		}
 
 		if (func != null)
 		{
@@ -249,9 +267,10 @@ export class HotTestSeleniumDriver extends HotTestDriver
 	 * An expression to test.
 	 */
 	async assertElementValue (name: string | HotTestElement, value: any, 
-		errorMessage: string = "", mustBeVisible: boolean = true): Promise<any>
+		errorMessage: string = "", 
+		options: HotTestElementOptions = new HotTestElementOptions ()): Promise<any>
 	{
-		let elm: WebElement = await this.findTestElement (name, mustBeVisible);
+		let elm: WebElement = await this.findTestElement (name, options);
 
 		if (elm == null)
 		{
@@ -261,6 +280,9 @@ export class HotTestSeleniumDriver extends HotTestDriver
 				realName = name;
 			else
 				realName = name.name;
+
+			if (options.ignoreMissingElementError === true)
+				return;
 
 			throw new Error (`Unable to find test object ${realName}`);
 		}

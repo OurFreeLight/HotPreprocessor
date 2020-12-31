@@ -15,11 +15,27 @@ import { HotClient } from "./HotClient";
 import { HotTester } from "./HotTester";
 import { HotTesterAPI } from "./HotTesterAPI";
 import { HotTestDriver } from "./HotTestDriver";
-import { HotTestMap } from "./HotTestMap";
+import { HotTestDestination, HotTestMap } from "./HotTestMap";
 
 var HotTesterMocha: any = null;
 var HotTesterMochaSelenium: any = null;
 var HotTestSeleniumDriver: any = null;
+
+/**
+ * A map path for testing.
+ */
+export interface HotSiteMapPath
+{
+	/**
+	 * If set to true, this will start automatically when tests start.
+	 * The default is true.
+	 */
+	autoStart?: boolean;
+	/**
+	 * The path to the 
+	 */
+	path?: string;
+}
 
 /**
  * A route used in a HotSite.
@@ -39,12 +55,17 @@ export interface HotSiteRoute
 	 */
 	api?: string;
 	/**
+	 * The order in which destinations are supposed to execute. This is 
+	 * ignored if the destinations are an array.
+	 */
+	destinationOrder?: string[];
+	/**
 	 * The HotTesterMap to use. This can be the name of an 
 	 * existing one attached to the selected tester, or 
 	 * can be an array of destinations that will be used to 
 	 * create a new map.
 	 */
-	map?: string | string[];
+	map?: string | string[] | { [name: string]: string | HotSiteMapPath; } | HotSiteMapPath[];
 }
 
 /**
@@ -742,11 +763,39 @@ export class HotPreprocessor implements IHotPreprocessor
 						else
 						{
 							testMap = new HotTestMap ();
-							testMap.destinations = route.map;
+							let destinations: HotTestDestination[] | { [name: string]: HotTestDestination } = null;
+
+							if (route.map instanceof Array)
+							{
+								destinations = [];
+
+								for (let iIdx = 0; iIdx < route.map.length; iIdx++)
+								{
+									let dest = route.map[iIdx];
+
+									destinations.push (new HotTestDestination (dest));
+								}
+							}
+							else
+							{
+								destinations = {};
+
+								for (let key2 in route.map)
+								{
+									let dest = route.map[key2];
+
+									destinations[key2] = new HotTestDestination (dest);
+								}
+							}
+
+							testMap.destinations = destinations;
 						}
 
 						tester.testMaps[mapName] = testMap;
 					}
+
+					if (route.destinationOrder != null)
+						tester.testMaps[mapName].destinationOrder = route.destinationOrder;
 				}
 			}
 

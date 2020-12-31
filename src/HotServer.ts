@@ -179,7 +179,9 @@ export class HotServer implements IHotServer
 	{
 		this.processor.api = api;
 		this.api = api;
-		await this.api.registerRoutes ();
+
+		//if (registerRoutes === true)
+			//await this.api.registerRoutes ();
 	}
 
 	/**

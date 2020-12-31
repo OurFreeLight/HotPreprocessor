@@ -1,5 +1,5 @@
 import { HotTester } from "./HotPreprocessorWeb";
-import { HotTestElement } from "./HotTestElement";
+import { HotTestElement, HotTestElementOptions } from "./HotTestElement";
 import { HotTestPage } from "./HotTestMap";
 
 /**
@@ -60,6 +60,22 @@ export abstract class HotTestDriver
 	}
 
 	/**
+	 * Print a message.
+	 */
+	async print (message: string): Promise<void>
+	{
+		process.stdout.write (message);
+	}
+
+	/**
+	 * Print a message line.
+	 */
+	async println (message: string): Promise<void>
+	{
+		await this.print (`${message}\n`);
+	}
+
+	/**
 	 * Disconnect this server or destroy anything associated with this HotTestDriver.
 	 */
 	abstract destroy (): Promise<void>;
@@ -71,11 +87,11 @@ export abstract class HotTestDriver
 	/**
 	 * Wait for a HotTestElement to load.
 	 */
-	abstract waitForTestElement (name: string | HotTestElement, mustBeVisible?: boolean): Promise<any>;
+	abstract waitForTestElement (name: string | HotTestElement, options?: HotTestElementOptions): Promise<any>;
 	/**
 	 * Find a HotTestElement to utilize.
 	 */
-	abstract findTestElement (name: string | HotTestElement, mustBeVisible?: boolean): Promise<any>;
+	abstract findTestElement (name: string | HotTestElement, options?: HotTestElementOptions): Promise<any>;
 	/**
 	 * Run a HotTestElement command.
 	 */
@@ -83,7 +99,8 @@ export abstract class HotTestDriver
 	/**
 	 * An expression to test.
 	 */
-	abstract assertElementValue (name: string | HotTestElement, value: any, errorMessage?: string): Promise<any>;
+	abstract assertElementValue (name: string | HotTestElement, value: any, 
+		errorMessage?: string, options?: HotTestElementOptions): Promise<any>;
 	/**
 	 * An expression to test.
 	 */

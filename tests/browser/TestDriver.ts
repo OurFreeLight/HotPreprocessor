@@ -1,6 +1,6 @@
 import * as oss from "os";
 
-import { HotTestElement } from "../../src/HotTestElement";
+import { HotTestElement, HotTestElementOptions } from "../../src/HotTestElement";
 import { HotTestDriver } from "../../src/HotTestDriver";
 
 import { By, until, WebDriver, WebElement, Session, Builder } from "selenium-webdriver";
@@ -75,7 +75,8 @@ export class TestDriver extends HotTestDriver
 	/**
 	 * Wait for a test element using Selenium Webdriver.
 	 */
-	async waitForTestElement (name: string | HotTestElement, mustBeVisible: boolean = true): Promise<WebElement>
+	async waitForTestElement (name: string | HotTestElement, 
+		options: HotTestElementOptions = new HotTestElementOptions ()): Promise<WebElement>
 	{
 		let nameStr: string = "";
 
@@ -84,7 +85,8 @@ export class TestDriver extends HotTestDriver
 		else
 			nameStr = name.name;
 
-		let elm: WebElement = await this.driver.wait (until.elementLocated (By.css (`[data-test-object-name='${nameStr}']`)));
+		let elm: WebElement = await this.driver.wait (until.elementLocated (
+				By.css (`[data-test-object-name='${nameStr}']`)));
 
 		return (elm);
 	}
@@ -92,7 +94,8 @@ export class TestDriver extends HotTestDriver
 	/**
 	 * Get a test element using selenium webdriver.
 	 */
-	async findTestElement (name: string | HotTestElement, mustBeVisible: boolean = true): Promise<WebElement>
+	async findTestElement (name: string | HotTestElement, 
+		options: HotTestElementOptions = new HotTestElementOptions ()): Promise<WebElement>
 	{
 		let nameStr: string = "";
 

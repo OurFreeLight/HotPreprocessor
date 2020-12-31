@@ -2,7 +2,7 @@ import { HotPreprocessor } from "./HotPreprocessor";
 import { HotRoute } from "./HotRoute";
 import { HotRouteMethod, TestCaseObject } from "./HotRouteMethod";
 import { HotTestDriver } from "./HotTestDriver";
-import { HotTestMap, HotTestPage, HotTestPath } from "./HotTestMap";
+import { HotTestDestination, HotTestMap, HotTestPage, HotTestPath } from "./HotTestMap";
 
 /**
  * The test stop that is executed as either a destination or 
@@ -11,15 +11,19 @@ import { HotTestMap, HotTestPage, HotTestPath } from "./HotTestMap";
 export interface HotTestStop
 {
 	/**
-	 * The url to start at. Must be an absolute url.
-	 */
-	url: string;
-	/**
 	 * A command to execute. Can be:
+	 * * print(x)
+	 *   * Print a message to the server's console.
+	 * * println(x)
+	 *   * Print a message with a new line to the server's console.
+	 * * url(x)
+	 *   * Open a url. Must be an absolute url.
 	 * * waitForTesterAPIData
 	 *   * This will wait for the tester API to receive data.
 	 * * wait(x)
 	 *   * This will wait for x number of milliseconds.
+	 * * waitForTestObject(x)
+	 *   * This will wait for a test object to be loaded.
 	 */
 	cmd: string;
 	/**
@@ -137,12 +141,17 @@ export abstract class HotTester
 	 * immediately executed afterwards.
 	 */
 	async onTestPagePathStart? (destination: HotDestination, page: HotTestPage, 
-		testPathName: string, testPath: HotTestPath, continueWhenTestIsComplete?: boolean): Promise<boolean>;
+		stop: HotTestStop, continueWhenTestIsComplete?: boolean): Promise<boolean>;
 	/**
 	 * Executed when a page test has ended.
 	 */
 	async onTestPagePathEnd? (destination: HotDestination, testPath: HotTestPath, 
 		result: any, continueWhenTestIsComplete?: boolean): Promise<void>;
+	/**
+	 * Executed when a command is executed.
+	 */
+	async onCommand? (destination: HotDestination, page: HotTestPage, stop: HotTestStop, 
+		cmd: string, args: string[], cmdFunc: ((cmdArgs: string[]) => Promise<void>)): Promise<void>;
 	/**
 	 * Executed when tests are finished.
 	 */
@@ -189,8 +198,9 @@ export abstract class HotTester
 	/**
 	 * Get a destination JSON object to use.
 	 */
-	static interpretDestination (mapName: string, destination: string): HotDestination
+	static interpretDestination (mapName: string, testDest: HotTestDestination): HotDestination
 	{
+		let destination: string = testDest.destination;
 		let newDestination: HotDestination = {
 				mapName: mapName,
 				page: "",
@@ -221,7 +231,6 @@ export abstract class HotTester
 		{
 			let newPathStr: string = strs[iIdx];
 			let newPath: HotTestStop = {
-					url: "",
 					cmd: "",
 					dest: "",
 					path: ""
@@ -229,10 +238,10 @@ export abstract class HotTester
 
 			newPathStr = newPathStr.trim ();
 			newPath.dest = getType (newPathStr, "dest:");
-			newPath.url = getType (newPathStr, "url:");
 			newPath.cmd = getType (newPathStr, "cmd:");
+			newPath.path = getType (newPathStr, "path:");
 
-			if ((newPath.dest == "") && (newPath.url == "") && (newPath.cmd == ""))
+			if ((newPath.dest == "") && (newPath.cmd == "") && (newPath.path == ""))
 				newPath.path = newPathStr;
 
 			newDestination.paths.push (newPath);
@@ -317,17 +326,31 @@ export abstract class HotTester
 	/**
 	 * Execute a test page path.
 	 */
-	async executeTestPagePath (destination: HotDestination, page: HotTestPage, testPathName: string, 
-		testPath: HotTestPath, skipEventCalls: boolean = false, continueWhenTestIsComplete: boolean = false): Promise<any>
+	async executeTestPagePath (destination: HotDestination, stop: HotTestStop, 
+		skipEventCalls: boolean = false, continueWhenTestIsComplete: boolean = false): Promise<any>
 	{
-		this.driver.page = page;
 		let runTestPath: boolean = true;
+		let testMap: HotTestMap = this.testMaps[destination.mapName];
+
+		/// @fixme For some reason the errors being thrown here are not being thrown.
+		if (testMap == null)
+			throw new Error (`HotTester: Map ${destination.mapName} does not exist!`);
+
+		let page: HotTestPage = testMap.pages[destination.page];
+
+		if (page == null)
+			throw new Error (`HotTester: Page ${destination.page} does not exist!`);
+
+		this.driver.page = page;
+
+		let testPathName: string = stop.path;
+		let testPath: HotTestPath = page.testPaths[testPathName];
 
 		// A dumb hack to prevent any recursion that could occur.
 		if (skipEventCalls === false)
 		{
 			if (this.onTestPagePathStart != null)
-				runTestPath = await this.onTestPagePathStart (destination, page, testPathName, testPath, continueWhenTestIsComplete);
+				runTestPath = await this.onTestPagePathStart (destination, page, stop, continueWhenTestIsComplete);
 		}
 
 		let result: any = null;
@@ -353,6 +376,134 @@ export abstract class HotTester
 	}
 
 	/**
+	 * Execute a command.
+	 */
+	async executeCommand (destination: HotDestination, page: HotTestPage, stop: HotTestStop, cmd: string): Promise<void>
+	{
+		/**
+		 * Check if the input command matches.
+		 */
+		let hasCmd: (input: string, cmd: string, hasArguments: boolean) => boolean = 
+			(input: string, cmd: string, hasArguments: boolean): boolean =>
+			{
+				let result: boolean = false;
+
+				if (stop.cmd === cmd)
+					result = true;
+
+				const pos: number = stop.cmd.indexOf ("(");
+
+				// If there's parenthesis, get the incoming command.
+				if (pos > -1)
+				{
+					let inputCmd: string = stop.cmd.substr (0, pos);
+
+					if (inputCmd === cmd)
+						result = true;
+				}
+
+				return (result);
+			};
+		/**
+		 * Get the arguments in a command. This will only return a 
+		 * single argument for now.
+		 * 
+		 * @fixme Add support for multiple arguments.
+		 */
+		let getCmdArgs: (input: string) => string[] = 
+			(input: string): string[] =>
+			{
+				let results: string[] = [];
+				let matches = input.match (/(?<=\()(.*?)(?=\))/g);
+
+				if (matches != null)
+					results.push (matches[0]);
+
+				if (results.length < 1)
+					throw new Error (`HotTester: Command ${input} requires arguments, but none were supplied.`);
+
+				return (results);
+			};
+
+		let cmdFunc: ((cmdArgs: string[]) => Promise<void>) = null;
+		let args: string[] = [];
+
+		if (hasCmd (stop.cmd, "waitForTesterAPIData", false) === true)
+		{
+			cmdFunc = async (cmdArgs: string[]): Promise<void> =>
+				{
+					this.finishedLoading = false;
+					await this.waitForData ();
+				};
+		}
+
+		if (hasCmd (stop.cmd, "wait", true) === true)
+		{
+			args = getCmdArgs (stop.cmd);
+
+			cmdFunc = async (cmdArgs: string[]): Promise<void> =>
+				{
+					let numMilliseconds: number = parseInt (cmdArgs[0]);
+
+					await HotPreprocessor.wait (numMilliseconds);
+				};
+		}
+
+		if (hasCmd (stop.cmd, "url", true) === true)
+		{
+			args = getCmdArgs (stop.cmd);
+
+			cmdFunc = async (cmdArgs: string[]): Promise<void> =>
+				{
+					let input: string = cmdArgs[0];
+
+					await this.driver.navigateToUrl (input);
+				};
+		}
+
+		if (hasCmd (stop.cmd, "print", true) === true)
+		{
+			args = getCmdArgs (stop.cmd);
+
+			cmdFunc = async (cmdArgs: string[]): Promise<void> =>
+				{
+					let input: string = cmdArgs[0];
+
+					await this.driver.print (input);
+				};
+		}
+
+		if (hasCmd (stop.cmd, "println", true) === true)
+		{
+			args = getCmdArgs (stop.cmd);
+
+			cmdFunc = async (cmdArgs: string[]): Promise<void> =>
+				{
+					let input: string = cmdArgs[0];
+
+					await this.driver.println (input);
+				};
+		}
+
+		if (hasCmd (stop.cmd, "waitForTestObject", true) === true)
+		{
+			args = getCmdArgs (stop.cmd);
+
+			cmdFunc = async (cmdArgs: string[]): Promise<void> =>
+				{
+					let testObject: string = JSON.parse (cmdArgs[0]);
+
+					await this.driver.waitForTestElement (testObject);
+				};
+		}
+
+		if (cmdFunc == null)
+			throw new Error (`HotTester: Command ${stop.cmd} does not exist!`);
+
+		await this.onCommand (destination, page, stop, cmd, args, cmdFunc);
+	}
+
+	/**
 	 * Execute all test paths in a page.
 	 */
 	async executeTestPagePaths (destination: HotDestination, continueWhenTestIsComplete: boolean = false): Promise<any[]>
@@ -364,100 +515,33 @@ export abstract class HotTester
 		if (testMap == null)
 			throw new Error (`HotTester: Map ${destination.mapName} does not exist!`);
 
-		let page: HotTestPage = testMap.pages[destination.page];
-
-		if (page == null)
-			throw new Error (`HotTester: Page ${destination.page} does not exist!`);
-
 		// Iterate through each path in the destination until complete.
 		for (let iIdx = 0; iIdx < destination.paths.length; iIdx++)
 		{
 			let stop: HotTestStop = destination.paths[iIdx];
 			let result: any = null;
+			let page: HotTestPage = testMap.pages[destination.page];
+	
+			if (page == null)
+				throw new Error (`HotTester: Page ${destination.page} does not exist!`);
 
 			if (stop.dest !== "")
 			{
 				if (testMap.destinations instanceof Array)
 					throw new Error (`HotTester: When using type 'dest' in a destination string, all destinations in map ${destination.mapName} must be named.`);
 
-				let destinationStr: string = testMap.destinations[stop.dest];
-				let newDestination: HotDestination = HotTester.interpretDestination (destination.mapName, destinationStr);
+				let testDest: HotTestDestination = testMap.destinations[stop.dest];
+				let newDestination: HotDestination = HotTester.interpretDestination (
+													destination.mapName, testDest);
 
-				debugger;
-				result = await this.executeTestPagePaths (newDestination, true);
-				debugger;
+				result = await this.executeTestPagePaths (newDestination);
 			}
-
-			if (stop.url !== "")
-				await this.driver.navigateToUrl (stop.url);
 
 			if (stop.cmd !== "")
-			{
-				let hasCmd: (input: string, cmd: string, hasArguments: boolean) => boolean = 
-					(input: string, cmd: string, hasArguments: boolean): boolean =>
-					{
-						let result: boolean = false;
-
-						if (stop.cmd === cmd)
-							result = true;
-
-						if ((stop.cmd.indexOf (cmd) > -1) && (stop.cmd.indexOf ("(") > -1))
-							result = true;
-
-						return (result);
-					};
-				/**
-				 * Get the arguments in a command. This will only return a 
-				 * single argument for now.
-				 * 
-				 * @fixme Add support for multiple arguments.
-				 */
-				let getCmdArgs: (input: string) => string[] = 
-					(input: string): string[] =>
-					{
-						let results: string[] = [];
-						let matches = input.match (/\(.*\)/g);
-
-						if (matches != null)
-							results.push (matches[0]);
-
-						if (results.length < 1)
-							throw new Error (`HotTester: Command ${input} requires arguments, but none were supplied.`);
-
-						return (results);
-					};
-
-				if (hasCmd (stop.cmd, "waitForTesterAPIData", false) === true)
-				{
-					debugger;
-					this.finishedLoading = false;
-					await this.waitForData ();
-				}
-
-				if (hasCmd (stop.cmd, "wait", true) === true)
-				{
-					debugger;
-					let args: string[] = getCmdArgs (stop.cmd);
-					let numMilliseconds: number = parseInt (args[0]);
-
-					await HotPreprocessor.wait (numMilliseconds);
-				}
-
-				if (hasCmd (stop.cmd, "waitForTestObject", true) === true)
-				{
-					let args: string[] = getCmdArgs (stop.cmd);
-					let testObject: string = JSON.parse (args[0]);
-
-					await this.driver.waitForTestElement (testObject);
-				}
-			}
+				await this.executeCommand (destination, page, stop, stop.cmd);
 
 			if (stop.path !== "")
-			{
-				let name: string = stop.path;
-				let testPath: HotTestPath = page.testPaths[name];
-				result = await this.executeTestPagePath (destination, page, name, testPath, false, continueWhenTestIsComplete);
-			}
+				result = await this.executeTestPagePath (destination, stop, false, continueWhenTestIsComplete);
 
 			results.push (result);
 		}
@@ -477,10 +561,13 @@ export abstract class HotTester
 
 		let routeKey: string = this.processor.getRouteKeyFromName (mapName);
 		let url: string = `${this.baseUrl}${routeKey}`;
-		let executeDestination: (destinationStr: string, destinationKey?: string) => Promise<void> = 
-			async (destinationStr: string, destinationKey: string = "") =>
+		let executeDestination: (testDest: HotTestDestination, destinationKey?: string) => Promise<void> = 
+			async (testDest: HotTestDestination, destinationKey: string = "") =>
 			{
-				let destination: HotDestination = HotTester.interpretDestination (mapName, destinationStr);
+				if (testDest.autoStart === false)
+					return;
+
+				let destination: HotDestination = HotTester.interpretDestination (mapName, testDest);
 				let runTestPaths: boolean = true;
 	
 				if (this.setup != null)
@@ -519,13 +606,14 @@ export abstract class HotTester
 				}
 			};
 
+		// If the map destinations are in an array, just execute those in order.
 		if (map.destinations instanceof Array)
 		{
 			for (let iIdx = 0; iIdx < map.destinations.length; iIdx++)
 			{
-				let destinationStr: string = map.destinations[iIdx];
+				let testDest: HotTestDestination = map.destinations[iIdx];
 
-				await executeDestination (destinationStr);
+				await executeDestination (testDest);
 			}
 		}
 		else
@@ -539,13 +627,13 @@ export abstract class HotTester
 				for (let iIdx = 0; iIdx < map.destinationOrder.length; iIdx++)
 				{
 					let orderKey: string = map.destinationOrder[iIdx];
-					let destinationStr: string = map.destinations[orderKey];
+					let testDest: HotTestDestination = map.destinations[orderKey];
 
-					if (destinationStr == null)
+					if (testDest == null)
 						throw new Error (`HotTester: Destination ${orderKey} does not exist!`);
 
 					hasExecutedKeys.push (orderKey);
-					await executeDestination (destinationStr, orderKey);
+					await executeDestination (testDest, orderKey);
 				}
 
 				// Execute the rest of the destinations that have not been executed yet.
@@ -559,7 +647,7 @@ export abstract class HotTester
 
 						if (executedKey === key)
 						{
-							executeDest = true;
+							executeDest = false;
 
 							break;
 						}
@@ -567,9 +655,9 @@ export abstract class HotTester
 
 					if (executeDest === true)
 					{
-						let destinationStr: string = map.destinations[key];
+						let testDest: HotTestDestination = map.destinations[key];
 
-						await executeDestination (destinationStr, key);
+						await executeDestination (testDest, key);
 					}
 				}
 			}
@@ -578,9 +666,9 @@ export abstract class HotTester
 				// Execute the destinations in any order.
 				for (let key in map.destinations)
 				{
-					let destinationStr: string = map.destinations[key];
+					let testDest: HotTestDestination = map.destinations[key];
 
-					await executeDestination (destinationStr, key);
+					await executeDestination (testDest, key);
 				}
 			}
 		}
