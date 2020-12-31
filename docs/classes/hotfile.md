@@ -26,6 +26,7 @@ A file to process.
 * [localFile](hotfile.md#localfile)
 * [name](hotfile.md#name)
 * [page](hotfile.md#page)
+* [throwAllErrors](hotfile.md#throwallerrors)
 * [url](hotfile.md#url)
 
 ### Methods
@@ -37,14 +38,16 @@ A file to process.
 * [process](hotfile.md#process)
 * [setContent](hotfile.md#setcontent)
 * [httpGet](hotfile.md#httpget)
+* [processContent](hotfile.md#processcontent)
+* [processNestedContent](hotfile.md#processnestedcontent)
 
 ## Constructors
 
 ### constructor
 
-\+ **new HotFile**(`copy`: [IHotFile](../interfaces/ihotfile.md)): [HotFile](hotfile.md)
+\+ **new HotFile**(`copy?`: [IHotFile](../interfaces/ihotfile.md)): [HotFile](hotfile.md)
 
-*Defined in [HotFile.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L59)*
+*Defined in [HotFile.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L68)*
 
 #### Parameters:
 
@@ -62,7 +65,7 @@ Name | Type | Default value |
 
 *Implementation of [IHotFile](../interfaces/ihotfile.md).[content](../interfaces/ihotfile.md#content)*
 
-*Defined in [HotFile.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L59)*
+*Defined in [HotFile.ts:64](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L64)*
 
 The content of the file to process.
 
@@ -74,7 +77,7 @@ ___
 
 *Implementation of [IHotFile](../interfaces/ihotfile.md).[localFile](../interfaces/ihotfile.md#localfile)*
 
-*Defined in [HotFile.ts:55](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L55)*
+*Defined in [HotFile.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L60)*
 
 The path to the local file to get.
 
@@ -86,7 +89,7 @@ ___
 
 *Implementation of [IHotFile](../interfaces/ihotfile.md).[name](../interfaces/ihotfile.md#name)*
 
-*Defined in [HotFile.ts:47](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L47)*
+*Defined in [HotFile.ts:52](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L52)*
 
 The name of the file.
 
@@ -98,9 +101,21 @@ ___
 
 *Implementation of [IHotFile](../interfaces/ihotfile.md).[page](../interfaces/ihotfile.md#page)*
 
-*Defined in [HotFile.ts:43](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L43)*
+*Defined in [HotFile.ts:48](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L48)*
 
 The parent page.
+
+___
+
+### throwAllErrors
+
+•  **throwAllErrors**: boolean
+
+*Implementation of [IHotFile](../interfaces/ihotfile.md).[throwAllErrors](../interfaces/ihotfile.md#throwallerrors)*
+
+*Defined in [HotFile.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L68)*
+
+Force all errors to be thrown.
 
 ___
 
@@ -110,7 +125,7 @@ ___
 
 *Implementation of [IHotFile](../interfaces/ihotfile.md).[url](../interfaces/ihotfile.md#url)*
 
-*Defined in [HotFile.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L51)*
+*Defined in [HotFile.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L56)*
 
 The url to the file to get.
 
@@ -120,7 +135,7 @@ The url to the file to get.
 
 ▸ **getContent**(): string
 
-*Defined in [HotFile.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L81)*
+*Defined in [HotFile.ts:91](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L91)*
 
 Get the content of this file.
 
@@ -130,52 +145,61 @@ ___
 
 ### load
 
-▸ **load**(): Promise\<string>
+▸ **load**(): Promise<string\>
 
-*Defined in [HotFile.ts:133](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L133)*
+*Defined in [HotFile.ts:154](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L154)*
 
 Load the contents of the file.
 
-**Returns:** Promise\<string>
+**Returns:** Promise<string\>
 
 ___
 
 ### loadLocalFile
 
-▸ **loadLocalFile**(): Promise\<string>
+▸ **loadLocalFile**(): Promise<string\>
 
-*Defined in [HotFile.ts:110](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L110)*
+*Defined in [HotFile.ts:131](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L131)*
 
 Load content from a local file.
 
-**Returns:** Promise\<string>
+**Returns:** Promise<string\>
 
 ___
 
 ### loadUrl
 
-▸ **loadUrl**(): Promise\<string>
+▸ **loadUrl**(): Promise<string\>
 
-*Defined in [HotFile.ts:100](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L100)*
+*Defined in [HotFile.ts:121](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L121)*
 
 Load content from a url.
 
-**Returns:** Promise\<string>
+**Returns:** Promise<string\>
 
 ___
 
 ### process
 
-▸ **process**(): Promise\<string>
+▸ **process**(`args?`: any): Promise<string\>
 
-*Defined in [HotFile.ts:152](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L152)*
+*Defined in [HotFile.ts:330](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L330)*
 
 Process the content in this file. This treats each file as one large JavaScript
 file. Any text outside of the <* *> areas will be treated as:
 
 		Hot.echo ("text");
 
-**Returns:** Promise\<string>
+**`fixme`** The regex's in the offContent functions need to be fixed. There's several
+test cases where they will fail.
+
+#### Parameters:
+
+Name | Type | Default value |
+------ | ------ | ------ |
+`args` | any | null |
+
+**Returns:** Promise<string\>
 
 ___
 
@@ -183,7 +207,7 @@ ___
 
 ▸ **setContent**(`content`: string): void
 
-*Defined in [HotFile.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L73)*
+*Defined in [HotFile.ts:83](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L83)*
 
 Set the content of this file.
 
@@ -199,9 +223,9 @@ ___
 
 ### httpGet
 
-▸ `Static`**httpGet**(`url`: string): Promise\<string>
+▸ `Static`**httpGet**(`url`: string): Promise<string\>
 
-*Defined in [HotFile.ts:89](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L89)*
+*Defined in [HotFile.ts:99](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L99)*
 
 Make a HTTP get request.
 
@@ -211,4 +235,65 @@ Name | Type |
 ------ | ------ |
 `url` | string |
 
-**Returns:** Promise\<string>
+**Returns:** Promise<string\>
+
+___
+
+### processContent
+
+▸ `Static`**processContent**(`content`: string, `contentRegex`: RegExp, `contentProcessor`: (regexFound: string) => string, `offContentProcessor`: (offContent: string) => string, `numRemoveFromBeginning?`: number, `numRemoveFromEnd?`: number): string
+
+*Defined in [HotFile.ts:183](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L183)*
+
+Process string content. This will take in a regular expression and
+parse the content based on the regex. When the regex content is found
+contentProcessor will be executed with the regex content found. When
+the regex content is not found, offContentProcessor will be called with
+the content outside of the regex.
+
+#### Parameters:
+
+Name | Type | Default value | Description |
+------ | ------ | ------ | ------ |
+`content` | string | - | The content to parse. |
+`contentRegex` | RegExp | - | The regex to use to parse the content. |
+`contentProcessor` | (regexFound: string) => string | - | The content found inside the regex. |
+`offContentProcessor` | (offContent: string) => string | - | The content found outside of the regex. |
+`numRemoveFromBeginning` | number | 2 | The number of characters to remove from the beginning of the found content. |
+`numRemoveFromEnd` | number | 2 | The number of characters to remove from the end of the found content.  |
+
+**Returns:** string
+
+___
+
+### processNestedContent
+
+▸ `Static`**processNestedContent**(`content`: string, `startChars`: string, `endChars`: string, `triggerChar`: string, `contentProcessor`: (regexFound: string) => string, `offContentProcessor`: (offContent: string) => string, `numRemoveFromBeginning?`: number, `numRemoveFromEnd?`: number): string
+
+*Defined in [HotFile.ts:241](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L241)*
+
+Process any content that could have nested values. This will
+take in a regular expression and
+parse the content based on the regex. When the regex content is found
+contentProcessor will be executed with the regex content found. When
+the regex content is not found, offContentProcessor will be called with
+the content outside of the regex.
+
+**`fixme`** Needs to be able to ignore any characters found inside comments
+or a string. For example, if the following is used ```${"Test }"}``` It
+will error out.
+
+#### Parameters:
+
+Name | Type | Default value | Description |
+------ | ------ | ------ | ------ |
+`content` | string | - | The content to parse. |
+`startChars` | string | - | - |
+`endChars` | string | - | - |
+`triggerChar` | string | - | - |
+`contentProcessor` | (regexFound: string) => string | - | The content found inside the regex. |
+`offContentProcessor` | (offContent: string) => string | - | The content found outside of the regex. |
+`numRemoveFromBeginning` | number | 2 | The number of characters to remove from the beginning of the found content. |
+`numRemoveFromEnd` | number | 1 | The number of characters to remove from the end of the found content.  |
+
+**Returns:** string

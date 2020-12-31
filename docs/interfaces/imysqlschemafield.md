@@ -37,7 +37,7 @@ The database field.
 
 • `Optional` **autoIncrement**: boolean
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:71](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L71)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:71](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L71)*
 
 Set as an auto incrementing column.
 
@@ -47,7 +47,7 @@ ___
 
 • `Optional` **binaryColumn**: boolean
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L59)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L59)*
 
 Set as a binary column.
 
@@ -57,7 +57,7 @@ ___
 
 •  **dataType**: string
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:43](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L43)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:43](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L43)*
 
 The data type, be sure to include the length of the
 data type here as well.
@@ -68,7 +68,7 @@ ___
 
 • `Optional` **defaultValue**: string
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L80)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L80)*
 
 Set the default value. If this is set to null, a
 MySQL NULL value will be used.
@@ -79,7 +79,7 @@ ___
 
 • `Optional` **fillZeroes**: boolean
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:67](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L67)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:67](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L67)*
 
 If this column is a number, fill with zeroes.
 
@@ -89,7 +89,7 @@ ___
 
 • `Optional` **generatedColumn**: boolean
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:75](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L75)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:75](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L75)*
 
 Set as a generated column.
 
@@ -99,7 +99,7 @@ ___
 
 •  **name**: string
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:38](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L38)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:38](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L38)*
 
 The name of the field.
 
@@ -109,7 +109,7 @@ ___
 
 • `Optional` **notNull**: boolean
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L51)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L51)*
 
 Set as a not null.
 
@@ -119,7 +119,7 @@ ___
 
 • `Optional` **primaryKey**: boolean
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:47](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L47)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:47](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L47)*
 
 Set as a primary key.
 
@@ -129,7 +129,7 @@ ___
 
 • `Optional` **strAroundDefaultValue**: string
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L85)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L85)*
 
 Set the string to be used when setting the default
 value. The default is: '
@@ -140,7 +140,7 @@ ___
 
 • `Optional` **uniqueIndex**: boolean
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:55](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L55)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:55](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L55)*
 
 Set as a unique index.
 
@@ -150,6 +150,6 @@ ___
 
 • `Optional` **unsignedDataType**: boolean
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L63)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L63)*
 
 Set as an unsigned data type.

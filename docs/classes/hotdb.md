@@ -2,7 +2,7 @@
 
 > [Globals](../globals.md) / HotDB
 
-# Class: HotDB\<DBType, DBResultType, DBSchema>
+# Class: HotDB<DBType, DBResultType, DBSchema\>
 
 The server-side database connection.
 
@@ -39,6 +39,7 @@ Name | Default |
 * [disconnect](hotdb.md#disconnect)
 * [multiQuery](hotdb.md#multiquery)
 * [query](hotdb.md#query)
+* [queryOne](hotdb.md#queryone)
 * [syncAllTables](hotdb.md#syncalltables)
 * [syncTable](hotdb.md#synctable)
 * [tableCheck](hotdb.md#tablecheck)
@@ -47,9 +48,9 @@ Name | Default |
 
 ### constructor
 
-\+ **new HotDB**(`db`: DBType, `type`: string, `schema`: DBSchema): [HotDB](hotdb.md)
+\+ **new HotDB**(`db?`: DBType, `type?`: string, `schema?`: DBSchema): [HotDB](hotdb.md)
 
-*Defined in [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L35)*
+*Defined in [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L35)*
 
 #### Parameters:
 
@@ -67,7 +68,7 @@ Name | Type | Default value |
 
 •  **connectionStatus**: [ConnectionStatus](../enums/connectionstatus.md)
 
-*Defined in [HotDB.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L30)*
+*Defined in [HotDB.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L30)*
 
 The connection status.
 
@@ -77,7 +78,7 @@ ___
 
 •  **db**: DBType
 
-*Defined in [HotDB.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L26)*
+*Defined in [HotDB.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L26)*
 
 The connection to the database (or the driver).
 
@@ -87,7 +88,7 @@ ___
 
 •  **schema**: DBSchema
 
-*Defined in [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L35)*
+*Defined in [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L35)*
 
 The db schema. This will generate a database structure
 and keep it maintained as needed.
@@ -98,7 +99,7 @@ ___
 
 •  **type**: string
 
-*Defined in [HotDB.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L22)*
+*Defined in [HotDB.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L22)*
 
 The database type.
 
@@ -106,9 +107,9 @@ The database type.
 
 ### connect
 
-▸ `Abstract`**connect**(`connectionInfo`: [HotDBConnectionInterface](../interfaces/hotdbconnectioninterface.md)): Promise\<any[]>
+▸ `Abstract`**connect**(`connectionInfo`: [HotDBConnectionInterface](../interfaces/hotdbconnectioninterface.md)): Promise<any[]\>
 
-*Defined in [HotDB.ts:49](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L49)*
+*Defined in [HotDB.ts:49](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L49)*
 
 Connect to the database. This will only start connecting
 if db is null.
@@ -119,27 +120,27 @@ Name | Type |
 ------ | ------ |
 `connectionInfo` | [HotDBConnectionInterface](../interfaces/hotdbconnectioninterface.md) |
 
-**Returns:** Promise\<any[]>
+**Returns:** Promise<any[]\>
 
 ___
 
 ### disconnect
 
-▸ `Abstract`**disconnect**(): Promise\<void>
+▸ `Abstract`**disconnect**(): Promise<void\>
 
-*Defined in [HotDB.ts:74](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L74)*
+*Defined in [HotDB.ts:78](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L78)*
 
 Disconnect from the server.
 
-**Returns:** Promise\<void>
+**Returns:** Promise<void\>
 
 ___
 
 ### multiQuery
 
-▸ `Abstract`**multiQuery**(`queryStrings`: string[] \| { query: string ; values: any[]  }[]): Promise\<DBResultType[]>
+▸ `Abstract`**multiQuery**(`queryStrings`: string[] \| { query: string ; values: any[]  }[]): Promise<DBResultType[]\>
 
-*Defined in [HotDB.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L70)*
+*Defined in [HotDB.ts:74](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L74)*
 
 Make multiple queries.
 
@@ -149,15 +150,15 @@ Name | Type |
 ------ | ------ |
 `queryStrings` | string[] \| { query: string ; values: any[]  }[] |
 
-**Returns:** Promise\<DBResultType[]>
+**Returns:** Promise<DBResultType[]\>
 
 ___
 
 ### query
 
-▸ `Abstract`**query**(`queryString`: string, `values?`: any[]): Promise\<DBResultType>
+▸ `Abstract`**query**(`queryString`: string, `values?`: any[]): Promise<DBResultType\>
 
-*Defined in [HotDB.ts:66](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L66)*
+*Defined in [HotDB.ts:66](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L66)*
 
 The query to make.
 
@@ -168,15 +169,34 @@ Name | Type |
 `queryString` | string |
 `values?` | any[] |
 
-**Returns:** Promise\<DBResultType>
+**Returns:** Promise<DBResultType\>
+
+___
+
+### queryOne
+
+▸ `Abstract`**queryOne**(`queryString`: string, `values?`: any[]): Promise<DBResultType\>
+
+*Defined in [HotDB.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L70)*
+
+Make a single query.
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`queryString` | string |
+`values?` | any[] |
+
+**Returns:** Promise<DBResultType\>
 
 ___
 
 ### syncAllTables
 
-▸ `Abstract`**syncAllTables**(`throwErrors?`: boolean): Promise\<boolean>
+▸ `Abstract`**syncAllTables**(`throwErrors?`: boolean): Promise<boolean\>
 
-*Defined in [HotDB.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L53)*
+*Defined in [HotDB.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L53)*
 
 Synchronize all tables.
 
@@ -186,15 +206,15 @@ Name | Type |
 ------ | ------ |
 `throwErrors?` | boolean |
 
-**Returns:** Promise\<boolean>
+**Returns:** Promise<boolean\>
 
 ___
 
 ### syncTable
 
-▸ `Abstract`**syncTable**(`tableName`: string, `throwErrors?`: boolean): Promise\<boolean>
+▸ `Abstract`**syncTable**(`tableName`: string, `throwErrors?`: boolean): Promise<boolean\>
 
-*Defined in [HotDB.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L58)*
+*Defined in [HotDB.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L58)*
 
 Synchronize a table. This will create/modify the table based on whether it
 exists, and if there's been any changes to any fields.
@@ -206,15 +226,15 @@ Name | Type |
 `tableName` | string |
 `throwErrors?` | boolean |
 
-**Returns:** Promise\<boolean>
+**Returns:** Promise<boolean\>
 
 ___
 
 ### tableCheck
 
-▸ `Abstract`**tableCheck**(`tableName`: string): Promise\<boolean>
+▸ `Abstract`**tableCheck**(`tableName`: string): Promise<boolean\>
 
-*Defined in [HotDB.ts:62](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L62)*
+*Defined in [HotDB.ts:62](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L62)*
 
 Checks if the table exists.
 
@@ -224,4 +244,4 @@ Name | Type |
 ------ | ------ |
 `tableName` | string |
 
-**Returns:** Promise\<boolean>
+**Returns:** Promise<boolean\>

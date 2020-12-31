@@ -8,7 +8,7 @@ The MySQL database connection.
 
 ## Hierarchy
 
-* [HotDB](hotdb.md)\<Connection, [MySQLResults](../interfaces/mysqlresults.md), [MySQLSchema](mysqlschema.md)>
+* [HotDB](hotdb.md)<Connection, [MySQLResults](../interfaces/mysqlresults.md), [MySQLSchema](mysqlschema.md)\>
 
   ↳ **HotDBMySQL**
 
@@ -32,6 +32,7 @@ The MySQL database connection.
 * [disconnect](hotdbmysql.md#disconnect)
 * [multiQuery](hotdbmysql.md#multiquery)
 * [query](hotdbmysql.md#query)
+* [queryOne](hotdbmysql.md#queryone)
 * [syncAllTables](hotdbmysql.md#syncalltables)
 * [syncTable](hotdbmysql.md#synctable)
 * [tableCheck](hotdbmysql.md#tablecheck)
@@ -40,11 +41,11 @@ The MySQL database connection.
 
 ### constructor
 
-\+ **new HotDBMySQL**(`db`: Connection, `type`: string, `schema`: [MySQLSchema](mysqlschema.md)): [HotDBMySQL](hotdbmysql.md)
+\+ **new HotDBMySQL**(`db?`: Connection, `type?`: string, `schema?`: [MySQLSchema](mysqlschema.md)): [HotDBMySQL](hotdbmysql.md)
 
 *Overrides [HotDB](hotdb.md).[constructor](hotdb.md#constructor)*
 
-*Defined in [schemas/HotMySQL.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L22)*
+*Defined in [schemas/HotDBMySQL.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/HotDBMySQL.ts#L22)*
 
 #### Parameters:
 
@@ -64,7 +65,7 @@ Name | Type | Default value |
 
 *Inherited from [HotDB](hotdb.md).[connectionStatus](hotdb.md#connectionstatus)*
 
-*Defined in [HotDB.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L30)*
+*Defined in [HotDB.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L30)*
 
 The connection status.
 
@@ -76,7 +77,7 @@ ___
 
 *Inherited from [HotDB](hotdb.md).[db](hotdb.md#db)*
 
-*Defined in [HotDB.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L26)*
+*Defined in [HotDB.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L26)*
 
 The connection to the database (or the driver).
 
@@ -88,7 +89,7 @@ ___
 
 *Inherited from [HotDB](hotdb.md).[schema](hotdb.md#schema)*
 
-*Defined in [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L35)*
+*Defined in [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L35)*
 
 The db schema. This will generate a database structure
 and keep it maintained as needed.
@@ -101,7 +102,7 @@ ___
 
 *Inherited from [HotDB](hotdb.md).[type](hotdb.md#type)*
 
-*Defined in [HotDB.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotDB.ts#L22)*
+*Defined in [HotDB.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotDB.ts#L22)*
 
 The database type.
 
@@ -109,11 +110,11 @@ The database type.
 
 ### connect
 
-▸ **connect**(`connectionInfo`: [HotDBConnectionInterface](../interfaces/hotdbconnectioninterface.md)): Promise\<any[]>
+▸ **connect**(`connectionInfo`: [HotDBConnectionInterface](../interfaces/hotdbconnectioninterface.md)): Promise<any[]\>
 
 *Overrides [HotDB](hotdb.md).[connect](hotdb.md#connect)*
 
-*Defined in [schemas/HotMySQL.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L31)*
+*Defined in [schemas/HotDBMySQL.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/HotDBMySQL.ts#L31)*
 
 Connect to the database.
 
@@ -123,7 +124,7 @@ Name | Type |
 ------ | ------ |
 `connectionInfo` | [HotDBConnectionInterface](../interfaces/hotdbconnectioninterface.md) |
 
-**Returns:** Promise\<any[]>
+**Returns:** Promise<any[]\>
 
 ___
 
@@ -131,7 +132,7 @@ ___
 
 ▸ `Protected`**dbCheck**(): void
 
-*Defined in [schemas/HotMySQL.ts:61](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L61)*
+*Defined in [schemas/HotDBMySQL.ts:61](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/HotDBMySQL.ts#L61)*
 
 Checks to see if this has a database connection.
 
@@ -141,25 +142,25 @@ ___
 
 ### disconnect
 
-▸ **disconnect**(): Promise\<void>
+▸ **disconnect**(): Promise<void\>
 
 *Overrides [HotDB](hotdb.md).[disconnect](hotdb.md#disconnect)*
 
-*Defined in [schemas/HotMySQL.ts:226](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L226)*
+*Defined in [schemas/HotDBMySQL.ts:256](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/HotDBMySQL.ts#L256)*
 
 Disconnect from the server.
 
-**Returns:** Promise\<void>
+**Returns:** Promise<void\>
 
 ___
 
 ### multiQuery
 
-▸ **multiQuery**(`queryStrings`: string[] \| { query: string ; values: any[]  }[]): Promise\<[MySQLResults](../interfaces/mysqlresults.md)[]>
+▸ **multiQuery**(`queryStrings`: string[] \| { query: string ; values: any[]  }[]): Promise<[MySQLResults](../interfaces/mysqlresults.md)[]\>
 
 *Overrides [HotDB](hotdb.md).[multiQuery](hotdb.md#multiquery)*
 
-*Defined in [schemas/HotMySQL.ts:187](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L187)*
+*Defined in [schemas/HotDBMySQL.ts:217](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/HotDBMySQL.ts#L217)*
 
 Make multiple queries. **Warning! This can be a security vulnerability
 if misused! Ideally this should only be used when make changes to tables!
@@ -172,17 +173,17 @@ Name | Type |
 ------ | ------ |
 `queryStrings` | string[] \| { query: string ; values: any[]  }[] |
 
-**Returns:** Promise\<[MySQLResults](../interfaces/mysqlresults.md)[]>
+**Returns:** Promise<[MySQLResults](../interfaces/mysqlresults.md)[]\>
 
 ___
 
 ### query
 
-▸ **query**(`queryString`: string, `values`: any[]): Promise\<[MySQLResults](../interfaces/mysqlresults.md)>
+▸ **query**(`queryString`: string, `values?`: any[]): Promise<[MySQLResults](../interfaces/mysqlresults.md)\>
 
 *Overrides [HotDB](hotdb.md).[query](hotdb.md#query)*
 
-*Defined in [schemas/HotMySQL.ts:165](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L165)*
+*Defined in [schemas/HotDBMySQL.ts:168](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/HotDBMySQL.ts#L168)*
 
 The query to make.
 
@@ -193,17 +194,38 @@ Name | Type | Default value |
 `queryString` | string | - |
 `values` | any[] | [] |
 
-**Returns:** Promise\<[MySQLResults](../interfaces/mysqlresults.md)>
+**Returns:** Promise<[MySQLResults](../interfaces/mysqlresults.md)\>
+
+___
+
+### queryOne
+
+▸ **queryOne**(`queryString`: string, `values?`: any[]): Promise<[MySQLResults](../interfaces/mysqlresults.md)\>
+
+*Overrides [HotDB](hotdb.md).[queryOne](hotdb.md#queryone)*
+
+*Defined in [schemas/HotDBMySQL.ts:187](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/HotDBMySQL.ts#L187)*
+
+Make a single query. If there are no results, null will be in MySQLResults.results
+
+#### Parameters:
+
+Name | Type | Default value |
+------ | ------ | ------ |
+`queryString` | string | - |
+`values` | any[] | [] |
+
+**Returns:** Promise<[MySQLResults](../interfaces/mysqlresults.md)\>
 
 ___
 
 ### syncAllTables
 
-▸ **syncAllTables**(`throwErrors`: boolean): Promise\<boolean>
+▸ **syncAllTables**(`throwErrors?`: boolean): Promise<boolean\>
 
 *Overrides [HotDB](hotdb.md).[syncAllTables](hotdb.md#syncalltables)*
 
-*Defined in [schemas/HotMySQL.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L70)*
+*Defined in [schemas/HotDBMySQL.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/HotDBMySQL.ts#L70)*
 
 Synchronize all tables.
 
@@ -213,17 +235,17 @@ Name | Type | Default value |
 ------ | ------ | ------ |
 `throwErrors` | boolean | true |
 
-**Returns:** Promise\<boolean>
+**Returns:** Promise<boolean\>
 
 ___
 
 ### syncTable
 
-▸ **syncTable**(`tableName`: string, `throwErrors`: boolean): Promise\<boolean>
+▸ **syncTable**(`tableName`: string, `throwErrors?`: boolean): Promise<boolean\>
 
 *Overrides [HotDB](hotdb.md).[syncTable](hotdb.md#synctable)*
 
-*Defined in [schemas/HotMySQL.ts:91](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L91)*
+*Defined in [schemas/HotDBMySQL.ts:91](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/HotDBMySQL.ts#L91)*
 
 Synchronize a table. This will create/modify the table based on whether it
 exists, and if there's been any changes to any fields.
@@ -235,17 +257,17 @@ Name | Type | Default value |
 `tableName` | string | - |
 `throwErrors` | boolean | true |
 
-**Returns:** Promise\<boolean>
+**Returns:** Promise<boolean\>
 
 ___
 
 ### tableCheck
 
-▸ **tableCheck**(`tableName`: string): Promise\<boolean>
+▸ **tableCheck**(`tableName`: string): Promise<boolean\>
 
 *Overrides [HotDB](hotdb.md).[tableCheck](hotdb.md#tablecheck)*
 
-*Defined in [schemas/HotMySQL.ts:141](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/HotMySQL.ts#L141)*
+*Defined in [schemas/HotDBMySQL.ts:141](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/HotDBMySQL.ts#L141)*
 
 Checks if the table exists.
 
@@ -255,4 +277,4 @@ Name | Type |
 ------ | ------ |
 `tableName` | string |
 
-**Returns:** Promise\<boolean>
+**Returns:** Promise<boolean\>

@@ -1,16 +1,16 @@
 **[hotpreprocessor](../README.md)**
 
-> [Globals](../globals.md) / HotHTTPServer
+> [Globals](../globals.md) / HotTesterServer
 
-# Class: HotHTTPServer
+# Class: HotTesterServer
 
-A HTTP server.
+An API server for use during testing.
 
 ## Hierarchy
 
 * [HotServer](hotserver.md)
 
-  ↳ **HotHTTPServer**
+  ↳ **HotTesterServer**
 
 ## Implements
 
@@ -20,55 +20,50 @@ A HTTP server.
 
 ### Constructors
 
-* [constructor](hothttpserver.md#constructor)
+* [constructor](hottesterserver.md#constructor)
 
 ### Properties
 
-* [api](hothttpserver.md#api)
-* [expressApp](hothttpserver.md#expressapp)
-* [hottFilesAssociatedInfo](hothttpserver.md#hottfilesassociatedinfo)
-* [httpListener](hothttpserver.md#httplistener)
-* [httpsListener](hothttpserver.md#httpslistener)
-* [ignoreHottFiles](hothttpserver.md#ignorehottfiles)
-* [listenAddress](hothttpserver.md#listenaddress)
-* [logger](hothttpserver.md#logger)
-* [ports](hothttpserver.md#ports)
-* [processor](hothttpserver.md#processor)
-* [redirectHTTPtoHTTPS](hothttpserver.md#redirecthttptohttps)
-* [routes](hothttpserver.md#routes)
-* [secrets](hothttpserver.md#secrets)
-* [serveHottFiles](hothttpserver.md#servehottfiles)
-* [ssl](hothttpserver.md#ssl)
-* [staticRoutes](hothttpserver.md#staticroutes)
-* [type](hothttpserver.md#type)
+* [api](hottesterserver.md#api)
+* [expressApp](hottesterserver.md#expressapp)
+* [httpListener](hottesterserver.md#httplistener)
+* [httpsListener](hottesterserver.md#httpslistener)
+* [listenAddress](hottesterserver.md#listenaddress)
+* [logger](hottesterserver.md#logger)
+* [ports](hottesterserver.md#ports)
+* [processor](hottesterserver.md#processor)
+* [redirectHTTPtoHTTPS](hottesterserver.md#redirecthttptohttps)
+* [routes](hottesterserver.md#routes)
+* [secrets](hottesterserver.md#secrets)
+* [ssl](hottesterserver.md#ssl)
+* [type](hottesterserver.md#type)
 
 ### Methods
 
-* [addRoute](hothttpserver.md#addroute)
-* [addStaticRoute](hothttpserver.md#addstaticroute)
-* [clearErrorHandlingRoutes](hothttpserver.md#clearerrorhandlingroutes)
-* [getStaticRoute](hothttpserver.md#getstaticroute)
-* [listen](hothttpserver.md#listen)
-* [preregisterRoute](hothttpserver.md#preregisterroute)
-* [registerRoute](hothttpserver.md#registerroute)
-* [registerStaticRoute](hothttpserver.md#registerstaticroute)
-* [serveDirectory](hothttpserver.md#servedirectory)
-* [setAPI](hothttpserver.md#setapi)
-* [setErrorHandlingRoutes](hothttpserver.md#seterrorhandlingroutes)
-* [shutdown](hothttpserver.md#shutdown)
-* [checkIfFileExists](hothttpserver.md#checkiffileexists)
-* [getFileUploads](hothttpserver.md#getfileuploads)
-* [startServer](hothttpserver.md#startserver)
+* [addRoute](hottesterserver.md#addroute)
+* [addTester](hottesterserver.md#addtester)
+* [clearErrorHandlingRoutes](hottesterserver.md#clearerrorhandlingroutes)
+* [executeAllTests](hottesterserver.md#executealltests)
+* [executeTests](hottesterserver.md#executetests)
+* [listen](hottesterserver.md#listen)
+* [preregisterRoute](hottesterserver.md#preregisterroute)
+* [registerRoute](hottesterserver.md#registerroute)
+* [setAPI](hottesterserver.md#setapi)
+* [setErrorHandlingRoutes](hottesterserver.md#seterrorhandlingroutes)
+* [setupTesterAPI](hottesterserver.md#setuptesterapi)
+* [shutdown](hottesterserver.md#shutdown)
+* [checkIfFileExists](hottesterserver.md#checkiffileexists)
+* [startServer](hottesterserver.md#startserver)
 
 ## Constructors
 
 ### constructor
 
-\+ **new HotHTTPServer**(`processor`: [HotPreprocessor](hotpreprocessor.md) \| [HotServer](hotserver.md), `httpPort?`: number, `httpsPort?`: number): [HotHTTPServer](hothttpserver.md)
+\+ **new HotTesterServer**(`processor`: [HotPreprocessor](hotpreprocessor.md) \| [HotServer](hotserver.md), `httpPort?`: number, `httpsPort?`: number): [HotTesterServer](hottesterserver.md)
 
 *Overrides [HotServer](hotserver.md).[constructor](hotserver.md#constructor)*
 
-*Defined in [HotHTTPServer.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L98)*
+*Defined in [HotTesterServer.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L53)*
 
 #### Parameters:
 
@@ -78,7 +73,7 @@ Name | Type | Default value |
 `httpPort` | number | null |
 `httpsPort` | number | null |
 
-**Returns:** [HotHTTPServer](hothttpserver.md)
+**Returns:** [HotTesterServer](hottesterserver.md)
 
 ## Properties
 
@@ -100,28 +95,9 @@ ___
 
 •  **expressApp**: express.Express
 
-*Defined in [HotHTTPServer.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L40)*
+*Defined in [HotTesterServer.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L26)*
 
 The express app to use.
-
-___
-
-### hottFilesAssociatedInfo
-
-•  **hottFilesAssociatedInfo**: { jsSrcPath: string ; name: string ; url: string  }
-
-*Defined in [HotHTTPServer.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L85)*
-
-The associated info with any hott files served. All values here will be
-overwritten by whatever values are set in the server object in HotSite.json.
-
-#### Type declaration:
-
-Name | Type | Description |
------- | ------ | ------ |
-`jsSrcPath` | string | The JavaScript source path. |
-`name` | string | The default name for a served Hott file. |
-`url` | string | The base url for a hott file. |
 
 ___
 
@@ -129,7 +105,7 @@ ___
 
 •  **httpListener**: Server
 
-*Defined in [HotHTTPServer.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L44)*
+*Defined in [HotTesterServer.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L30)*
 
 The HTTP listener to use.
 
@@ -139,19 +115,9 @@ ___
 
 •  **httpsListener**: Server
 
-*Defined in [HotHTTPServer.ts:48](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L48)*
+*Defined in [HotTesterServer.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L34)*
 
 The HTTPS listener to use.
-
-___
-
-### ignoreHottFiles
-
-•  **ignoreHottFiles**: { [name:string]: boolean;  }
-
-*Defined in [HotHTTPServer.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L80)*
-
-Do not serve these hott files.
 
 ___
 
@@ -236,7 +202,7 @@ ___
 
 •  **routes**: { method: (req: express.Request, res: express.Response) => Promise<void\> ; route: string ; type: [HTTPMethod](../enums/httpmethod.md)  }[]
 
-*Defined in [HotHTTPServer.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L58)*
+*Defined in [HotTesterServer.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L40)*
 
 Any non-static routes that need to be added. These
 will be added during the preregistration phase, before
@@ -255,17 +221,6 @@ ___
 *Defined in [HotServer.ts:130](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotServer.ts#L130)*
 
 Any secrets associated with this server.
-
-___
-
-### serveHottFiles
-
-•  **serveHottFiles**: boolean
-
-*Defined in [HotHTTPServer.ts:76](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L76)*
-
-Serve hott files when requested. This value will be overwritten by whatever
-value is set to server.serveHottFiles in HotSite.json.
 
 ___
 
@@ -291,16 +246,6 @@ Name | Type | Description |
 
 ___
 
-### staticRoutes
-
-•  **staticRoutes**: [StaticRoute](../interfaces/staticroute.md)[]
-
-*Defined in [HotHTTPServer.ts:52](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L52)*
-
-The static files and folders to serve.
-
-___
-
 ### type
 
 •  **type**: [HotServerType](../enums/hotservertype.md)
@@ -319,7 +264,7 @@ The type of server.
 
 ▸ **addRoute**(`route`: string, `method`: (req: express.Request, res: express.Response) => Promise<void\>, `type?`: [HTTPMethod](../enums/httpmethod.md)): void
 
-*Defined in [HotHTTPServer.ts:215](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L215)*
+*Defined in [HotTesterServer.ts:167](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L167)*
 
 Add a route. This will be registered before any APIs are registered.
 
@@ -335,20 +280,19 @@ Name | Type | Default value |
 
 ___
 
-### addStaticRoute
+### addTester
 
-▸ **addStaticRoute**(`route`: string \| [StaticRoute](../interfaces/staticroute.md), `localPath?`: string): void
+▸ **addTester**(`tester`: [HotTester](hottester.md)): void
 
-*Defined in [HotHTTPServer.ts:194](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L194)*
+*Defined in [HotTesterServer.ts:143](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L143)*
 
-Add a static route.
+Add a tester for use later.
 
 #### Parameters:
 
-Name | Type | Default value |
------- | ------ | ------ |
-`route` | string \| [StaticRoute](../interfaces/staticroute.md) | - |
-`localPath` | string | "." |
+Name | Type |
+------ | ------ |
+`tester` | [HotTester](hottester.md) |
 
 **Returns:** void
 
@@ -358,7 +302,7 @@ ___
 
 ▸ **clearErrorHandlingRoutes**(): void
 
-*Defined in [HotHTTPServer.ts:599](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L599)*
+*Defined in [HotTesterServer.ts:386](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L386)*
 
 Clear the last two express routes, which are reserved for the
 error handlers.
@@ -367,21 +311,40 @@ error handlers.
 
 ___
 
-### getStaticRoute
+### executeAllTests
 
-▸ **getStaticRoute**(`route`: string): [StaticRoute](../interfaces/staticroute.md)
+▸ **executeAllTests**(`testerName`: string): Promise<void\>
 
-*Defined in [HotHTTPServer.ts:249](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L249)*
+*Defined in [HotTesterServer.ts:159](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L159)*
 
-Get a static route.
+Execute all tests for all maps in the HotSite testing object.
 
 #### Parameters:
 
 Name | Type |
 ------ | ------ |
-`route` | string |
+`testerName` | string |
 
-**Returns:** [StaticRoute](../interfaces/staticroute.md)
+**Returns:** Promise<void\>
+
+___
+
+### executeTests
+
+▸ **executeTests**(`testerName`: string, `mapName`: string): Promise<void\>
+
+*Defined in [HotTesterServer.ts:151](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L151)*
+
+Execute tests.
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`testerName` | string |
+`mapName` | string |
+
+**Returns:** Promise<void\>
 
 ___
 
@@ -391,7 +354,7 @@ ___
 
 *Overrides [HotServer](hotserver.md).[listen](hotserver.md#listen)*
 
-*Defined in [HotHTTPServer.ts:627](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L627)*
+*Defined in [HotTesterServer.ts:414](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L414)*
 
 Start listening for requests.
 
@@ -403,7 +366,7 @@ ___
 
 ▸ **preregisterRoute**(): void
 
-*Defined in [HotHTTPServer.ts:436](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L436)*
+*Defined in [HotTesterServer.ts:323](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L323)*
 
 The routes to add before registering a route.
 
@@ -417,7 +380,7 @@ ___
 
 *Overrides [HotServer](hotserver.md).[registerRoute](hotserver.md#registerroute)*
 
-*Defined in [HotHTTPServer.ts:271](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L271)*
+*Defined in [HotTesterServer.ts:182](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L182)*
 
 Register a route.
 
@@ -428,43 +391,6 @@ Name | Type |
 `route` | [HotRoute](hotroute.md) |
 
 **Returns:** Promise<void\>
-
-___
-
-### registerStaticRoute
-
-▸ **registerStaticRoute**(`route`: [StaticRoute](../interfaces/staticroute.md)): void
-
-*Defined in [HotHTTPServer.ts:238](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L238)*
-
-Register a static route with Express.
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`route` | [StaticRoute](../interfaces/staticroute.md) |
-
-**Returns:** void
-
-___
-
-### serveDirectory
-
-▸ **serveDirectory**(`route`: string \| [StaticRoute](../interfaces/staticroute.md), `localPath?`: string): void
-
-*Defined in [HotHTTPServer.ts:230](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L230)*
-
-Serve a directory. This is an alias for addStaticRoute.
-
-#### Parameters:
-
-Name | Type | Default value |
------- | ------ | ------ |
-`route` | string \| [StaticRoute](../interfaces/staticroute.md) | - |
-`localPath` | string | "." |
-
-**Returns:** void
 
 ___
 
@@ -493,7 +419,7 @@ ___
 
 ▸ **setErrorHandlingRoutes**(`handle404?`: (req: express.Request, res: express.Response, next: any) => void, `handleOther?`: (err: any, req: express.Request, res: express.Response, next: any) => void): void
 
-*Defined in [HotHTTPServer.ts:559](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L559)*
+*Defined in [HotTesterServer.ts:346](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L346)*
 
 Set the error handlers. This will create two express routes at the bottom of the
 route stack. The first will be to capture any 404 errors, the second would be to
@@ -510,13 +436,31 @@ Name | Type | Default value |
 
 ___
 
+### setupTesterAPI
+
+▸ **setupTesterAPI**(`baseUrl`: string): Promise<void\>
+
+*Defined in [HotTesterServer.ts:494](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L494)*
+
+Setup the tester api.
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`baseUrl` | string |
+
+**Returns:** Promise<void\>
+
+___
+
 ### shutdown
 
 ▸ **shutdown**(): Promise<void\>
 
 *Overrides [HotServer](hotserver.md).[shutdown](hotserver.md#shutdown)*
 
-*Defined in [HotHTTPServer.ts:836](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L836)*
+*Defined in [HotTesterServer.ts:533](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L533)*
 
 Shutdown the server.
 
@@ -528,7 +472,7 @@ ___
 
 ▸ `Static`**checkIfFileExists**(`filepath`: string): Promise<boolean\>
 
-*Defined in [HotHTTPServer.ts:419](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L419)*
+*Defined in [HotTesterServer.ts:306](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L306)*
 
 Check if a file exists.
 
@@ -542,30 +486,11 @@ Name | Type |
 
 ___
 
-### getFileUploads
-
-▸ `Static`**getFileUploads**(`req`: express.Request, `options?`: any): Promise<Files\>
-
-*Defined in [HotHTTPServer.ts:538](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L538)*
-
-Get all files uploaded.
-
-#### Parameters:
-
-Name | Type | Default value |
------- | ------ | ------ |
-`req` | express.Request | - |
-`options` | any | { multiples: true } |
-
-**Returns:** Promise<Files\>
-
-___
-
 ### startServer
 
-▸ `Static`**startServer**(`localStaticPath?`: string \| [StaticRoute](../interfaces/staticroute.md)[], `httpPort?`: number, `httpsPort?`: number, `processor?`: [HotServer](hotserver.md) \| [HotPreprocessor](hotpreprocessor.md)): Promise<{ processor: [HotServer](hotserver.md) \| [HotPreprocessor](hotpreprocessor.md) ; server: [HotHTTPServer](hothttpserver.md)  }\>
+▸ `Static`**startServer**(`baseUrl?`: string, `httpPort?`: number, `httpsPort?`: number, `processor?`: [HotServer](hotserver.md) \| [HotPreprocessor](hotpreprocessor.md), `logLevel?`: [HotLogLevel](../enums/hotloglevel.md)): Promise<{ processor: [HotServer](hotserver.md) \| [HotPreprocessor](hotpreprocessor.md) ; server: [HotTesterServer](hottesterserver.md)  }\>
 
-*Defined in [HotHTTPServer.ts:803](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L803)*
+*Defined in [HotTesterServer.ts:509](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterServer.ts#L509)*
 
 Start the server.
 
@@ -573,9 +498,10 @@ Start the server.
 
 Name | Type | Default value | Description |
 ------ | ------ | ------ | ------ |
-`localStaticPath` | string \| [StaticRoute](../interfaces/staticroute.md)[] | null | The public path that contains the HTML, Hott files, images, and all public content. This can also be an array of StaticRoutes. |
-`httpPort` | number | 80 | The HTTP port to listen on . |
-`httpsPort` | number | 443 | The HTTPS port to listen on. |
+`baseUrl` | string | \`http://127.0.0.1:8182\` | - |
+`httpPort` | number | 8182 | The HTTP port to listen on. |
+`httpsPort` | number | 4142 | The HTTPS port to listen on. |
 `processor` | [HotServer](hotserver.md) \| [HotPreprocessor](hotpreprocessor.md) | null | The HotPreprocessor or parent server being used for communication.  |
+`logLevel` | [HotLogLevel](../enums/hotloglevel.md) | HotLogLevel.Info | - |
 
-**Returns:** Promise<{ processor: [HotServer](hotserver.md) \| [HotPreprocessor](hotpreprocessor.md) ; server: [HotHTTPServer](hothttpserver.md)  }\>
+**Returns:** Promise<{ processor: [HotServer](hotserver.md) \| [HotPreprocessor](hotpreprocessor.md) ; server: [HotTesterServer](hottesterserver.md)  }\>

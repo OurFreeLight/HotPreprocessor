@@ -32,9 +32,9 @@ The logger.
 
 ### constructor
 
-\+ **new HotLog**(`logLevel`: [HotLogLevel](../enums/hotloglevel.md)): [HotLog](hotlog.md)
+\+ **new HotLog**(`logLevel?`: [HotLogLevel](../enums/hotloglevel.md)): [HotLog](hotlog.md)
 
-*Defined in [HotLog.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotLog.ts#L40)*
+*Defined in [HotLog.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotLog.ts#L40)*
 
 #### Parameters:
 
@@ -50,7 +50,7 @@ Name | Type | Default value |
 
 •  **logLevel**: [HotLogLevel](../enums/hotloglevel.md)
 
-*Defined in [HotLog.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotLog.ts#L40)*
+*Defined in [HotLog.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotLog.ts#L40)*
 
 The logging level.
 
@@ -58,9 +58,9 @@ The logging level.
 
 ### error
 
-▸ **error**(`message`: string): void
+▸ **error**(`message`: string \| Error): void
 
-*Defined in [HotLog.ts:136](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotLog.ts#L136)*
+*Defined in [HotLog.ts:136](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotLog.ts#L136)*
 
 Log an error message.
 
@@ -68,7 +68,7 @@ Log an error message.
 
 Name | Type |
 ------ | ------ |
-`message` | string |
+`message` | string \| Error |
 
 **Returns:** void
 
@@ -78,7 +78,7 @@ ___
 
 ▸ **info**(`message`: string): void
 
-*Defined in [HotLog.ts:110](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotLog.ts#L110)*
+*Defined in [HotLog.ts:110](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotLog.ts#L110)*
 
 Log a message.
 
@@ -96,7 +96,7 @@ ___
 
 ▸ **log**(`level`: [HotLogLevel](../enums/hotloglevel.md), `message`: string): void
 
-*Defined in [HotLog.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotLog.ts#L50)*
+*Defined in [HotLog.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotLog.ts#L50)*
 
 Log a message.
 
@@ -115,7 +115,7 @@ ___
 
 ▸ **verbose**(`message`: string): void
 
-*Defined in [HotLog.ts:101](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotLog.ts#L101)*
+*Defined in [HotLog.ts:101](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotLog.ts#L101)*
 
 Log a verbose message.
 
@@ -133,7 +133,7 @@ ___
 
 ▸ **warning**(`message`: string): void
 
-*Defined in [HotLog.ts:123](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotLog.ts#L123)*
+*Defined in [HotLog.ts:123](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotLog.ts#L123)*
 
 Log a warning.
 

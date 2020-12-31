@@ -43,9 +43,9 @@ A component to preprocess.
 
 ### constructor
 
-\+ **new HotComponent**(`copy`: [IHotComponent](../interfaces/ihotcomponent.md) \| [HotPreprocessor](hotpreprocessor.md), `api`: [HotAPI](hotapi.md)): [HotComponent](hotcomponent.md)
+\+ **new HotComponent**(`copy`: [IHotComponent](../interfaces/ihotcomponent.md) \| [HotPreprocessor](hotpreprocessor.md), `api?`: [HotAPI](hotapi.md)): [HotComponent](hotcomponent.md)
 
-*Defined in [HotComponent.ts:99](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L99)*
+*Defined in [HotComponent.ts:99](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotComponent.ts#L99)*
 
 #### Parameters:
 
@@ -64,7 +64,7 @@ Name | Type | Default value |
 
 *Implementation of [IHotComponent](../interfaces/ihotcomponent.md).[api](../interfaces/ihotcomponent.md#api)*
 
-*Defined in [HotComponent.ts:77](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L77)*
+*Defined in [HotComponent.ts:77](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotComponent.ts#L77)*
 
 The connected API.
 
@@ -76,7 +76,7 @@ ___
 
 *Implementation of [IHotComponent](../interfaces/ihotcomponent.md).[elementOptions](../interfaces/ihotcomponent.md#elementoptions)*
 
-*Defined in [HotComponent.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L81)*
+*Defined in [HotComponent.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotComponent.ts#L81)*
 
 The options to include with registering this component.
 
@@ -88,7 +88,7 @@ ___
 
 *Implementation of [IHotComponent](../interfaces/ihotcomponent.md).[events](../interfaces/ihotcomponent.md#events)*
 
-*Defined in [HotComponent.ts:93](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L93)*
+*Defined in [HotComponent.ts:93](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotComponent.ts#L93)*
 
 The events to trigger.
 
@@ -100,7 +100,7 @@ ___
 
 *Implementation of [IHotComponent](../interfaces/ihotcomponent.md).[htmlElement](../interfaces/ihotcomponent.md#htmlelement)*
 
-*Defined in [HotComponent.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L65)*
+*Defined in [HotComponent.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotComponent.ts#L65)*
 
 The associated HTMLElement.
 
@@ -112,7 +112,7 @@ ___
 
 *Implementation of [IHotComponent](../interfaces/ihotcomponent.md).[name](../interfaces/ihotcomponent.md#name)*
 
-*Defined in [HotComponent.ts:69](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L69)*
+*Defined in [HotComponent.ts:69](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotComponent.ts#L69)*
 
 The name of the component.
 
@@ -124,7 +124,7 @@ ___
 
 *Implementation of [IHotComponent](../interfaces/ihotcomponent.md).[processor](../interfaces/ihotcomponent.md#processor)*
 
-*Defined in [HotComponent.ts:61](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L61)*
+*Defined in [HotComponent.ts:61](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotComponent.ts#L61)*
 
 The processor to use.
 
@@ -136,7 +136,7 @@ ___
 
 *Implementation of [IHotComponent](../interfaces/ihotcomponent.md).[tag](../interfaces/ihotcomponent.md#tag)*
 
-*Defined in [HotComponent.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L73)*
+*Defined in [HotComponent.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotComponent.ts#L73)*
 
 The name of the tag.
 
@@ -148,7 +148,7 @@ ___
 
 *Implementation of [IHotComponent](../interfaces/ihotcomponent.md).[type](../interfaces/ihotcomponent.md#type)*
 
-*Defined in [HotComponent.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L85)*
+*Defined in [HotComponent.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotComponent.ts#L85)*
 
 The type of component.
 
@@ -160,7 +160,7 @@ ___
 
 *Implementation of [IHotComponent](../interfaces/ihotcomponent.md).[value](../interfaces/ihotcomponent.md#value)*
 
-*Defined in [HotComponent.ts:89](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L89)*
+*Defined in [HotComponent.ts:89](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotComponent.ts#L89)*
 
 The value of the component.
 
@@ -168,21 +168,21 @@ The value of the component.
 
 ### click
 
-▸ `Abstract`**click**(): Promise\<void>
+▸ `Abstract`**click**(): Promise<void\>
 
-*Defined in [HotComponent.ts:152](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L152)*
+*Defined in [HotComponent.ts:152](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotComponent.ts#L152)*
 
 Handle a click event.
 
-**Returns:** Promise\<void>
+**Returns:** Promise<void\>
 
 ___
 
 ### handleAttributes
 
-▸ `Optional`**handleAttributes**(`attributes`: NamedNodeMap): Promise\<void>
+▸ `Optional`**handleAttributes**(`attributes`: NamedNodeMap): Promise<void\>
 
-*Defined in [HotComponent.ts:147](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L147)*
+*Defined in [HotComponent.ts:147](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotComponent.ts#L147)*
 
 Handle the attributes manually.
 
@@ -192,15 +192,15 @@ Name | Type |
 ------ | ------ |
 `attributes` | NamedNodeMap |
 
-**Returns:** Promise\<void>
+**Returns:** Promise<void\>
 
 ___
 
 ### onCreated
 
-▸ **onCreated**(`element`: HTMLElement): Promise\<any>
+▸ **onCreated**(`element`: HTMLElement): Promise<any\>
 
-*Defined in [HotComponent.ts:139](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L139)*
+*Defined in [HotComponent.ts:139](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotComponent.ts#L139)*
 
 Event that's called when this component is created. This is
 called before output is called. Right after this is called,
@@ -214,16 +214,16 @@ Name | Type |
 ------ | ------ |
 `element` | HTMLElement |
 
-**Returns:** Promise\<any>
+**Returns:** Promise<any\>
 
 ___
 
 ### output
 
-▸ `Abstract`**output**(): Promise\<string>
+▸ `Abstract`**output**(): Promise<string\>
 
-*Defined in [HotComponent.ts:157](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotComponent.ts#L157)*
+*Defined in [HotComponent.ts:157](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotComponent.ts#L157)*
 
 Output the component.
 
-**Returns:** Promise\<string>
+**Returns:** Promise<string\>

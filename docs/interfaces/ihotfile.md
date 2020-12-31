@@ -22,6 +22,7 @@ A file to process.
 * [localFile](ihotfile.md#localfile)
 * [name](ihotfile.md#name)
 * [page](ihotfile.md#page)
+* [throwAllErrors](ihotfile.md#throwallerrors)
 * [url](ihotfile.md#url)
 
 ## Properties
@@ -30,7 +31,7 @@ A file to process.
 
 • `Optional` **content**: string
 
-*Defined in [HotFile.ts:32](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L32)*
+*Defined in [HotFile.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L33)*
 
 The content of the file to process.
 
@@ -40,7 +41,7 @@ ___
 
 • `Optional` **localFile**: string
 
-*Defined in [HotFile.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L28)*
+*Defined in [HotFile.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L29)*
 
 The path to the local file to get.
 
@@ -50,7 +51,7 @@ ___
 
 • `Optional` **name**: string
 
-*Defined in [HotFile.ts:20](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L20)*
+*Defined in [HotFile.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L21)*
 
 The name of the file.
 
@@ -60,9 +61,19 @@ ___
 
 • `Optional` **page**: [HotPage](../classes/hotpage.md)
 
-*Defined in [HotFile.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L16)*
+*Defined in [HotFile.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L17)*
 
 The parent page.
+
+___
+
+### throwAllErrors
+
+• `Optional` **throwAllErrors**: boolean
+
+*Defined in [HotFile.ts:37](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L37)*
+
+Force all errors to be thrown.
 
 ___
 
@@ -70,6 +81,6 @@ ___
 
 • `Optional` **url**: string
 
-*Defined in [HotFile.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/HotFile.ts#L24)*
+*Defined in [HotFile.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotFile.ts#L25)*
 
 The url to the file to get.

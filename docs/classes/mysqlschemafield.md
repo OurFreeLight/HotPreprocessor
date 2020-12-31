@@ -45,9 +45,9 @@ The database field.
 
 ### constructor
 
-\+ **new MySQLSchemaField**(`name`: string \| [IMySQLSchemaField](../interfaces/imysqlschemafield.md), `dataType`: string, `defaultValue`: string, `primaryKey`: boolean, `notNull`: boolean, `uniqueIndex`: boolean, `binaryColumn`: boolean, `unsignedDataType`: boolean, `fillZeroes`: boolean, `autoIncrement`: boolean, `generatedColumn`: boolean, `strAroundDefaultValue`: string): [MySQLSchemaField](mysqlschemafield.md)
+\+ **new MySQLSchemaField**(`name`: string \| [IMySQLSchemaField](../interfaces/imysqlschemafield.md), `dataType?`: string, `defaultValue?`: string, `primaryKey?`: boolean, `notNull?`: boolean, `uniqueIndex?`: boolean, `binaryColumn?`: boolean, `unsignedDataType?`: boolean, `fillZeroes?`: boolean, `autoIncrement?`: boolean, `generatedColumn?`: boolean, `strAroundDefaultValue?`: string): [MySQLSchemaField](mysqlschemafield.md)
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:143](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L143)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:143](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L143)*
 
 #### Parameters:
 
@@ -76,7 +76,7 @@ Name | Type | Default value |
 
 *Implementation of [IMySQLSchemaField](../interfaces/imysqlschemafield.md).[autoIncrement](../interfaces/imysqlschemafield.md#autoincrement)*
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:129](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L129)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:129](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L129)*
 
 Set as an auto incrementing column.
 
@@ -88,7 +88,7 @@ ___
 
 *Implementation of [IMySQLSchemaField](../interfaces/imysqlschemafield.md).[binaryColumn](../interfaces/imysqlschemafield.md#binarycolumn)*
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:117](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L117)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:117](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L117)*
 
 Set as a binary column.
 
@@ -100,7 +100,7 @@ ___
 
 *Implementation of [IMySQLSchemaField](../interfaces/imysqlschemafield.md).[dataType](../interfaces/imysqlschemafield.md#datatype)*
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:101](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L101)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:101](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L101)*
 
 The data type, be sure to include the length of the
 data type here as well.
@@ -113,7 +113,7 @@ ___
 
 *Implementation of [IMySQLSchemaField](../interfaces/imysqlschemafield.md).[defaultValue](../interfaces/imysqlschemafield.md#defaultvalue)*
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:138](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L138)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:138](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L138)*
 
 Set the default value. If this is set to null, a
 MySQL NULL value will be used.
@@ -126,7 +126,7 @@ ___
 
 *Implementation of [IMySQLSchemaField](../interfaces/imysqlschemafield.md).[fillZeroes](../interfaces/imysqlschemafield.md#fillzeroes)*
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:125](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L125)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:125](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L125)*
 
 If this column is a number, fill with zeroes.
 
@@ -138,7 +138,7 @@ ___
 
 *Implementation of [IMySQLSchemaField](../interfaces/imysqlschemafield.md).[generatedColumn](../interfaces/imysqlschemafield.md#generatedcolumn)*
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:133](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L133)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:133](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L133)*
 
 Set as a generated column.
 
@@ -150,7 +150,7 @@ ___
 
 *Implementation of [IMySQLSchemaField](../interfaces/imysqlschemafield.md).[name](../interfaces/imysqlschemafield.md#name)*
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:96](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L96)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:96](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L96)*
 
 The name of the field.
 
@@ -162,7 +162,7 @@ ___
 
 *Implementation of [IMySQLSchemaField](../interfaces/imysqlschemafield.md).[notNull](../interfaces/imysqlschemafield.md#notnull)*
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:109](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L109)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:109](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L109)*
 
 Set as a not null.
 
@@ -174,7 +174,7 @@ ___
 
 *Implementation of [IMySQLSchemaField](../interfaces/imysqlschemafield.md).[primaryKey](../interfaces/imysqlschemafield.md#primarykey)*
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:105](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L105)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:105](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L105)*
 
 Set as a primary key.
 
@@ -186,7 +186,7 @@ ___
 
 *Implementation of [IMySQLSchemaField](../interfaces/imysqlschemafield.md).[strAroundDefaultValue](../interfaces/imysqlschemafield.md#strarounddefaultvalue)*
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:143](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L143)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:143](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L143)*
 
 Set the string to be used when setting the default
 value. The default is: '
@@ -199,7 +199,7 @@ ___
 
 *Implementation of [IMySQLSchemaField](../interfaces/imysqlschemafield.md).[uniqueIndex](../interfaces/imysqlschemafield.md#uniqueindex)*
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:113](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L113)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:113](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L113)*
 
 Set as a unique index.
 
@@ -211,7 +211,7 @@ ___
 
 *Implementation of [IMySQLSchemaField](../interfaces/imysqlschemafield.md).[unsignedDataType](../interfaces/imysqlschemafield.md#unsigneddatatype)*
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:121](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L121)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:121](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L121)*
 
 Set as an unsigned data type.
 
@@ -219,21 +219,21 @@ Set as an unsigned data type.
 
 ### generate
 
-▸ **generate**(): Promise\<[MySQLSchemaFieldResult](../interfaces/mysqlschemafieldresult.md)>
+▸ **generate**(): Promise<[MySQLSchemaFieldResult](../interfaces/mysqlschemafieldresult.md)\>
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:326](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L326)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:326](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L326)*
 
 Generate the db command.
 
-**Returns:** Promise\<[MySQLSchemaFieldResult](../interfaces/mysqlschemafieldresult.md)>
+**Returns:** Promise<[MySQLSchemaFieldResult](../interfaces/mysqlschemafieldresult.md)\>
 
 ___
 
 ### compare
 
-▸ `Static`**compare**(`field1`: [MySQLSchemaField](mysqlschemafield.md), `field2`: [MySQLSchemaField](mysqlschemafield.md), `onlyKeys`: string[], `stringFilter`: RegExp): boolean
+▸ `Static`**compare**(`field1`: [MySQLSchemaField](mysqlschemafield.md), `field2`: [MySQLSchemaField](mysqlschemafield.md), `onlyKeys?`: string[], `stringFilter?`: RegExp): boolean
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:201](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L201)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:201](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L201)*
 
 Compare two different fields. This will iterate through all keys in each field. Any
 string values found will have stringFilter applied to it, removing everything that
@@ -247,7 +247,7 @@ Name | Type | Default value | Description |
 `field1` | [MySQLSchemaField](mysqlschemafield.md) | - | The first field to compare. |
 `field2` | [MySQLSchemaField](mysqlschemafield.md) | - | The second field to compare. |
 `onlyKeys` | string[] | null | Only compare using the provided keys. If set to null, this will compare using all of the keys in these objects. |
-`stringFilter` | RegExp | new RegExp ("(\\s+|\\'+|\\\"+|\\`+|\\(+|\\)+)", "g") | The regex to be used to help make any filters on any detected strings. The default regex provided will remove any whitespaces, single/doube quotes, back ticks, and parenthesis. If this is set to null, it will not be used.  |
+`stringFilter` | RegExp | new RegExp ("(\\s+\|\\'+\|\\\"+\|\\\`+\|\\(+\|\\)+)", "g") | The regex to be used to help make any filters on any detected strings. The default regex provided will remove any whitespaces, single/doube quotes, back ticks, and parenthesis. If this is set to null, it will not be used.  |
 
 **Returns:** boolean
 
@@ -257,7 +257,7 @@ ___
 
 ▸ `Static`**parse**(`json`: any): [MySQLSchemaField](mysqlschemafield.md)
 
-*Defined in [schemas/mysql/MySQLSchemaField.ts:266](https://github.com/OurFreeLight/HotPreprocessor/blob/9c94bd6/src/schemas/mysql/MySQLSchemaField.ts#L266)*
+*Defined in [schemas/mysql/MySQLSchemaField.ts:266](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaField.ts#L266)*
 
 Parse a JSON object and get a MySQLSchemaField object from it.
 Warning! This is only partially implemented. This will not check
