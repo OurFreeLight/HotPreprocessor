@@ -36,7 +36,7 @@ The database table.
 
 \+ **new MySQLSchemaTable**(`name?`: string, `fields?`: [MySQLSchemaField](mysqlschemafield.md)[]): [MySQLSchemaTable](mysqlschematable.md)
 
-*Defined in [schemas/mysql/MySQLSchemaTable.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaTable.ts#L29)*
+*Defined in [schemas/mysql/MySQLSchemaTable.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/schemas/mysql/MySQLSchemaTable.ts#L29)*
 
 #### Parameters:
 
@@ -53,7 +53,7 @@ Name | Type | Default value |
 
 •  **charset**: string
 
-*Defined in [schemas/mysql/MySQLSchemaTable.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaTable.ts#L29)*
+*Defined in [schemas/mysql/MySQLSchemaTable.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/schemas/mysql/MySQLSchemaTable.ts#L29)*
 
 The table's charset to use.
 
@@ -63,7 +63,7 @@ ___
 
 •  **description**: string
 
-*Defined in [schemas/mysql/MySQLSchemaTable.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaTable.ts#L17)*
+*Defined in [schemas/mysql/MySQLSchemaTable.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/schemas/mysql/MySQLSchemaTable.ts#L17)*
 
 The table's description.
 
@@ -73,7 +73,7 @@ ___
 
 •  **engine**: string
 
-*Defined in [schemas/mysql/MySQLSchemaTable.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaTable.ts#L25)*
+*Defined in [schemas/mysql/MySQLSchemaTable.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/schemas/mysql/MySQLSchemaTable.ts#L25)*
 
 The table's engine to use.
 
@@ -83,7 +83,7 @@ ___
 
 •  **fields**: [MySQLSchemaField](mysqlschemafield.md)[]
 
-*Defined in [schemas/mysql/MySQLSchemaTable.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaTable.ts#L21)*
+*Defined in [schemas/mysql/MySQLSchemaTable.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/schemas/mysql/MySQLSchemaTable.ts#L21)*
 
 The fields in the table.
 
@@ -93,7 +93,7 @@ ___
 
 •  **name**: string
 
-*Defined in [schemas/mysql/MySQLSchemaTable.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaTable.ts#L13)*
+*Defined in [schemas/mysql/MySQLSchemaTable.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/schemas/mysql/MySQLSchemaTable.ts#L13)*
 
 The name of the table.
 
@@ -103,7 +103,7 @@ The name of the table.
 
 ▸ **addField**(`field`: [MySQLSchemaField](mysqlschemafield.md)): void
 
-*Defined in [schemas/mysql/MySQLSchemaTable.ts:43](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaTable.ts#L43)*
+*Defined in [schemas/mysql/MySQLSchemaTable.ts:43](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/schemas/mysql/MySQLSchemaTable.ts#L43)*
 
 Add a field.
 
@@ -121,7 +121,7 @@ ___
 
 ▸ **addFields**(`fields`: [MySQLSchemaField](mysqlschemafield.md)[]): void
 
-*Defined in [schemas/mysql/MySQLSchemaTable.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaTable.ts#L51)*
+*Defined in [schemas/mysql/MySQLSchemaTable.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/schemas/mysql/MySQLSchemaTable.ts#L51)*
 
 Add a field.
 
@@ -139,7 +139,7 @@ ___
 
 ▸ **generate**(`type?`: [HotDBGenerationType](../enums/hotdbgenerationtype.md), `db?`: [HotDBMySQL](hotdbmysql.md)): Promise<string[]\>
 
-*Defined in [schemas/mysql/MySQLSchemaTable.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/mysql/MySQLSchemaTable.ts#L70)*
+*Defined in [schemas/mysql/MySQLSchemaTable.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/schemas/mysql/MySQLSchemaTable.ts#L70)*
 
 Generate the db command. If type is set to modify, you must pass a db with an
 active connection. Since field parsing isn't completely implemented yet, not all

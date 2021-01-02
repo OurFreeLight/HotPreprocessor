@@ -24,7 +24,7 @@ The database results.
 
 •  **error**: any
 
-*Defined in [schemas/HotDBMySQL.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/HotDBMySQL.ts#L13)*
+*Defined in [schemas/HotDBMySQL.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/schemas/HotDBMySQL.ts#L13)*
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 •  **fields**: FieldInfo[]
 
-*Defined in [schemas/HotDBMySQL.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/HotDBMySQL.ts#L15)*
+*Defined in [schemas/HotDBMySQL.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/schemas/HotDBMySQL.ts#L15)*
 
 ___
 
@@ -40,4 +40,4 @@ ___
 
 •  **results**: any
 
-*Defined in [schemas/HotDBMySQL.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/schemas/HotDBMySQL.ts#L14)*
+*Defined in [schemas/HotDBMySQL.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/schemas/HotDBMySQL.ts#L14)*

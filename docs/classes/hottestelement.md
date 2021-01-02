@@ -32,7 +32,7 @@ A test element.
 
 \+ **new HotTestElement**(`name`: string \| [IHotTestElement](../interfaces/ihottestelement.md), `func?`: string, `value?`: any): [HotTestElement](hottestelement.md)
 
-*Defined in [HotTestElement.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTestElement.ts#L80)*
+*Defined in [HotTestElement.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTestElement.ts#L80)*
 
 #### Parameters:
 
@@ -52,7 +52,7 @@ Name | Type | Default value |
 
 *Implementation of [IHotTestElement](../interfaces/ihottestelement.md).[func](../interfaces/ihottestelement.md#func)*
 
-*Defined in [HotTestElement.ts:76](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTestElement.ts#L76)*
+*Defined in [HotTestElement.ts:76](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTestElement.ts#L76)*
 
 The name of the function to execute
 while executing the test.
@@ -65,7 +65,7 @@ ___
 
 *Implementation of [IHotTestElement](../interfaces/ihottestelement.md).[name](../interfaces/ihottestelement.md#name)*
 
-*Defined in [HotTestElement.ts:71](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTestElement.ts#L71)*
+*Defined in [HotTestElement.ts:71](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTestElement.ts#L71)*
 
 The name of the element.
 
@@ -77,6 +77,6 @@ ___
 
 *Implementation of [IHotTestElement](../interfaces/ihottestelement.md).[value](../interfaces/ihottestelement.md#value)*
 
-*Defined in [HotTestElement.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTestElement.ts#L80)*
+*Defined in [HotTestElement.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTestElement.ts#L80)*
 
 The value to use.

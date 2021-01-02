@@ -23,7 +23,7 @@ A static route.
 
 • `Optional` **localPath**: string
 
-*Defined in [HotHTTPServer.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L29)*
+*Defined in [HotHTTPServer.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotHTTPServer.ts#L29)*
 
 The absolute path to the location of the files to
 serve on this machine.
@@ -34,6 +34,6 @@ ___
 
 • `Optional` **route**: string
 
-*Defined in [HotHTTPServer.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotHTTPServer.ts#L24)*
+*Defined in [HotHTTPServer.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotHTTPServer.ts#L24)*
 
 The route to the files.

@@ -33,7 +33,7 @@ A page to preprocess.
 
 • `Optional` **files**: [HotFile](../classes/hotfile.md)[]
 
-*Defined in [HotPage.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotPage.ts#L29)*
+*Defined in [HotPage.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPage.ts#L29)*
 
 The name of the page. File ordering matters here.
 Every file is processed incrementally.
@@ -44,7 +44,7 @@ ___
 
 • `Optional` **name**: string
 
-*Defined in [HotPage.ts:20](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotPage.ts#L20)*
+*Defined in [HotPage.ts:20](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPage.ts#L20)*
 
 The name of the page.
 
@@ -54,7 +54,7 @@ ___
 
 •  **processor**: [HotPreprocessor](../classes/hotpreprocessor.md)
 
-*Defined in [HotPage.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotPage.ts#L16)*
+*Defined in [HotPage.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPage.ts#L16)*
 
 The processor to use.
 
@@ -64,7 +64,7 @@ ___
 
 • `Optional` **route**: string
 
-*Defined in [HotPage.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotPage.ts#L24)*
+*Defined in [HotPage.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPage.ts#L24)*
 
 The route used to get to this page.
 
@@ -74,7 +74,7 @@ ___
 
 • `Optional` **testElements**: { [name:string]: [HotTestElement](../classes/hottestelement.md);  }
 
-*Defined in [HotPage.ts:41](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotPage.ts#L41)*
+*Defined in [HotPage.ts:41](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPage.ts#L41)*
 
 The elements to test on this page.
 
@@ -84,7 +84,7 @@ ___
 
 • `Optional` **testPaths**: { [name:string]: [HotTestPath](../globals.md#hottestpath);  }
 
-*Defined in [HotPage.ts:45](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotPage.ts#L45)*
+*Defined in [HotPage.ts:45](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPage.ts#L45)*
 
 The test paths to test on this page.
 
@@ -94,7 +94,7 @@ ___
 
 • `Optional` **testerMap**: string
 
-*Defined in [HotPage.ts:37](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotPage.ts#L37)*
+*Defined in [HotPage.ts:37](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPage.ts#L37)*
 
 The associated tester map.
 
@@ -104,6 +104,6 @@ ___
 
 • `Optional` **testerName**: string
 
-*Defined in [HotPage.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotPage.ts#L33)*
+*Defined in [HotPage.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPage.ts#L33)*
 
 The associated tester name.

@@ -45,7 +45,7 @@
 
 *Overrides [HotAPI](hotapi.md).[constructor](hotapi.md#constructor)*
 
-*Defined in [HotTesterAPI.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterAPI.ts#L10)*
+*Defined in [HotTesterAPI.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTesterAPI.ts#L10)*
 
 #### Parameters:
 
@@ -65,7 +65,7 @@ Name | Type | Default value |
 
 *Inherited from [HotTesterAPI](hottesterapi.md).[authCredentials](hottesterapi.md#authcredentials)*
 
-*Defined in [HotAPI.ts:48](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotAPI.ts#L48)*
+*Defined in [HotAPI.ts:48](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotAPI.ts#L48)*
 
 The authorization credentials to use throughout the application.
 
@@ -77,7 +77,7 @@ ___
 
 *Inherited from [HotTesterAPI](hottesterapi.md).[baseUrl](hottesterapi.md#baseurl)*
 
-*Defined in [HotAPI.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotAPI.ts#L31)*
+*Defined in [HotAPI.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotAPI.ts#L31)*
 
 The base url for the server.
 
@@ -89,7 +89,7 @@ ___
 
 *Inherited from [HotTesterAPI](hottesterapi.md).[connection](hottesterapi.md#connection)*
 
-*Defined in [HotAPI.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotAPI.ts#L27)*
+*Defined in [HotAPI.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotAPI.ts#L27)*
 
 The server connection.
 
@@ -101,7 +101,7 @@ ___
 
 *Inherited from [HotTesterAPI](hottesterapi.md).[createFunctions](hottesterapi.md#createfunctions)*
 
-*Defined in [HotAPI.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotAPI.ts#L36)*
+*Defined in [HotAPI.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotAPI.ts#L36)*
 
 If set, this will create the route variables and functions for
 easy client/server calling.
@@ -114,7 +114,7 @@ ___
 
 *Inherited from [HotTesterAPI](hottesterapi.md).[db](hottesterapi.md#db)*
 
-*Defined in [HotAPI.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotAPI.ts#L44)*
+*Defined in [HotAPI.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotAPI.ts#L44)*
 
 The database connection.
 
@@ -126,7 +126,7 @@ ___
 
 *Inherited from [HotTesterAPI](hottesterapi.md).[executeEventsUsing](hottesterapi.md#executeeventsusing)*
 
-*Defined in [HotAPI.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotAPI.ts#L40)*
+*Defined in [HotAPI.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotAPI.ts#L40)*
 
 The database connection.
 
@@ -138,7 +138,7 @@ ___
 
 *Inherited from [HotTesterAPI](hottesterapi.md).[onPostRegister](hottesterapi.md#onpostregister)*
 
-*Defined in [HotAPI.ts:62](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotAPI.ts#L62)*
+*Defined in [HotAPI.ts:62](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotAPI.ts#L62)*
 
 Executed when the API has finished registering routes. If
 this function returns false, the server will not start.
@@ -151,7 +151,7 @@ ___
 
 *Inherited from [HotTesterAPI](hottesterapi.md).[onPreRegister](hottesterapi.md#onpreregister)*
 
-*Defined in [HotAPI.ts:57](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotAPI.ts#L57)*
+*Defined in [HotAPI.ts:57](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotAPI.ts#L57)*
 
 Executed when the API is about to start registering routes. If
 this function returns false, the server will not start.
@@ -164,7 +164,7 @@ ___
 
 *Inherited from [HotTesterAPI](hottesterapi.md).[routes](hottesterapi.md#routes)*
 
-*Defined in [HotAPI.ts:52](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotAPI.ts#L52)*
+*Defined in [HotAPI.ts:52](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotAPI.ts#L52)*
 
 The database connection.
 
@@ -176,7 +176,7 @@ The database connection.
 
 *Inherited from [HotTesterAPI](hottesterapi.md).[addRoute](hottesterapi.md#addroute)*
 
-*Defined in [HotAPI.ts:116](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotAPI.ts#L116)*
+*Defined in [HotAPI.ts:116](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotAPI.ts#L116)*
 
 Add a route. If this.createFunctions is set to true, this will take the incoming
 route and create an object in this HotAPI object using the name of the route. If there's
@@ -226,7 +226,7 @@ ___
 
 *Inherited from [HotTesterAPI](hottesterapi.md).[call](hottesterapi.md#call)*
 
-*Defined in [HotAPI.ts:292](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotAPI.ts#L292)*
+*Defined in [HotAPI.ts:292](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotAPI.ts#L292)*
 
 Make a call to the API.
 
@@ -246,7 +246,7 @@ ___
 
 ▸ **executeTests**(`req`: any, `res`: any, `authorizedValue`: any, `jsonObj`: any, `queryObj`: any): Promise<any\>
 
-*Defined in [HotTesterAPI.ts:104](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterAPI.ts#L104)*
+*Defined in [HotTesterAPI.ts:104](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTesterAPI.ts#L104)*
 
 Execute the tests for a page.
 
@@ -268,7 +268,7 @@ ___
 
 ▸ **pageLoaded**(`req`: any, `res`: any, `authorizedValue`: any, `jsonObj`: any, `queryObj`: any): Promise<any\>
 
-*Defined in [HotTesterAPI.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTesterAPI.ts#L26)*
+*Defined in [HotTesterAPI.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTesterAPI.ts#L26)*
 
 This is called when the page has finished loading in development mode.
 
@@ -292,7 +292,7 @@ ___
 
 *Inherited from [HotTesterAPI](hottesterapi.md).[registerRoute](hottesterapi.md#registerroute)*
 
-*Defined in [HotAPI.ts:270](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotAPI.ts#L270)*
+*Defined in [HotAPI.ts:270](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotAPI.ts#L270)*
 
 Register a route with the server.
 
@@ -312,7 +312,7 @@ ___
 
 *Inherited from [HotTesterAPI](hottesterapi.md).[registerRoutes](hottesterapi.md#registerroutes)*
 
-*Defined in [HotAPI.ts:279](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotAPI.ts#L279)*
+*Defined in [HotAPI.ts:279](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotAPI.ts#L279)*
 
 Register all routes with the server.
 

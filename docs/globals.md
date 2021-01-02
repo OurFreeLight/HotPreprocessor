@@ -91,7 +91,7 @@
 
 Ƭ  **ClientExecutionFunction**: (...args: any[]) => Promise<any\>
 
-*Defined in [HotRouteMethod.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotRouteMethod.ts#L28)*
+*Defined in [HotRouteMethod.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRouteMethod.ts#L28)*
 
 A function that will be executed by the client.
 
@@ -101,7 +101,7 @@ ___
 
 Ƭ  **HotTestPath**: (driver: [HotTestDriver](classes/hottestdriver.md), ...args: any) => Promise<any\>
 
-*Defined in [HotTestMap.ts:8](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotTestMap.ts#L8)*
+*Defined in [HotTestMap.ts:8](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTestMap.ts#L8)*
 
 Create a test path for later execution.
 
@@ -111,7 +111,7 @@ ___
 
 Ƭ  **ServerAuthorizationFunction**: (req: any, res: any, jsonObj: any, queryObj: any) => Promise<any\>
 
-*Defined in [HotRouteMethod.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotRouteMethod.ts#L36)*
+*Defined in [HotRouteMethod.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRouteMethod.ts#L36)*
 
 A function that will be executed by the server for authorization. Any value
 returned from this function will be passed to the ServerExecutionFunction.
@@ -125,7 +125,7 @@ ___
 
 Ƭ  **ServerExecutionFunction**: (req: any, res: any, authorizedValue: any, jsonObj: any, queryObj: any) => Promise<any\>
 
-*Defined in [HotRouteMethod.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotRouteMethod.ts#L23)*
+*Defined in [HotRouteMethod.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRouteMethod.ts#L23)*
 
 A function that will be executed by the server.
 
@@ -135,7 +135,7 @@ ___
 
 Ƭ  **ServerRegistrationFunction**: () => Promise<boolean\>
 
-*Defined in [HotRouteMethod.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotRouteMethod.ts#L19)*
+*Defined in [HotRouteMethod.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRouteMethod.ts#L19)*
 
 A function that will be executed by the server when first registering with Express.
 If this returns false, this route method will not be registered.
@@ -146,7 +146,7 @@ ___
 
 Ƭ  **TestCaseFunction**: (driver: [HotTestDriver](classes/hottestdriver.md)) => Promise<any\> \| (driver: [HotTestDriver](classes/hottestdriver.md)) => any
 
-*Defined in [HotRouteMethod.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/HotRouteMethod.ts#L40)*
+*Defined in [HotRouteMethod.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRouteMethod.ts#L40)*
 
 The test case function to execute.
 
@@ -156,6 +156,6 @@ The test case function to execute.
 
 ▸ **start**(): Promise<void\>
 
-*Defined in [cli.ts:12](https://github.com/OurFreeLight/HotPreprocessor/blob/79295d2/src/cli.ts#L12)*
+*Defined in [cli.ts:12](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/cli.ts#L12)*
 
 **Returns:** Promise<void\>
