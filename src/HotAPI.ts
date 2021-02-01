@@ -3,8 +3,10 @@ import fetch from "cross-fetch";
 import { HotServer } from "./HotServer";
 import { HotRoute } from "./HotRoute";
 import { HotClient } from "./HotClient";
-import { HotRouteMethod } from "./HotRouteMethod";
+import { HotRouteMethod, ServerAuthorizationFunction } from "./HotRouteMethod";
 import { HotDB } from "./HotDB";
+
+import { HotDBSchema } from "./schemas/HotDBSchema";
 
 /**
  * The type of object to use during event executions.
@@ -47,6 +49,10 @@ export abstract class HotAPI
 	 */
 	authCredentials: any;
 	/**
+	 * The function used for user authentication.
+	 */
+	userAuth: ServerAuthorizationFunction;
+	/**
 	 * The database connection.
 	 */
 	routes: { [name: string]: HotRoute };
@@ -69,9 +75,34 @@ export abstract class HotAPI
 		this.executeEventsUsing = EventExecutionType.HotRoute;
 		this.db = db;
 		this.authCredentials = null;
+		this.userAuth = null;
 		this.routes = {};
 		this.onPreRegister = null;
 		this.onPostRegister = null;
+	}
+
+	/**
+	 * Set the database schema for use.
+	 */
+	setDBSchema (schema: HotDBSchema): void
+	{
+		this.connection.api.db.schema = schema;
+	}
+
+	/**
+	 * Get the database being used.
+	 */
+	getDB (): HotDB
+	{
+		return (this.connection.api.db);
+	}
+
+	/**
+	 * Get the database schema being used.
+	 */
+	getDBSchema (): HotDBSchema
+	{
+		return (this.connection.api.db.schema);
 	}
 
 	/**

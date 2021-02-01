@@ -1,6 +1,6 @@
 {
   "name": "hotpreprocessor",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "",
   "bin": {
     "hotpreprocessor": "./bin/hotpreprocessor"
@@ -9,10 +9,10 @@
   "types": "./build/src/api.d.js",
   "scripts": {
     "test": "mocha --timeout 999999 --colors ./build/tests/**/*.js",
-    "prepublishOnly": "tsc --build ./tsconfig.json && webpack --mode=production && typedoc --ignoreCompilerErrors --mode file --theme markdown --readme README.md --out ./docs/ ./src",
+    "prepublishOnly": "npm run build && npm run buildweb && npm run builddoc",
     "builddoc": "typedoc --ignoreCompilerErrors --mode file --theme markdown --readme README.md --out ./docs/ ./src",
     "build": "tsc --build ./tsconfig.json",
-    "buildweb": "webpack --mode=production",
+    "buildweb": "webpack --mode=production && npx google-closure-compiler --js=./build-web/HotPreprocessor.js --language_out=ECMASCRIPT_2018 --js_output_file=./build-web/HotPreprocessor.min.js",
     "buildwebdebug": "webpack --mode=development --debug"
   },
   "bugs": {
@@ -36,14 +36,17 @@
     "@types/chai": "^4.2.12",
     "@types/express": "^4.17.9",
     "@types/formidable": "^1.0.32",
+    "@types/fs-extra": "^9.0.6",
     "@types/js-cookie": "^2.2.6",
     "@types/mocha": "^7.0.2",
     "@types/mysql": "^2.15.17",
     "@types/node": "^13.13.38",
     "@types/selenium-webdriver": "^4.0.10",
+    "@types/validate-npm-package-name": "^3.0.2",
     "buildci": "^0.3.997",
     "chai": "^4.2.0",
     "form-data": "^3.0.0",
+    "fs-extra": "^9.0.1",
     "libbuildci": "^0.3.998",
     "mocha": "^7.2.0",
     "selenium-webdriver": "^4.0.0-alpha.8",
@@ -51,6 +54,7 @@
     "typedoc": "^0.19.2",
     "typedoc-plugin-markdown": "^3.1.1",
     "typescript": "^3.9.7",
+    "validate-npm-package-name": "^3.0.0",
     "webpack": "^4.44.0",
     "webpack-cli": "^3.3.12"
   }

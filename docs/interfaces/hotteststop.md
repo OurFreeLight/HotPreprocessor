@@ -25,7 +25,7 @@ a path.
 
 •  **cmd**: string
 
-*Defined in [HotTester.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTester.ts#L28)*
+*Defined in [HotTester.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTester.ts#L28)*
 
 A command to execute. Can be:
 * print(x)
@@ -47,7 +47,7 @@ ___
 
 •  **dest**: string
 
-*Defined in [HotTester.ts:32](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTester.ts#L32)*
+*Defined in [HotTester.ts:32](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTester.ts#L32)*
 
 The destination to execute.
 
@@ -57,6 +57,6 @@ ___
 
 •  **path**: string
 
-*Defined in [HotTester.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTester.ts#L36)*
+*Defined in [HotTester.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTester.ts#L36)*
 
 The path to execute.

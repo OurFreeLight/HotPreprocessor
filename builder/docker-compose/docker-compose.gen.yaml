@@ -1,0 +1,39 @@
+version: "3"
+services:
+  freelight:
+    image: ourfreelight/freelight:${FreeLightVersion}${FreeLightVolumes}
+    ports:
+      - "${FreeLightHTTPPort}:80"
+      - "${FreeLightHTTPSPort}:443"
+    deploy:
+      replicas: 1
+  freelight-api:
+    image: ourfreelight/freelight:${FreeLightVersion}${FreeLightVolumes}
+    ports:
+      - "${FreeLightAPIHTTPPort}:80"
+      - "${FreeLightAPIHTTPSPort}:443"
+    entrypoint: ["/app/api-start.sh"]
+    environment:
+      DATABASE_SERVER: "${DATABASE_SERVER}"
+      DATABASE_PORT: "${DATABASE_PORT}"
+      DATABASE_USERNAME: "${DATABASE_USERNAME}"
+      DATABASE_PASSWORD: "${DATABASE_PASSWORD}"
+      DATABASE_SCHEMA: "${DATABASE_SCHEMA}"
+    deploy:
+      replicas: 1
+  freelight-database:
+    image: ourfreelight/freelight-database:${FreeLightVersion}
+    volumes:
+      - "${FreeLightDatabasePath}:/var/lib/mysql"
+    ports:
+      - "${FreeLightDatabasePort}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+    deploy:
+      replicas: 1
+
+volumes:
+  freelight-database:

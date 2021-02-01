@@ -27,7 +27,7 @@ Hot test element options.
 
 • `Optional` **ignoreMissingElementError**: boolean
 
-*Defined in [HotTestElement.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTestElement.ts#L16)*
+*Defined in [HotTestElement.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestElement.ts#L16)*
 
 If the test element is missing, ignore the error. This
 will cause the rest of the function to return immediately
@@ -39,7 +39,7 @@ ___
 
 • `Optional` **mustBeVisible**: boolean
 
-*Defined in [HotTestElement.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTestElement.ts#L10)*
+*Defined in [HotTestElement.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestElement.ts#L10)*
 
 Indicates that the test element must be visible in
 order to select it.

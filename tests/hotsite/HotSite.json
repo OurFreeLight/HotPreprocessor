@@ -1,10 +1,11 @@
 {
-	"serveDirectories": [{
-            "route": "/",
-            "localPath": "./"
-		}],
+	"name": "HotSiteTest",
 	"server": {
-			"jsSrcPath": "/build-web/HotPreprocessor.js"
+			"jsSrcPath": "/build-web/HotPreprocessor.js",
+			"serveDirectories": [{
+					"route": "/",
+					"localPath": "./"
+				}]
 		},
 	"testing": {
 		"tester": "HotTesterMochaSelenium",

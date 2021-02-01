@@ -239,7 +239,10 @@ export class HotHTTPServer extends HotServer
 	{
 		this.clearErrorHandlingRoutes ();
 		this.preregisterRoute ();
+
 		this.expressApp.use (route.route, express.static (ppath.normalize (route.localPath)));
+		this.logger.verbose (`Adding static route ${route.route} at path ${route.localPath}`);
+
 		this.setErrorHandlingRoutes ();
 	}
 
@@ -308,6 +311,7 @@ export class HotHTTPServer extends HotServer
 				methodName += method.name;
 				method.isRegistered = true;
 
+				this.logger.verbose (`Adding route ${method.type} ${methodName}`);
 				this.expressApp[method.type] (methodName, 
 					async (req: express.Request, res: express.Response) =>
 					{
@@ -448,6 +452,7 @@ export class HotHTTPServer extends HotServer
 			let route = this.routes[iIdx];
 
 			this.expressApp[route.type] (route.route, route.method);
+			this.logger.verbose (`Adding route ${route.type} ${route.route}`);
 		}
 
 		let serveHottFiles: boolean = this.serveHottFiles;
@@ -470,55 +475,119 @@ export class HotHTTPServer extends HotServer
 					let filename: string = ppath.basename (route.url);
 
 					this.ignoreHottFiles[filename] = true;
+					this.logger.verbose (`Ignoring Hott file ${filename}`);
 				}
 			}
 		}
 
 		if (serveHottFiles === true)
 		{
+			this.logger.verbose (`Set to serve hott files...`);
+
 			this.expressApp.use ((req: express.Request, res: express.Response, next: any): void =>
 				{
 					(async () =>
 					{
+						let bodyObj: any = req.body;
+						let queryObj: any = req.query;
+
+						this.logger.verbose (`Method: ${req.method} Requested URL: ${req.originalUrl} Body: ${JSON.stringify (bodyObj)}, Query: ${JSON.stringify (queryObj)}`);
+
 						const requestedUrl: string = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
 						let url: URL = new URL (requestedUrl);
 						const urlFilepath: string = url.pathname;
 						const filepath: string = ppath.basename (urlFilepath);
 
+						// This if statement ensures the requested file is not on the ignore list.
 						if (this.ignoreHottFiles[filepath] == null)
 						{
-							let sendContent = (fullUrl: URL, path: string): void =>
+							let sendHottContent = (fullUrl: URL, route: string): void =>
 								{
+									// Appending hpserve ensures that the content will not be resent.
 									fullUrl.searchParams.append ("hpserve", "nahfam");
-	
-									const content: string = this.processor.generateContent (path, 
+
+									const content: string = this.processor.generateContent (route, 
 										this.hottFilesAssociatedInfo.name,
 										fullUrl.toString (),
 										this.hottFilesAssociatedInfo.jsSrcPath);
 									res.send (content);
 								};
 
-							if (urlFilepath.indexOf (".hott") > -1)
+							let result: string = "";
+							let hpserve = url.searchParams.get ("hpserve");
+
+							if (hpserve != null)
+								result = hpserve;
+
+							// Make sure we're not accidentally resending the content.
+							if (result !== "nahfam")
 							{
-								let result: string = "";
-								let hpserve = url.searchParams.get ("hpserve");
+								this.processor.hotSite.server.serveDirectories
+								let serveDirectories: {
+										route: string;
+										localPath: string;
+									}[] = HotPreprocessor.getValueFromHotSiteObj (
+										this.processor.hotSite, ["server", "serveDirectories"]);
+								let checkDirs: string[] = [];
 
-								if (hpserve != null)
-									result = hpserve;
-
-								if (result !== "nahfam")
+								if (serveDirectories != null)
 								{
-									if (await HotHTTPServer.checkIfFileExists (urlFilepath) === true)
+									if (serveDirectories.length > 0)
 									{
-										sendContent (url, urlFilepath);
+										for (let iIdx = 0; iIdx < serveDirectories.length; iIdx++)
+										{
+											const serveDir: string = serveDirectories[iIdx].localPath;
 
-										return;
+											checkDirs.push (serveDir);
+										}
+									}
+								}
+
+								if (checkDirs.length < 1)
+									checkDirs.push (process.cwd ());
+
+								for (let iIdx = 0; iIdx < checkDirs.length; iIdx++)
+								{
+									let checkDir: string = checkDirs[iIdx];
+									const route: string = urlFilepath;
+									let tempFilepath: string = urlFilepath;
+									let sendContentFlag: boolean = false;
+
+									if (tempFilepath.indexOf (".hott") > -1)
+									{
+										if (await HotHTTPServer.checkIfFileExists (
+											ppath.normalize (`${checkDir}/${tempFilepath}`)) === true)
+										{
+											sendContentFlag = true;
+										}
 									}
 
-									if (await HotHTTPServer.checkIfFileExists (
-										ppath.normalize (`${process.cwd ()}/${urlFilepath}`)) === true)
+									if (sendContentFlag === false)
 									{
-										sendContent (url, urlFilepath);
+										if (await HotHTTPServer.checkIfFileExists (
+											ppath.normalize (`${checkDir}/${tempFilepath}.hott`)) === true)
+										{
+											sendContentFlag = true;
+										}
+									}
+
+									if (sendContentFlag === false)
+									{
+										tempFilepath += "index.hott";
+
+										if (await HotHTTPServer.checkIfFileExists (
+											ppath.normalize (`${checkDir}/${tempFilepath}`)) === true)
+										{
+											sendContentFlag = true;
+										}
+									}
+
+									if (tempFilepath !== urlFilepath)
+										url.pathname = tempFilepath;
+
+									if (sendContentFlag === true)
+									{
+										sendHottContent (url, route);
 
 										return;
 									}
@@ -642,22 +711,39 @@ export class HotHTTPServer extends HotServer
 								port = this.ports.https;
 							}
 
-							this.logger.info (`Server running at ${protocol}://${this.listenAddress}:${port}/`);
+							this.logger.info (`${this.serverType} running at ${protocol}://${this.listenAddress}:${port}/`);
 							resolve ();
 						};
 
 					if (this.processor.hotSite != null)
 					{
-						if (this.processor.hotSite.serveDirectories != null)
+						let hotsiteServer = this.processor.hotSite.server;
+
+						if (hotsiteServer != null)
 						{
-							for (let iIdx = 0; iIdx < this.processor.hotSite.serveDirectories.length; iIdx++)
+							if (hotsiteServer.serveDirectories != null)
 							{
-								let directory = this.processor.hotSite.serveDirectories[iIdx];
-				
-								this.staticRoutes.push ({
-										"route": directory.route,
-										"localPath": ppath.normalize (directory.localPath)
-									});
+								for (let iIdx = 0; iIdx < hotsiteServer.serveDirectories.length; iIdx++)
+								{
+									let directory = hotsiteServer.serveDirectories[iIdx];
+					
+									this.staticRoutes.push ({
+											"route": directory.route,
+											"localPath": ppath.normalize (directory.localPath)
+										});
+								}
+							}
+
+							if (hotsiteServer.ports != null)
+							{
+								if (hotsiteServer.ports.http != null)
+									this.ports.http = hotsiteServer.ports.http;
+
+								if (hotsiteServer.ports.https != null)
+									this.ports.https = hotsiteServer.ports.https;
+
+								if (hotsiteServer.ports.redirectHTTPtoHTTPS != null)
+									this.redirectHTTPtoHTTPS = hotsiteServer.ports.redirectHTTPtoHTTPS;
 							}
 						}
 					}
@@ -835,6 +921,7 @@ export class HotHTTPServer extends HotServer
 	 */
 	async shutdown (): Promise<void>
 	{
+		this.logger.verbose (`Shutting down HTTP server...`);
 		await new Promise<void> ((resolve, reject) =>
 			{
 				this.httpListener.close ((err: Error) =>
@@ -844,6 +931,7 @@ export class HotHTTPServer extends HotServer
 						if (err != null)
 							throw err;
 
+						this.logger.verbose (`HTTP server has shut down.`);
 						resolve ();
 					});
 			});

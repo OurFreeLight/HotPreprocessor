@@ -20,6 +20,7 @@
 
 * [Hot](classes/hot.md)
 * [HotAPI](classes/hotapi.md)
+* [HotBuilder](classes/hotbuilder.md)
 * [HotClient](classes/hotclient.md)
 * [HotComponent](classes/hotcomponent.md)
 * [HotDB](classes/hotdb.md)
@@ -83,6 +84,8 @@
 
 ### Functions
 
+* [checkIfPathExists](globals.md#checkifpathexists)
+* [handleBuildCommands](globals.md#handlebuildcommands)
 * [start](globals.md#start)
 
 ## Type aliases
@@ -91,7 +94,7 @@
 
 Ƭ  **ClientExecutionFunction**: (...args: any[]) => Promise<any\>
 
-*Defined in [HotRouteMethod.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRouteMethod.ts#L28)*
+*Defined in [HotRouteMethod.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRouteMethod.ts#L28)*
 
 A function that will be executed by the client.
 
@@ -101,7 +104,7 @@ ___
 
 Ƭ  **HotTestPath**: (driver: [HotTestDriver](classes/hottestdriver.md), ...args: any) => Promise<any\>
 
-*Defined in [HotTestMap.ts:8](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTestMap.ts#L8)*
+*Defined in [HotTestMap.ts:8](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestMap.ts#L8)*
 
 Create a test path for later execution.
 
@@ -111,7 +114,7 @@ ___
 
 Ƭ  **ServerAuthorizationFunction**: (req: any, res: any, jsonObj: any, queryObj: any) => Promise<any\>
 
-*Defined in [HotRouteMethod.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRouteMethod.ts#L36)*
+*Defined in [HotRouteMethod.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRouteMethod.ts#L36)*
 
 A function that will be executed by the server for authorization. Any value
 returned from this function will be passed to the ServerExecutionFunction.
@@ -125,7 +128,7 @@ ___
 
 Ƭ  **ServerExecutionFunction**: (req: any, res: any, authorizedValue: any, jsonObj: any, queryObj: any) => Promise<any\>
 
-*Defined in [HotRouteMethod.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRouteMethod.ts#L23)*
+*Defined in [HotRouteMethod.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRouteMethod.ts#L23)*
 
 A function that will be executed by the server.
 
@@ -135,7 +138,7 @@ ___
 
 Ƭ  **ServerRegistrationFunction**: () => Promise<boolean\>
 
-*Defined in [HotRouteMethod.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRouteMethod.ts#L19)*
+*Defined in [HotRouteMethod.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRouteMethod.ts#L19)*
 
 A function that will be executed by the server when first registering with Express.
 If this returns false, this route method will not be registered.
@@ -146,16 +149,54 @@ ___
 
 Ƭ  **TestCaseFunction**: (driver: [HotTestDriver](classes/hottestdriver.md)) => Promise<any\> \| (driver: [HotTestDriver](classes/hottestdriver.md)) => any
 
-*Defined in [HotRouteMethod.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRouteMethod.ts#L40)*
+*Defined in [HotRouteMethod.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRouteMethod.ts#L40)*
 
 The test case function to execute.
 
 ## Functions
 
+### checkIfPathExists
+
+▸ **checkIfPathExists**(`path`: string): boolean
+
+*Defined in [cli.ts:61](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/cli.ts#L61)*
+
+Check if the path exists.
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`path` | string |
+
+**Returns:** boolean
+
+___
+
+### handleBuildCommands
+
+▸ **handleBuildCommands**(`hotsitePath`: string): Promise<{ builder: [HotBuilder](classes/hotbuilder.md) ; cmd: Command  }\>
+
+*Defined in [cli.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/cli.ts#L16)*
+
+Handle any build commands.
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`hotsitePath` | string |
+
+**Returns:** Promise<{ builder: [HotBuilder](classes/hotbuilder.md) ; cmd: Command  }\>
+
+___
+
 ### start
 
 ▸ **start**(): Promise<void\>
 
-*Defined in [cli.ts:12](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/cli.ts#L12)*
+*Defined in [cli.ts:74](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/cli.ts#L74)*
+
+Start the CLI app.
 
 **Returns:** Promise<void\>

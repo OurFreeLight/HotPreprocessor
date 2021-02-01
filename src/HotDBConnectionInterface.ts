@@ -4,6 +4,11 @@
 export interface HotDBConnectionInterface
 {
     /**
+     * The type of database. Can be:
+     * * mysql
+     */
+    type?: string;
+    /**
      * The server's address.
      */
     server?: string;

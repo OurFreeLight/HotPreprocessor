@@ -19,7 +19,7 @@ Available HTTP methods.
 
 •  **GET**:  = "get"
 
-*Defined in [HotRouteMethod.ts:11](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRouteMethod.ts#L11)*
+*Defined in [HotRouteMethod.ts:11](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRouteMethod.ts#L11)*
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 •  **POST**:  = "post"
 
-*Defined in [HotRouteMethod.ts:12](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRouteMethod.ts#L12)*
+*Defined in [HotRouteMethod.ts:12](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRouteMethod.ts#L12)*

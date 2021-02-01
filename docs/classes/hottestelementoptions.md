@@ -31,7 +31,7 @@ Hot test element options.
 
 \+ **new HotTestElementOptions**(`copy?`: [IHotTestElementOptions](../interfaces/ihottestelementoptions.md)): [HotTestElementOptions](hottestelementoptions.md)
 
-*Defined in [HotTestElement.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTestElement.ts#L34)*
+*Defined in [HotTestElement.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestElement.ts#L34)*
 
 #### Parameters:
 
@@ -49,7 +49,7 @@ Name | Type | Default value |
 
 *Implementation of [IHotTestElementOptions](../interfaces/ihottestelementoptions.md).[ignoreMissingElementError](../interfaces/ihottestelementoptions.md#ignoremissingelementerror)*
 
-*Defined in [HotTestElement.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTestElement.ts#L34)*
+*Defined in [HotTestElement.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestElement.ts#L34)*
 
 If the test element is missing, ignore the error. This
 will cause the rest of the function to return immediately
@@ -63,7 +63,7 @@ ___
 
 *Implementation of [IHotTestElementOptions](../interfaces/ihottestelementoptions.md).[mustBeVisible](../interfaces/ihottestelementoptions.md#mustbevisible)*
 
-*Defined in [HotTestElement.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTestElement.ts#L28)*
+*Defined in [HotTestElement.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestElement.ts#L28)*
 
 Indicates that the test element must be visible in
 order to select it.

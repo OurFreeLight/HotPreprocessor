@@ -37,6 +37,7 @@ module.exports = {
 		},
 		node: {
 			fs: "empty",
+			path: "empty",
 			crypto: "empty",
 			stream: "empty",
 			net: "empty",

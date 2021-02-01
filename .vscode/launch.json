@@ -6,7 +6,7 @@
 	"configurations": [
 		{
 			"type": "node",
-			"name": "Debug HTTP Server",
+			"name": "Debug Web Server",
 			"program": "${workspaceFolder}/build/src/cli.js",
 			"request": "launch",
 			"skipFiles": [
@@ -14,17 +14,20 @@
 			],
 			"outputCapture": "std",
 			"args": [
-				"-d",
-				"--js-url",
+				"run",
+				"--web-route",
+				"/=${workspaceFolder}",
+				"--web-dont-redirect-http-to-https",
+				"--web-js-url",
 				"/build-web/HotPreprocessor.js",
-				"--serve-hott-files",
-				"-h",
+				"--web-serve-hott-files",
+				"--web-http-port",
 				"8080"
 			]
 		},
 		{
 			"type": "node",
-			"name": "Debug HTTP Server - HotSite",
+			"name": "Debug API Server",
 			"program": "${workspaceFolder}/build/src/cli.js",
 			"request": "launch",
 			"skipFiles": [
@@ -32,31 +35,134 @@
 			],
 			"outputCapture": "std",
 			"args": [
-				"-d",
-				"-o",
+				"run",
+				"--server-type",
+				"api",
+				"--api-load",
+				"HelloWorldAPI=${workspaceFolder}/build/tests/server/HelloWorldAPI.js",
+				"--api-dont-redirect-http-to-https",
+				"--api-http-port",
+				"8181"
+			]
+		},
+		{
+			"type": "node",
+			"name": "Debug Web-API Server",
+			"program": "${workspaceFolder}/build/src/cli.js",
+			"request": "launch",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"outputCapture": "std",
+			"args": [
+				"run",
+				"--server-type",
+				"web-api",
+				"--api-load",
+				"HelloWorldAPI=${workspaceFolder}/build/tests/server/HelloWorldAPI.js",
+				"--web-route",
+				"/=${workspaceFolder}",
+				"--web-dont-redirect-http-to-https",
+				"--web-js-url",
+				"/build-web/HotPreprocessor.js",
+				"--web-serve-hott-files",
+				"--web-http-port",
+				"8080",
+				"--api-dont-redirect-http-to-https",
+				"--api-http-port",
+				"8181"
+			]
+		},
+		{
+			"type": "node",
+			"name": "Debug Web Server - HotSite",
+			"program": "${workspaceFolder}/build/src/cli.js",
+			"request": "launch",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"outputCapture": "std",
+			"args": [
+				"run",
+				"--hot-site",
 				"./tests/hotsite/HotSite.json",
-				"--js-url",
+				"--web-dont-redirect-http-to-https",
+				"--web-js-url",
 				"/build-web/HotPreprocessor.js",
-				"-h",
+				"--web-http-port",
 				"8080"
 			]
 		},
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Debug HTTP Server - Development",
+			"name": "Debug Web Server - Development",
 			"program": "${workspaceFolder}/build/src/cli.js",
 			"skipFiles": [
 				"<node_internals>/**"
 			],
 			"outputCapture": "std",
 			"args": [
-				"-d",
+				"run",
+				"--web-dont-redirect-http-to-https",
 				"--development-mode",
-				"--js-url",
+				"--web-js-url",
 				"/build-web/HotPreprocessor.js",
-				"--serve-hott-files",
-				"-h",
+				"--web-serve-hott-files",
+				"--web-http-port",
+				"8080"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Build from HotSite",
+			"program": "${workspaceFolder}/build/src/cli.js",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"outputCapture": "std",
+			"args": [
+				"build",
+				"--hot-site",
+				"./tests/hotsite/HotSite.json",
+				"--docker"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Create an app",
+			"program": "${workspaceFolder}/build/src/cli.js",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"outputCapture": "std",
+			"args": [
+				"create",
+				"--overwrite-cmd-create-transpile",
+				"npm link hotpreprocessor && npm run build",
+				"app"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "TEST",
+			"program": "${workspaceFolder}/build/src/cli.js",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"outputCapture": "std",
+			"args": [
+				"-l",
+				"verbose",
+				"--cwd",
+				"${workspaceFolder}/app",
+				"--hot-site",
+				"./HotSite.json",
+				"run",
+				"--web-http-port",
 				"8080"
 			]
 		},

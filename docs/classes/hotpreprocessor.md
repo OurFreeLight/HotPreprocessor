@@ -64,6 +64,7 @@ results.
 * [addHtml](hotpreprocessor.md#addhtml)
 * [displayContent](hotpreprocessor.md#displaycontent)
 * [displayUrl](hotpreprocessor.md#displayurl)
+* [getValueFromHotSiteObj](hotpreprocessor.md#getvaluefromhotsiteobj)
 * [onReady](hotpreprocessor.md#onready)
 * [parseBoolean](hotpreprocessor.md#parseboolean)
 * [processContent](hotpreprocessor.md#processcontent)
@@ -79,7 +80,7 @@ results.
 
 \+ **new HotPreprocessor**(`copy?`: [IHotPreprocessor](../interfaces/ihotpreprocessor.md)): [HotPreprocessor](hotpreprocessor.md)
 
-*Defined in [HotPreprocessor.ts:351](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L351)*
+*Defined in [HotPreprocessor.ts:381](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L381)*
 
 #### Parameters:
 
@@ -97,7 +98,7 @@ Name | Type | Default value |
 
 *Implementation of [IHotPreprocessor](../interfaces/ihotpreprocessor.md).[api](../interfaces/ihotpreprocessor.md#api)*
 
-*Defined in [HotPreprocessor.ts:307](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L307)*
+*Defined in [HotPreprocessor.ts:337](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L337)*
 
 The api that's used to communicate with.
 
@@ -107,7 +108,7 @@ ___
 
 •  **apiContent**: string
 
-*Defined in [HotPreprocessor.ts:331](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L331)*
+*Defined in [HotPreprocessor.ts:361](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L361)*
 
 The api content to use when about to load HotPreprocessor.
 
@@ -119,7 +120,7 @@ ___
 
 *Implementation of [IHotPreprocessor](../interfaces/ihotpreprocessor.md).[components](../interfaces/ihotpreprocessor.md#components)*
 
-*Defined in [HotPreprocessor.ts:319](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L319)*
+*Defined in [HotPreprocessor.ts:349](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L349)*
 
 The components that can be constructed.
 
@@ -131,7 +132,7 @@ ___
 
 *Implementation of [IHotPreprocessor](../interfaces/ihotpreprocessor.md).[files](../interfaces/ihotpreprocessor.md#files)*
 
-*Defined in [HotPreprocessor.ts:323](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L323)*
+*Defined in [HotPreprocessor.ts:353](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L353)*
 
 The files that can be stored for later use.
 
@@ -143,7 +144,7 @@ ___
 
 *Implementation of [IHotPreprocessor](../interfaces/ihotpreprocessor.md).[hotSite](../interfaces/ihotpreprocessor.md#hotsite)*
 
-*Defined in [HotPreprocessor.ts:327](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L327)*
+*Defined in [HotPreprocessor.ts:357](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L357)*
 
 The loaded hotsite.
 
@@ -153,7 +154,7 @@ ___
 
 •  **logger**: [HotLog](hotlog.md)
 
-*Defined in [HotPreprocessor.ts:343](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L343)*
+*Defined in [HotPreprocessor.ts:373](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L373)*
 
 The logger.
 
@@ -165,7 +166,7 @@ ___
 
 *Implementation of [IHotPreprocessor](../interfaces/ihotpreprocessor.md).[mode](../interfaces/ihotpreprocessor.md#mode)*
 
-*Defined in [HotPreprocessor.ts:303](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L303)*
+*Defined in [HotPreprocessor.ts:333](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L333)*
 
 Indicates what type of execution this is.
 
@@ -175,7 +176,7 @@ ___
 
 •  **pageContent**: string
 
-*Defined in [HotPreprocessor.ts:339](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L339)*
+*Defined in [HotPreprocessor.ts:369](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L369)*
 
 The page content to use when about to load HotPreprocessor.
 
@@ -187,7 +188,7 @@ ___
 
 *Implementation of [IHotPreprocessor](../interfaces/ihotpreprocessor.md).[pages](../interfaces/ihotpreprocessor.md#pages)*
 
-*Defined in [HotPreprocessor.ts:315](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L315)*
+*Defined in [HotPreprocessor.ts:345](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L345)*
 
 The pages that can be constructed.
 
@@ -197,7 +198,7 @@ ___
 
 •  **publicSecrets**: any
 
-*Defined in [HotPreprocessor.ts:347](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L347)*
+*Defined in [HotPreprocessor.ts:377](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L377)*
 
 The secrets that can be exposed publicly.
 
@@ -209,7 +210,7 @@ ___
 
 *Implementation of [IHotPreprocessor](../interfaces/ihotpreprocessor.md).[testerAPI](../interfaces/ihotpreprocessor.md#testerapi)*
 
-*Defined in [HotPreprocessor.ts:311](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L311)*
+*Defined in [HotPreprocessor.ts:341](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L341)*
 
 The tester api that's used to communicate with.
 
@@ -219,7 +220,7 @@ ___
 
 •  **testerApiContent**: string
 
-*Defined in [HotPreprocessor.ts:335](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L335)*
+*Defined in [HotPreprocessor.ts:365](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L365)*
 
 The tester api content to use when about to load HotPreprocessor.
 
@@ -229,7 +230,7 @@ ___
 
 •  **testers**: { [name:string]: [HotTester](hottester.md);  }
 
-*Defined in [HotPreprocessor.ts:351](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L351)*
+*Defined in [HotPreprocessor.ts:381](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L381)*
 
 The secrets that can be exposed publicly.
 
@@ -239,7 +240,7 @@ ___
 
 ▪ `Static` **isReadyForTesting**: boolean = false
 
-*Defined in [HotPreprocessor.ts:295](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L295)*
+*Defined in [HotPreprocessor.ts:325](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L325)*
 
 Indicates if this is ready for testing.
 
@@ -249,7 +250,7 @@ ___
 
 ▪ `Static` **isWeb**: boolean = false
 
-*Defined in [HotPreprocessor.ts:291](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L291)*
+*Defined in [HotPreprocessor.ts:321](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L321)*
 
 Indicates if this is a web build.
 
@@ -259,7 +260,7 @@ ___
 
 ▪ `Static` **onReadyForTesting**: () => Promise<void\> = null
 
-*Defined in [HotPreprocessor.ts:299](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L299)*
+*Defined in [HotPreprocessor.ts:329](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L329)*
 
 Executes this event when this page is ready for testing.
 
@@ -269,7 +270,7 @@ Executes this event when this page is ready for testing.
 
 ▸ **addComponent**(`component`: [HotComponent](hotcomponent.md)): void
 
-*Defined in [HotPreprocessor.ts:536](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L536)*
+*Defined in [HotPreprocessor.ts:566](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L566)*
 
 Add and register a component.
 
@@ -287,7 +288,7 @@ ___
 
 ▸ **addFile**(`file`: [HotFile](hotfile.md)): void
 
-*Defined in [HotPreprocessor.ts:509](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L509)*
+*Defined in [HotPreprocessor.ts:539](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L539)*
 
 Add a file.
 
@@ -305,7 +306,7 @@ ___
 
 ▸ **addPage**(`page`: [HotPage](hotpage.md)): void
 
-*Defined in [HotPreprocessor.ts:493](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L493)*
+*Defined in [HotPreprocessor.ts:523](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L523)*
 
 Add a page.
 
@@ -323,7 +324,7 @@ ___
 
 ▸ **addTester**(`tester`: [HotTester](hottester.md)): void
 
-*Defined in [HotPreprocessor.ts:1098](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1098)*
+*Defined in [HotPreprocessor.ts:1163](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1163)*
 
 Add a tester for use later.
 
@@ -341,7 +342,7 @@ ___
 
 ▸ **createExpressRoutes**(`expressApp`: any, `jsSrcPath?`: string): void
 
-*Defined in [HotPreprocessor.ts:1081](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1081)*
+*Defined in [HotPreprocessor.ts:1146](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1146)*
 
 Create the Express routes from the given pages. Be sure to load the
 pages first before doing this. This method is meant to be used for
@@ -364,7 +365,7 @@ ___
 
 ▸ **executeAllTests**(`testerName`: string): Promise<void\>
 
-*Defined in [HotPreprocessor.ts:1211](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1211)*
+*Defined in [HotPreprocessor.ts:1276](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1276)*
 
 Execute all tests from the HotSite testing object.
 
@@ -382,7 +383,7 @@ ___
 
 ▸ **executeTests**(`testerName`: string, `mapName`: string): Promise<void\>
 
-*Defined in [HotPreprocessor.ts:1195](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1195)*
+*Defined in [HotPreprocessor.ts:1260](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1260)*
 
 Execute tests.
 
@@ -401,7 +402,7 @@ ___
 
 ▸ **generateContent**(`routeKey`: string, `name?`: string, `url?`: string, `jsSrcPath?`: string, `passArgs?`: boolean, `args?`: any): string
 
-*Defined in [HotPreprocessor.ts:882](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L882)*
+*Defined in [HotPreprocessor.ts:947](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L947)*
 
 Generate the content to send to a client.
 
@@ -424,7 +425,7 @@ ___
 
 ▸ **getComponent**(`name`: string): [HotComponent](hotcomponent.md)
 
-*Defined in [HotPreprocessor.ts:606](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L606)*
+*Defined in [HotPreprocessor.ts:636](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L636)*
 
 Get a component to process.
 
@@ -442,7 +443,7 @@ ___
 
 ▸ **getFile**(`name`: string): [HotFile](hotfile.md)
 
-*Defined in [HotPreprocessor.ts:525](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L525)*
+*Defined in [HotPreprocessor.ts:555](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L555)*
 
 Get a file.
 
@@ -460,7 +461,7 @@ ___
 
 ▸ **getPage**(`pageName`: string): [HotPage](hotpage.md)
 
-*Defined in [HotPreprocessor.ts:501](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L501)*
+*Defined in [HotPreprocessor.ts:531](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L531)*
 
 Get a page to process.
 
@@ -478,7 +479,7 @@ ___
 
 ▸ **getRouteFromName**(`name`: string): [HotSiteRoute](../interfaces/hotsiteroute.md)
 
-*Defined in [HotPreprocessor.ts:1178](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1178)*
+*Defined in [HotPreprocessor.ts:1243](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1243)*
 
 Get a route from a route's name.
 
@@ -496,7 +497,7 @@ ___
 
 ▸ **getRouteKeyFromName**(`name`: string): string
 
-*Defined in [HotPreprocessor.ts:1150](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1150)*
+*Defined in [HotPreprocessor.ts:1215](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1215)*
 
 Get a route's key from a route's name.
 
@@ -514,7 +515,7 @@ ___
 
 ▸ **getTestingMapUrls**(): string[]
 
-*Defined in [HotPreprocessor.ts:1123](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1123)*
+*Defined in [HotPreprocessor.ts:1188](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1188)*
 
 Get the list of urls for each map from the HotSite.
 
@@ -526,7 +527,7 @@ ___
 
 ▸ **getTestingMaps**(): string[]
 
-*Defined in [HotPreprocessor.ts:1106](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1106)*
+*Defined in [HotPreprocessor.ts:1171](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1171)*
 
 Get the list of maps for testing from the HotSite.
 
@@ -538,7 +539,7 @@ ___
 
 ▸ **loadHotFiles**(`files`: { [name:string]: { content?: string ; localFile?: string ; url?: string  };  }, `forceContentLoading?`: boolean): Promise<void\>
 
-*Defined in [HotPreprocessor.ts:831](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L831)*
+*Defined in [HotPreprocessor.ts:896](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L896)*
 
 Load an array of files. If a file already has content, it will not be reloaded
 unless forceContentLoading is set to true.
@@ -558,7 +559,7 @@ ___
 
 ▸ **loadHotSite**(`path`: string): Promise<void\>
 
-*Defined in [HotPreprocessor.ts:652](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L652)*
+*Defined in [HotPreprocessor.ts:712](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L712)*
 
 Load from a HotSite.json file. Be sure to load and attach any testers before
 loading a HotSite.
@@ -577,7 +578,7 @@ ___
 
 ▸ **process**(`pageName`: string, `args?`: any): Promise<string\>
 
-*Defined in [HotPreprocessor.ts:1230](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1230)*
+*Defined in [HotPreprocessor.ts:1295](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1295)*
 
 Process a page and get the result.
 
@@ -596,7 +597,7 @@ ___
 
 ▸ **registerComponent**(`component`: [HotComponent](hotcomponent.md)): void
 
-*Defined in [HotPreprocessor.ts:545](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L545)*
+*Defined in [HotPreprocessor.ts:575](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L575)*
 
 Register a component for use as a HTML tag.
 
@@ -614,7 +615,7 @@ ___
 
 ▸ `Static`**addHtml**(`parent`: string \| HTMLElement, `html`: string \| HTMLElement): HTMLElement \| HTMLElement[]
 
-*Defined in [HotPreprocessor.ts:614](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L614)*
+*Defined in [HotPreprocessor.ts:644](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L644)*
 
 Add a new HTML element(s) to the current document.
 
@@ -633,7 +634,7 @@ ___
 
 ▸ `Static`**displayContent**(`content`: string, `name`: string, `processor?`: [HotPreprocessor](hotpreprocessor.md)): Promise<[HotPreprocessor](hotpreprocessor.md)\>
 
-*Defined in [HotPreprocessor.ts:1495](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1495)*
+*Defined in [HotPreprocessor.ts:1560](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1560)*
 
 Process and replace the current HTML page with the hott script.
 This is meant for web browser use only.
@@ -654,7 +655,7 @@ ___
 
 ▸ `Static`**displayUrl**(`url`: string \| [HotStartOptions](../interfaces/hotstartoptions.md), `name?`: string, `processor?`: [HotPreprocessor](hotpreprocessor.md), `args?`: any): Promise<[HotPreprocessor](hotpreprocessor.md)\>
 
-*Defined in [HotPreprocessor.ts:1345](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1345)*
+*Defined in [HotPreprocessor.ts:1410](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1410)*
 
 Process and replace the current HTML page with the hott script from the given url.
 This is meant for web browser use only.
@@ -672,11 +673,30 @@ Name | Type | Default value |
 
 ___
 
+### getValueFromHotSiteObj
+
+▸ `Static`**getValueFromHotSiteObj**(`hotsite`: [HotSite](../interfaces/hotsite.md), `params`: string[]): any
+
+*Defined in [HotPreprocessor.ts:681](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L681)*
+
+Get a value from a HotSite object.
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`hotsite` | [HotSite](../interfaces/hotsite.md) |
+`params` | string[] |
+
+**Returns:** any
+
+___
+
 ### onReady
 
 ▸ `Static`**onReady**(`readyFunc`: () => void): void
 
-*Defined in [HotPreprocessor.ts:1307](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1307)*
+*Defined in [HotPreprocessor.ts:1372](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1372)*
 
 When the window has finished loading, execute the function.
 This is meant for web browser use only.
@@ -695,7 +715,7 @@ ___
 
 ▸ `Static`**parseBoolean**(`value`: string): boolean
 
-*Defined in [HotPreprocessor.ts:442](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L442)*
+*Defined in [HotPreprocessor.ts:472](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L472)*
 
 Parse a boolean value.
 
@@ -713,7 +733,7 @@ ___
 
 ▸ `Static`**processContent**(`processor`: [HotPreprocessor](hotpreprocessor.md), `content`: string, `name`: string, `args?`: any): Promise<string\>
 
-*Defined in [HotPreprocessor.ts:1285](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1285)*
+*Defined in [HotPreprocessor.ts:1350](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1350)*
 
 Process content and get the result.
 
@@ -734,7 +754,7 @@ ___
 
 ▸ `Static`**processLocalFile**(`localFilepath`: string, `name?`: string, `args?`: any): Promise<string\>
 
-*Defined in [HotPreprocessor.ts:1241](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1241)*
+*Defined in [HotPreprocessor.ts:1306](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1306)*
 
 Process a local file and get the result.
 
@@ -754,7 +774,7 @@ ___
 
 ▸ `Static`**processUrl**(`options`: [HotStartOptions](../interfaces/hotstartoptions.md)): Promise<string\>
 
-*Defined in [HotPreprocessor.ts:1262](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1262)*
+*Defined in [HotPreprocessor.ts:1327](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1327)*
 
 Process a url and get the result.
 
@@ -772,7 +792,7 @@ ___
 
 ▸ `Static`**useOutput**(`output`: string): void
 
-*Defined in [HotPreprocessor.ts:1319](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1319)*
+*Defined in [HotPreprocessor.ts:1384](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1384)*
 
 Replace the current HTML page with the output.
 This is meant for web browser use only.
@@ -791,7 +811,7 @@ ___
 
 ▸ `Static`**wait**(`numMilliseconds`: number): Promise<void\>
 
-*Defined in [HotPreprocessor.ts:479](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L479)*
+*Defined in [HotPreprocessor.ts:509](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L509)*
 
 Wait for a number of milliseconds.
 
@@ -809,7 +829,7 @@ ___
 
 ▸ `Static`**waitForTesters**(): Promise<void\>
 
-*Defined in [HotPreprocessor.ts:1332](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotPreprocessor.ts#L1332)*
+*Defined in [HotPreprocessor.ts:1397](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L1397)*
 
 Wait for testers to load.
 

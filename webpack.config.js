@@ -39,7 +39,8 @@ module.exports = {
 			extensions: [".tsx", ".ts", ".js"]
 		},
 		node: {
-			fs: "empty"
+			fs: "empty",
+			path: "empty"
 		},
 		output: {
 			filename: "HotPreprocessor.js",

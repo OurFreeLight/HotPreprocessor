@@ -27,7 +27,7 @@ The destination to take in a map.
 
 \+ **new HotTestDestination**(`destination?`: string \| [HotTestDestination](hottestdestination.md) \| [HotSiteMapPath](../interfaces/hotsitemappath.md), `autoStart?`: boolean): [HotTestDestination](hottestdestination.md)
 
-*Defined in [HotTestMap.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTestMap.ts#L23)*
+*Defined in [HotTestMap.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestMap.ts#L23)*
 
 #### Parameters:
 
@@ -44,7 +44,7 @@ Name | Type | Default value |
 
 •  **autoStart**: boolean
 
-*Defined in [HotTestMap.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTestMap.ts#L23)*
+*Defined in [HotTestMap.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestMap.ts#L23)*
 
 If set to true, this will automatically start executing it's
 tests when it's time.
@@ -55,6 +55,6 @@ ___
 
 •  **destination**: string
 
-*Defined in [HotTestMap.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotTestMap.ts#L18)*
+*Defined in [HotTestMap.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestMap.ts#L18)*
 
 The destination to take.

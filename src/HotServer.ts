@@ -22,6 +22,10 @@ export interface IHotServer
 	 */
 	processor: HotPreprocessor;
 	/**
+	 * The server type.
+	 */
+	serverType: string;
+	/**
 	 * The API to use.
 	 */
 	api: HotAPI;
@@ -81,6 +85,10 @@ export class HotServer implements IHotServer
 	 */
 	processor: HotPreprocessor;
 	/**
+	 * The server type.
+	 */
+	serverType: string;
+	/**
 	 * The API to use.
 	 */
 	api: HotAPI;
@@ -134,6 +142,7 @@ export class HotServer implements IHotServer
 		if (processor instanceof HotPreprocessor)
 		{
 			this.processor = processor;
+			this.serverType = "Server";
 			this.api = null;
 			this.listenAddress = "0.0.0.0";
 			this.ports = {
@@ -153,6 +162,7 @@ export class HotServer implements IHotServer
 		else
 		{
 			this.processor = processor.processor;
+			this.serverType = processor.serverType || "Server";
 			this.api = processor.api || null;
 			this.listenAddress = processor.listenAddress || "0.0.0.0";
 			this.ports = processor.ports || {

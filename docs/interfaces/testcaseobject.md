@@ -23,7 +23,7 @@ The test case object to pass.
 
 •  **func**: [TestCaseFunction](../globals.md#testcasefunction)
 
-*Defined in [HotRouteMethod.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRouteMethod.ts#L53)*
+*Defined in [HotRouteMethod.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRouteMethod.ts#L53)*
 
 The function to execute.
 
@@ -33,6 +33,6 @@ ___
 
 •  **name**: string
 
-*Defined in [HotRouteMethod.ts:49](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRouteMethod.ts#L49)*
+*Defined in [HotRouteMethod.ts:49](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRouteMethod.ts#L49)*
 
 The name of the test case.

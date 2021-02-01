@@ -43,7 +43,7 @@ The route to use.
 
 \+ **new HotRoute**(`connection`: [HotServer](hotserver.md) \| [HotClient](hotclient.md), `route`: string, `methods?`: [HotRouteMethod](hotroutemethod.md)[]): [HotRoute](hotroute.md)
 
-*Defined in [HotRoute.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L44)*
+*Defined in [HotRoute.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L44)*
 
 #### Parameters:
 
@@ -61,7 +61,7 @@ Name | Type | Default value |
 
 •  **authCredentials**: any
 
-*Defined in [HotRoute.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L35)*
+*Defined in [HotRoute.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L35)*
 
 The authorization credentials to be used by the client
 when connecting to the server.
@@ -72,7 +72,7 @@ ___
 
 •  **connection**: [HotServer](hotserver.md) \| [HotClient](hotclient.md)
 
-*Defined in [HotRoute.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L14)*
+*Defined in [HotRoute.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L14)*
 
 The server that maintains the connections.
 
@@ -82,7 +82,7 @@ ___
 
 •  **errors**: { [error:string]: any;  }
 
-*Defined in [HotRoute.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L44)*
+*Defined in [HotRoute.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L44)*
 
 The errors and their JSON that can be thrown. Can be:
 * not_authorized
@@ -93,7 +93,7 @@ ___
 
 •  **logger**: [HotLog](hotlog.md)
 
-*Defined in [HotRoute.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L18)*
+*Defined in [HotRoute.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L18)*
 
 The associated logger.
 
@@ -103,7 +103,7 @@ ___
 
 •  **methods**: [HotRouteMethod](hotroutemethod.md)[]
 
-*Defined in [HotRoute.ts:39](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L39)*
+*Defined in [HotRoute.ts:39](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L39)*
 
 The calls that can be made.
 
@@ -113,7 +113,7 @@ ___
 
 •  **onAuthorizeUser**: (req: any, res: any) => Promise<any\> = null
 
-*Defined in [HotRoute.ts:136](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L136)*
+*Defined in [HotRoute.ts:136](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L136)*
 
 Executes when authorizing a called method.
 The value returned from here will be passed to onExecute in the
@@ -126,7 +126,7 @@ ___
 
 •  **onPostRegister**: () => Promise<void\> = null
 
-*Defined in [HotRoute.ts:128](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L128)*
+*Defined in [HotRoute.ts:128](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L128)*
 
 Executes after all routes have been registered.
 
@@ -136,7 +136,7 @@ ___
 
 •  **onPreRegister**: () => Promise<void\> = null
 
-*Defined in [HotRoute.ts:119](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L119)*
+*Defined in [HotRoute.ts:119](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L119)*
 
 Executes before all routes have been registered.
 
@@ -146,7 +146,7 @@ ___
 
 •  **onRegister**: () => Promise<boolean\> = null
 
-*Defined in [HotRoute.ts:124](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L124)*
+*Defined in [HotRoute.ts:124](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L124)*
 
 Executes when first registering this route with Express. If
 this returns false, the route will not be registered.
@@ -157,7 +157,7 @@ ___
 
 •  **prefix**: string
 
-*Defined in [HotRoute.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L30)*
+*Defined in [HotRoute.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L30)*
 
 The prefix to add to the beginning of each route method.
 
@@ -167,7 +167,7 @@ ___
 
 •  **route**: string
 
-*Defined in [HotRoute.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L22)*
+*Defined in [HotRoute.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L22)*
 
 The route.
 
@@ -177,7 +177,7 @@ ___
 
 •  **version**: string
 
-*Defined in [HotRoute.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L26)*
+*Defined in [HotRoute.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L26)*
 
 The version.
 
@@ -187,7 +187,7 @@ The version.
 
 ▸ **addMethod**(`method`: [HotRouteMethod](hotroutemethod.md) \| string, `executeFunction?`: [ServerExecutionFunction](../globals.md#serverexecutionfunction), `type?`: [HTTPMethod](../enums/httpmethod.md), `testCases?`: (string \| [TestCaseFunction](../globals.md#testcasefunction))[] \| [TestCaseFunction](../globals.md#testcasefunction)[] \| [TestCaseObject](../interfaces/testcaseobject.md)[]): void
 
-*Defined in [HotRoute.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L81)*
+*Defined in [HotRoute.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L81)*
 
 Add an API method to this route.
 
@@ -208,7 +208,7 @@ ___
 
 ▸ **getMethod**(`name`: string): [HotRouteMethod](hotroutemethod.md)
 
-*Defined in [HotRoute.ts:97](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L97)*
+*Defined in [HotRoute.ts:97](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L97)*
 
 Get a method by it's name.
 
@@ -226,7 +226,7 @@ ___
 
 ▸ `Static`**createError**(`message`: string): any
 
-*Defined in [HotRoute.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/f104630/src/HotRoute.ts#L70)*
+*Defined in [HotRoute.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRoute.ts#L70)*
 
 Create an error JSON object.
 

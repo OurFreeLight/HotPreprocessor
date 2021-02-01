@@ -1,6 +1,8 @@
 import * as fs from "fs";
+import * as ppath from "path";
 
 import fetch from "cross-fetch";
+import validateModuleName from "validate-npm-package-name";
 
 import { HotPage } from "./HotPage";
 import { HotFile } from "./HotFile";
@@ -69,43 +71,71 @@ export interface HotSiteRoute
 }
 
 /**
- * A HotSite to load.
+ * A HotSite to load. This SHOULD NOT contain any private secret keys, passwords, 
+ * or database connection information related to the server. As such, future 
+ * versions of the HotSite interface should not contain any database related 
+ * connection info.
  */
 export interface HotSite
 {
 	/**
-	 * The list of directory to serve to the client from the server.
+	 * The name of this HotSite.
 	 */
-	serveDirectories?: {
-			/**
-			 * The web route to take.
-			 */
-			route: string;
-			/**
-			 * The local filesystem path to serve pages from.
-			 */
-			localPath: string;
-		}[];
+	name: string;
 	/**
-	 * Additional server configuration.
+	 * The path to the current HotSite. This is filled in during parsing.
 	 */
-	server: {
+	hotsitePath?: string;
+	/**
+	 * Additional web server configuration.
+	 */
+	server?: {
 			/**
 			 * The default name for a served Hott file.
 			 */
-			name: string;
+			name?: string;
 			/**
 			 * Serve hott files when requested.
 			 */
-			serveHottFiles: boolean;
+			serveHottFiles?: boolean;
 			/**
-			 * The base url for a hott file.
+			 * The base url for the server.
 			 */
-			url: string;
+			url?: string;
 			/**
 			 * The JavaScript source path.
 			 */
-			jsSrcPath: string;
+			jsSrcPath?: string;
+			/**
+			 * The ports to use.
+			 */
+			ports?: {
+					/**
+					 * The HTTP port to serve on.
+					 */
+					http?: number;
+					/**
+					 * The HTTPS port to serve on.
+					 */
+					https?: number;
+					/**
+					 * If set to true, this will redirect from HTTP to HTTPS.
+					 */
+					redirectHTTPtoHTTPS?: boolean;
+				};
+			/**
+			 * The list of directory to serve to the client from the server.
+			 */
+			serveDirectories?: {
+					/**
+					 * The web route to take.
+					 */
+					route: string;
+					/**
+					 * The local filesystem path to serve pages from.
+					 */
+					localPath: string;
+				}[];
 		};
 	/**
 	 * Testing related functionality.
@@ -156,15 +186,23 @@ export interface HotSite
 					/**
 					 * The JS API file to load.
 					 */
-					jsapi: string;
+					jsapi?: string;
 					/**
 					 * The JS exported name to use.
 					 */
-					exportedName: string;
+					exportedName?: string;
 					/**
 					 * The name of the api to use.
 					 */
-					apiName: string;
+					apiName?: string;
+					/**
+					 * The port to use.
+					 */
+					port?: number;
+					/**
+					 * The base url for the api.
+					 */
+					url?: string;
 				};
 		};
 	/**
@@ -646,6 +684,72 @@ export class HotPreprocessor implements IHotPreprocessor
 	}
 
 	/**
+	 * Check if a HotSite's name is valid.
+	 */
+	static checkHotSiteName (hotsiteName: string, throwException: boolean = false): boolean
+	{
+		let throwTheException = () =>
+			{
+				if (throwException === true)
+					throw new Error (`HotSite ${hotsiteName} has an invalid name! The name cannot be empty and must have a valid NPM module name.`);
+			};
+
+		let results = validateModuleName (hotsiteName);
+
+		if (results.errors != null)
+		{
+			if (results.errors.length > 0)
+				throwTheException ();
+		}
+
+		return (true);
+	}
+
+	/**
+	 * Replace a key in a ${KEY} with a value.
+	 */
+	static replaceKey (str: string, key: string, value: string): string
+	{
+		const finalStr: string = str.replace (new RegExp (`\\$\\{${key}\\}`, "g"), value);
+
+		return (finalStr);
+	}
+
+	/**
+	 * Get a value from a HotSite object.
+	 */
+	static getValueFromHotSiteObj (hotsite: HotSite, params: string[]): any
+	{
+		let value: any = null;
+
+		if (hotsite != null)
+		{
+			let prevValue: any = hotsite;
+
+			// Go through each object in the list of parameters and 
+			// get the value of the final parameter.
+			for (let iIdx = 0; iIdx < params.length; iIdx++)
+			{
+				let param: string = params[iIdx];
+
+				if (prevValue[param] == null)
+				{
+					prevValue = null;
+
+					break;
+				}
+
+				prevValue = prevValue[param];
+			}
+
+			if (prevValue != null)
+				value = prevValue;
+		}
+
+		return (value);
+	}
+
+	/**
 	 * Load from a HotSite.json file. Be sure to load and attach any testers before 
 	 * loading a HotSite.
 	 */
@@ -653,10 +757,10 @@ export class HotPreprocessor implements IHotPreprocessor
 	{
 		let jsonStr: string = "";
 
-		this.logger.info (`Retrieving site ${path}`);
-
 		if (HotPreprocessor.isWeb === true)
 		{
+			this.logger.info (`Retrieving HotSite ${path}`);
+
 			let res: any = await fetch (path);
 
 			this.logger.info (`Retrieved site ${path}`);
@@ -665,6 +769,10 @@ export class HotPreprocessor implements IHotPreprocessor
 		}
 		else
 		{
+			path = ppath.normalize (path);
+
+			this.logger.info (`Retrieving HotSite ${path}`);
+
 			jsonStr = await new Promise (
 				(resolve: any, reject: any): void =>
 				{
@@ -683,7 +791,11 @@ export class HotPreprocessor implements IHotPreprocessor
 		}
 
 		this.hotSite = JSON.parse (jsonStr);
-		let routes = this.hotSite["routes"];
+
+		HotPreprocessor.checkHotSiteName (this.hotSite.name, true);
+
+		this.hotSite.hotsitePath = path;
+		let routes = this.hotSite.routes;
 		let testerUrl: string = "http://127.0.0.1:8182";
 		let tester: HotTester = null;
 		let driver: HotTestDriver = null;
