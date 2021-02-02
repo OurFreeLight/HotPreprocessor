@@ -250,27 +250,81 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 						"env": {
 						}
 					},
-					{
-						"type": "node",
-						"request": "launch",
-						"name": "Run Web Tests",
-						"skipFiles": [
-							"<node_internals>/**"
-						],
-						"program": "${workspaceFolder}/node_modules/hotpreprocessor/build/src/cli.js",
-						"args": [
-							"--development-mode",
-							"--hot-site",
-							"./HotSite.json",
-							"test",
-							"--web-http-port",
-							"8080"
-						],
-						"env": {
-						}
-					}
 				]
 			};
+
+		if (this.language === "ts")
+		{
+			launchJSON["configurations"].push (
+				{
+					"type": "node",
+					"request": "launch",
+					"name": "Debug Web/API Server",
+					"program": "${workspaceFolder}/node_modules/hotpreprocessor/build/src/cli.js",
+					"skipFiles": [
+						"<node_internals>/**"
+					],
+					"outputCapture": "std",
+					"args": [
+						"--development-mode",
+						"--hot-site",
+						"./HotSite.json",
+						"run",
+						"--server-type",
+						"web-api",
+						"--web-http-port",
+						"8080",
+						"--api-http-port",
+						"8081"
+					],
+					"env": {
+					}
+				},
+				{
+					"type": "node",
+					"request": "launch",
+					"name": "Debug API Server",
+					"program": "${workspaceFolder}/node_modules/hotpreprocessor/build/src/cli.js",
+					"skipFiles": [
+						"<node_internals>/**"
+					],
+					"outputCapture": "std",
+					"args": [
+						"--development-mode",
+						"--hot-site",
+						"./HotSite.json",
+						"run",
+						"--server-type",
+						"api",
+						"--api-http-port",
+						"8081"
+					],
+					"env": {
+					}
+				});
+		}
+
+		launchJSON["configurations"].push (
+			{
+				"type": "node",
+				"request": "launch",
+				"name": "Run Web Tests",
+				"skipFiles": [
+					"<node_internals>/**"
+				],
+				"program": "${workspaceFolder}/node_modules/hotpreprocessor/build/src/cli.js",
+				"args": [
+					"--development-mode",
+					"--hot-site",
+					"./HotSite.json",
+					"test",
+					"--web-http-port",
+					"8080"
+				],
+				"env": {
+				}
+			});
+
 		let launchJSONstr: string = JSON.stringify (launchJSON, null, "\t");
 		await HotIO.writeTextFile (ppath.normalize (`${this.outputDir}/.vscode/launch.json`), launchJSONstr);
 		let tasksJSON: any = {
