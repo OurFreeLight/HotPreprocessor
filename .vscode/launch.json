@@ -132,7 +132,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Create an app",
+			"name": "Create an App",
 			"program": "${workspaceFolder}/build/src/cli.js",
 			"skipFiles": [
 				"<node_internals>/**"
@@ -148,22 +148,19 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "TEST",
+			"name": "Create an App API",
 			"program": "${workspaceFolder}/build/src/cli.js",
 			"skipFiles": [
 				"<node_internals>/**"
 			],
 			"outputCapture": "std",
 			"args": [
-				"-l",
-				"verbose",
-				"--cwd",
-				"${workspaceFolder}/app",
-				"--hot-site",
-				"./HotSite.json",
-				"run",
-				"--web-http-port",
-				"8080"
+				"create",
+				"--type",
+				"api",
+				"--overwrite-cmd-create-transpile",
+				"npm link hotpreprocessor && npm run build",
+				"app"
 			]
 		},
 		{

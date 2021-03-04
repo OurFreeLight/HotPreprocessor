@@ -174,8 +174,15 @@ async function handleCreateCommands (): Promise<commander.Command>
 			await creator.create ();
 		});
 
+	createCmd.option (`--type <type>`, 
+		`The type of app to create. Can be (web, web-api, api) Default: api`, 
+		(type: string, previous: any) =>
+		{
+			createHotCreator ();
+			creator.type = type;
+		}, "");
 	createCmd.option (`--code <language>`, 
-		`Set the type of code output. Can be (ts, js)`, 
+		`Set the type of code output. Can be (ts, js) Default: ts`, 
 		(language: string, previous: any) =>
 		{
 			createHotCreator ();
@@ -201,6 +208,41 @@ async function handleCreateCommands (): Promise<commander.Command>
 		{
 			createHotCreator ();
 			creator.createCommands.transpileTS = value;
+		}, "");
+	createCmd.option (`--overwrite-cmd-npm-build-web-api <value>`, 
+		`Overwrite the npm command for building the web api.`, 
+		(value: string, previous: any) =>
+		{
+			createHotCreator ();
+			creator.npmCommands.buildWebAPI = value;
+		}, "");
+	createCmd.option (`--overwrite-cmd-npm-build-web-api-debug <value>`, 
+		`Overwrite the npm command for building the debug script for web api.`, 
+		(value: string, previous: any) =>
+		{
+			createHotCreator ();
+			creator.npmCommands.buildWebAPIDebug = value;
+		}, "");
+	createCmd.option (`--overwrite-cmd-npm-dev <value>`, 
+		`Overwrite the npm command for building the development script.`, 
+		(value: string, previous: any) =>
+		{
+			createHotCreator ();
+			creator.npmCommands.dev = value;
+		}, "");
+	createCmd.option (`--overwrite-cmd-npm-start <value>`, 
+		`Overwrite the npm command for the start script.`, 
+		(value: string, previous: any) =>
+		{
+			createHotCreator ();
+			creator.npmCommands.start = value;
+		}, "");
+	createCmd.option (`--overwrite-cmd-npm-test <value>`, 
+		`Overwrite the npm command for the test script.`, 
+		(value: string, previous: any) =>
+		{
+			createHotCreator ();
+			creator.npmCommands.test = value;
 		}, "");
 
 	return (createCmd);

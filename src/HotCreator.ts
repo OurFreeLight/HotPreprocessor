@@ -16,6 +16,13 @@ export class HotCreator
 	 */
 	name: string;
 	/**
+	 * The type of project to create. Can be:
+	 * * web
+	 * * web-api
+	 * * api
+	 */
+	type: string;
+	/**
 	 * The language to use when creating. Default is "ts". Can be:
 	 * * ts
 	 */
@@ -62,18 +69,19 @@ export class HotCreator
 			 */
 			build: string;
 			/**
-			 * The web build command to use.
+			 * The web api build command to use.
 			 */
-			buildWeb: string;
+			buildWebAPI: string;
 			/**
-			 * The debug web build command to use.
+			 * The debug web api build command to use.
 			 */
-			buildWebDebug: string;
+			buildWebAPIDebug: string;
 		};
 
 	constructor (name: string = "", logger: HotLog = new HotLog ())
 	{
 		this.name = name;
+		this.type = "web-api";
 		this.language = "ts";
 		this.outputDir = "";
 		this.logger = logger;
@@ -86,8 +94,8 @@ export class HotCreator
 				dev: "hotpreprocessor --hot-site ./HotSite.json --development-mode run --web-http-port 8080",
 				test: "hotpreprocessor test",
 				build: "",
-				buildWeb: "",
-				buildWebDebug: ""
+				buildWebAPI: "",
+				buildWebAPIDebug: ""
 			};
 	}
 
@@ -159,23 +167,33 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 		if (this.npmCommands.build !== "")
 			packageJSON.scripts["build"] = this.npmCommands.build;
 
-		if (this.npmCommands.buildWeb === "")
+		if (this.npmCommands.buildWebAPI === "")
 		{
 			if (this.language === "ts")
-				this.npmCommands.buildWeb = "webpack --mode=production --config ./webpack-api.config.js";
+				this.npmCommands.buildWebAPI = "webpack --mode=production --config ./webpack-api.config.js";
 		}
 
-		if (this.npmCommands.buildWeb !== "")
-			packageJSON.scripts["build-web"] = this.npmCommands.buildWeb;
+		if (this.npmCommands.buildWebAPI !== "")
+			packageJSON.scripts["build-web"] = this.npmCommands.buildWebAPI;
 
-		if (this.npmCommands.buildWebDebug === "")
+		if (this.npmCommands.buildWebAPIDebug === "")
 		{
 			if (this.language === "ts")
-				this.npmCommands.buildWebDebug = "webpack --mode=development --debug --config ./webpack-api.config.js";
+				this.npmCommands.buildWebAPIDebug = "webpack --mode=development --debug --config ./webpack-api.config.js";
 		}
 
-		if (this.npmCommands.buildWebDebug !== "")
-			packageJSON.scripts["build-web-debug"] = this.npmCommands.buildWebDebug;
+		if (this.npmCommands.buildWebAPIDebug !== "")
+			packageJSON.scripts["build-web-debug"] = this.npmCommands.buildWebAPIDebug;
+
+		// If this is a web only build, remove the build web scripts from packageJSON.
+		if (this.type === "web")
+		{
+			if (packageJSON.scripts["build-web"] != null)
+				delete packageJSON.scripts["build-web"];
+
+			if (packageJSON.scripts["build-web-debug"] != null)
+				delete packageJSON.scripts["build-web-debug"];
+		}
 
 		let packageJSONstr: string = JSON.stringify (packageJSON, null, 2);
 		await HotIO.writeTextFile (ppath.normalize (`${this.outputDir}/package.json`), packageJSONstr);
@@ -207,14 +225,23 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 				"BUILDSTEPS": readMeBuildSteps
 			});
 
+		if (this.type === "web")
+		{
+			const publicDir: string = ppath.normalize (`${__dirname}/../../creator/public`);
+			await HotIO.copyFiles (publicDir, ppath.normalize (`${this.outputDir}/`));
+		}
+
 		if (this.language === "ts")
 		{
-			const filesDir: string = ppath.normalize (`${__dirname}/../../creator/ts`);
-			await HotIO.copyFiles (filesDir, ppath.normalize (`${this.outputDir}/`));
+			if ((this.type === "web-api") || (this.type === "api"))
+			{
+				const filesDir: string = ppath.normalize (`${__dirname}/../../creator/ts`);
+				await HotIO.copyFiles (filesDir, ppath.normalize (`${this.outputDir}/`));
 
-			await this.replaceKeysInFile (ppath.normalize (`${this.outputDir}/webpack-api.config.js`), {
-					"APPNAME": this.name
-				});
+				await this.replaceKeysInFile (ppath.normalize (`${this.outputDir}/webpack-api.config.js`), {
+						"APPNAME": this.name
+					});
+			}
 		}
 
 		this.logger.info (`Finished copying files...`);
@@ -249,59 +276,62 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 						],
 						"env": {
 						}
-					},
+					}
 				]
 			};
 
 		if (this.language === "ts")
 		{
-			launchJSON["configurations"].push (
-				{
-					"type": "node",
-					"request": "launch",
-					"name": "Debug Web/API Server",
-					"program": "${workspaceFolder}/node_modules/hotpreprocessor/build/src/cli.js",
-					"skipFiles": [
-						"<node_internals>/**"
-					],
-					"outputCapture": "std",
-					"args": [
-						"--development-mode",
-						"--hot-site",
-						"./HotSite.json",
-						"run",
-						"--server-type",
-						"web-api",
-						"--web-http-port",
-						"8080",
-						"--api-http-port",
-						"8081"
-					],
-					"env": {
-					}
-				},
-				{
-					"type": "node",
-					"request": "launch",
-					"name": "Debug API Server",
-					"program": "${workspaceFolder}/node_modules/hotpreprocessor/build/src/cli.js",
-					"skipFiles": [
-						"<node_internals>/**"
-					],
-					"outputCapture": "std",
-					"args": [
-						"--development-mode",
-						"--hot-site",
-						"./HotSite.json",
-						"run",
-						"--server-type",
-						"api",
-						"--api-http-port",
-						"8081"
-					],
-					"env": {
-					}
-				});
+			if ((this.type === "web-api") || (this.type === "api"))
+			{
+				launchJSON["configurations"].push (
+					{
+						"type": "node",
+						"request": "launch",
+						"name": "Debug Web/API Server",
+						"program": "${workspaceFolder}/node_modules/hotpreprocessor/build/src/cli.js",
+						"skipFiles": [
+							"<node_internals>/**"
+						],
+						"outputCapture": "std",
+						"args": [
+							"--development-mode",
+							"--hot-site",
+							"./HotSite.json",
+							"run",
+							"--server-type",
+							"web-api",
+							"--web-http-port",
+							"8080",
+							"--api-http-port",
+							"8081"
+						],
+						"env": {
+						}
+					},
+					{
+						"type": "node",
+						"request": "launch",
+						"name": "Debug API Server",
+						"program": "${workspaceFolder}/node_modules/hotpreprocessor/build/src/cli.js",
+						"skipFiles": [
+							"<node_internals>/**"
+						],
+						"outputCapture": "std",
+						"args": [
+							"--development-mode",
+							"--hot-site",
+							"./HotSite.json",
+							"run",
+							"--server-type",
+							"api",
+							"--api-http-port",
+							"8081"
+						],
+						"env": {
+						}
+					});
+			}
 		}
 
 		launchJSON["configurations"].push (
@@ -329,7 +359,14 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 		await HotIO.writeTextFile (ppath.normalize (`${this.outputDir}/.vscode/launch.json`), launchJSONstr);
 		let tasksJSON: any = {
 				"version": "2.0.0",
-				"tasks": [
+				"tasks": []
+			};
+
+		if (this.language === "ts")
+		{
+			if ((this.type === "web-api") || (this.type === "api"))
+			{
+				tasksJSON["tasks"].push (
 					{
 						"type": "shell",
 						"group": "build",
@@ -339,24 +376,21 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 						"problemMatcher": [],
 						"label": "Build Web API Debug",
 						"command": "npx webpack --mode=development --config=webpack-api.config.js --debug --watch"
-					}]
-			};
-
-		if (this.language === "ts")
-		{
-			tasksJSON["tasks"].push ({
-					"type": "typescript",
-					"tsconfig": "tsconfig.json",
-					"option": "watch",
-					"problemMatcher": [
-						"$tsc-watch"
-					],
-					"group": "build",
-					"runOptions": {
-						"instanceLimit": 1
 					},
-					"label": "Build Server"
-				});
+					{
+						"type": "typescript",
+						"tsconfig": "tsconfig.json",
+						"option": "watch",
+						"problemMatcher": [
+							"$tsc-watch"
+						],
+						"group": "build",
+						"runOptions": {
+							"instanceLimit": 1
+						},
+						"label": "Build Server"
+					});
+			}
 		}
 
 		let tasksJSONstr: string = JSON.stringify (tasksJSON, null, "\t");
