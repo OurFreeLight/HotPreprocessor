@@ -33,7 +33,7 @@ results.
 
 • `Optional` **api**: [HotAPI](../classes/hotapi.md)
 
-*Defined in [HotPreprocessor.ts:285](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L285)*
+*Defined in [HotPreprocessor.ts:293](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L293)*
 
 The api that's used to communicate with.
 
@@ -43,7 +43,7 @@ ___
 
 • `Optional` **components**: { [name:string]: [HotComponent](../classes/hotcomponent.md);  }
 
-*Defined in [HotPreprocessor.ts:301](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L301)*
+*Defined in [HotPreprocessor.ts:309](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L309)*
 
 The components that can be constructed.
 
@@ -53,7 +53,7 @@ ___
 
 • `Optional` **files**: { [name:string]: [HotFile](../classes/hotfile.md);  }
 
-*Defined in [HotPreprocessor.ts:305](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L305)*
+*Defined in [HotPreprocessor.ts:313](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L313)*
 
 The files that can be stored for later use.
 
@@ -63,7 +63,7 @@ ___
 
 • `Optional` **hotSite**: [HotSite](hotsite.md)
 
-*Defined in [HotPreprocessor.ts:309](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L309)*
+*Defined in [HotPreprocessor.ts:317](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L317)*
 
 The loaded hotsite.
 
@@ -73,7 +73,7 @@ ___
 
 • `Optional` **mode**: [DeveloperMode](../enums/developermode.md)
 
-*Defined in [HotPreprocessor.ts:293](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L293)*
+*Defined in [HotPreprocessor.ts:301](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L301)*
 
 Indicates what type of execution this is.
 
@@ -83,7 +83,7 @@ ___
 
 • `Optional` **pages**: { [name:string]: [HotPage](../classes/hotpage.md);  }
 
-*Defined in [HotPreprocessor.ts:297](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L297)*
+*Defined in [HotPreprocessor.ts:305](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L305)*
 
 The pages that can be constructed.
 
@@ -93,6 +93,6 @@ ___
 
 • `Optional` **testerAPI**: [HotAPI](../classes/hotapi.md)
 
-*Defined in [HotPreprocessor.ts:289](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L289)*
+*Defined in [HotPreprocessor.ts:297](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L297)*
 
 The tester api that's used to communicate with.

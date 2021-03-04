@@ -23,7 +23,7 @@ A CSS object to embed.
 
 •  **integrityHash**: string
 
-*Defined in [Hot.ts:38](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/Hot.ts#L38)*
+*Defined in [Hot.ts:38](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/Hot.ts#L38)*
 
 The integrity hash to generate during initial compilation.
 
@@ -33,6 +33,6 @@ ___
 
 •  **url**: string
 
-*Defined in [Hot.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/Hot.ts#L34)*
+*Defined in [Hot.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/Hot.ts#L34)*
 
 The url to the CSS file to embed.

@@ -4,7 +4,10 @@
 
 # Interface: HotSite
 
-A HotSite to load.
+A HotSite to load. This SHOULD NOT contain any private secret keys, passwords,
+or database connection information related to the server. As such, future
+versions of the HotSite interface should not contain any database related
+connection info.
 
 ## Hierarchy
 
@@ -28,9 +31,9 @@ A HotSite to load.
 
 ### apis
 
-• `Optional` **apis**: { [name:string]: { apiName: string ; exportedName: string ; jsapi: string ; port: number  };  }
+• `Optional` **apis**: { [name:string]: { apiName?: string ; exportedName?: string ; jsapi?: string ; port?: number ; url?: string  };  }
 
-*Defined in [HotPreprocessor.ts:180](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L180)*
+*Defined in [HotPreprocessor.ts:184](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L184)*
 
 The available APIs on the server. The server must already have these
 loaded.
@@ -41,7 +44,7 @@ ___
 
 • `Optional` **components**: { [name:string]: { url: string  };  }
 
-*Defined in [HotPreprocessor.ts:215](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L215)*
+*Defined in [HotPreprocessor.ts:223](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L223)*
 
 The components to load and register.
 
@@ -51,7 +54,7 @@ ___
 
 • `Optional` **files**: { [name:string]: { url: string  };  }
 
-*Defined in [HotPreprocessor.ts:226](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L226)*
+*Defined in [HotPreprocessor.ts:234](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L234)*
 
 The files to load and save in memory.
 
@@ -61,7 +64,7 @@ ___
 
 • `Optional` **hotsitePath**: string
 
-*Defined in [HotPreprocessor.ts:84](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L84)*
+*Defined in [HotPreprocessor.ts:88](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L88)*
 
 The path to the current HotSite. This is filled in during parsing.
 
@@ -69,9 +72,9 @@ ___
 
 ### name
 
-• `Optional` **name**: string
+•  **name**: string
 
-*Defined in [HotPreprocessor.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L80)*
+*Defined in [HotPreprocessor.ts:84](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L84)*
 
 The name of this HotSite.
 
@@ -81,7 +84,7 @@ ___
 
 • `Optional` **publicSecrets**: { [name:string]: string \| { passSecretFromAPI?: string  };  }
 
-*Defined in [HotPreprocessor.ts:203](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L203)*
+*Defined in [HotPreprocessor.ts:211](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L211)*
 
 Secrets that can be publicly embedded into the page.
 
@@ -91,7 +94,7 @@ ___
 
 • `Optional` **routes**: { [routeName:string]: [HotSiteRoute](hotsiteroute.md);  }
 
-*Defined in [HotPreprocessor.ts:173](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L173)*
+*Defined in [HotPreprocessor.ts:177](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L177)*
 
 The routes to load.
 
@@ -101,9 +104,9 @@ ___
 
 • `Optional` **server**: { jsSrcPath?: string ; name?: string ; ports?: { http?: number ; https?: number ; redirectHTTPtoHTTPS?: boolean  } ; serveDirectories?: { localPath: string ; route: string  }[] ; serveHottFiles?: boolean ; url?: string  }
 
-*Defined in [HotPreprocessor.ts:88](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L88)*
+*Defined in [HotPreprocessor.ts:92](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L92)*
 
-Additional server configuration.
+Additional web server configuration.
 
 #### Type declaration:
 
@@ -114,7 +117,7 @@ Name | Type | Description |
 `ports?` | { http?: number ; https?: number ; redirectHTTPtoHTTPS?: boolean  } | The ports to use. |
 `serveDirectories?` | { localPath: string ; route: string  }[] | The list of directory to serve to the client from the server. |
 `serveHottFiles?` | boolean | Serve hott files when requested. |
-`url?` | string | The base url for a hott file. |
+`url?` | string | The base url for the server. |
 
 ___
 
@@ -122,7 +125,7 @@ ___
 
 • `Optional` **testing**: { createNewTester?: boolean ; driver?: string ; launchpadUrl?: string ; maps?: string[] ; tester?: string ; testerAPIUrl?: string ; testerName?: string  }
 
-*Defined in [HotPreprocessor.ts:139](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L139)*
+*Defined in [HotPreprocessor.ts:143](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L143)*
 
 Testing related functionality.
 

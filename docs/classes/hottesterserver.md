@@ -35,6 +35,7 @@ An API server for use during testing.
 * [redirectHTTPtoHTTPS](hottesterserver.md#redirecthttptohttps)
 * [routes](hottesterserver.md#routes)
 * [secrets](hottesterserver.md#secrets)
+* [serverType](hottesterserver.md#servertype)
 * [ssl](hottesterserver.md#ssl)
 * [type](hottesterserver.md#type)
 
@@ -63,7 +64,7 @@ An API server for use during testing.
 
 *Overrides [HotServer](hotserver.md).[constructor](hotserver.md#constructor)*
 
-*Defined in [HotTesterServer.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L53)*
+*Defined in [HotTesterServer.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L53)*
 
 #### Parameters:
 
@@ -85,7 +86,7 @@ Name | Type | Default value |
 
 *Inherited from [HotServer](hotserver.md).[api](hotserver.md#api)*
 
-*Defined in [HotServer.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L86)*
+*Defined in [HotServer.ts:94](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L94)*
 
 The API to use.
 
@@ -95,7 +96,7 @@ ___
 
 •  **expressApp**: express.Express
 
-*Defined in [HotTesterServer.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L26)*
+*Defined in [HotTesterServer.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L26)*
 
 The express app to use.
 
@@ -105,7 +106,7 @@ ___
 
 •  **httpListener**: Server
 
-*Defined in [HotTesterServer.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L30)*
+*Defined in [HotTesterServer.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L30)*
 
 The HTTP listener to use.
 
@@ -115,7 +116,7 @@ ___
 
 •  **httpsListener**: Server
 
-*Defined in [HotTesterServer.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L34)*
+*Defined in [HotTesterServer.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L34)*
 
 The HTTPS listener to use.
 
@@ -129,7 +130,7 @@ ___
 
 *Inherited from [HotServer](hotserver.md).[listenAddress](hotserver.md#listenaddress)*
 
-*Defined in [HotServer.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L90)*
+*Defined in [HotServer.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L98)*
 
 The network address to listen on.
 
@@ -143,7 +144,7 @@ ___
 
 *Inherited from [HotServer](hotserver.md).[logger](hotserver.md#logger)*
 
-*Defined in [HotServer.ts:126](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L126)*
+*Defined in [HotServer.ts:134](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L134)*
 
 The logger.
 
@@ -157,7 +158,7 @@ ___
 
 *Inherited from [HotServer](hotserver.md).[ports](hotserver.md#ports)*
 
-*Defined in [HotServer.ts:94](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L94)*
+*Defined in [HotServer.ts:102](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L102)*
 
 The ports to use.
 
@@ -178,7 +179,7 @@ ___
 
 *Inherited from [HotServer](hotserver.md).[processor](hotserver.md#processor)*
 
-*Defined in [HotServer.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L82)*
+*Defined in [HotServer.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L86)*
 
 The processor to use.
 
@@ -192,7 +193,7 @@ ___
 
 *Inherited from [HotServer](hotserver.md).[redirectHTTPtoHTTPS](hotserver.md#redirecthttptohttps)*
 
-*Defined in [HotServer.ts:118](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L118)*
+*Defined in [HotServer.ts:126](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L126)*
 
 Redirect HTTP traffic to HTTPS.
 
@@ -202,7 +203,7 @@ ___
 
 •  **routes**: { method: (req: express.Request, res: express.Response) => Promise<void\> ; route: string ; type: [HTTPMethod](../enums/httpmethod.md)  }[]
 
-*Defined in [HotTesterServer.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L40)*
+*Defined in [HotTesterServer.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L40)*
 
 Any non-static routes that need to be added. These
 will be added during the preregistration phase, before
@@ -218,9 +219,23 @@ ___
 
 *Inherited from [HotServer](hotserver.md).[secrets](hotserver.md#secrets)*
 
-*Defined in [HotServer.ts:130](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L130)*
+*Defined in [HotServer.ts:138](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L138)*
 
 Any secrets associated with this server.
+
+___
+
+### serverType
+
+•  **serverType**: string
+
+*Implementation of [IHotServer](../interfaces/ihotserver.md).[serverType](../interfaces/ihotserver.md#servertype)*
+
+*Inherited from [HotServer](hotserver.md).[serverType](hotserver.md#servertype)*
+
+*Defined in [HotServer.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L90)*
+
+The server type.
 
 ___
 
@@ -232,7 +247,7 @@ ___
 
 *Inherited from [HotServer](hotserver.md).[ssl](hotserver.md#ssl)*
 
-*Defined in [HotServer.ts:101](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L101)*
+*Defined in [HotServer.ts:109](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L109)*
 
 SSL settings.
 
@@ -254,7 +269,7 @@ ___
 
 *Inherited from [HotServer](hotserver.md).[type](hotserver.md#type)*
 
-*Defined in [HotServer.ts:122](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L122)*
+*Defined in [HotServer.ts:130](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L130)*
 
 The type of server.
 
@@ -264,7 +279,7 @@ The type of server.
 
 ▸ **addRoute**(`route`: string, `method`: (req: express.Request, res: express.Response) => Promise<void\>, `type?`: [HTTPMethod](../enums/httpmethod.md)): void
 
-*Defined in [HotTesterServer.ts:167](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L167)*
+*Defined in [HotTesterServer.ts:167](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L167)*
 
 Add a route. This will be registered before any APIs are registered.
 
@@ -284,7 +299,7 @@ ___
 
 ▸ **addTester**(`tester`: [HotTester](hottester.md)): void
 
-*Defined in [HotTesterServer.ts:143](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L143)*
+*Defined in [HotTesterServer.ts:143](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L143)*
 
 Add a tester for use later.
 
@@ -302,7 +317,7 @@ ___
 
 ▸ **clearErrorHandlingRoutes**(): void
 
-*Defined in [HotTesterServer.ts:386](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L386)*
+*Defined in [HotTesterServer.ts:386](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L386)*
 
 Clear the last two express routes, which are reserved for the
 error handlers.
@@ -315,7 +330,7 @@ ___
 
 ▸ **executeAllTests**(`testerName`: string): Promise<void\>
 
-*Defined in [HotTesterServer.ts:159](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L159)*
+*Defined in [HotTesterServer.ts:159](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L159)*
 
 Execute all tests for all maps in the HotSite testing object.
 
@@ -333,7 +348,7 @@ ___
 
 ▸ **executeTests**(`testerName`: string, `mapName`: string): Promise<void\>
 
-*Defined in [HotTesterServer.ts:151](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L151)*
+*Defined in [HotTesterServer.ts:151](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L151)*
 
 Execute tests.
 
@@ -354,7 +369,7 @@ ___
 
 *Overrides [HotServer](hotserver.md).[listen](hotserver.md#listen)*
 
-*Defined in [HotTesterServer.ts:414](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L414)*
+*Defined in [HotTesterServer.ts:414](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L414)*
 
 Start listening for requests.
 
@@ -366,7 +381,7 @@ ___
 
 ▸ **preregisterRoute**(): void
 
-*Defined in [HotTesterServer.ts:323](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L323)*
+*Defined in [HotTesterServer.ts:323](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L323)*
 
 The routes to add before registering a route.
 
@@ -380,7 +395,7 @@ ___
 
 *Overrides [HotServer](hotserver.md).[registerRoute](hotserver.md#registerroute)*
 
-*Defined in [HotTesterServer.ts:182](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L182)*
+*Defined in [HotTesterServer.ts:182](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L182)*
 
 Register a route.
 
@@ -400,7 +415,7 @@ ___
 
 *Inherited from [HotServer](hotserver.md).[setAPI](hotserver.md#setapi)*
 
-*Defined in [HotServer.ts:178](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L178)*
+*Defined in [HotServer.ts:188](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L188)*
 
 Set an API to this server. This will also set the associated
 processor to this API as well.
@@ -419,7 +434,7 @@ ___
 
 ▸ **setErrorHandlingRoutes**(`handle404?`: (req: express.Request, res: express.Response, next: any) => void, `handleOther?`: (err: any, req: express.Request, res: express.Response, next: any) => void): void
 
-*Defined in [HotTesterServer.ts:346](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L346)*
+*Defined in [HotTesterServer.ts:346](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L346)*
 
 Set the error handlers. This will create two express routes at the bottom of the
 route stack. The first will be to capture any 404 errors, the second would be to
@@ -440,7 +455,7 @@ ___
 
 ▸ **setupTesterAPI**(`baseUrl`: string): Promise<void\>
 
-*Defined in [HotTesterServer.ts:494](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L494)*
+*Defined in [HotTesterServer.ts:494](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L494)*
 
 Setup the tester api.
 
@@ -460,7 +475,7 @@ ___
 
 *Overrides [HotServer](hotserver.md).[shutdown](hotserver.md#shutdown)*
 
-*Defined in [HotTesterServer.ts:533](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L533)*
+*Defined in [HotTesterServer.ts:533](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L533)*
 
 Shutdown the server.
 
@@ -472,7 +487,7 @@ ___
 
 ▸ `Static`**checkIfFileExists**(`filepath`: string): Promise<boolean\>
 
-*Defined in [HotTesterServer.ts:306](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L306)*
+*Defined in [HotTesterServer.ts:306](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L306)*
 
 Check if a file exists.
 
@@ -490,7 +505,7 @@ ___
 
 ▸ `Static`**startServer**(`baseUrl?`: string, `httpPort?`: number, `httpsPort?`: number, `processor?`: [HotServer](hotserver.md) \| [HotPreprocessor](hotpreprocessor.md), `logLevel?`: [HotLogLevel](../enums/hotloglevel.md)): Promise<{ processor: [HotServer](hotserver.md) \| [HotPreprocessor](hotpreprocessor.md) ; server: [HotTesterServer](hottesterserver.md)  }\>
 
-*Defined in [HotTesterServer.ts:509](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTesterServer.ts#L509)*
+*Defined in [HotTesterServer.ts:509](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTesterServer.ts#L509)*
 
 Start the server.
 

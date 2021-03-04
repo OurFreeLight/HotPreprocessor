@@ -52,7 +52,7 @@ Runs and executes tests using Selenium.
 
 *Overrides [HotTestDriver](hottestdriver.md).[constructor](hottestdriver.md#constructor)*
 
-*Defined in [HotTestSeleniumDriver.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestSeleniumDriver.ts#L35)*
+*Defined in [HotTestSeleniumDriver.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestSeleniumDriver.ts#L35)*
 
 #### Parameters:
 
@@ -68,7 +68,7 @@ Name | Type | Default value |
 
 •  **browser**: string
 
-*Defined in [HotTestSeleniumDriver.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestSeleniumDriver.ts#L27)*
+*Defined in [HotTestSeleniumDriver.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestSeleniumDriver.ts#L27)*
 
 The browser to use.
 
@@ -78,7 +78,7 @@ ___
 
 •  **driver**: WebDriver
 
-*Defined in [HotTestSeleniumDriver.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestSeleniumDriver.ts#L23)*
+*Defined in [HotTestSeleniumDriver.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestSeleniumDriver.ts#L23)*
 
 The selenium webdriver.
 
@@ -88,7 +88,7 @@ ___
 
 •  **headless**: boolean
 
-*Defined in [HotTestSeleniumDriver.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestSeleniumDriver.ts#L31)*
+*Defined in [HotTestSeleniumDriver.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestSeleniumDriver.ts#L31)*
 
 Run the tests headless.
 
@@ -98,7 +98,7 @@ ___
 
 •  **openDevTools**: boolean
 
-*Defined in [HotTestSeleniumDriver.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestSeleniumDriver.ts#L35)*
+*Defined in [HotTestSeleniumDriver.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestSeleniumDriver.ts#L35)*
 
 Automatically open the developer tools on start.
 
@@ -110,7 +110,7 @@ ___
 
 *Inherited from [HotTestDriver](hottestdriver.md).[page](hottestdriver.md#page)*
 
-*Defined in [HotTestDriver.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L13)*
+*Defined in [HotTestDriver.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L13)*
 
 The current page.
 
@@ -120,7 +120,7 @@ ___
 
 •  **session**: Session
 
-*Defined in [HotTestSeleniumDriver.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestSeleniumDriver.ts#L19)*
+*Defined in [HotTestSeleniumDriver.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestSeleniumDriver.ts#L19)*
 
 The current selenium session running.
 
@@ -132,7 +132,7 @@ The current selenium session running.
 
 *Inherited from [HotTestDriver](hottestdriver.md).[assert](hottestdriver.md#assert)*
 
-*Defined in [HotTestDriver.ts:107](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L107)*
+*Defined in [HotTestDriver.ts:107](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L107)*
 
 An expression to test.
 
@@ -153,7 +153,7 @@ ___
 
 *Overrides [HotTestDriver](hottestdriver.md).[assertElementValue](hottestdriver.md#assertelementvalue)*
 
-*Defined in [HotTestSeleniumDriver.ts:269](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestSeleniumDriver.ts#L269)*
+*Defined in [HotTestSeleniumDriver.ts:269](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestSeleniumDriver.ts#L269)*
 
 An expression to test.
 
@@ -176,7 +176,7 @@ ___
 
 *Overrides [HotTestDriver](hottestdriver.md).[destroy](hottestdriver.md#destroy)*
 
-*Defined in [HotTestSeleniumDriver.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestSeleniumDriver.ts#L51)*
+*Defined in [HotTestSeleniumDriver.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestSeleniumDriver.ts#L51)*
 
 Disconnect this server or destroy anything associated with this HotTestDriver.
 
@@ -190,7 +190,7 @@ ___
 
 *Overrides [HotTestDriver](hottestdriver.md).[findTestElement](hottestdriver.md#findtestelement)*
 
-*Defined in [HotTestSeleniumDriver.ts:172](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestSeleniumDriver.ts#L172)*
+*Defined in [HotTestSeleniumDriver.ts:172](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestSeleniumDriver.ts#L172)*
 
 Get a test element using selenium webdriver.
 
@@ -209,7 +209,7 @@ ___
 
 ▸ **getTestObjectByName**(`name`: string): By
 
-*Defined in [HotTestSeleniumDriver.ts:117](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestSeleniumDriver.ts#L117)*
+*Defined in [HotTestSeleniumDriver.ts:117](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestSeleniumDriver.ts#L117)*
 
 Get a test object by it's name. If a * is used, it will be used as a
 wildcard for the object's name. If a > is used, then the name will
@@ -229,7 +229,7 @@ ___
 
 ▸ **loadSeleniumDriver**(): Promise<void\>
 
-*Defined in [HotTestSeleniumDriver.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestSeleniumDriver.ts#L65)*
+*Defined in [HotTestSeleniumDriver.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestSeleniumDriver.ts#L65)*
 
 Load the selenium driver.
 
@@ -243,7 +243,7 @@ ___
 
 *Overrides [HotTestDriver](hottestdriver.md).[navigateToUrl](hottestdriver.md#navigatetourl)*
 
-*Defined in [HotTestSeleniumDriver.ts:127](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestSeleniumDriver.ts#L127)*
+*Defined in [HotTestSeleniumDriver.ts:127](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestSeleniumDriver.ts#L127)*
 
 Navigate to a url.
 
@@ -263,7 +263,7 @@ ___
 
 *Inherited from [HotTestDriver](hottestdriver.md).[parseTestObject](hottestdriver.md#parsetestobject)*
 
-*Defined in [HotTestDriver.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L25)*
+*Defined in [HotTestDriver.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L25)*
 
 Get a test object by it's name. If a * is used, it will be used as a
 wildcard for the object's name. If a > is used, then the name will
@@ -285,7 +285,7 @@ ___
 
 *Inherited from [HotTestDriver](hottestdriver.md).[print](hottestdriver.md#print)*
 
-*Defined in [HotTestDriver.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L65)*
+*Defined in [HotTestDriver.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L65)*
 
 Print a message.
 
@@ -305,7 +305,7 @@ ___
 
 *Inherited from [HotTestDriver](hottestdriver.md).[println](hottestdriver.md#println)*
 
-*Defined in [HotTestDriver.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L73)*
+*Defined in [HotTestDriver.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L73)*
 
 Print a message line.
 
@@ -325,7 +325,7 @@ ___
 
 *Inherited from [HotTestDriver](hottestdriver.md).[run](hottestdriver.md#run)*
 
-*Defined in [HotTestDriver.ts:116](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L116)*
+*Defined in [HotTestDriver.ts:116](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L116)*
 
 Run a series of test elements.
 
@@ -345,7 +345,7 @@ ___
 
 *Overrides [HotTestDriver](hottestdriver.md).[runCommand](hottestdriver.md#runcommand)*
 
-*Defined in [HotTestSeleniumDriver.ts:214](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestSeleniumDriver.ts#L214)*
+*Defined in [HotTestSeleniumDriver.ts:214](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestSeleniumDriver.ts#L214)*
 
 Run a command using Selenium Webdriver.
 
@@ -368,7 +368,7 @@ ___
 
 *Inherited from [HotTestDriver](hottestdriver.md).[wait](hottestdriver.md#wait)*
 
-*Defined in [HotTestDriver.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L51)*
+*Defined in [HotTestDriver.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L51)*
 
 Wait for a number of milliseconds.
 
@@ -388,7 +388,7 @@ ___
 
 *Overrides [HotTestDriver](hottestdriver.md).[waitForTestElement](hottestdriver.md#waitfortestelement)*
 
-*Defined in [HotTestSeleniumDriver.ts:135](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestSeleniumDriver.ts#L135)*
+*Defined in [HotTestSeleniumDriver.ts:135](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestSeleniumDriver.ts#L135)*
 
 Wait for a test element using Selenium Webdriver.
 

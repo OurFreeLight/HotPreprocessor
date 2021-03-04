@@ -26,7 +26,7 @@ A route used in a HotSite.
 
 • `Optional` **api**: string
 
-*Defined in [HotPreprocessor.ts:57](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L57)*
+*Defined in [HotPreprocessor.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L58)*
 
 The name of the API to interface with.
 
@@ -36,7 +36,7 @@ ___
 
 • `Optional` **destinationOrder**: string[]
 
-*Defined in [HotPreprocessor.ts:62](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L62)*
+*Defined in [HotPreprocessor.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L63)*
 
 The order in which destinations are supposed to execute. This is
 ignored if the destinations are an array.
@@ -47,7 +47,7 @@ ___
 
 • `Optional` **map**: string \| string[] \| { [name:string]: string \| [HotSiteMapPath](hotsitemappath.md);  } \| [HotSiteMapPath](hotsitemappath.md)[]
 
-*Defined in [HotPreprocessor.ts:69](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L69)*
+*Defined in [HotPreprocessor.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L70)*
 
 The HotTesterMap to use. This can be the name of an
 existing one attached to the selected tester, or
@@ -60,7 +60,7 @@ ___
 
 •  **name**: string
 
-*Defined in [HotPreprocessor.ts:49](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L49)*
+*Defined in [HotPreprocessor.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L50)*
 
 The name of the route. Will appear in the title.
 
@@ -70,6 +70,6 @@ ___
 
 •  **url**: string
 
-*Defined in [HotPreprocessor.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L53)*
+*Defined in [HotPreprocessor.ts:54](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L54)*
 
 The url to the file to load.

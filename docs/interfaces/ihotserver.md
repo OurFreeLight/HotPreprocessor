@@ -27,6 +27,7 @@ The server.
 * [processor](ihotserver.md#processor)
 * [redirectHTTPtoHTTPS](ihotserver.md#redirecthttptohttps)
 * [secrets](ihotserver.md#secrets)
+* [serverType](ihotserver.md#servertype)
 * [ssl](ihotserver.md#ssl)
 * [type](ihotserver.md#type)
 
@@ -36,7 +37,7 @@ The server.
 
 •  **api**: [HotAPI](../classes/hotapi.md)
 
-*Defined in [HotServer.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L27)*
+*Defined in [HotServer.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L31)*
 
 The API to use.
 
@@ -46,7 +47,7 @@ ___
 
 •  **listenAddress**: string
 
-*Defined in [HotServer.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L31)*
+*Defined in [HotServer.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L35)*
 
 The network address to listen on.
 
@@ -56,7 +57,7 @@ ___
 
 •  **logger**: [HotLog](../classes/hotlog.md)
 
-*Defined in [HotServer.ts:67](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L67)*
+*Defined in [HotServer.ts:71](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L71)*
 
 The logger.
 
@@ -66,7 +67,7 @@ ___
 
 •  **ports**: { http: number ; https: number  }
 
-*Defined in [HotServer.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L35)*
+*Defined in [HotServer.ts:39](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L39)*
 
 The ports to use.
 
@@ -83,7 +84,7 @@ ___
 
 •  **processor**: [HotPreprocessor](../classes/hotpreprocessor.md)
 
-*Defined in [HotServer.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L23)*
+*Defined in [HotServer.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L23)*
 
 The processor to use.
 
@@ -93,7 +94,7 @@ ___
 
 •  **redirectHTTPtoHTTPS**: boolean
 
-*Defined in [HotServer.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L59)*
+*Defined in [HotServer.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L63)*
 
 Redirect HTTP traffic to HTTPS.
 
@@ -103,9 +104,19 @@ ___
 
 •  **secrets**: any
 
-*Defined in [HotServer.ts:71](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L71)*
+*Defined in [HotServer.ts:75](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L75)*
 
 Any secrets associated with this server.
+
+___
+
+### serverType
+
+•  **serverType**: string
+
+*Defined in [HotServer.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L27)*
+
+The server type.
 
 ___
 
@@ -113,7 +124,7 @@ ___
 
 •  **ssl**: { ca: string ; cert: string ; key: string  }
 
-*Defined in [HotServer.ts:42](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L42)*
+*Defined in [HotServer.ts:46](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L46)*
 
 SSL settings.
 
@@ -131,6 +142,6 @@ ___
 
 •  **type**: [HotServerType](../enums/hotservertype.md)
 
-*Defined in [HotServer.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotServer.ts#L63)*
+*Defined in [HotServer.ts:67](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotServer.ts#L67)*
 
 The type of server.

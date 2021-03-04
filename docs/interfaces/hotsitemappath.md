@@ -23,7 +23,7 @@ A map path for testing.
 
 • `Optional` **autoStart**: boolean
 
-*Defined in [HotPreprocessor.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L34)*
+*Defined in [HotPreprocessor.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L35)*
 
 If set to true, this will start automatically when tests start.
 The default is true.
@@ -34,6 +34,6 @@ ___
 
 • `Optional` **path**: string
 
-*Defined in [HotPreprocessor.ts:38](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L38)*
+*Defined in [HotPreprocessor.ts:39](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L39)*
 
 The path to the

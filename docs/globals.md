@@ -23,11 +23,13 @@
 * [HotBuilder](classes/hotbuilder.md)
 * [HotClient](classes/hotclient.md)
 * [HotComponent](classes/hotcomponent.md)
+* [HotCreator](classes/hotcreator.md)
 * [HotDB](classes/hotdb.md)
 * [HotDBMySQL](classes/hotdbmysql.md)
 * [HotDBSchema](classes/hotdbschema.md)
 * [HotFile](classes/hotfile.md)
 * [HotHTTPServer](classes/hothttpserver.md)
+* [HotIO](classes/hotio.md)
 * [HotLog](classes/hotlog.md)
 * [HotPage](classes/hotpage.md)
 * [HotPreprocessor](classes/hotpreprocessor.md)
@@ -75,6 +77,7 @@
 
 ### Type aliases
 
+* [APItoLoad](globals.md#apitoload)
 * [ClientExecutionFunction](globals.md#clientexecutionfunction)
 * [HotTestPath](globals.md#hottestpath)
 * [ServerAuthorizationFunction](globals.md#serverauthorizationfunction)
@@ -82,19 +85,49 @@
 * [ServerRegistrationFunction](globals.md#serverregistrationfunction)
 * [TestCaseFunction](globals.md#testcasefunction)
 
+### Variables
+
+* [VERSION](globals.md#version)
+* [asyncExec](globals.md#asyncexec)
+* [globalLogLevel](globals.md#globalloglevel)
+* [hotsitePath](globals.md#hotsitepath)
+* [processor](globals.md#processor)
+* [util](globals.md#util)
+
 ### Functions
 
 * [checkIfPathExists](globals.md#checkifpathexists)
+* [getKeyValuePair](globals.md#getkeyvaluepair)
 * [handleBuildCommands](globals.md#handlebuildcommands)
+* [handleCreateCommands](globals.md#handlecreatecommands)
+* [handleRunCommands](globals.md#handleruncommands)
 * [start](globals.md#start)
+* [startAPIServer](globals.md#startapiserver)
 
 ## Type aliases
+
+### APItoLoad
+
+Ƭ  **APItoLoad**: { exportedName: string ; path: string  }
+
+*Defined in [cli.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/cli.ts#L30)*
+
+The API to load.
+
+#### Type declaration:
+
+Name | Type |
+------ | ------ |
+`exportedName` | string |
+`path` | string |
+
+___
 
 ### ClientExecutionFunction
 
 Ƭ  **ClientExecutionFunction**: (...args: any[]) => Promise<any\>
 
-*Defined in [HotRouteMethod.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRouteMethod.ts#L28)*
+*Defined in [HotRouteMethod.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotRouteMethod.ts#L28)*
 
 A function that will be executed by the client.
 
@@ -104,7 +137,7 @@ ___
 
 Ƭ  **HotTestPath**: (driver: [HotTestDriver](classes/hottestdriver.md), ...args: any) => Promise<any\>
 
-*Defined in [HotTestMap.ts:8](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestMap.ts#L8)*
+*Defined in [HotTestMap.ts:8](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestMap.ts#L8)*
 
 Create a test path for later execution.
 
@@ -114,7 +147,7 @@ ___
 
 Ƭ  **ServerAuthorizationFunction**: (req: any, res: any, jsonObj: any, queryObj: any) => Promise<any\>
 
-*Defined in [HotRouteMethod.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRouteMethod.ts#L36)*
+*Defined in [HotRouteMethod.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotRouteMethod.ts#L36)*
 
 A function that will be executed by the server for authorization. Any value
 returned from this function will be passed to the ServerExecutionFunction.
@@ -128,7 +161,7 @@ ___
 
 Ƭ  **ServerExecutionFunction**: (req: any, res: any, authorizedValue: any, jsonObj: any, queryObj: any) => Promise<any\>
 
-*Defined in [HotRouteMethod.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRouteMethod.ts#L23)*
+*Defined in [HotRouteMethod.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotRouteMethod.ts#L23)*
 
 A function that will be executed by the server.
 
@@ -138,7 +171,7 @@ ___
 
 Ƭ  **ServerRegistrationFunction**: () => Promise<boolean\>
 
-*Defined in [HotRouteMethod.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRouteMethod.ts#L19)*
+*Defined in [HotRouteMethod.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotRouteMethod.ts#L19)*
 
 A function that will be executed by the server when first registering with Express.
 If this returns false, this route method will not be registered.
@@ -149,9 +182,57 @@ ___
 
 Ƭ  **TestCaseFunction**: (driver: [HotTestDriver](classes/hottestdriver.md)) => Promise<any\> \| (driver: [HotTestDriver](classes/hottestdriver.md)) => any
 
-*Defined in [HotRouteMethod.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotRouteMethod.ts#L40)*
+*Defined in [HotRouteMethod.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotRouteMethod.ts#L40)*
 
 The test case function to execute.
+
+## Variables
+
+### VERSION
+
+• `Let` **VERSION**: string = ""
+
+*Defined in [cli.ts:20](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/cli.ts#L20)*
+
+___
+
+### asyncExec
+
+• `Const` **asyncExec**: any = util.promisify (require ("child\_process").exec)
+
+*Defined in [HotCreator.ts:3](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotCreator.ts#L3)*
+
+___
+
+### globalLogLevel
+
+• `Let` **globalLogLevel**: [HotLogLevel](enums/hotloglevel.md) = null
+
+*Defined in [cli.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/cli.ts#L25)*
+
+___
+
+### hotsitePath
+
+• `Let` **hotsitePath**: string = ""
+
+*Defined in [cli.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/cli.ts#L24)*
+
+___
+
+### processor
+
+• `Let` **processor**: [HotPreprocessor](classes/hotpreprocessor.md) = new HotPreprocessor ()
+
+*Defined in [cli.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/cli.ts#L21)*
+
+___
+
+### util
+
+• `Const` **util**: any = require ("util")
+
+*Defined in [HotCreator.ts:2](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotCreator.ts#L2)*
 
 ## Functions
 
@@ -159,7 +240,7 @@ The test case function to execute.
 
 ▸ **checkIfPathExists**(`path`: string): boolean
 
-*Defined in [cli.ts:61](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/cli.ts#L61)*
+*Defined in [cli.ts:650](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/cli.ts#L650)*
 
 Check if the path exists.
 
@@ -173,21 +254,62 @@ Name | Type |
 
 ___
 
-### handleBuildCommands
+### getKeyValuePair
 
-▸ **handleBuildCommands**(`hotsitePath`: string): Promise<{ builder: [HotBuilder](classes/hotbuilder.md) ; cmd: Command  }\>
+▸ **getKeyValuePair**(`str`: string): object
 
-*Defined in [cli.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/cli.ts#L16)*
+*Defined in [cli.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/cli.ts#L81)*
 
-Handle any build commands.
+Get a key/value pair from a string.
 
 #### Parameters:
 
 Name | Type |
 ------ | ------ |
-`hotsitePath` | string |
+`str` | string |
 
-**Returns:** Promise<{ builder: [HotBuilder](classes/hotbuilder.md) ; cmd: Command  }\>
+**Returns:** object
+
+Name | Type |
+------ | ------ |
+`key` | string |
+`value` | string |
+
+___
+
+### handleBuildCommands
+
+▸ **handleBuildCommands**(): Promise<Command\>
+
+*Defined in [cli.ts:99](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/cli.ts#L99)*
+
+Handle any build commands.
+
+**Returns:** Promise<Command\>
+
+___
+
+### handleCreateCommands
+
+▸ **handleCreateCommands**(): Promise<Command\>
+
+*Defined in [cli.ts:154](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/cli.ts#L154)*
+
+Handle create commands.
+
+**Returns:** Promise<Command\>
+
+___
+
+### handleRunCommands
+
+▸ **handleRunCommands**(): Promise<Command\>
+
+*Defined in [cli.ts:254](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/cli.ts#L254)*
+
+Handle run commands.
+
+**Returns:** Promise<Command\>
 
 ___
 
@@ -195,8 +317,30 @@ ___
 
 ▸ **start**(): Promise<void\>
 
-*Defined in [cli.ts:74](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/cli.ts#L74)*
+*Defined in [cli.ts:663](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/cli.ts#L663)*
 
 Start the CLI app.
 
 **Returns:** Promise<void\>
+
+___
+
+### startAPIServer
+
+▸ **startAPIServer**(`server`: [HotHTTPServer](classes/hothttpserver.md), `loadedAPI`: [APItoLoad](globals.md#apitoload), `baseAPIUrl`: string, `dbinfo`: [HotDBConnectionInterface](interfaces/hotdbconnectioninterface.md), `isAPIOnly`: boolean): Promise<[HotAPI](classes/hotapi.md)\>
+
+*Defined in [cli.ts:38](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/cli.ts#L38)*
+
+Start the API server.
+
+#### Parameters:
+
+Name | Type |
+------ | ------ |
+`server` | [HotHTTPServer](classes/hothttpserver.md) |
+`loadedAPI` | [APItoLoad](globals.md#apitoload) |
+`baseAPIUrl` | string |
+`dbinfo` | [HotDBConnectionInterface](interfaces/hotdbconnectioninterface.md) |
+`isAPIOnly` | boolean |
+
+**Returns:** Promise<[HotAPI](classes/hotapi.md)\>

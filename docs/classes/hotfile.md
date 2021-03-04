@@ -47,7 +47,7 @@ A file to process.
 
 \+ **new HotFile**(`copy?`: [IHotFile](../interfaces/ihotfile.md)): [HotFile](hotfile.md)
 
-*Defined in [HotFile.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L68)*
+*Defined in [HotFile.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L68)*
 
 #### Parameters:
 
@@ -65,7 +65,7 @@ Name | Type | Default value |
 
 *Implementation of [IHotFile](../interfaces/ihotfile.md).[content](../interfaces/ihotfile.md#content)*
 
-*Defined in [HotFile.ts:64](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L64)*
+*Defined in [HotFile.ts:64](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L64)*
 
 The content of the file to process.
 
@@ -77,7 +77,7 @@ ___
 
 *Implementation of [IHotFile](../interfaces/ihotfile.md).[localFile](../interfaces/ihotfile.md#localfile)*
 
-*Defined in [HotFile.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L60)*
+*Defined in [HotFile.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L60)*
 
 The path to the local file to get.
 
@@ -89,7 +89,7 @@ ___
 
 *Implementation of [IHotFile](../interfaces/ihotfile.md).[name](../interfaces/ihotfile.md#name)*
 
-*Defined in [HotFile.ts:52](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L52)*
+*Defined in [HotFile.ts:52](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L52)*
 
 The name of the file.
 
@@ -101,7 +101,7 @@ ___
 
 *Implementation of [IHotFile](../interfaces/ihotfile.md).[page](../interfaces/ihotfile.md#page)*
 
-*Defined in [HotFile.ts:48](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L48)*
+*Defined in [HotFile.ts:48](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L48)*
 
 The parent page.
 
@@ -113,7 +113,7 @@ ___
 
 *Implementation of [IHotFile](../interfaces/ihotfile.md).[throwAllErrors](../interfaces/ihotfile.md#throwallerrors)*
 
-*Defined in [HotFile.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L68)*
+*Defined in [HotFile.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L68)*
 
 Force all errors to be thrown.
 
@@ -125,7 +125,7 @@ ___
 
 *Implementation of [IHotFile](../interfaces/ihotfile.md).[url](../interfaces/ihotfile.md#url)*
 
-*Defined in [HotFile.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L56)*
+*Defined in [HotFile.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L56)*
 
 The url to the file to get.
 
@@ -135,7 +135,7 @@ The url to the file to get.
 
 ▸ **getContent**(): string
 
-*Defined in [HotFile.ts:91](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L91)*
+*Defined in [HotFile.ts:91](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L91)*
 
 Get the content of this file.
 
@@ -147,7 +147,7 @@ ___
 
 ▸ **load**(): Promise<string\>
 
-*Defined in [HotFile.ts:154](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L154)*
+*Defined in [HotFile.ts:154](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L154)*
 
 Load the contents of the file.
 
@@ -159,7 +159,7 @@ ___
 
 ▸ **loadLocalFile**(): Promise<string\>
 
-*Defined in [HotFile.ts:131](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L131)*
+*Defined in [HotFile.ts:131](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L131)*
 
 Load content from a local file.
 
@@ -171,7 +171,7 @@ ___
 
 ▸ **loadUrl**(): Promise<string\>
 
-*Defined in [HotFile.ts:121](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L121)*
+*Defined in [HotFile.ts:121](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L121)*
 
 Load content from a url.
 
@@ -183,7 +183,7 @@ ___
 
 ▸ **process**(`args?`: any): Promise<string\>
 
-*Defined in [HotFile.ts:330](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L330)*
+*Defined in [HotFile.ts:330](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L330)*
 
 Process the content in this file. This treats each file as one large JavaScript
 file. Any text outside of the <* *> areas will be treated as:
@@ -207,7 +207,7 @@ ___
 
 ▸ **setContent**(`content`: string): void
 
-*Defined in [HotFile.ts:83](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L83)*
+*Defined in [HotFile.ts:83](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L83)*
 
 Set the content of this file.
 
@@ -225,7 +225,7 @@ ___
 
 ▸ `Static`**httpGet**(`url`: string): Promise<string\>
 
-*Defined in [HotFile.ts:99](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L99)*
+*Defined in [HotFile.ts:99](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L99)*
 
 Make a HTTP get request.
 
@@ -243,7 +243,7 @@ ___
 
 ▸ `Static`**processContent**(`content`: string, `contentRegex`: RegExp, `contentProcessor`: (regexFound: string) => string, `offContentProcessor`: (offContent: string) => string, `numRemoveFromBeginning?`: number, `numRemoveFromEnd?`: number): string
 
-*Defined in [HotFile.ts:183](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L183)*
+*Defined in [HotFile.ts:183](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L183)*
 
 Process string content. This will take in a regular expression and
 parse the content based on the regex. When the regex content is found
@@ -270,7 +270,7 @@ ___
 
 ▸ `Static`**processNestedContent**(`content`: string, `startChars`: string, `endChars`: string, `triggerChar`: string, `contentProcessor`: (regexFound: string) => string, `offContentProcessor`: (offContent: string) => string, `numRemoveFromBeginning?`: number, `numRemoveFromEnd?`: number): string
 
-*Defined in [HotFile.ts:241](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotFile.ts#L241)*
+*Defined in [HotFile.ts:241](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotFile.ts#L241)*
 
 Process any content that could have nested values. This will
 take in a regular expression and

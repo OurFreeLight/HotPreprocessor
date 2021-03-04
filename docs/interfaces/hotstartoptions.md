@@ -29,7 +29,7 @@ The options to use when starting a page.
 
 • `Optional` **args**: any
 
-*Defined in [HotPreprocessor.ts:256](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L256)*
+*Defined in [HotPreprocessor.ts:264](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L264)*
 
 Any arguments to pass to the new page.
 
@@ -39,7 +39,7 @@ ___
 
 • `Optional` **name**: string
 
-*Defined in [HotPreprocessor.ts:248](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L248)*
+*Defined in [HotPreprocessor.ts:256](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L256)*
 
 The name of the page to load.
 
@@ -49,7 +49,7 @@ ___
 
 • `Optional` **processor**: [HotPreprocessor](../classes/hotpreprocessor.md)
 
-*Defined in [HotPreprocessor.ts:252](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L252)*
+*Defined in [HotPreprocessor.ts:260](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L260)*
 
 The processor to use to load the page.
 
@@ -59,7 +59,7 @@ ___
 
 • `Optional` **testerAPIBaseUrl**: string
 
-*Defined in [HotPreprocessor.ts:268](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L268)*
+*Defined in [HotPreprocessor.ts:276](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L276)*
 
 The base url for the tester api.
 
@@ -69,7 +69,7 @@ ___
 
 • `Optional` **testerLaunchpadUrl**: string
 
-*Defined in [HotPreprocessor.ts:273](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L273)*
+*Defined in [HotPreprocessor.ts:281](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L281)*
 
 The url to the html that loads the hott file that's
 pointed at the url above.
@@ -80,7 +80,7 @@ ___
 
 • `Optional` **testerMap**: string
 
-*Defined in [HotPreprocessor.ts:264](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L264)*
+*Defined in [HotPreprocessor.ts:272](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L272)*
 
 The name of the tester map to use.
 
@@ -90,7 +90,7 @@ ___
 
 • `Optional` **testerName**: string
 
-*Defined in [HotPreprocessor.ts:260](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L260)*
+*Defined in [HotPreprocessor.ts:268](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L268)*
 
 The name of the tester to use.
 
@@ -100,6 +100,6 @@ ___
 
 •  **url**: string
 
-*Defined in [HotPreprocessor.ts:244](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPreprocessor.ts#L244)*
+*Defined in [HotPreprocessor.ts:252](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPreprocessor.ts#L252)*
 
 The Hott site to load.

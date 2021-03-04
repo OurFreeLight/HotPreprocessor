@@ -23,7 +23,7 @@ A page containing only test related info.
 
 •  **testElements**: { [name:string]: [HotTestElement](../classes/hottestelement.md);  }
 
-*Defined in [HotTestMap.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestMap.ts#L56)*
+*Defined in [HotTestMap.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestMap.ts#L56)*
 
 The elements to test on this map.
 
@@ -33,6 +33,6 @@ ___
 
 •  **testPaths**: { [name:string]: [HotTestPath](../globals.md#hottestpath);  }
 
-*Defined in [HotTestMap.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestMap.ts#L60)*
+*Defined in [HotTestMap.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestMap.ts#L60)*
 
 The test paths to test on this map.

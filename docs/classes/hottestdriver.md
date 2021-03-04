@@ -43,7 +43,7 @@ This actually executes the tests.
 
 \+ **new HotTestDriver**(`page?`: [HotTestPage](../interfaces/hottestpage.md)): [HotTestDriver](hottestdriver.md)
 
-*Defined in [HotTestDriver.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L13)*
+*Defined in [HotTestDriver.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L13)*
 
 #### Parameters:
 
@@ -59,7 +59,7 @@ Name | Type | Default value |
 
 •  **page**: [HotTestPage](../interfaces/hottestpage.md)
 
-*Defined in [HotTestDriver.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L13)*
+*Defined in [HotTestDriver.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L13)*
 
 The current page.
 
@@ -69,7 +69,7 @@ The current page.
 
 ▸ **assert**(`value`: any, `errorMessage?`: string): Promise<any\>
 
-*Defined in [HotTestDriver.ts:107](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L107)*
+*Defined in [HotTestDriver.ts:107](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L107)*
 
 An expression to test.
 
@@ -88,7 +88,7 @@ ___
 
 ▸ `Abstract`**assertElementValue**(`name`: string \| [HotTestElement](hottestelement.md), `value`: any, `errorMessage?`: string, `options?`: [HotTestElementOptions](hottestelementoptions.md)): Promise<any\>
 
-*Defined in [HotTestDriver.ts:102](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L102)*
+*Defined in [HotTestDriver.ts:102](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L102)*
 
 An expression to test.
 
@@ -109,7 +109,7 @@ ___
 
 ▸ `Abstract`**destroy**(): Promise<void\>
 
-*Defined in [HotTestDriver.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L81)*
+*Defined in [HotTestDriver.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L81)*
 
 Disconnect this server or destroy anything associated with this HotTestDriver.
 
@@ -121,7 +121,7 @@ ___
 
 ▸ `Abstract`**findTestElement**(`name`: string \| [HotTestElement](hottestelement.md), `options?`: [HotTestElementOptions](hottestelementoptions.md)): Promise<any\>
 
-*Defined in [HotTestDriver.ts:94](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L94)*
+*Defined in [HotTestDriver.ts:94](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L94)*
 
 Find a HotTestElement to utilize.
 
@@ -140,7 +140,7 @@ ___
 
 ▸ `Abstract`**navigateToUrl**(`url`: string): Promise<void\>
 
-*Defined in [HotTestDriver.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L86)*
+*Defined in [HotTestDriver.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L86)*
 
 Navigate to a url.
 
@@ -158,7 +158,7 @@ ___
 
 ▸ **parseTestObject**(`name`: string): string
 
-*Defined in [HotTestDriver.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L25)*
+*Defined in [HotTestDriver.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L25)*
 
 Get a test object by it's name. If a * is used, it will be used as a
 wildcard for the object's name. If a > is used, then the name will
@@ -178,7 +178,7 @@ ___
 
 ▸ **print**(`message`: string): Promise<void\>
 
-*Defined in [HotTestDriver.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L65)*
+*Defined in [HotTestDriver.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L65)*
 
 Print a message.
 
@@ -196,7 +196,7 @@ ___
 
 ▸ **println**(`message`: string): Promise<void\>
 
-*Defined in [HotTestDriver.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L73)*
+*Defined in [HotTestDriver.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L73)*
 
 Print a message line.
 
@@ -214,7 +214,7 @@ ___
 
 ▸ **run**(`executions`: string[] \| string[][]): Promise<any[]\>
 
-*Defined in [HotTestDriver.ts:116](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L116)*
+*Defined in [HotTestDriver.ts:116](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L116)*
 
 Run a series of test elements.
 
@@ -232,7 +232,7 @@ ___
 
 ▸ `Abstract`**runCommand**(`testElm`: string \| [HotTestElement](hottestelement.md), `funcName?`: string, `valueStr?`: string): Promise<any\>
 
-*Defined in [HotTestDriver.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L98)*
+*Defined in [HotTestDriver.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L98)*
 
 Run a HotTestElement command.
 
@@ -252,7 +252,7 @@ ___
 
 ▸ **wait**(`numMilliseconds`: number): Promise<void\>
 
-*Defined in [HotTestDriver.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L51)*
+*Defined in [HotTestDriver.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L51)*
 
 Wait for a number of milliseconds.
 
@@ -270,7 +270,7 @@ ___
 
 ▸ `Abstract`**waitForTestElement**(`name`: string \| [HotTestElement](hottestelement.md), `options?`: [HotTestElementOptions](hottestelementoptions.md)): Promise<any\>
 
-*Defined in [HotTestDriver.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestDriver.ts#L90)*
+*Defined in [HotTestDriver.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestDriver.ts#L90)*
 
 Wait for a HotTestElement to load.
 

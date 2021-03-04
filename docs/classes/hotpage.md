@@ -48,7 +48,7 @@ A page to preprocess.
 
 \+ **new HotPage**(`copy`: [IHotPage](../interfaces/ihotpage.md) \| [HotPreprocessor](hotpreprocessor.md)): [HotPage](hotpage.md)
 
-*Defined in [HotPage.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L85)*
+*Defined in [HotPage.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L85)*
 
 #### Parameters:
 
@@ -66,7 +66,7 @@ Name | Type |
 
 *Implementation of [IHotPage](../interfaces/ihotpage.md).[files](../interfaces/ihotpage.md#files)*
 
-*Defined in [HotPage.ts:69](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L69)*
+*Defined in [HotPage.ts:69](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L69)*
 
 The name of the page. File ordering matters here.
 Every file is processed incrementally.
@@ -79,7 +79,7 @@ ___
 
 *Implementation of [IHotPage](../interfaces/ihotpage.md).[name](../interfaces/ihotpage.md#name)*
 
-*Defined in [HotPage.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L60)*
+*Defined in [HotPage.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L60)*
 
 The name of the page.
 
@@ -91,7 +91,7 @@ ___
 
 *Implementation of [IHotPage](../interfaces/ihotpage.md).[processor](../interfaces/ihotpage.md#processor)*
 
-*Defined in [HotPage.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L56)*
+*Defined in [HotPage.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L56)*
 
 The processor to use.
 
@@ -103,7 +103,7 @@ ___
 
 *Implementation of [IHotPage](../interfaces/ihotpage.md).[route](../interfaces/ihotpage.md#route)*
 
-*Defined in [HotPage.ts:64](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L64)*
+*Defined in [HotPage.ts:64](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L64)*
 
 The route used to get to this page.
 
@@ -115,7 +115,7 @@ ___
 
 *Implementation of [IHotPage](../interfaces/ihotpage.md).[testElements](../interfaces/ihotpage.md#testelements)*
 
-*Defined in [HotPage.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L81)*
+*Defined in [HotPage.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L81)*
 
 The elements to test on this page.
 
@@ -127,7 +127,7 @@ ___
 
 *Implementation of [IHotPage](../interfaces/ihotpage.md).[testPaths](../interfaces/ihotpage.md#testpaths)*
 
-*Defined in [HotPage.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L85)*
+*Defined in [HotPage.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L85)*
 
 The test paths to test on this page.
 
@@ -139,7 +139,7 @@ ___
 
 *Implementation of [IHotPage](../interfaces/ihotpage.md).[testerMap](../interfaces/ihotpage.md#testermap)*
 
-*Defined in [HotPage.ts:77](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L77)*
+*Defined in [HotPage.ts:77](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L77)*
 
 The associated tester map.
 
@@ -151,7 +151,7 @@ ___
 
 *Implementation of [IHotPage](../interfaces/ihotpage.md).[testerName](../interfaces/ihotpage.md#testername)*
 
-*Defined in [HotPage.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L73)*
+*Defined in [HotPage.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L73)*
 
 The associated tester name.
 
@@ -161,7 +161,7 @@ The associated tester name.
 
 ▸ **addFile**(`file`: [HotFile](hotfile.md)): Promise<void\>
 
-*Defined in [HotPage.ts:117](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L117)*
+*Defined in [HotPage.ts:117](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L117)*
 
 Add a file to process. It's recommend to load the file prior to
 adding it to a page if it's about to be used.
@@ -180,7 +180,7 @@ ___
 
 ▸ **addTestElement**(`elm`: [HotTestElement](hottestelement.md)): void
 
-*Defined in [HotPage.ts:177](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L177)*
+*Defined in [HotPage.ts:177](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L177)*
 
 Add a test element.
 
@@ -198,7 +198,7 @@ ___
 
 ▸ **createTestPath**(`pathName`: string, `driverFunc`: [HotTestPath](../globals.md#hottestpath)): void
 
-*Defined in [HotPage.ts:199](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L199)*
+*Defined in [HotPage.ts:199](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L199)*
 
 Create a test path.
 
@@ -217,7 +217,7 @@ ___
 
 ▸ **getAPI**(): [HotAPI](hotapi.md)
 
-*Defined in [HotPage.ts:127](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L127)*
+*Defined in [HotPage.ts:127](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L127)*
 
 Get the API associated with this page.
 
@@ -229,7 +229,7 @@ ___
 
 ▸ **getTestElement**(`name`: string): [HotTestElement](hottestelement.md)
 
-*Defined in [HotPage.ts:188](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L188)*
+*Defined in [HotPage.ts:188](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L188)*
 
 Get a test element.
 
@@ -247,7 +247,7 @@ ___
 
 ▸ **getTesterAPI**(): [HotAPI](hotapi.md)
 
-*Defined in [HotPage.ts:135](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L135)*
+*Defined in [HotPage.ts:135](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L135)*
 
 Get the tester API associated with this page.
 
@@ -259,7 +259,7 @@ ___
 
 ▸ **load**(`file`: [HotFile](hotfile.md)): Promise<void\>
 
-*Defined in [HotPage.ts:144](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L144)*
+*Defined in [HotPage.ts:144](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L144)*
 
 Add all files in the page. Could decrease page loading performance.
 It's recommend to load the file prior to adding it to a page.
@@ -278,7 +278,7 @@ ___
 
 ▸ **process**(`args?`: any): Promise<string\>
 
-*Defined in [HotPage.ts:157](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotPage.ts#L157)*
+*Defined in [HotPage.ts:157](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotPage.ts#L157)*
 
 Process a page and get the result.
 

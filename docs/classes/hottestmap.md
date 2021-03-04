@@ -28,7 +28,7 @@ Maps the paths that are taken to complete a test.
 
 \+ **new HotTestMap**(`destinations?`: string[] \| [HotTestDestination](hottestdestination.md)[] \| { [name:string]: string \| [HotTestDestination](hottestdestination.md);  }, `pages?`: { [name:string]: [HotTestPage](../interfaces/hottestpage.md);  }, `destinationOrder?`: string[]): [HotTestMap](hottestmap.md)
 
-*Defined in [HotTestMap.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestMap.ts#L98)*
+*Defined in [HotTestMap.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestMap.ts#L98)*
 
 #### Parameters:
 
@@ -46,7 +46,7 @@ Name | Type | Default value |
 
 •  **destinationOrder**: string[]
 
-*Defined in [HotTestMap.ts:92](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestMap.ts#L92)*
+*Defined in [HotTestMap.ts:92](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestMap.ts#L92)*
 
 The order in which destinations are supposed to execute. This is
 ignored if the destinations are an array.
@@ -57,7 +57,7 @@ ___
 
 •  **destinations**: [HotTestDestination](hottestdestination.md)[] \| { [name:string]: [HotTestDestination](hottestdestination.md);  }
 
-*Defined in [HotTestMap.ts:87](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestMap.ts#L87)*
+*Defined in [HotTestMap.ts:87](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestMap.ts#L87)*
 
 The order in which paths are to be taken. Each destination is a string
 in a type -> path order. The type could be either a page or api route.
@@ -83,6 +83,6 @@ ___
 
 •  **pages**: { [name:string]: [HotTestPage](../interfaces/hottestpage.md);  }
 
-*Defined in [HotTestMap.ts:96](https://github.com/OurFreeLight/HotPreprocessor/blob/086eb28/src/HotTestMap.ts#L96)*
+*Defined in [HotTestMap.ts:96](https://github.com/OurFreeLight/HotPreprocessor/blob/a28393c/src/HotTestMap.ts#L96)*
 
 The test pages to execute.
