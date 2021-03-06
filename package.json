@@ -10,7 +10,7 @@
   "scripts": {
     "test": "mocha --timeout 999999 --colors ./build/tests/**/*.js",
     "prepublishOnly": "npm run build && npm run buildweb && npm run builddoc",
-    "builddoc": "typedoc --ignoreCompilerErrors --mode file --theme markdown --readme README.md --out ./docs/ ./src",
+    "builddoc": "typedoc --theme markdown --readme README.md --out ./docs/ ./src",
     "build": "tsc --build ./tsconfig.json",
     "buildweb": "webpack --mode=production && npx google-closure-compiler --js=./build-web/HotPreprocessor.js --language_out=ECMASCRIPT_2018 --js_output_file=./build-web/HotPreprocessor.min.js",
     "buildwebdebug": "webpack --mode=development --debug"
@@ -54,7 +54,7 @@
     "selenium-webdriver": "^4.0.0-alpha.8",
     "ts-loader": "^7.0.5",
     "typedoc": "^0.20.29",
-    "typedoc-plugin-markdown": "^3.1.1",
+    "typedoc-plugin-markdown": "^3.6.0",
     "typescript": "^3.9.7",
     "webpack": "^4.44.0",
     "webpack-cli": "^3.3.12"

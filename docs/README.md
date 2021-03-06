@@ -1,6 +1,4 @@
-**[hotpreprocessor](README.md)**
-
-> [Globals](globals.md)
+hotpreprocessor / [Exports](modules.md)
 
 # Hotpreprocessor
 Need something similar to PHP in Node.js? We got you barely covered then ;)
