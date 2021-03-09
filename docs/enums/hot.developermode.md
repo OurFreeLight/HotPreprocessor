@@ -22,7 +22,7 @@ The available developer modes.
 For use during development/debugging. All test data will
 be collected and executed if necessary.
 
-Defined in: [Hot.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/Hot.ts#L23)
+Defined in: [Hot.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/Hot.ts#L23)
 
 ___
 
@@ -33,4 +33,4 @@ ___
 The default developer mode. No tests will be executed and
 any test related data will be ignored.
 
-Defined in: [Hot.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/Hot.ts#L18)
+Defined in: [Hot.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/Hot.ts#L18)

@@ -6,5 +6,5 @@ tests/
 
 build-web/HotPreprocessorTests.js
 
-HotSite.json
-*.config.js
+./HotSite.json
+./*.config.js

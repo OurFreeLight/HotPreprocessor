@@ -14,6 +14,7 @@ import { HotDBConnectionInterface } from "./HotDBConnectionInterface";
 import { HotAPI } from "./HotAPI";
 import { HotTesterMochaSelenium } from "./HotTesterMochaSelenium";
 import { HotDBMySQL } from "./schemas/HotDBMySQL";
+import { HotIO } from "./HotIO";
 
 HotPreprocessor.isWeb = false;
 
@@ -110,7 +111,16 @@ async function handleBuildCommands (): Promise<commander.Command>
 	buildCmd.action (async () =>
 		{
 			createHotBuilder ();
-			
+
+			if (hotsitePath === "")
+			{
+				let tempHotsitePath: string = ppath.normalize (`${process.cwd ()}/HotSite.json`);
+
+				/// @fixme Do this check without caps sensitivity.
+				if (await HotIO.exists (tempHotsitePath) === true)
+					hotsitePath = tempHotsitePath;
+			}
+
 			if (hotsitePath === "")
 				throw new Error (`When building, you must specify a HotSite.json!`);
 
@@ -165,6 +175,12 @@ async function handleCreateCommands (): Promise<commander.Command>
 	createCmd.action (async (cmdr: any, args: string) =>
 		{
 			createHotCreator ();
+
+			if (args == null)
+				throw new Error (`You must supply an npm compatible project name!`);
+
+			if (args.length < 1)
+				throw new Error (`You must supply an npm compatible project name!`);
 
 			const name: string = args[0];
 
@@ -297,7 +313,31 @@ async function handleRunCommands (): Promise<commander.Command>
 			let testerServer: HotTesterServer = null;
 
 			if (hotsitePath !== "")
+			{
 				await processor.loadHotSite (hotsitePath);
+
+				if (processor.hotSite != null)
+				{
+					if (processor.hotSite.apis != null)
+					{
+						for (let key in processor.hotSite.apis)
+						{
+							let tempapi = processor.hotSite.apis[key];
+
+							if (tempapi.exportedName != null)
+							{
+								let path: string = tempapi.filepath;
+
+								let apiToLoad: APItoLoad = {
+										exportedName: tempapi.exportedName,
+										path: path
+									};
+								apis.push (apiToLoad);
+							}
+						}
+					}
+				}
+			}
 
 			if (baseWebUrl === "")
 			{
@@ -691,7 +731,7 @@ async function start ()
 			{
 				process.chdir (path);
 			});
-		command.option ("-o, --hot-site <path>", "Use a HotSite.json", 
+		command.option ("-o, --hotsite <path>", "Use a HotSite.json", 
 			(path: string, previous: any) =>
 			{
 				hotsitePath = path;

@@ -1,6 +1,6 @@
 {
   "name": "hotpreprocessor",
-  "version": "0.4.61",
+  "version": "0.4.68",
   "description": "",
   "bin": {
     "hotpreprocessor": "./bin/hotpreprocessor"
@@ -25,38 +25,37 @@
     "url": "https://github.com/OurFreeLight/HotPreprocessor.git"
   },
   "dependencies": {
-    "commander": "^6.2.1",
-    "cross-fetch": "^3.0.5",
-    "express": "^4.17.1",
-    "formidable": "^1.2.2",
-    "js-cookie": "^2.2.1",
-    "mysql": "^2.18.1",
-    "validate-npm-package-name": "^3.0.0",
-    "prod": "^1.0.1"
-  },
-  "devDependencies": {
     "@types/chai": "^4.2.12",
     "@types/express": "^4.17.9",
     "@types/formidable": "^1.0.32",
-    "@types/fs-extra": "^9.0.6",
+    "@types/fs-extra": "^9.0.8",
     "@types/js-cookie": "^2.2.6",
     "@types/mocha": "^7.0.2",
     "@types/mysql": "^2.15.17",
-    "@types/node": "^13.13.38",
+    "@types/node": "^14.14.32",
     "@types/selenium-webdriver": "^4.0.10",
     "@types/validate-npm-package-name": "^3.0.2",
     "buildci": "^0.3.997",
     "chai": "^4.2.0",
+    "commander": "^6.2.1",
+    "cross-fetch": "^3.0.5",
+    "express": "^4.17.1",
     "form-data": "^3.0.0",
-    "fs-extra": "^9.0.1",
+    "formidable": "^1.2.2",
+    "fs-extra": "^9.1.0",
+    "js-cookie": "^2.2.1",
     "libbuildci": "^0.3.998",
     "mocha": "^7.2.0",
-    "selenium-webdriver": "^4.0.0-alpha.8",
+    "mysql": "^2.18.1",
+    "prod": "^1.0.1",
+    "selenium-webdriver": "^4.0.0-beta.1",
     "ts-loader": "^7.0.5",
     "typedoc": "^0.20.29",
     "typedoc-plugin-markdown": "^3.6.0",
     "typescript": "^3.9.7",
+    "validate-npm-package-name": "^3.0.0",
     "webpack": "^4.44.0",
     "webpack-cli": "^3.3.12"
-  }
+  },
+  "devDependencies": {}
 }

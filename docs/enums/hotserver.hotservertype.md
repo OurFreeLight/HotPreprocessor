@@ -19,7 +19,7 @@ The type of server.
 
 • **HTTP**: = 0
 
-Defined in: [HotServer.ts:11](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotServer.ts#L11)
+Defined in: [HotServer.ts:11](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotServer.ts#L11)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 • **WebSockets**: = 1
 
-Defined in: [HotServer.ts:12](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotServer.ts#L12)
+Defined in: [HotServer.ts:12](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotServer.ts#L12)

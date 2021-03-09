@@ -90,8 +90,8 @@ export class HotCreator
 				transpileTS: "npm run build"
 			};
 		this.npmCommands = {
-				start: "hotpreprocessor --hot-site ./HotSite.json run",
-				dev: "hotpreprocessor --hot-site ./HotSite.json --development-mode run --web-http-port 8080",
+				start: "",
+				dev: "",
 				test: "hotpreprocessor test",
 				build: "",
 				buildWebAPI: "",
@@ -145,15 +145,21 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 				"author": "",
 				"license": "ISC",
 				"dependencies": {
-					"hotpreprocessor": "^0.4.5"
+					"hotpreprocessor": "^0.4.67"
 				}
 			};
 
 		if (this.npmCommands.start !== "")
+		{
+			this.npmCommands.start = `hotpreprocessor --hotsite ./HotSite.json run --server-type ${this.type}`;
 			packageJSON.scripts["start"] = this.npmCommands.start;
+		}
 
 		if (this.npmCommands.dev !== "")
+		{
+			this.npmCommands.dev = `hotpreprocessor --hotsite ./HotSite.json --development-mode run --server-type ${this.type} --web-http-port 8080`;
 			packageJSON.scripts["dev"] = this.npmCommands.dev;
+		}
 
 		if (this.npmCommands.test !== "")
 			packageJSON.scripts["test"] = this.npmCommands.test;
@@ -212,6 +218,18 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 				}
 			};
 
+		if (this.language === "ts")
+		{
+			if ((this.type === "web-api") || (this.type === "api"))
+			{
+				hotSiteJSON.apis = {};
+				hotSiteJSON.apis["AppAPI"] = {
+						"exportedName": "AppAPI",
+						"filepath": "./build/src/AppAPI.js"
+					};
+			}
+		}
+
 		let hotSiteJSONstr: string = JSON.stringify (hotSiteJSON, null, "\t");
 		await HotIO.writeTextFile (ppath.normalize (`${this.outputDir}/HotSite.json`), hotSiteJSONstr);
 
@@ -268,7 +286,7 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 						"outputCapture": "std",
 						"args": [
 							"--development-mode",
-							"--hot-site",
+							"--hotsite",
 							"./HotSite.json",
 							"run",
 							"--web-http-port",
@@ -296,7 +314,7 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 						"outputCapture": "std",
 						"args": [
 							"--development-mode",
-							"--hot-site",
+							"--hotsite",
 							"./HotSite.json",
 							"run",
 							"--server-type",
@@ -320,7 +338,7 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 						"outputCapture": "std",
 						"args": [
 							"--development-mode",
-							"--hot-site",
+							"--hotsite",
 							"./HotSite.json",
 							"run",
 							"--server-type",
@@ -345,7 +363,7 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 				"program": "${workspaceFolder}/node_modules/hotpreprocessor/build/src/cli.js",
 				"args": [
 					"--development-mode",
-					"--hot-site",
+					"--hotsite",
 					"./HotSite.json",
 					"test",
 					"--web-http-port",

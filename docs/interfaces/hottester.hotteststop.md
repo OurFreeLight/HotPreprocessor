@@ -35,7 +35,7 @@ A command to execute. Can be:
 * waitForTestObject(x)
   * This will wait for a test object to be loaded.
 
-Defined in: [HotTester.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L28)
+Defined in: [HotTester.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L28)
 
 ___
 
@@ -45,7 +45,7 @@ ___
 
 The destination to execute.
 
-Defined in: [HotTester.ts:32](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L32)
+Defined in: [HotTester.ts:32](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L32)
 
 ___
 
@@ -55,4 +55,4 @@ ___
 
 The path to execute.
 
-Defined in: [HotTester.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L36)
+Defined in: [HotTester.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L36)

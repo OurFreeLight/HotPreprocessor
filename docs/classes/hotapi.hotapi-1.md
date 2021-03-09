@@ -57,7 +57,7 @@ Name | Type | Default value |
 
 **Returns:** [*HotAPI*](hotapi.hotapi-1.md)
 
-Defined in: [HotAPI.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L68)
+Defined in: [HotAPI.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L68)
 
 ## Properties
 
@@ -67,7 +67,7 @@ Defined in: [HotAPI.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/
 
 The authorization credentials to use throughout the application.
 
-Defined in: [HotAPI.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L50)
+Defined in: [HotAPI.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L50)
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 The base url for the server.
 
-Defined in: [HotAPI.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L33)
+Defined in: [HotAPI.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L33)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 The server connection.
 
-Defined in: [HotAPI.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L29)
+Defined in: [HotAPI.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L29)
 
 ___
 
@@ -98,7 +98,7 @@ ___
 If set, this will create the route variables and functions for
 easy client/server calling.
 
-Defined in: [HotAPI.ts:38](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L38)
+Defined in: [HotAPI.ts:38](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L38)
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 The database connection.
 
-Defined in: [HotAPI.ts:46](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L46)
+Defined in: [HotAPI.ts:46](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L46)
 
 ___
 
@@ -118,7 +118,7 @@ ___
 
 The database connection.
 
-Defined in: [HotAPI.ts:42](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L42)
+Defined in: [HotAPI.ts:42](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L42)
 
 ___
 
@@ -135,9 +135,9 @@ this function returns false, the server will not start.
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotAPI.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L68)
+Defined in: [HotAPI.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L68)
 
-Defined in: [HotAPI.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L68)
+Defined in: [HotAPI.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L68)
 
 ___
 
@@ -154,9 +154,9 @@ this function returns false, the server will not start.
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotAPI.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L63)
+Defined in: [HotAPI.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L63)
 
-Defined in: [HotAPI.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L63)
+Defined in: [HotAPI.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L63)
 
 ___
 
@@ -168,7 +168,7 @@ The database connection.
 
 #### Type declaration:
 
-Defined in: [HotAPI.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L58)
+Defined in: [HotAPI.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L58)
 
 ___
 
@@ -178,7 +178,7 @@ ___
 
 The function used for user authentication.
 
-Defined in: [HotAPI.ts:54](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L54)
+Defined in: [HotAPI.ts:54](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L54)
 
 ## Methods
 
@@ -226,7 +226,7 @@ Name | Type | Default value | Description |
 
 **Returns:** *void*
 
-Defined in: [HotAPI.ts:147](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L147)
+Defined in: [HotAPI.ts:147](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L147)
 
 ___
 
@@ -246,7 +246,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotAPI.ts:323](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L323)
+Defined in: [HotAPI.ts:323](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L323)
 
 ___
 
@@ -258,7 +258,7 @@ Get the database being used.
 
 **Returns:** [*HotDB*](hotdb.hotdb-1.md)<any, any, [*HotDBSchema*](schemas_hotdbschema.hotdbschema.md)\>
 
-Defined in: [HotAPI.ts:95](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L95)
+Defined in: [HotAPI.ts:95](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L95)
 
 ___
 
@@ -270,7 +270,7 @@ Get the database schema being used.
 
 **Returns:** [*HotDBSchema*](schemas_hotdbschema.hotdbschema.md)
 
-Defined in: [HotAPI.ts:103](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L103)
+Defined in: [HotAPI.ts:103](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L103)
 
 ___
 
@@ -288,7 +288,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotAPI.ts:301](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L301)
+Defined in: [HotAPI.ts:301](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L301)
 
 ___
 
@@ -300,7 +300,7 @@ Register all routes with the server.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotAPI.ts:310](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L310)
+Defined in: [HotAPI.ts:310](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L310)
 
 ___
 
@@ -318,4 +318,4 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotAPI.ts:87](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotAPI.ts#L87)
+Defined in: [HotAPI.ts:87](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotAPI.ts#L87)

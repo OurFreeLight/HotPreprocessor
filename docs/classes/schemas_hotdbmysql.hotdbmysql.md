@@ -55,7 +55,7 @@ Name | Type | Default value |
 
 Inherited from: [HotDB](hotdb.hotdb-1.md)
 
-Defined in: [schemas/HotDBMySQL.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/schemas/HotDBMySQL.ts#L22)
+Defined in: [schemas/HotDBMySQL.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/schemas/HotDBMySQL.ts#L22)
 
 ## Properties
 
@@ -67,7 +67,7 @@ The connection status.
 
 Inherited from: [HotDB](hotdb.hotdb-1.md).[connectionStatus](hotdb.hotdb-1.md#connectionstatus)
 
-Defined in: [HotDB.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotDB.ts#L30)
+Defined in: [HotDB.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotDB.ts#L30)
 
 ___
 
@@ -79,7 +79,7 @@ The connection to the database (or the driver).
 
 Inherited from: [HotDB](hotdb.hotdb-1.md).[db](hotdb.hotdb-1.md#db)
 
-Defined in: [HotDB.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotDB.ts#L26)
+Defined in: [HotDB.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotDB.ts#L26)
 
 ___
 
@@ -92,7 +92,7 @@ and keep it maintained as needed.
 
 Inherited from: [HotDB](hotdb.hotdb-1.md).[schema](hotdb.hotdb-1.md#schema)
 
-Defined in: [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotDB.ts#L35)
+Defined in: [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotDB.ts#L35)
 
 ___
 
@@ -104,7 +104,7 @@ The database type.
 
 Inherited from: [HotDB](hotdb.hotdb-1.md).[type](hotdb.hotdb-1.md#type)
 
-Defined in: [HotDB.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotDB.ts#L22)
+Defined in: [HotDB.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotDB.ts#L22)
 
 ## Methods
 
@@ -124,7 +124,7 @@ Name | Type |
 
 Overrides: [HotDB](hotdb.hotdb-1.md)
 
-Defined in: [schemas/HotDBMySQL.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/schemas/HotDBMySQL.ts#L31)
+Defined in: [schemas/HotDBMySQL.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/schemas/HotDBMySQL.ts#L31)
 
 ___
 
@@ -136,7 +136,7 @@ Checks to see if this has a database connection.
 
 **Returns:** *void*
 
-Defined in: [schemas/HotDBMySQL.ts:61](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/schemas/HotDBMySQL.ts#L61)
+Defined in: [schemas/HotDBMySQL.ts:61](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/schemas/HotDBMySQL.ts#L61)
 
 ___
 
@@ -150,7 +150,7 @@ Disconnect from the server.
 
 Overrides: [HotDB](hotdb.hotdb-1.md)
 
-Defined in: [schemas/HotDBMySQL.ts:256](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/schemas/HotDBMySQL.ts#L256)
+Defined in: [schemas/HotDBMySQL.ts:256](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/schemas/HotDBMySQL.ts#L256)
 
 ___
 
@@ -173,7 +173,7 @@ Name | Type |
 
 Overrides: [HotDB](hotdb.hotdb-1.md)
 
-Defined in: [schemas/HotDBMySQL.ts:217](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/schemas/HotDBMySQL.ts#L217)
+Defined in: [schemas/HotDBMySQL.ts:217](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/schemas/HotDBMySQL.ts#L217)
 
 ___
 
@@ -194,7 +194,7 @@ Name | Type |
 
 Overrides: [HotDB](hotdb.hotdb-1.md)
 
-Defined in: [schemas/HotDBMySQL.ts:168](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/schemas/HotDBMySQL.ts#L168)
+Defined in: [schemas/HotDBMySQL.ts:168](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/schemas/HotDBMySQL.ts#L168)
 
 ___
 
@@ -215,7 +215,7 @@ Name | Type |
 
 Overrides: [HotDB](hotdb.hotdb-1.md)
 
-Defined in: [schemas/HotDBMySQL.ts:187](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/schemas/HotDBMySQL.ts#L187)
+Defined in: [schemas/HotDBMySQL.ts:187](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/schemas/HotDBMySQL.ts#L187)
 
 ___
 
@@ -235,7 +235,7 @@ Name | Type | Default value |
 
 Overrides: [HotDB](hotdb.hotdb-1.md)
 
-Defined in: [schemas/HotDBMySQL.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/schemas/HotDBMySQL.ts#L70)
+Defined in: [schemas/HotDBMySQL.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/schemas/HotDBMySQL.ts#L70)
 
 ___
 
@@ -257,7 +257,7 @@ Name | Type | Default value |
 
 Overrides: [HotDB](hotdb.hotdb-1.md)
 
-Defined in: [schemas/HotDBMySQL.ts:91](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/schemas/HotDBMySQL.ts#L91)
+Defined in: [schemas/HotDBMySQL.ts:91](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/schemas/HotDBMySQL.ts#L91)
 
 ___
 
@@ -277,4 +277,4 @@ Name | Type |
 
 Overrides: [HotDB](hotdb.hotdb-1.md)
 
-Defined in: [schemas/HotDBMySQL.ts:141](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/schemas/HotDBMySQL.ts#L141)
+Defined in: [schemas/HotDBMySQL.ts:141](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/schemas/HotDBMySQL.ts#L141)

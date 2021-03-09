@@ -41,7 +41,7 @@ export class HotBuilder
 		this.kubernetes = false;
 		this.hotsites = [];
 		this.logger = logger;
-		this.outputDir = ppath.normalize (`${process.cwd ()}/output/`);
+		this.outputDir = ppath.normalize (`${process.cwd ()}/`);
 	}
 
 	/**
@@ -61,7 +61,7 @@ export class HotBuilder
 			const dockerFileContent: string = await HotIO.readTextFile (
 						ppath.normalize (`${dockerDir}/Dockerfile.linux.gen`));
 			const startFileContent: string = await HotIO.readTextFile (
-						ppath.normalize (`${dockerDir}/start.sh`));
+						ppath.normalize (`${dockerDir}/app/start.sh`));
 
 			for (let iIdx = 0; iIdx < this.hotsites.length; iIdx++)
 			{
@@ -82,6 +82,9 @@ export class HotBuilder
 				let httpPort: number = HotPreprocessor.getValueFromHotSiteObj (hotsite, ["server", "ports", "http"]);
 				let httpsPort: number = HotPreprocessor.getValueFromHotSiteObj (hotsite, ["server", "ports", "https"]);
 				let hotsitePath: string = `/app/${hotsiteName}/HotSite.json`;
+				/**
+				 * Replace any keywords in a string.
+				 */
 				let replaceKeywords = (str: string): string =>
 					{
 						str = str.replace (/\$\{HOTSITE_NAME\}/g, hotsiteName);
@@ -90,8 +93,18 @@ export class HotBuilder
 
 						return (str);
 					};
+				/**
+				 * Replace any keywords in a file.
+				 */
+				let replaceKeywordsInFile = async (filepath: string): Promise<string> =>
+					{
+						let fileContent: string = await HotIO.readTextFile (ppath.normalize (filepath));
+						fileContent = replaceKeywords (fileContent);
 
-				await HotIO.mkdir (outputDir);
+						return (fileContent);
+					};
+
+				await HotIO.mkdir (`${outputDir}/app/`);
 
 				if (httpPort != null)
 				{
@@ -118,7 +131,9 @@ EXPOSE \${HTTP_PORT}`;
 				newStartFileContent = replaceKeywords (newStartFileContent);
 
 				await HotIO.writeTextFile (`${outputDir}/Dockerfile`, newDockerfileContent);
-				await HotIO.writeTextFile (`${outputDir}/${hotsiteName}-start.sh`, newStartFileContent);
+				await HotIO.writeTextFile (`${outputDir}/build.bat`, await replaceKeywordsInFile (`${dockerDir}/scripts/build.bat`));
+				await HotIO.writeTextFile (`${outputDir}/build.sh`, await replaceKeywordsInFile (`${dockerDir}/scripts/build.sh`));
+				await HotIO.writeTextFile (`${outputDir}/app/${hotsiteName}-start.sh`, newStartFileContent);
 
 				this.logger.info (`Finished building Dockerfile "${hotsite.name}"...`);
 			}

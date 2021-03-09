@@ -84,7 +84,7 @@
 			"outputCapture": "std",
 			"args": [
 				"run",
-				"--hot-site",
+				"--hotsite",
 				"./tests/hotsite/HotSite.json",
 				"--web-dont-redirect-http-to-https",
 				"--web-js-url",
@@ -124,7 +124,7 @@
 			"outputCapture": "std",
 			"args": [
 				"build",
-				"--hot-site",
+				"--hotsite",
 				"./tests/hotsite/HotSite.json",
 				"--docker"
 			]
@@ -140,8 +140,8 @@
 			"outputCapture": "std",
 			"args": [
 				"create",
-				"--overwrite-cmd-create-transpile",
-				"npm link hotpreprocessor && npm run build",
+				"--type",
+				"api",
 				"app"
 			]
 		},

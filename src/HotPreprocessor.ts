@@ -200,9 +200,13 @@ export interface HotSite
 					 */
 					port?: number;
 					/**
-					 * The base url for the api.
+					 * The public base url for the api.
 					 */
 					url?: string;
+					/**
+					 * The server-side filepath for the api.
+					 */
+					filepath?: string;
 				};
 		};
 	/**

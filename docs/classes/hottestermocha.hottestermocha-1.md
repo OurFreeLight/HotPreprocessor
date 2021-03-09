@@ -80,7 +80,7 @@ Name | Type | Default value |
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTesterMocha.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTesterMocha.ts#L33)
+Defined in: [HotTesterMocha.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTesterMocha.ts#L33)
 
 ## Properties
 
@@ -96,9 +96,9 @@ The Mocha afterAll event to call before any tests are executed.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTesterMocha.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTesterMocha.ts#L33)
+Defined in: [HotTesterMocha.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTesterMocha.ts#L33)
 
-Defined in: [HotTesterMocha.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTesterMocha.ts#L33)
+Defined in: [HotTesterMocha.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTesterMocha.ts#L33)
 
 ___
 
@@ -110,7 +110,7 @@ The base url that will construct future urls.
 
 Inherited from: [HotTester](hottester.hottester-1.md).[baseUrl](hottester.hottester-1.md#baseurl)
 
-Defined in: [HotTester.ts:74](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L74)
+Defined in: [HotTester.ts:74](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L74)
 
 ___
 
@@ -126,9 +126,9 @@ The Mocha beforeAll event to call before any tests are executed.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTesterMocha.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTesterMocha.ts#L29)
+Defined in: [HotTesterMocha.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTesterMocha.ts#L29)
 
-Defined in: [HotTesterMocha.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTesterMocha.ts#L29)
+Defined in: [HotTesterMocha.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTesterMocha.ts#L29)
 
 ___
 
@@ -140,7 +140,7 @@ The driver to use when running tests.
 
 Inherited from: [HotTester](hottester.hottester-1.md).[driver](hottester.hottester-1.md#driver)
 
-Defined in: [HotTester.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L86)
+Defined in: [HotTester.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L86)
 
 ___
 
@@ -152,7 +152,7 @@ Has this tester finished loading?
 
 Inherited from: [HotTester](hottester.hottester-1.md).[finishedLoading](hottester.hottester-1.md#finishedloading)
 
-Defined in: [HotTester.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L90)
+Defined in: [HotTester.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L90)
 
 ___
 
@@ -164,7 +164,7 @@ Has this tester finished setting up?
 
 Inherited from: [HotTester](hottester.hottester-1.md).[hasBeenDestroyed](hottester.hottester-1.md#hasbeendestroyed)
 
-Defined in: [HotTester.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L98)
+Defined in: [HotTester.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L98)
 
 ___
 
@@ -176,7 +176,7 @@ Has this tester finished setting up?
 
 Inherited from: [HotTester](hottester.hottester-1.md).[hasBeenSetup](hottester.hottester-1.md#hasbeensetup)
 
-Defined in: [HotTester.ts:94](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L94)
+Defined in: [HotTester.ts:94](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L94)
 
 ___
 
@@ -186,7 +186,7 @@ ___
 
 The mocha instance to run.
 
-Defined in: [HotTesterMocha.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTesterMocha.ts#L17)
+Defined in: [HotTesterMocha.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTesterMocha.ts#L17)
 
 ___
 
@@ -198,7 +198,7 @@ The tester name.
 
 Inherited from: [HotTester](hottester.hottester-1.md).[name](hottester.hottester-1.md#name)
 
-Defined in: [HotTester.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L70)
+Defined in: [HotTester.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L70)
 
 ___
 
@@ -210,7 +210,7 @@ The associated processor.
 
 Inherited from: [HotTester](hottester.hottester-1.md).[processor](hottester.hottester-1.md#processor)
 
-Defined in: [HotTester.ts:78](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L78)
+Defined in: [HotTester.ts:78](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L78)
 
 ___
 
@@ -220,7 +220,7 @@ ___
 
 The suite to execute.
 
-Defined in: [HotTesterMocha.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTesterMocha.ts#L25)
+Defined in: [HotTesterMocha.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTesterMocha.ts#L25)
 
 ___
 
@@ -234,7 +234,7 @@ The test maps to test.
 
 Inherited from: [HotTester](hottester.hottester-1.md).[testMaps](hottester.hottester-1.md#testmaps)
 
-Defined in: [HotTester.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L82)
+Defined in: [HotTester.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L82)
 
 ___
 
@@ -244,7 +244,7 @@ ___
 
 The timeout for each test.
 
-Defined in: [HotTesterMocha.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTesterMocha.ts#L21)
+Defined in: [HotTesterMocha.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTesterMocha.ts#L21)
 
 ## Methods
 
@@ -258,7 +258,7 @@ Executed when destroying up the tester.
 
 Overrides: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTesterMocha.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTesterMocha.ts#L58)
+Defined in: [HotTesterMocha.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTesterMocha.ts#L58)
 
 ___
 
@@ -278,7 +278,7 @@ Name | Type |
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:555](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L555)
+Defined in: [HotTester.ts:555](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L555)
 
 ___
 
@@ -301,7 +301,7 @@ Name | Type |
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:381](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L381)
+Defined in: [HotTester.ts:381](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L381)
 
 ___
 
@@ -325,7 +325,7 @@ Name | Type | Default value |
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:256](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L256)
+Defined in: [HotTester.ts:256](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L256)
 
 ___
 
@@ -347,7 +347,7 @@ Name | Type |
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:294](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L294)
+Defined in: [HotTester.ts:294](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L294)
 
 ___
 
@@ -370,7 +370,7 @@ Name | Type | Default value |
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:329](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L329)
+Defined in: [HotTester.ts:329](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L329)
 
 ___
 
@@ -391,7 +391,7 @@ Name | Type | Default value |
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:509](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L509)
+Defined in: [HotTester.ts:509](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L509)
 
 ___
 
@@ -411,7 +411,7 @@ Name | Type |
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:181](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L181)
+Defined in: [HotTester.ts:181](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L181)
 
 ___
 
@@ -432,7 +432,7 @@ Name | Type |
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:191](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L191)
+Defined in: [HotTester.ts:191](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L191)
 
 ___
 
@@ -455,7 +455,7 @@ Name | Type |
 
 Overrides: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTesterMocha.ts:111](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTesterMocha.ts#L111)
+Defined in: [HotTesterMocha.ts:111](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTesterMocha.ts#L111)
 
 ___
 
@@ -469,7 +469,7 @@ Executed when this tester has been executed from the API.
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:163](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L163)
+Defined in: [HotTester.ts:163](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L163)
 
 ___
 
@@ -483,7 +483,7 @@ Executed when this tester has finished loading all data from the API.
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:167](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L167)
+Defined in: [HotTester.ts:167](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L167)
 
 ___
 
@@ -507,7 +507,7 @@ Name | Type |
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:137](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L137)
+Defined in: [HotTester.ts:137](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L137)
 
 ___
 
@@ -531,7 +531,7 @@ Name | Type |
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:132](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L132)
+Defined in: [HotTester.ts:132](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L132)
 
 ___
 
@@ -549,7 +549,7 @@ Name | Type |
 
 Overrides: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTesterMocha.ts:120](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTesterMocha.ts#L120)
+Defined in: [HotTesterMocha.ts:120](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTesterMocha.ts#L120)
 
 ___
 
@@ -572,7 +572,7 @@ Name | Type |
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:148](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L148)
+Defined in: [HotTester.ts:148](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L148)
 
 ___
 
@@ -593,7 +593,7 @@ Name | Type | Default value |
 
 Overrides: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTesterMocha.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTesterMocha.ts#L82)
+Defined in: [HotTesterMocha.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTesterMocha.ts#L82)
 
 ___
 
@@ -614,7 +614,7 @@ Name | Type | Default value |
 
 Overrides: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTesterMocha.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTesterMocha.ts#L65)
+Defined in: [HotTesterMocha.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTesterMocha.ts#L65)
 
 ___
 
@@ -628,7 +628,7 @@ Executed when setting up the tester.
 
 Overrides: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTesterMocha.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTesterMocha.ts#L51)
+Defined in: [HotTesterMocha.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTesterMocha.ts#L51)
 
 ___
 
@@ -642,7 +642,7 @@ Waits for the API to finish loading all data.
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:172](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L172)
+Defined in: [HotTester.ts:172](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L172)
 
 ___
 
@@ -663,4 +663,4 @@ Name | Type |
 
 Inherited from: [HotTester](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:201](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotTester.ts#L201)
+Defined in: [HotTester.ts:201](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTester.ts#L201)

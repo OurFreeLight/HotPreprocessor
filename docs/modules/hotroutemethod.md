@@ -44,7 +44,7 @@ Name | Type |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotRouteMethod.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotRouteMethod.ts#L28)
+Defined in: [HotRouteMethod.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotRouteMethod.ts#L28)
 
 ___
 
@@ -73,7 +73,7 @@ Name | Type |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotRouteMethod.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotRouteMethod.ts#L36)
+Defined in: [HotRouteMethod.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotRouteMethod.ts#L36)
 
 ___
 
@@ -99,7 +99,7 @@ Name | Type |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotRouteMethod.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotRouteMethod.ts#L23)
+Defined in: [HotRouteMethod.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotRouteMethod.ts#L23)
 
 ___
 
@@ -116,7 +116,7 @@ If this returns false, this route method will not be registered.
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotRouteMethod.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotRouteMethod.ts#L19)
+Defined in: [HotRouteMethod.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotRouteMethod.ts#L19)
 
 ___
 
@@ -126,4 +126,4 @@ ___
 
 The test case function to execute.
 
-Defined in: [HotRouteMethod.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotRouteMethod.ts#L40)
+Defined in: [HotRouteMethod.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotRouteMethod.ts#L40)

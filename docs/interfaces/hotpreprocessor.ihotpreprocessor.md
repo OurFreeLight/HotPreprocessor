@@ -31,7 +31,7 @@ results.
 
 The api that's used to communicate with.
 
-Defined in: [HotPreprocessor.ts:293](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotPreprocessor.ts#L293)
+Defined in: [HotPreprocessor.ts:297](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPreprocessor.ts#L297)
 
 ___
 
@@ -43,7 +43,7 @@ The components that can be constructed.
 
 #### Type declaration:
 
-Defined in: [HotPreprocessor.ts:309](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotPreprocessor.ts#L309)
+Defined in: [HotPreprocessor.ts:313](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPreprocessor.ts#L313)
 
 ___
 
@@ -55,7 +55,7 @@ The files that can be stored for later use.
 
 #### Type declaration:
 
-Defined in: [HotPreprocessor.ts:313](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotPreprocessor.ts#L313)
+Defined in: [HotPreprocessor.ts:317](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPreprocessor.ts#L317)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 The loaded hotsite.
 
-Defined in: [HotPreprocessor.ts:317](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotPreprocessor.ts#L317)
+Defined in: [HotPreprocessor.ts:321](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPreprocessor.ts#L321)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 Indicates what type of execution this is.
 
-Defined in: [HotPreprocessor.ts:301](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotPreprocessor.ts#L301)
+Defined in: [HotPreprocessor.ts:305](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPreprocessor.ts#L305)
 
 ___
 
@@ -87,7 +87,7 @@ The pages that can be constructed.
 
 #### Type declaration:
 
-Defined in: [HotPreprocessor.ts:305](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotPreprocessor.ts#L305)
+Defined in: [HotPreprocessor.ts:309](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPreprocessor.ts#L309)
 
 ___
 
@@ -97,4 +97,4 @@ ___
 
 The tester api that's used to communicate with.
 
-Defined in: [HotPreprocessor.ts:297](https://github.com/OurFreeLight/HotPreprocessor/blob/81355d3/src/HotPreprocessor.ts#L297)
+Defined in: [HotPreprocessor.ts:301](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPreprocessor.ts#L301)
