@@ -9,7 +9,7 @@ const packageJSON = JSON.parse (packageStr);
 let packageVersion = packageJSON.version.toString ();
 
 module.exports = {
-		entry: "./src/api/WebExport.ts",
+		entry: "./src/WebExport.ts",
 		devtool: "inline-source-map",
 		target: "web",
 		module: {
@@ -28,6 +28,12 @@ module.exports = {
 		plugins: [
 			new webpack.DefinePlugin ({
 					__VERSION__: `\"${packageVersion}\"`
+				}),
+			new CopyPlugin ({
+					patterns: [
+							{ from: `${process.cwd ()}/build-web/app.js`, 
+							to: `${process.cwd ()}/public/js/app.js` }
+						]
 				})
 		],
 		resolve: {

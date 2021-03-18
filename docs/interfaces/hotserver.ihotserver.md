@@ -33,7 +33,7 @@ The server.
 
 The API to use.
 
-Defined in: [HotServer.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotServer.ts#L31)
+Defined in: [HotServer.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotServer.ts#L31)
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 The network address to listen on.
 
-Defined in: [HotServer.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotServer.ts#L35)
+Defined in: [HotServer.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotServer.ts#L35)
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 The logger.
 
-Defined in: [HotServer.ts:71](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotServer.ts#L71)
+Defined in: [HotServer.ts:71](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotServer.ts#L71)
 
 ___
 
@@ -70,7 +70,7 @@ Name | Type |
 `http` | *number* |
 `https` | *number* |
 
-Defined in: [HotServer.ts:39](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotServer.ts#L39)
+Defined in: [HotServer.ts:39](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotServer.ts#L39)
 
 ___
 
@@ -80,7 +80,7 @@ ___
 
 The processor to use.
 
-Defined in: [HotServer.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotServer.ts#L23)
+Defined in: [HotServer.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotServer.ts#L23)
 
 ___
 
@@ -90,7 +90,7 @@ ___
 
 Redirect HTTP traffic to HTTPS.
 
-Defined in: [HotServer.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotServer.ts#L63)
+Defined in: [HotServer.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotServer.ts#L63)
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 Any secrets associated with this server.
 
-Defined in: [HotServer.ts:75](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotServer.ts#L75)
+Defined in: [HotServer.ts:75](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotServer.ts#L75)
 
 ___
 
@@ -110,7 +110,7 @@ ___
 
 The server type.
 
-Defined in: [HotServer.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotServer.ts#L27)
+Defined in: [HotServer.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotServer.ts#L27)
 
 ___
 
@@ -128,7 +128,7 @@ Name | Type | Description |
 `cert` | *string* | The SSL certificate to use.   |
 `key` | *string* | The SSL certificate key to use.   |
 
-Defined in: [HotServer.ts:46](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotServer.ts#L46)
+Defined in: [HotServer.ts:46](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotServer.ts#L46)
 
 ___
 
@@ -138,4 +138,4 @@ ___
 
 The type of server.
 
-Defined in: [HotServer.ts:67](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotServer.ts#L67)
+Defined in: [HotServer.ts:67](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotServer.ts#L67)

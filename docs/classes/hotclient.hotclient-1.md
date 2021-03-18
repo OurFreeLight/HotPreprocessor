@@ -34,7 +34,7 @@ Name | Type |
 
 **Returns:** [*HotClient*](hotclient.hotclient-1.md)
 
-Defined in: [HotClient.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotClient.ts#L30)
+Defined in: [HotClient.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotClient.ts#L30)
 
 ## Properties
 
@@ -44,7 +44,7 @@ Defined in: [HotClient.ts:30](https://github.com/OurFreeLight/HotPreprocessor/bl
 
 The API to use.
 
-Defined in: [HotClient.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotClient.ts#L18)
+Defined in: [HotClient.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotClient.ts#L18)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 The logger.
 
-Defined in: [HotClient.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotClient.ts#L30)
+Defined in: [HotClient.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotClient.ts#L30)
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 The processor to use.
 
-Defined in: [HotClient.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotClient.ts#L14)
+Defined in: [HotClient.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotClient.ts#L14)
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 The tester API to use.
 
-Defined in: [HotClient.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotClient.ts#L22)
+Defined in: [HotClient.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotClient.ts#L22)
 
 ___
 
@@ -84,4 +84,4 @@ ___
 
 The type of server.
 
-Defined in: [HotClient.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotClient.ts#L26)
+Defined in: [HotClient.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotClient.ts#L26)

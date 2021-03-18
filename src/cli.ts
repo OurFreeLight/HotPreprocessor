@@ -29,7 +29,7 @@ let globalLogLevel: HotLogLevel = null;
  * The API to load.
  */
 type APItoLoad = {
-	exportedName: string;
+	exportedClassName: string;
 	path: string;
  };
 
@@ -39,8 +39,10 @@ type APItoLoad = {
 async function startAPIServer (server: HotHTTPServer, loadedAPI: APItoLoad, baseAPIUrl: 
 	string, dbinfo: HotDBConnectionInterface, isAPIOnly: boolean): Promise<HotAPI>
 {
-	let apiJS = require (loadedAPI.path);
-	let apiClass: any = apiJS[loadedAPI.exportedName];
+	process.chdir (process.cwd ());
+	let foundModulePath = require.resolve (loadedAPI.path, { paths: [process.cwd ()] });
+	let apiJS = require (foundModulePath);
+	let apiClass: any = apiJS[loadedAPI.exportedClassName];
 	let api: HotAPI = new apiClass (baseAPIUrl, server);
 
 	server.processor.api = api;
@@ -324,12 +326,12 @@ async function handleRunCommands (): Promise<commander.Command>
 						{
 							let tempapi = processor.hotSite.apis[key];
 
-							if (tempapi.exportedName != null)
+							if (tempapi.libraryName != null)
 							{
 								let path: string = tempapi.filepath;
 
 								let apiToLoad: APItoLoad = {
-										exportedName: tempapi.exportedName,
+										exportedClassName: tempapi.apiName,
 										path: path
 									};
 								apis.push (apiToLoad);
@@ -385,7 +387,7 @@ async function handleRunCommands (): Promise<commander.Command>
 
 								if (tempAPI.apiName != null)
 								{
-									if (tempAPI.apiName === loadAPI.exportedName)
+									if (tempAPI.apiName === loadAPI.exportedClassName)
 									{
 										if (tempAPI.url != null)
 											foundAPIUrl = tempAPI.url;
@@ -622,10 +624,10 @@ async function handleRunCommands (): Promise<commander.Command>
 				(exported_name_and_path: string, previous: any) =>
 				{
 					let keyValuePair = getKeyValuePair (exported_name_and_path);
-					const exportedName: string = keyValuePair.key;
+					const exportedClassName: string = keyValuePair.key;
 					const path: string = keyValuePair.value;
 
-					apis.push ({ exportedName: exportedName, path: path });
+					apis.push ({ exportedClassName: exportedClassName, path: path });
 				});
 		}
 	}
@@ -723,7 +725,7 @@ async function start ()
 
 		const program: commander.Command = new commander.Command ("hotpreprocessor");
 
-		program.description (`Copyright(c) 2020, FreeLight, Inc. Under the MIT License.`);
+		program.description (`Copyright(c) 2021, FreeLight, Inc. Under the MIT License.`);
 		let command: commander.Command = program.version (VERSION);
 
 		command.option ("--cwd <path>", "Set the current working directory to use.", 

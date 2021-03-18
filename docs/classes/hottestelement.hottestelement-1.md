@@ -38,7 +38,7 @@ Name | Type | Default value |
 
 **Returns:** [*HotTestElement*](hottestelement.hottestelement-1.md)
 
-Defined in: [HotTestElement.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestElement.ts#L80)
+Defined in: [HotTestElement.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestElement.ts#L80)
 
 ## Properties
 
@@ -51,7 +51,7 @@ while executing the test.
 
 Implementation of: [IHotTestElement](../interfaces/hottestelement.ihottestelement.md).[func](../interfaces/hottestelement.ihottestelement.md#func)
 
-Defined in: [HotTestElement.ts:76](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestElement.ts#L76)
+Defined in: [HotTestElement.ts:76](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestElement.ts#L76)
 
 ___
 
@@ -63,7 +63,7 @@ The name of the element.
 
 Implementation of: [IHotTestElement](../interfaces/hottestelement.ihottestelement.md).[name](../interfaces/hottestelement.ihottestelement.md#name)
 
-Defined in: [HotTestElement.ts:71](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestElement.ts#L71)
+Defined in: [HotTestElement.ts:71](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestElement.ts#L71)
 
 ___
 
@@ -75,4 +75,4 @@ The value to use.
 
 Implementation of: [IHotTestElement](../interfaces/hottestelement.ihottestelement.md).[value](../interfaces/hottestelement.ihottestelement.md#value)
 
-Defined in: [HotTestElement.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestElement.ts#L80)
+Defined in: [HotTestElement.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestElement.ts#L80)

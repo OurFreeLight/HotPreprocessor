@@ -36,11 +36,12 @@ describe ("Hotsite Tests", () =>
 				let api: HelloWorldAPI = new HelloWorldAPI (common.getUrl (server), server);
 				await server.setAPI (api);
 				await server.listen ();
-
+debugger;
 				await common.driver.get (`${common.getUrl (server)}/tests/hotsite/index.htm`);
 			});
 		it ("should have loaded /tests/hotsite/HelloWorld.hott", async () =>
 			{
+				debugger;
 				await common.driver.executeAsyncScript (`
 				var done = arguments[0];
 				window.HotPreprocessor = HotPreprocessorWeb.HotPreprocessor;

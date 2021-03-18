@@ -28,6 +28,7 @@ describe ("Browser-Server Tests", () =>
 			});
 		after (async () =>
 			{
+				debugger;
 				await common.driver.quit ();
 				await common.shutdown ();
 			});

@@ -52,7 +52,7 @@ Name | Type |
 
 **Returns:** [*HotPage*](hotpage.hotpage-1.md)
 
-Defined in: [HotPage.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L85)
+Defined in: [HotPage.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L85)
 
 ## Properties
 
@@ -65,7 +65,7 @@ Every file is processed incrementally.
 
 Implementation of: [IHotPage](../interfaces/hotpage.ihotpage.md).[files](../interfaces/hotpage.ihotpage.md#files)
 
-Defined in: [HotPage.ts:69](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L69)
+Defined in: [HotPage.ts:69](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L69)
 
 ___
 
@@ -77,7 +77,7 @@ The name of the page.
 
 Implementation of: [IHotPage](../interfaces/hotpage.ihotpage.md).[name](../interfaces/hotpage.ihotpage.md#name)
 
-Defined in: [HotPage.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L60)
+Defined in: [HotPage.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L60)
 
 ___
 
@@ -89,7 +89,7 @@ The processor to use.
 
 Implementation of: [IHotPage](../interfaces/hotpage.ihotpage.md).[processor](../interfaces/hotpage.ihotpage.md#processor)
 
-Defined in: [HotPage.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L56)
+Defined in: [HotPage.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L56)
 
 ___
 
@@ -101,7 +101,7 @@ The route used to get to this page.
 
 Implementation of: [IHotPage](../interfaces/hotpage.ihotpage.md).[route](../interfaces/hotpage.ihotpage.md#route)
 
-Defined in: [HotPage.ts:64](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L64)
+Defined in: [HotPage.ts:64](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L64)
 
 ___
 
@@ -115,7 +115,7 @@ The elements to test on this page.
 
 Implementation of: [IHotPage](../interfaces/hotpage.ihotpage.md).[testElements](../interfaces/hotpage.ihotpage.md#testelements)
 
-Defined in: [HotPage.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L81)
+Defined in: [HotPage.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L81)
 
 ___
 
@@ -129,7 +129,7 @@ The test paths to test on this page.
 
 Implementation of: [IHotPage](../interfaces/hotpage.ihotpage.md).[testPaths](../interfaces/hotpage.ihotpage.md#testpaths)
 
-Defined in: [HotPage.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L85)
+Defined in: [HotPage.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L85)
 
 ___
 
@@ -141,7 +141,7 @@ The associated tester map.
 
 Implementation of: [IHotPage](../interfaces/hotpage.ihotpage.md).[testerMap](../interfaces/hotpage.ihotpage.md#testermap)
 
-Defined in: [HotPage.ts:77](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L77)
+Defined in: [HotPage.ts:77](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L77)
 
 ___
 
@@ -153,7 +153,7 @@ The associated tester name.
 
 Implementation of: [IHotPage](../interfaces/hotpage.ihotpage.md).[testerName](../interfaces/hotpage.ihotpage.md#testername)
 
-Defined in: [HotPage.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L73)
+Defined in: [HotPage.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L73)
 
 ## Methods
 
@@ -172,7 +172,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotPage.ts:117](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L117)
+Defined in: [HotPage.ts:117](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L117)
 
 ___
 
@@ -190,7 +190,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotPage.ts:177](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L177)
+Defined in: [HotPage.ts:177](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L177)
 
 ___
 
@@ -209,7 +209,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotPage.ts:199](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L199)
+Defined in: [HotPage.ts:199](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L199)
 
 ___
 
@@ -221,7 +221,7 @@ Get the API associated with this page.
 
 **Returns:** [*HotAPI*](hotapi.hotapi-1.md)
 
-Defined in: [HotPage.ts:127](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L127)
+Defined in: [HotPage.ts:127](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L127)
 
 ___
 
@@ -239,7 +239,7 @@ Name | Type |
 
 **Returns:** [*HotTestElement*](hottestelement.hottestelement-1.md)
 
-Defined in: [HotPage.ts:188](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L188)
+Defined in: [HotPage.ts:188](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L188)
 
 ___
 
@@ -251,7 +251,7 @@ Get the tester API associated with this page.
 
 **Returns:** [*HotAPI*](hotapi.hotapi-1.md)
 
-Defined in: [HotPage.ts:135](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L135)
+Defined in: [HotPage.ts:135](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L135)
 
 ___
 
@@ -270,7 +270,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotPage.ts:144](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L144)
+Defined in: [HotPage.ts:144](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L144)
 
 ___
 
@@ -288,4 +288,4 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<string\>
 
-Defined in: [HotPage.ts:157](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotPage.ts#L157)
+Defined in: [HotPage.ts:157](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotPage.ts#L157)

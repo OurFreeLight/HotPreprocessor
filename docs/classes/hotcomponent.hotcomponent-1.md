@@ -50,7 +50,7 @@ Name | Type | Default value |
 
 **Returns:** [*HotComponent*](hotcomponent.hotcomponent-1.md)
 
-Defined in: [HotComponent.ts:99](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotComponent.ts#L99)
+Defined in: [HotComponent.ts:99](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotComponent.ts#L99)
 
 ## Properties
 
@@ -62,7 +62,7 @@ The connected API.
 
 Implementation of: [IHotComponent](../interfaces/hotcomponent.ihotcomponent.md).[api](../interfaces/hotcomponent.ihotcomponent.md#api)
 
-Defined in: [HotComponent.ts:77](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotComponent.ts#L77)
+Defined in: [HotComponent.ts:77](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotComponent.ts#L77)
 
 ___
 
@@ -74,7 +74,7 @@ The options to include with registering this component.
 
 Implementation of: [IHotComponent](../interfaces/hotcomponent.ihotcomponent.md).[elementOptions](../interfaces/hotcomponent.ihotcomponent.md#elementoptions)
 
-Defined in: [HotComponent.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotComponent.ts#L81)
+Defined in: [HotComponent.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotComponent.ts#L81)
 
 ___
 
@@ -88,7 +88,7 @@ The events to trigger.
 
 Implementation of: [IHotComponent](../interfaces/hotcomponent.ihotcomponent.md).[events](../interfaces/hotcomponent.ihotcomponent.md#events)
 
-Defined in: [HotComponent.ts:93](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotComponent.ts#L93)
+Defined in: [HotComponent.ts:93](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotComponent.ts#L93)
 
 ___
 
@@ -100,7 +100,7 @@ The associated HTMLElement.
 
 Implementation of: [IHotComponent](../interfaces/hotcomponent.ihotcomponent.md).[htmlElement](../interfaces/hotcomponent.ihotcomponent.md#htmlelement)
 
-Defined in: [HotComponent.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotComponent.ts#L65)
+Defined in: [HotComponent.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotComponent.ts#L65)
 
 ___
 
@@ -112,7 +112,7 @@ The name of the component.
 
 Implementation of: [IHotComponent](../interfaces/hotcomponent.ihotcomponent.md).[name](../interfaces/hotcomponent.ihotcomponent.md#name)
 
-Defined in: [HotComponent.ts:69](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotComponent.ts#L69)
+Defined in: [HotComponent.ts:69](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotComponent.ts#L69)
 
 ___
 
@@ -124,7 +124,7 @@ The processor to use.
 
 Implementation of: [IHotComponent](../interfaces/hotcomponent.ihotcomponent.md).[processor](../interfaces/hotcomponent.ihotcomponent.md#processor)
 
-Defined in: [HotComponent.ts:61](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotComponent.ts#L61)
+Defined in: [HotComponent.ts:61](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotComponent.ts#L61)
 
 ___
 
@@ -136,7 +136,7 @@ The name of the tag.
 
 Implementation of: [IHotComponent](../interfaces/hotcomponent.ihotcomponent.md).[tag](../interfaces/hotcomponent.ihotcomponent.md#tag)
 
-Defined in: [HotComponent.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotComponent.ts#L73)
+Defined in: [HotComponent.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotComponent.ts#L73)
 
 ___
 
@@ -148,7 +148,7 @@ The type of component.
 
 Implementation of: [IHotComponent](../interfaces/hotcomponent.ihotcomponent.md).[type](../interfaces/hotcomponent.ihotcomponent.md#type)
 
-Defined in: [HotComponent.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotComponent.ts#L85)
+Defined in: [HotComponent.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotComponent.ts#L85)
 
 ___
 
@@ -160,7 +160,7 @@ The value of the component.
 
 Implementation of: [IHotComponent](../interfaces/hotcomponent.ihotcomponent.md).[value](../interfaces/hotcomponent.ihotcomponent.md#value)
 
-Defined in: [HotComponent.ts:89](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotComponent.ts#L89)
+Defined in: [HotComponent.ts:89](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotComponent.ts#L89)
 
 ## Methods
 
@@ -172,7 +172,7 @@ Handle a click event.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotComponent.ts:152](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotComponent.ts#L152)
+Defined in: [HotComponent.ts:152](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotComponent.ts#L152)
 
 ___
 
@@ -190,7 +190,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotComponent.ts:147](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotComponent.ts#L147)
+Defined in: [HotComponent.ts:147](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotComponent.ts#L147)
 
 ___
 
@@ -212,7 +212,7 @@ Name | Type |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotComponent.ts:139](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotComponent.ts#L139)
+Defined in: [HotComponent.ts:139](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotComponent.ts#L139)
 
 ___
 
@@ -224,4 +224,4 @@ Output the component.
 
 **Returns:** *Promise*<string\>
 
-Defined in: [HotComponent.ts:157](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotComponent.ts#L157)
+Defined in: [HotComponent.ts:157](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotComponent.ts#L157)

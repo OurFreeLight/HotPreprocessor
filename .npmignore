@@ -1,5 +1,8 @@
 node_modules/
 db/
+!creator/
+!creator/project/.gitignore
+!creator/project/.npmignore
 
 client/
 tests/

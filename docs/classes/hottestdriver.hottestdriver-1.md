@@ -51,7 +51,7 @@ Name | Type | Default value |
 
 **Returns:** [*HotTestDriver*](hottestdriver.hottestdriver-1.md)
 
-Defined in: [HotTestDriver.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestDriver.ts#L13)
+Defined in: [HotTestDriver.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestDriver.ts#L13)
 
 ## Properties
 
@@ -61,7 +61,7 @@ Defined in: [HotTestDriver.ts:13](https://github.com/OurFreeLight/HotPreprocesso
 
 The current page.
 
-Defined in: [HotTestDriver.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestDriver.ts#L13)
+Defined in: [HotTestDriver.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestDriver.ts#L13)
 
 ## Methods
 
@@ -80,7 +80,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotTestDriver.ts:107](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestDriver.ts#L107)
+Defined in: [HotTestDriver.ts:107](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestDriver.ts#L107)
 
 ___
 
@@ -101,7 +101,7 @@ Name | Type |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotTestDriver.ts:102](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestDriver.ts#L102)
+Defined in: [HotTestDriver.ts:102](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestDriver.ts#L102)
 
 ___
 
@@ -113,7 +113,7 @@ Disconnect this server or destroy anything associated with this HotTestDriver.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTestDriver.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestDriver.ts#L81)
+Defined in: [HotTestDriver.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestDriver.ts#L81)
 
 ___
 
@@ -132,7 +132,7 @@ Name | Type |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotTestDriver.ts:94](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestDriver.ts#L94)
+Defined in: [HotTestDriver.ts:94](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestDriver.ts#L94)
 
 ___
 
@@ -150,7 +150,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTestDriver.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestDriver.ts#L86)
+Defined in: [HotTestDriver.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestDriver.ts#L86)
 
 ___
 
@@ -170,7 +170,7 @@ Name | Type |
 
 **Returns:** *string*
 
-Defined in: [HotTestDriver.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestDriver.ts#L25)
+Defined in: [HotTestDriver.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestDriver.ts#L25)
 
 ___
 
@@ -188,7 +188,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTestDriver.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestDriver.ts#L65)
+Defined in: [HotTestDriver.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestDriver.ts#L65)
 
 ___
 
@@ -206,7 +206,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTestDriver.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestDriver.ts#L73)
+Defined in: [HotTestDriver.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestDriver.ts#L73)
 
 ___
 
@@ -224,7 +224,7 @@ Name | Type |
 
 **Returns:** *Promise*<any[]\>
 
-Defined in: [HotTestDriver.ts:116](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestDriver.ts#L116)
+Defined in: [HotTestDriver.ts:116](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestDriver.ts#L116)
 
 ___
 
@@ -244,7 +244,7 @@ Name | Type |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotTestDriver.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestDriver.ts#L98)
+Defined in: [HotTestDriver.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestDriver.ts#L98)
 
 ___
 
@@ -262,7 +262,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTestDriver.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestDriver.ts#L51)
+Defined in: [HotTestDriver.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestDriver.ts#L51)
 
 ___
 
@@ -281,4 +281,4 @@ Name | Type |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotTestDriver.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/6714234/src/HotTestDriver.ts#L90)
+Defined in: [HotTestDriver.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestDriver.ts#L90)

@@ -14,22 +14,13 @@ export class AppAPI extends HotAPI
 
 		this.onPreRegister = async (): Promise<boolean> =>
 			{
-                this.setDBSchema (new MySQLSchema ("app_db"));
+				// Setup and connect to the database here.
 
 				return (true);
 			};
 		this.onPostRegister = async (): Promise<boolean> =>
 			{
-				try
-				{
-					await this.getDB ().syncAllTables ();
-				}
-				catch (ex)
-				{
-					this.connection.logger.error (ex);
-
-					return (false);
-				}
+				// Sync database tables here.
 
 				return (true);
 			};

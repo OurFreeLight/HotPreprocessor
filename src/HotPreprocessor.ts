@@ -99,6 +99,10 @@ export interface HotSite
 			 */
 			serveHottFiles?: boolean;
 			/**
+			 * The name of the API to interface with across all pages.
+			 */
+			globalApi?: string;
+			/**
 			 * The base url for the server.
 			 */
 			url?: string;
@@ -188,9 +192,9 @@ export interface HotSite
 					 */
 					jsapi?: string;
 					/**
-					 * The JS exported name to use.
+					 * The exported JS library name to use.
 					 */
-					exportedName?: string;
+					libraryName?: string;
 					/**
 					 * The name of the api to use.
 					 */
@@ -934,6 +938,9 @@ export class HotPreprocessor implements IHotPreprocessor
 			}
 		}
 
+		if (this.hotSite.routes == null)
+			this.hotSite.routes = {};
+
 		await this.loadHotFiles (this.hotSite.files);
 
 		if (tester != null)
@@ -1006,6 +1013,33 @@ export class HotPreprocessor implements IHotPreprocessor
 		// Load the API string.
 		if (this.hotSite != null)
 		{
+			if (this.hotSite.server.globalApi != null)
+			{
+				if (this.hotSite.server.globalApi !== "")
+				{
+					const globalApi = this.hotSite.apis[this.hotSite.server.globalApi];
+
+					if (globalApi == null)
+						this.logger.warning (`API with name ${this.hotSite.server.globalApi} doesn't exist!`);
+					else
+					{
+						apiScripts += `\t<script type = "text/javascript" src = "${globalApi.jsapi}"></script>\n`;
+
+						let baseUrl: string = "\"\"";
+
+						if (this.api != null)
+							baseUrl = `\"${this.api.baseUrl}\"`;
+
+						let tempAPIContent: string = this.apiContent;
+						tempAPIContent = tempAPIContent.replace (/\%api\_name\%/g, globalApi.apiName);
+						tempAPIContent = tempAPIContent.replace (/\%api\_exported\_name\%/g, globalApi.libraryName);
+						tempAPIContent = tempAPIContent.replace (/\%base\_url\%/g, baseUrl);
+
+						apiCode += tempAPIContent;
+					}
+				}
+			}
+
 			if (this.hotSite.apis != null)
 			{
 				let route = this.hotSite.routes[routeKey];
@@ -1029,7 +1063,7 @@ export class HotPreprocessor implements IHotPreprocessor
 
 						let tempAPIContent: string = this.apiContent;
 						tempAPIContent = tempAPIContent.replace (/\%api\_name\%/g, api.apiName);
-						tempAPIContent = tempAPIContent.replace (/\%api\_exported\_name\%/g, api.exportedName);
+						tempAPIContent = tempAPIContent.replace (/\%api\_exported\_name\%/g, api.libraryName);
 						tempAPIContent = tempAPIContent.replace (/\%base\_url\%/g, baseUrl);
 
 						apiCode += tempAPIContent;

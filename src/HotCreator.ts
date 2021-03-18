@@ -114,7 +114,7 @@ export class HotCreator
 	 */
 	async create (): Promise<void>
 	{
-		this.logger.info (`Creating "${this.name}"...`);
+		this.logger.info (`Creating "${this.name}" of type ${this.type} for language ${this.language}...`);
 
 		HotPreprocessor.checkHotSiteName (this.name, true);
 
@@ -145,21 +145,22 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 				"author": "",
 				"license": "ISC",
 				"dependencies": {
-					"hotpreprocessor": "^0.4.67"
+					"hotpreprocessor": "^0.4.68",
+					"copy-webpack-plugin": "^6.0.3"
 				}
 			};
 
-		if (this.npmCommands.start !== "")
-		{
+		if (this.npmCommands.start === "")
 			this.npmCommands.start = `hotpreprocessor --hotsite ./HotSite.json run --server-type ${this.type}`;
+
+		if (this.npmCommands.start !== "")
 			packageJSON.scripts["start"] = this.npmCommands.start;
-		}
+
+		if (this.npmCommands.dev === "")
+			this.npmCommands.dev = `hotpreprocessor --hotsite ./HotSite.json --development-mode run --server-type ${this.type} --web-http-port 8080`;
 
 		if (this.npmCommands.dev !== "")
-		{
-			this.npmCommands.dev = `hotpreprocessor --hotsite ./HotSite.json --development-mode run --server-type ${this.type} --web-http-port 8080`;
 			packageJSON.scripts["dev"] = this.npmCommands.dev;
-		}
 
 		if (this.npmCommands.test !== "")
 			packageJSON.scripts["test"] = this.npmCommands.test;
@@ -201,12 +202,16 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 				delete packageJSON.scripts["build-web-debug"];
 		}
 
+		if (this.language === "ts")
+			packageJSON.main = "build/AppAPI.js";
+
 		let packageJSONstr: string = JSON.stringify (packageJSON, null, 2);
 		await HotIO.writeTextFile (ppath.normalize (`${this.outputDir}/package.json`), packageJSONstr);
 
 		let hotSiteJSON: HotSite = {
 				name: this.name,
 				server: {
+					globalApi: "AppAPI",
 					serveDirectories: [{
 							route: "/",
 							localPath: "./public/"
@@ -224,8 +229,10 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 			{
 				hotSiteJSON.apis = {};
 				hotSiteJSON.apis["AppAPI"] = {
-						"exportedName": "AppAPI",
-						"filepath": "./build/src/AppAPI.js"
+						"jsapi": "./js/app.js",
+						"libraryName": "appWeb",
+						"apiName": "AppAPI",
+						"filepath": "./build/AppAPI.js"
 					};
 			}
 		}
@@ -243,10 +250,10 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 				"BUILDSTEPS": readMeBuildSteps
 			});
 
-		if (this.type === "web")
+		if ((this.type === "web") || (this.type === "web-api"))
 		{
 			const publicDir: string = ppath.normalize (`${__dirname}/../../creator/public`);
-			await HotIO.copyFiles (publicDir, ppath.normalize (`${this.outputDir}/`));
+			await HotIO.copyFiles (publicDir, ppath.normalize (`${this.outputDir}/public/`));
 		}
 
 		if (this.language === "ts")

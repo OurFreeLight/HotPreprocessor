@@ -134,14 +134,15 @@
 			"request": "launch",
 			"name": "Create an App",
 			"program": "${workspaceFolder}/build/src/cli.js",
+			"cwd": "/home/squigglet/temp2/app",
 			"skipFiles": [
 				"<node_internals>/**"
 			],
 			"outputCapture": "std",
 			"args": [
 				"create",
-				"--type",
-				"api",
+				"--overwrite-cmd-create-transpile",
+				"npm link hotpreprocessor && npm run build",
 				"app"
 			]
 		},
@@ -180,7 +181,7 @@
 			"cwd": "${workspaceFolder}",
 			"env": {
 				"HTTP_PORT": "3123",
-				"DATABASE_SERVER": "192.168.1.185",
+				"DATABASE_SERVER": "192.168.1.181",
 				"DATABASE_PORT": "3309",
 				"DATABASE_USERNAME": "root",
 				"DATABASE_PASSWORD": "cdO1KjwiC8ksOqCV1s0",

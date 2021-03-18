@@ -522,7 +522,6 @@ export class HotHTTPServer extends HotServer
 							// Make sure we're not accidentally resending the content.
 							if (result !== "nahfam")
 							{
-								this.processor.hotSite.server.serveDirectories
 								let serveDirectories: {
 										route: string;
 										localPath: string;

@@ -86,6 +86,12 @@ export abstract class HotAPI
 	 */
 	setDBSchema (schema: HotDBSchema): void
 	{
+		if (this.connection.api == null)
+			throw new Error (`No API has been set!`);
+
+		if (this.connection.api.db == null)
+			throw new Error (`No database has been set for API base url ${this.connection.api.baseUrl}`);
+
 		this.connection.api.db.schema = schema;
 	}
 
@@ -94,6 +100,9 @@ export abstract class HotAPI
 	 */
 	getDB (): HotDB
 	{
+		if (this.connection.api.db == null)
+			throw new Error (`No database has been set for API base url ${this.connection.api.baseUrl}`);
+
 		return (this.connection.api.db);
 	}
 
@@ -102,6 +111,9 @@ export abstract class HotAPI
 	 */
 	getDBSchema (): HotDBSchema
 	{
+		if (this.connection.api.db == null)
+			throw new Error (`No database has been set for API base url ${this.connection.api.baseUrl}`);
+
 		return (this.connection.api.db.schema);
 	}
 
