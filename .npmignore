@@ -3,6 +3,7 @@ db/
 !creator/
 !creator/project/.gitignore
 !creator/project/.npmignore
+!builder/docker/.dockerignore
 
 client/
 tests/

@@ -65,7 +65,7 @@ export class HotBuilder
 
 			for (let iIdx = 0; iIdx < this.hotsites.length; iIdx++)
 			{
-				let hotsite: HotSite = this.hotsites[iIdx];
+				const hotsite: HotSite = this.hotsites[iIdx];
 
 				this.logger.info (`Building Dockerfile "${hotsite.name}"...`);
 
@@ -74,7 +74,7 @@ export class HotBuilder
 
 				HotPreprocessor.checkHotSiteName (hotsite.name, true);
 
-				let hotsiteName: string = hotsite.name;
+				const hotsiteName: string = hotsite.name;
 				let outputDir: string = ppath.normalize (`${this.outputDir}/docker/${hotsiteName}`);
 				let newDockerfileContent: string = dockerFileContent;
 				let newStartFileContent: string = startFileContent;

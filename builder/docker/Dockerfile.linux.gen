@@ -16,7 +16,7 @@ RUN cd /tmp/app/${HOTSITE_NAME} && \
 FROM node:lts-alpine3.11
 
 COPY --from=builder /tmp/app/${HOTSITE_NAME} /app/${HOTSITE_NAME}
-COPY ./docker/start.sh /app/${HOTSITE_NAME}-start.sh
+COPY ./docker/${HOTSITE_NAME}/app/${HOTSITE_NAME}-start.sh /app/${HOTSITE_NAME}-start.sh
 
 RUN chmod 500 /app/${HOTSITE_NAME}-start.sh
 

@@ -45,6 +45,8 @@ async function startAPIServer (server: HotHTTPServer, loadedAPI: APItoLoad, base
 	let apiClass: any = apiJS[loadedAPI.exportedClassName];
 	let api: HotAPI = new apiClass (baseAPIUrl, server);
 
+	server.logger.info (`Loaded API class: ${loadedAPI.exportedClassName}`);
+
 	server.processor.api = api;
 	server.api = api;
 
