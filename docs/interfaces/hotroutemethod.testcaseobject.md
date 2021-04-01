@@ -21,7 +21,7 @@ The test case object to pass.
 
 The function to execute.
 
-Defined in: [HotRouteMethod.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRouteMethod.ts#L53)
+Defined in: [HotRouteMethod.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRouteMethod.ts#L53)
 
 ___
 
@@ -31,4 +31,4 @@ ___
 
 The name of the test case.
 
-Defined in: [HotRouteMethod.ts:49](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRouteMethod.ts#L49)
+Defined in: [HotRouteMethod.ts:49](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRouteMethod.ts#L49)

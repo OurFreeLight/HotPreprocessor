@@ -43,7 +43,7 @@ Name | Type | Default value |
 
 **Returns:** [*HotCreator*](hotcreator.hotcreator-1.md)
 
-Defined in: [HotCreator.ts:79](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotCreator.ts#L79)
+Defined in: [HotCreator.ts:79](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotCreator.ts#L79)
 
 ## Properties
 
@@ -60,7 +60,7 @@ Name | Type | Description |
 `init` | *string* | The init command to use after the project has been created.   |
 `transpileTS` | *string* | The transpile command to use after the project has been initialized.   |
 
-Defined in: [HotCreator.ts:41](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotCreator.ts#L41)
+Defined in: [HotCreator.ts:41](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotCreator.ts#L41)
 
 ___
 
@@ -71,7 +71,7 @@ ___
 The language to use when creating. Default is "ts". Can be:
 * ts
 
-Defined in: [HotCreator.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotCreator.ts#L29)
+Defined in: [HotCreator.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotCreator.ts#L29)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 The logger.
 
-Defined in: [HotCreator.ts:37](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotCreator.ts#L37)
+Defined in: [HotCreator.ts:37](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotCreator.ts#L37)
 
 ___
 
@@ -91,7 +91,7 @@ ___
 
 The name of the app to create.
 
-Defined in: [HotCreator.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotCreator.ts#L17)
+Defined in: [HotCreator.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotCreator.ts#L17)
 
 ___
 
@@ -112,7 +112,7 @@ Name | Type | Description |
 `start` | *string* | The start command to use.   |
 `test` | *string* | The test command to use.   |
 
-Defined in: [HotCreator.ts:54](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotCreator.ts#L54)
+Defined in: [HotCreator.ts:54](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotCreator.ts#L54)
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 The output directory.
 
-Defined in: [HotCreator.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotCreator.ts#L33)
+Defined in: [HotCreator.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotCreator.ts#L33)
 
 ___
 
@@ -135,7 +135,7 @@ The type of project to create. Can be:
 * web-api
 * api
 
-Defined in: [HotCreator.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotCreator.ts#L24)
+Defined in: [HotCreator.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotCreator.ts#L24)
 
 ## Methods
 
@@ -147,7 +147,7 @@ Create an app.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotCreator.ts:115](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotCreator.ts#L115)
+Defined in: [HotCreator.ts:115](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotCreator.ts#L115)
 
 ___
 
@@ -166,7 +166,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotCreator.ts:442](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotCreator.ts#L442)
+Defined in: [HotCreator.ts:442](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotCreator.ts#L442)
 
 ___
 
@@ -184,4 +184,4 @@ Name | Type |
 
 **Returns:** *Promise*<string\>
 
-Defined in: [HotCreator.ts:105](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotCreator.ts#L105)
+Defined in: [HotCreator.ts:105](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotCreator.ts#L105)

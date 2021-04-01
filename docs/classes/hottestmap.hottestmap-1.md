@@ -34,7 +34,7 @@ Name | Type |
 
 **Returns:** [*HotTestMap*](hottestmap.hottestmap-1.md)
 
-Defined in: [HotTestMap.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestMap.ts#L98)
+Defined in: [HotTestMap.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTestMap.ts#L98)
 
 ## Properties
 
@@ -45,7 +45,7 @@ Defined in: [HotTestMap.ts:98](https://github.com/OurFreeLight/HotPreprocessor/b
 The order in which destinations are supposed to execute. This is
 ignored if the destinations are an array.
 
-Defined in: [HotTestMap.ts:92](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestMap.ts#L92)
+Defined in: [HotTestMap.ts:92](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTestMap.ts#L92)
 
 ___
 
@@ -71,7 +71,7 @@ The first string to the left of the -> will always be the type, such as a
 page or an api route. Any strings to the right of the -> will be a path, even
 when chaining addtional ->'s.
 
-Defined in: [HotTestMap.ts:87](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestMap.ts#L87)
+Defined in: [HotTestMap.ts:87](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTestMap.ts#L87)
 
 ___
 
@@ -83,4 +83,4 @@ The test pages to execute.
 
 #### Type declaration:
 
-Defined in: [HotTestMap.ts:96](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestMap.ts#L96)
+Defined in: [HotTestMap.ts:96](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTestMap.ts#L96)

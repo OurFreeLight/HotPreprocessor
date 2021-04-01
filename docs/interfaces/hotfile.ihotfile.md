@@ -29,7 +29,7 @@ A file to process.
 
 The content of the file to process.
 
-Defined in: [HotFile.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L33)
+Defined in: [HotFile.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L33)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 The path to the local file to get.
 
-Defined in: [HotFile.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L29)
+Defined in: [HotFile.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L29)
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 The name of the file.
 
-Defined in: [HotFile.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L21)
+Defined in: [HotFile.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L21)
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 The parent page.
 
-Defined in: [HotFile.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L17)
+Defined in: [HotFile.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L17)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 Force all errors to be thrown.
 
-Defined in: [HotFile.ts:37](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L37)
+Defined in: [HotFile.ts:37](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L37)
 
 ___
 
@@ -79,4 +79,4 @@ ___
 
 The url to the file to get.
 
-Defined in: [HotFile.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L25)
+Defined in: [HotFile.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L25)

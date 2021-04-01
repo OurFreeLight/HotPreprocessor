@@ -1,6 +1,6 @@
 {
   "name": "hotpreprocessor",
-  "version": "0.4.71",
+  "version": "0.4.73",
   "description": "",
   "bin": {
     "hotpreprocessor": "./bin/hotpreprocessor"

@@ -4,7 +4,6 @@ This application was bootstrapped with [Hotpreprocessor](https://www.github.com/
 ## Getting Started
 Navigate to the project's directory then enter:
 ${BUILDSTEPS}
-
 	npm run dev
 
 This will launch the web server in development mode. Open a web browser and navigate to https://127.0.0.1:8080 to see the example page!

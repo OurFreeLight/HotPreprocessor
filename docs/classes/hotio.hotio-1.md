@@ -45,7 +45,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotIO.ts:69](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotIO.ts#L69)
+Defined in: [HotIO.ts:69](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotIO.ts#L69)
 
 ___
 
@@ -63,7 +63,7 @@ Name | Type |
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotIO.ts:77](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotIO.ts#L77)
+Defined in: [HotIO.ts:77](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotIO.ts#L77)
 
 ___
 
@@ -81,7 +81,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotIO.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotIO.ts#L50)
+Defined in: [HotIO.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotIO.ts#L50)
 
 ___
 
@@ -99,7 +99,7 @@ Name | Type |
 
 **Returns:** *Promise*<string\>
 
-Defined in: [HotIO.ts:12](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotIO.ts#L12)
+Defined in: [HotIO.ts:12](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotIO.ts#L12)
 
 ___
 
@@ -118,4 +118,4 @@ Name | Type |
 
 **Returns:** *Promise*<string\>
 
-Defined in: [HotIO.ts:32](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotIO.ts#L32)
+Defined in: [HotIO.ts:32](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotIO.ts#L32)

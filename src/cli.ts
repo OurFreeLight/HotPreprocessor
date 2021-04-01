@@ -343,6 +343,45 @@ async function handleRunCommands (): Promise<commander.Command>
 				}
 			}
 
+			// Setup the DB if it hasn't already been setup.
+			if (process.env["DATABASE_SERVER"] != null)
+			{
+				setupDB ();
+				dbinfo.server = process.env["DATABASE_SERVER"];
+			}
+
+			if (process.env["DATABASE_USERNAME"] != null)
+			{
+				setupDB ();
+				dbinfo.username = process.env["DATABASE_USERNAME"];
+			}
+
+			if (process.env["DATABASE_PASSWORD"] != null)
+			{
+				setupDB ();
+				dbinfo.password = process.env["DATABASE_PASSWORD"];
+			}
+
+			if (process.env["DATABASE_PORT"] != null)
+			{
+				setupDB ();
+
+				try
+				{
+					dbinfo.port = parseInt (process.env["DATABASE_PORT"]);
+				}
+				catch (ex)
+				{
+					throw new Error (`Unable to parse db port ${process.env["DATABASE_PORT"]}`);
+				}
+			}
+
+			if (process.env["DATABASE_SCHEMA"] != null)
+			{
+				setupDB ();
+				dbinfo.database = process.env["DATABASE_SCHEMA"];
+			}
+
 			if (baseWebUrl === "")
 			{
 				let foundBaseUrl: string = HotPreprocessor.getValueFromHotSiteObj (processor.hotSite, ["server", "url"]);

@@ -49,7 +49,7 @@ Name | Type |
 
 **Returns:** [*HotRoute*](hotroute.hotroute-1.md)
 
-Defined in: [HotRoute.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L44)
+Defined in: [HotRoute.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L44)
 
 ## Properties
 
@@ -60,7 +60,7 @@ Defined in: [HotRoute.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blo
 The authorization credentials to be used by the client
 when connecting to the server.
 
-Defined in: [HotRoute.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L35)
+Defined in: [HotRoute.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L35)
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 The server that maintains the connections.
 
-Defined in: [HotRoute.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L14)
+Defined in: [HotRoute.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L14)
 
 ___
 
@@ -83,7 +83,7 @@ The errors and their JSON that can be thrown. Can be:
 
 #### Type declaration:
 
-Defined in: [HotRoute.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L44)
+Defined in: [HotRoute.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L44)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 The associated logger.
 
-Defined in: [HotRoute.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L18)
+Defined in: [HotRoute.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L18)
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 The calls that can be made.
 
-Defined in: [HotRoute.ts:39](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L39)
+Defined in: [HotRoute.ts:39](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L39)
 
 ___
 
@@ -129,9 +129,9 @@ Name | Type |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotRoute.ts:136](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L136)
+Defined in: [HotRoute.ts:136](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L136)
 
-Defined in: [HotRoute.ts:136](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L136)
+Defined in: [HotRoute.ts:136](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L136)
 
 ___
 
@@ -147,9 +147,9 @@ Executes after all routes have been registered.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotRoute.ts:128](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L128)
+Defined in: [HotRoute.ts:128](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L128)
 
-Defined in: [HotRoute.ts:128](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L128)
+Defined in: [HotRoute.ts:128](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L128)
 
 ___
 
@@ -165,9 +165,9 @@ Executes before all routes have been registered.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotRoute.ts:119](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L119)
+Defined in: [HotRoute.ts:119](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L119)
 
-Defined in: [HotRoute.ts:119](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L119)
+Defined in: [HotRoute.ts:119](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L119)
 
 ___
 
@@ -184,9 +184,9 @@ this returns false, the route will not be registered.
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotRoute.ts:124](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L124)
+Defined in: [HotRoute.ts:124](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L124)
 
-Defined in: [HotRoute.ts:124](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L124)
+Defined in: [HotRoute.ts:124](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L124)
 
 ___
 
@@ -196,7 +196,7 @@ ___
 
 The prefix to add to the beginning of each route method.
 
-Defined in: [HotRoute.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L30)
+Defined in: [HotRoute.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L30)
 
 ___
 
@@ -206,7 +206,7 @@ ___
 
 The route.
 
-Defined in: [HotRoute.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L22)
+Defined in: [HotRoute.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L22)
 
 ___
 
@@ -216,7 +216,7 @@ ___
 
 The version.
 
-Defined in: [HotRoute.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L26)
+Defined in: [HotRoute.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L26)
 
 ## Methods
 
@@ -237,7 +237,7 @@ Name | Type | Default value | Description |
 
 **Returns:** *void*
 
-Defined in: [HotRoute.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L81)
+Defined in: [HotRoute.ts:81](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L81)
 
 ___
 
@@ -255,7 +255,7 @@ Name | Type |
 
 **Returns:** [*HotRouteMethod*](hotroutemethod.hotroutemethod-1.md)
 
-Defined in: [HotRoute.ts:97](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L97)
+Defined in: [HotRoute.ts:97](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L97)
 
 ___
 
@@ -273,4 +273,4 @@ Name | Type |
 
 **Returns:** *any*
 
-Defined in: [HotRoute.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotRoute.ts#L70)
+Defined in: [HotRoute.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotRoute.ts#L70)

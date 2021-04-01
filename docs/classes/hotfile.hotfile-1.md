@@ -51,7 +51,7 @@ Name | Type |
 
 **Returns:** [*HotFile*](hotfile.hotfile-1.md)
 
-Defined in: [HotFile.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L68)
+Defined in: [HotFile.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L68)
 
 ## Properties
 
@@ -63,7 +63,7 @@ The content of the file to process.
 
 Implementation of: [IHotFile](../interfaces/hotfile.ihotfile.md).[content](../interfaces/hotfile.ihotfile.md#content)
 
-Defined in: [HotFile.ts:64](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L64)
+Defined in: [HotFile.ts:64](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L64)
 
 ___
 
@@ -75,7 +75,7 @@ The path to the local file to get.
 
 Implementation of: [IHotFile](../interfaces/hotfile.ihotfile.md).[localFile](../interfaces/hotfile.ihotfile.md#localfile)
 
-Defined in: [HotFile.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L60)
+Defined in: [HotFile.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L60)
 
 ___
 
@@ -87,7 +87,7 @@ The name of the file.
 
 Implementation of: [IHotFile](../interfaces/hotfile.ihotfile.md).[name](../interfaces/hotfile.ihotfile.md#name)
 
-Defined in: [HotFile.ts:52](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L52)
+Defined in: [HotFile.ts:52](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L52)
 
 ___
 
@@ -99,7 +99,7 @@ The parent page.
 
 Implementation of: [IHotFile](../interfaces/hotfile.ihotfile.md).[page](../interfaces/hotfile.ihotfile.md#page)
 
-Defined in: [HotFile.ts:48](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L48)
+Defined in: [HotFile.ts:48](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L48)
 
 ___
 
@@ -111,7 +111,7 @@ Force all errors to be thrown.
 
 Implementation of: [IHotFile](../interfaces/hotfile.ihotfile.md).[throwAllErrors](../interfaces/hotfile.ihotfile.md#throwallerrors)
 
-Defined in: [HotFile.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L68)
+Defined in: [HotFile.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L68)
 
 ___
 
@@ -123,7 +123,7 @@ The url to the file to get.
 
 Implementation of: [IHotFile](../interfaces/hotfile.ihotfile.md).[url](../interfaces/hotfile.ihotfile.md#url)
 
-Defined in: [HotFile.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L56)
+Defined in: [HotFile.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L56)
 
 ## Methods
 
@@ -135,7 +135,7 @@ Get the content of this file.
 
 **Returns:** *string*
 
-Defined in: [HotFile.ts:91](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L91)
+Defined in: [HotFile.ts:91](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L91)
 
 ___
 
@@ -147,7 +147,7 @@ Load the contents of the file.
 
 **Returns:** *Promise*<string\>
 
-Defined in: [HotFile.ts:154](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L154)
+Defined in: [HotFile.ts:154](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L154)
 
 ___
 
@@ -159,7 +159,7 @@ Load content from a local file.
 
 **Returns:** *Promise*<string\>
 
-Defined in: [HotFile.ts:131](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L131)
+Defined in: [HotFile.ts:131](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L131)
 
 ___
 
@@ -171,7 +171,7 @@ Load content from a url.
 
 **Returns:** *Promise*<string\>
 
-Defined in: [HotFile.ts:121](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L121)
+Defined in: [HotFile.ts:121](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L121)
 
 ___
 
@@ -195,7 +195,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<string\>
 
-Defined in: [HotFile.ts:330](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L330)
+Defined in: [HotFile.ts:330](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L330)
 
 ___
 
@@ -213,7 +213,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotFile.ts:83](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L83)
+Defined in: [HotFile.ts:83](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L83)
 
 ___
 
@@ -231,7 +231,7 @@ Name | Type |
 
 **Returns:** *Promise*<string\>
 
-Defined in: [HotFile.ts:99](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L99)
+Defined in: [HotFile.ts:99](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L99)
 
 ___
 
@@ -258,7 +258,7 @@ Name | Type | Default value | Description |
 
 **Returns:** *string*
 
-Defined in: [HotFile.ts:183](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L183)
+Defined in: [HotFile.ts:183](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L183)
 
 ___
 
@@ -292,4 +292,4 @@ Name | Type | Default value | Description |
 
 **Returns:** *string*
 
-Defined in: [HotFile.ts:241](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotFile.ts#L241)
+Defined in: [HotFile.ts:241](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotFile.ts#L241)

@@ -35,7 +35,7 @@ Name | Type |
 
 **Returns:** [*HotTestElementOptions*](hottestelement.hottestelementoptions.md)
 
-Defined in: [HotTestElement.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestElement.ts#L34)
+Defined in: [HotTestElement.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTestElement.ts#L34)
 
 ## Properties
 
@@ -49,7 +49,7 @@ without any exceptions being thrown.
 
 Implementation of: [IHotTestElementOptions](../interfaces/hottestelement.ihottestelementoptions.md).[ignoreMissingElementError](../interfaces/hottestelement.ihottestelementoptions.md#ignoremissingelementerror)
 
-Defined in: [HotTestElement.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestElement.ts#L34)
+Defined in: [HotTestElement.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTestElement.ts#L34)
 
 ___
 
@@ -62,4 +62,4 @@ order to select it.
 
 Implementation of: [IHotTestElementOptions](../interfaces/hottestelement.ihottestelementoptions.md).[mustBeVisible](../interfaces/hottestelement.ihottestelementoptions.md#mustbevisible)
 
-Defined in: [HotTestElement.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/042e7cd/src/HotTestElement.ts#L28)
+Defined in: [HotTestElement.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTestElement.ts#L28)
