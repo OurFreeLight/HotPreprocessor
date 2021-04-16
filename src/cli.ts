@@ -140,7 +140,7 @@ async function handleBuildCommands (): Promise<commander.Command>
 			createHotBuilder ();
 			builder.dockerFiles = true;
 		}, "");
-	buildCmd.option ("--docker-compose", "Build the docker compose file from the given HotSite.json.", 
+	/*buildCmd.option ("--docker-compose", "Build the docker compose file from the given HotSite.json.", 
 		(arg: string, previous: any) =>
 		{
 			createHotBuilder ();
@@ -151,7 +151,7 @@ async function handleBuildCommands (): Promise<commander.Command>
 		{
 			createHotBuilder ();
 			builder.kubernetes = true;
-		}, "");
+		}, "");*/
 	buildCmd.option ("--output", "The directory path to place all files.", 
 		(arg: string, previous: any) =>
 		{
@@ -734,8 +734,6 @@ function checkIfPathExists (path: string): boolean
 {
 	if (fs.existsSync (path) === true)
 		return (true);
-
-	console.log (`PATH: ${path}`);
 
 	return (false);
 }

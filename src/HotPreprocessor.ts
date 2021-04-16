@@ -520,6 +520,29 @@ export class HotPreprocessor implements IHotPreprocessor
 	}
 
 	/**
+	 * Check if a required parameter exists. If it exists, return the value.
+	 */
+	static getParam (name: string, value: any, throwException: boolean = true): boolean
+	{
+		if (value == null)
+		{
+			if (throwException === true)
+				throw new Error (`Missing required parameter ${name}.`);
+		}
+
+		if (typeof (value) === "string")
+		{
+			if (value === "")
+			{
+				if (throwException === true)
+					throw new Error (`Missing required parameter ${name}.`);
+			}
+		}
+
+		return (value);
+	}
+
+	/**
 	 * Wait for a number of milliseconds.
 	 */
 	static async wait (numMilliseconds: number): Promise<void>
