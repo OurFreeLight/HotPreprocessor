@@ -68,7 +68,7 @@ Name | Type | Default value |
 
 **Returns:** [*HotDB*](hotdb.hotdb-1.md)<DBType, DBResultType, DBSchema\>
 
-Defined in: [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotDB.ts#L35)
+Defined in: [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDB.ts#L35)
 
 ## Properties
 
@@ -78,7 +78,7 @@ Defined in: [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/2
 
 The connection status.
 
-Defined in: [HotDB.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotDB.ts#L30)
+Defined in: [HotDB.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDB.ts#L30)
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 The connection to the database (or the driver).
 
-Defined in: [HotDB.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotDB.ts#L26)
+Defined in: [HotDB.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDB.ts#L26)
 
 ___
 
@@ -99,7 +99,7 @@ ___
 The db schema. This will generate a database structure
 and keep it maintained as needed.
 
-Defined in: [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotDB.ts#L35)
+Defined in: [HotDB.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDB.ts#L35)
 
 ___
 
@@ -109,7 +109,7 @@ ___
 
 The database type.
 
-Defined in: [HotDB.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotDB.ts#L22)
+Defined in: [HotDB.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDB.ts#L22)
 
 ## Methods
 
@@ -128,7 +128,7 @@ Name | Type |
 
 **Returns:** *Promise*<any[]\>
 
-Defined in: [HotDB.ts:49](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotDB.ts#L49)
+Defined in: [HotDB.ts:49](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDB.ts#L49)
 
 ___
 
@@ -140,7 +140,7 @@ Disconnect from the server.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotDB.ts:78](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotDB.ts#L78)
+Defined in: [HotDB.ts:78](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDB.ts#L78)
 
 ___
 
@@ -158,7 +158,7 @@ Name | Type |
 
 **Returns:** *Promise*<DBResultType[]\>
 
-Defined in: [HotDB.ts:74](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotDB.ts#L74)
+Defined in: [HotDB.ts:74](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDB.ts#L74)
 
 ___
 
@@ -177,7 +177,7 @@ Name | Type |
 
 **Returns:** *Promise*<DBResultType\>
 
-Defined in: [HotDB.ts:66](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotDB.ts#L66)
+Defined in: [HotDB.ts:66](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDB.ts#L66)
 
 ___
 
@@ -196,7 +196,7 @@ Name | Type |
 
 **Returns:** *Promise*<DBResultType\>
 
-Defined in: [HotDB.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotDB.ts#L70)
+Defined in: [HotDB.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDB.ts#L70)
 
 ___
 
@@ -214,7 +214,7 @@ Name | Type |
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotDB.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotDB.ts#L53)
+Defined in: [HotDB.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDB.ts#L53)
 
 ___
 
@@ -234,7 +234,7 @@ Name | Type |
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotDB.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotDB.ts#L58)
+Defined in: [HotDB.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDB.ts#L58)
 
 ___
 
@@ -252,4 +252,4 @@ Name | Type |
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotDB.ts:62](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotDB.ts#L62)
+Defined in: [HotDB.ts:62](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDB.ts#L62)

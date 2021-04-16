@@ -47,7 +47,7 @@ Name | Type |
 
 Inherited from: [HotDBSchema](schemas_hotdbschema.hotdbschema.md)
 
-Defined in: [schemas/mysql/MySQLSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchema.ts#L15)
+Defined in: [schemas/mysql/MySQLSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchema.ts#L15)
 
 ## Properties
 
@@ -59,7 +59,7 @@ The name of this schema.
 
 Inherited from: [HotDBSchema](schemas_hotdbschema.hotdbschema.md).[name](schemas_hotdbschema.hotdbschema.md#name)
 
-Defined in: [schemas/HotDBSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/HotDBSchema.ts#L15)
+Defined in: [schemas/HotDBSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/HotDBSchema.ts#L15)
 
 ___
 
@@ -71,7 +71,7 @@ The tables in this schema.
 
 #### Type declaration:
 
-Defined in: [schemas/mysql/MySQLSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchema.ts#L15)
+Defined in: [schemas/mysql/MySQLSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchema.ts#L15)
 
 ## Methods
 
@@ -90,7 +90,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [schemas/mysql/MySQLSchema.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchema.ts#L35)
+Defined in: [schemas/mysql/MySQLSchema.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchema.ts#L35)
 
 ___
 
@@ -109,7 +109,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [schemas/mysql/MySQLSchema.ts:46](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchema.ts#L46)
+Defined in: [schemas/mysql/MySQLSchema.ts:46](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchema.ts#L46)
 
 ___
 
@@ -127,7 +127,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [schemas/mysql/MySQLSchema.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchema.ts#L27)
+Defined in: [schemas/mysql/MySQLSchema.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchema.ts#L27)
 
 ___
 
@@ -147,7 +147,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<string[][]\>
 
-Defined in: [schemas/mysql/MySQLSchema.ts:78](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchema.ts#L78)
+Defined in: [schemas/mysql/MySQLSchema.ts:78](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchema.ts#L78)
 
 ___
 
@@ -168,4 +168,4 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<string[]\>
 
-Defined in: [schemas/mysql/MySQLSchema.ts:62](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchema.ts#L62)
+Defined in: [schemas/mysql/MySQLSchema.ts:62](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchema.ts#L62)

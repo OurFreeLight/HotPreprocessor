@@ -21,7 +21,7 @@ A CSS object to embed.
 
 The integrity hash to generate during initial compilation.
 
-Defined in: [Hot.ts:38](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/Hot.ts#L38)
+Defined in: [Hot.ts:38](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L38)
 
 ___
 
@@ -31,4 +31,4 @@ ___
 
 The url to the CSS file to embed.
 
-Defined in: [Hot.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/Hot.ts#L34)
+Defined in: [Hot.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L34)

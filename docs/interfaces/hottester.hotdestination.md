@@ -23,7 +23,7 @@ The destination for a test to take.
 
 The API route to start using.
 
-Defined in: [HotTester.ts:55](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L55)
+Defined in: [HotTester.ts:55](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTester.ts#L55)
 
 ___
 
@@ -33,7 +33,7 @@ ___
 
 The name of the map.
 
-Defined in: [HotTester.ts:47](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L47)
+Defined in: [HotTester.ts:47](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTester.ts#L47)
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 The page to start at.
 
-Defined in: [HotTester.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L51)
+Defined in: [HotTester.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTester.ts#L51)
 
 ___
 
@@ -53,4 +53,4 @@ ___
 
 The paths to take on the page.
 
-Defined in: [HotTester.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L59)
+Defined in: [HotTester.ts:59](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTester.ts#L59)

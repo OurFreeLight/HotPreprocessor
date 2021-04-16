@@ -20,7 +20,7 @@ The type of object to use during event executions.
 
 • **HotAPI**: = 2
 
-Defined in: [HotAPI.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotAPI.ts#L18)
+Defined in: [HotAPI.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L18)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **HotMethod**: = 1
 
-Defined in: [HotAPI.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotAPI.ts#L17)
+Defined in: [HotAPI.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L17)
 
 ___
 
@@ -36,4 +36,4 @@ ___
 
 • **HotRoute**: = 0
 
-Defined in: [HotAPI.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotAPI.ts#L16)
+Defined in: [HotAPI.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L16)

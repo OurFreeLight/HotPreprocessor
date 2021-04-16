@@ -39,7 +39,7 @@ Name | Type |
 
 **Returns:** [*HotBuilder*](hotbuilder.hotbuilder-1.md)
 
-Defined in: [HotBuilder.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotBuilder.ts#L35)
+Defined in: [HotBuilder.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotBuilder.ts#L35)
 
 ## Properties
 
@@ -49,7 +49,7 @@ Defined in: [HotBuilder.ts:35](https://github.com/OurFreeLight/HotPreprocessor/b
 
 Will build the Docker compose file.
 
-Defined in: [HotBuilder.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotBuilder.ts#L23)
+Defined in: [HotBuilder.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotBuilder.ts#L23)
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 Will build the Dockerfiles.
 
-Defined in: [HotBuilder.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotBuilder.ts#L19)
+Defined in: [HotBuilder.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotBuilder.ts#L19)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 The HotSites to build from.
 
-Defined in: [HotBuilder.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotBuilder.ts#L15)
+Defined in: [HotBuilder.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotBuilder.ts#L15)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 Will build the Kubernetes cluster.
 
-Defined in: [HotBuilder.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotBuilder.ts#L27)
+Defined in: [HotBuilder.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotBuilder.ts#L27)
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 The logger.
 
-Defined in: [HotBuilder.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotBuilder.ts#L31)
+Defined in: [HotBuilder.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotBuilder.ts#L31)
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 The output directory.
 
-Defined in: [HotBuilder.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotBuilder.ts#L35)
+Defined in: [HotBuilder.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotBuilder.ts#L35)
 
 ## Methods
 
@@ -119,4 +119,4 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotBuilder.ts:52](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotBuilder.ts#L52)
+Defined in: [HotBuilder.ts:52](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotBuilder.ts#L52)

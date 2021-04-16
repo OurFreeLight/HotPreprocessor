@@ -522,22 +522,28 @@ export class HotPreprocessor implements IHotPreprocessor
 	/**
 	 * Check if a required parameter exists inside an object. If it exists, return the value.
 	 */
-	static getParam (name: string, objWithParam: any, throwException: boolean = true): boolean
+	static getParam (name: string, objWithParam: any, required: boolean = true, throwException: boolean = true): any
 	{
 		let value: any = objWithParam[name];
 
 		if (value == null)
 		{
-			if (throwException === true)
-				throw new Error (`Missing required parameter ${name}.`);
+			if (required === true)
+			{
+				if (throwException === true)
+					throw new Error (`Missing required parameter ${name}.`);
+			}
 		}
 
 		if (typeof (value) === "string")
 		{
-			if (value === "")
+			if (required === true)
 			{
-				if (throwException === true)
-					throw new Error (`Missing required parameter ${name}.`);
+				if (value === "")
+				{
+					if (throwException === true)
+						throw new Error (`Missing required parameter ${name}.`);
+				}
 			}
 		}
 

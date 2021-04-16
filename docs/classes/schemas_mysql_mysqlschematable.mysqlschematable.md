@@ -41,7 +41,7 @@ Name | Type | Default value |
 
 **Returns:** [*MySQLSchemaTable*](schemas_mysql_mysqlschematable.mysqlschematable.md)
 
-Defined in: [schemas/mysql/MySQLSchemaTable.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchemaTable.ts#L29)
+Defined in: [schemas/mysql/MySQLSchemaTable.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchemaTable.ts#L29)
 
 ## Properties
 
@@ -51,7 +51,7 @@ Defined in: [schemas/mysql/MySQLSchemaTable.ts:29](https://github.com/OurFreeLig
 
 The table's charset to use.
 
-Defined in: [schemas/mysql/MySQLSchemaTable.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchemaTable.ts#L29)
+Defined in: [schemas/mysql/MySQLSchemaTable.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchemaTable.ts#L29)
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 The table's description.
 
-Defined in: [schemas/mysql/MySQLSchemaTable.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchemaTable.ts#L17)
+Defined in: [schemas/mysql/MySQLSchemaTable.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchemaTable.ts#L17)
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 The table's engine to use.
 
-Defined in: [schemas/mysql/MySQLSchemaTable.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchemaTable.ts#L25)
+Defined in: [schemas/mysql/MySQLSchemaTable.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchemaTable.ts#L25)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 The fields in the table.
 
-Defined in: [schemas/mysql/MySQLSchemaTable.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchemaTable.ts#L21)
+Defined in: [schemas/mysql/MySQLSchemaTable.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchemaTable.ts#L21)
 
 ___
 
@@ -91,7 +91,7 @@ ___
 
 The name of the table.
 
-Defined in: [schemas/mysql/MySQLSchemaTable.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchemaTable.ts#L13)
+Defined in: [schemas/mysql/MySQLSchemaTable.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchemaTable.ts#L13)
 
 ## Methods
 
@@ -109,7 +109,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [schemas/mysql/MySQLSchemaTable.ts:43](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchemaTable.ts#L43)
+Defined in: [schemas/mysql/MySQLSchemaTable.ts:43](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchemaTable.ts#L43)
 
 ___
 
@@ -127,7 +127,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [schemas/mysql/MySQLSchemaTable.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchemaTable.ts#L51)
+Defined in: [schemas/mysql/MySQLSchemaTable.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchemaTable.ts#L51)
 
 ___
 
@@ -153,4 +153,4 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<string[]\>
 
-Defined in: [schemas/mysql/MySQLSchemaTable.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/mysql/MySQLSchemaTable.ts#L70)
+Defined in: [schemas/mysql/MySQLSchemaTable.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/schemas/mysql/MySQLSchemaTable.ts#L70)
