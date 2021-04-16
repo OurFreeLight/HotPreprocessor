@@ -22,7 +22,7 @@ A static route.
 The absolute path to the location of the files to
 serve on this machine.
 
-Defined in: [HotHTTPServer.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotHTTPServer.ts#L29)
+Defined in: [HotHTTPServer.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotHTTPServer.ts#L29)
 
 ___
 
@@ -32,4 +32,4 @@ ___
 
 The route to the files.
 
-Defined in: [HotHTTPServer.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotHTTPServer.ts#L24)
+Defined in: [HotHTTPServer.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotHTTPServer.ts#L24)

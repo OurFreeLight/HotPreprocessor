@@ -520,10 +520,12 @@ export class HotPreprocessor implements IHotPreprocessor
 	}
 
 	/**
-	 * Check if a required parameter exists. If it exists, return the value.
+	 * Check if a required parameter exists inside an object. If it exists, return the value.
 	 */
-	static getParam (name: string, value: any, throwException: boolean = true): boolean
+	static getParam (name: string, objWithParam: any, throwException: boolean = true): boolean
 	{
+		let value: any = objWithParam[name];
+
 		if (value == null)
 		{
 			if (throwException === true)

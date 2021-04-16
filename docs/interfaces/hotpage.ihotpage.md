@@ -32,7 +32,7 @@ A page to preprocess.
 The name of the page. File ordering matters here.
 Every file is processed incrementally.
 
-Defined in: [HotPage.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotPage.ts#L29)
+Defined in: [HotPage.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotPage.ts#L29)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 The name of the page.
 
-Defined in: [HotPage.ts:20](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotPage.ts#L20)
+Defined in: [HotPage.ts:20](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotPage.ts#L20)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 The processor to use.
 
-Defined in: [HotPage.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotPage.ts#L16)
+Defined in: [HotPage.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotPage.ts#L16)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 The route used to get to this page.
 
-Defined in: [HotPage.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotPage.ts#L24)
+Defined in: [HotPage.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotPage.ts#L24)
 
 ___
 
@@ -74,7 +74,7 @@ The elements to test on this page.
 
 #### Type declaration:
 
-Defined in: [HotPage.ts:41](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotPage.ts#L41)
+Defined in: [HotPage.ts:41](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotPage.ts#L41)
 
 ___
 
@@ -86,7 +86,7 @@ The test paths to test on this page.
 
 #### Type declaration:
 
-Defined in: [HotPage.ts:45](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotPage.ts#L45)
+Defined in: [HotPage.ts:45](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotPage.ts#L45)
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 The associated tester map.
 
-Defined in: [HotPage.ts:37](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotPage.ts#L37)
+Defined in: [HotPage.ts:37](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotPage.ts#L37)
 
 ___
 
@@ -106,4 +106,4 @@ ___
 
 The associated tester name.
 
-Defined in: [HotPage.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotPage.ts#L33)
+Defined in: [HotPage.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotPage.ts#L33)

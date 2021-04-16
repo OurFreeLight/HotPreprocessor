@@ -36,7 +36,7 @@ Name | Type |
 
 **Returns:** [*HotDBSchema*](schemas_hotdbschema.hotdbschema.md)
 
-Defined in: [schemas/HotDBSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/schemas/HotDBSchema.ts#L15)
+Defined in: [schemas/HotDBSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/HotDBSchema.ts#L15)
 
 ## Properties
 
@@ -46,4 +46,4 @@ Defined in: [schemas/HotDBSchema.ts:15](https://github.com/OurFreeLight/HotPrepr
 
 The name of this schema.
 
-Defined in: [schemas/HotDBSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/schemas/HotDBSchema.ts#L15)
+Defined in: [schemas/HotDBSchema.ts:15](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/schemas/HotDBSchema.ts#L15)

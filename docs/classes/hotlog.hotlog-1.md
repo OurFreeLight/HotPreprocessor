@@ -38,7 +38,7 @@ Name | Type |
 
 **Returns:** [*HotLog*](hotlog.hotlog-1.md)
 
-Defined in: [HotLog.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotLog.ts#L40)
+Defined in: [HotLog.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotLog.ts#L40)
 
 ## Properties
 
@@ -48,7 +48,7 @@ Defined in: [HotLog.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/
 
 The logging level.
 
-Defined in: [HotLog.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotLog.ts#L40)
+Defined in: [HotLog.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotLog.ts#L40)
 
 ## Methods
 
@@ -66,7 +66,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotLog.ts:136](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotLog.ts#L136)
+Defined in: [HotLog.ts:136](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotLog.ts#L136)
 
 ___
 
@@ -84,7 +84,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotLog.ts:110](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotLog.ts#L110)
+Defined in: [HotLog.ts:110](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotLog.ts#L110)
 
 ___
 
@@ -103,7 +103,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotLog.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotLog.ts#L50)
+Defined in: [HotLog.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotLog.ts#L50)
 
 ___
 
@@ -121,7 +121,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotLog.ts:101](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotLog.ts#L101)
+Defined in: [HotLog.ts:101](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotLog.ts#L101)
 
 ___
 
@@ -139,4 +139,4 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotLog.ts:123](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotLog.ts#L123)
+Defined in: [HotLog.ts:123](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotLog.ts#L123)

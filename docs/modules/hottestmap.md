@@ -38,4 +38,4 @@ Name | Type |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotTestMap.ts:8](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTestMap.ts#L8)
+Defined in: [HotTestMap.ts:8](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTestMap.ts#L8)

@@ -73,7 +73,7 @@ Name | Type |
 
 **Returns:** [*HotTester*](hottester.hottester-1.md)
 
-Defined in: [HotTester.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L98)
+Defined in: [HotTester.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L98)
 
 ## Properties
 
@@ -83,7 +83,7 @@ Defined in: [HotTester.ts:98](https://github.com/OurFreeLight/HotPreprocessor/bl
 
 The base url that will construct future urls.
 
-Defined in: [HotTester.ts:74](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L74)
+Defined in: [HotTester.ts:74](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L74)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 The driver to use when running tests.
 
-Defined in: [HotTester.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L86)
+Defined in: [HotTester.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L86)
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 Has this tester finished loading?
 
-Defined in: [HotTester.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L90)
+Defined in: [HotTester.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L90)
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 Has this tester finished setting up?
 
-Defined in: [HotTester.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L98)
+Defined in: [HotTester.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L98)
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 Has this tester finished setting up?
 
-Defined in: [HotTester.ts:94](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L94)
+Defined in: [HotTester.ts:94](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L94)
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 The tester name.
 
-Defined in: [HotTester.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L70)
+Defined in: [HotTester.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L70)
 
 ___
 
@@ -143,7 +143,7 @@ ___
 
 The associated processor.
 
-Defined in: [HotTester.ts:78](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L78)
+Defined in: [HotTester.ts:78](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L78)
 
 ___
 
@@ -155,7 +155,7 @@ The test maps to test.
 
 #### Type declaration:
 
-Defined in: [HotTester.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L82)
+Defined in: [HotTester.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L82)
 
 ## Methods
 
@@ -167,7 +167,7 @@ Executed when destroying up the tester.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTester.ts:120](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L120)
+Defined in: [HotTester.ts:120](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L120)
 
 ___
 
@@ -185,7 +185,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTester.ts:555](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L555)
+Defined in: [HotTester.ts:555](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L555)
 
 ___
 
@@ -206,7 +206,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTester.ts:381](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L381)
+Defined in: [HotTester.ts:381](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L381)
 
 ___
 
@@ -228,7 +228,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotTester.ts:256](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L256)
+Defined in: [HotTester.ts:256](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L256)
 
 ___
 
@@ -248,7 +248,7 @@ Name | Type |
 
 **Returns:** *Promise*<any[]\>
 
-Defined in: [HotTester.ts:294](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L294)
+Defined in: [HotTester.ts:294](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L294)
 
 ___
 
@@ -269,7 +269,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotTester.ts:329](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L329)
+Defined in: [HotTester.ts:329](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L329)
 
 ___
 
@@ -288,7 +288,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<any[]\>
 
-Defined in: [HotTester.ts:509](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L509)
+Defined in: [HotTester.ts:509](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L509)
 
 ___
 
@@ -306,7 +306,7 @@ Name | Type |
 
 **Returns:** [*HotTestPage*](../interfaces/hottestmap.hottestpage.md)
 
-Defined in: [HotTester.ts:181](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L181)
+Defined in: [HotTester.ts:181](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L181)
 
 ___
 
@@ -325,7 +325,7 @@ Name | Type |
 
 **Returns:** [*HotTestPath*](../modules/hottestmap.md#hottestpath)
 
-Defined in: [HotTester.ts:191](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L191)
+Defined in: [HotTester.ts:191](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L191)
 
 ___
 
@@ -348,7 +348,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTester.ts:153](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L153)
+Defined in: [HotTester.ts:153](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L153)
 
 ___
 
@@ -360,7 +360,7 @@ Executed when this tester has been executed from the API.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTester.ts:163](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L163)
+Defined in: [HotTester.ts:163](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L163)
 
 ___
 
@@ -372,7 +372,7 @@ Executed when this tester has finished loading all data from the API.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTester.ts:167](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L167)
+Defined in: [HotTester.ts:167](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L167)
 
 ___
 
@@ -394,7 +394,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTester.ts:137](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L137)
+Defined in: [HotTester.ts:137](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L137)
 
 ___
 
@@ -416,7 +416,7 @@ Name | Type |
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotTester.ts:132](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L132)
+Defined in: [HotTester.ts:132](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L132)
 
 ___
 
@@ -434,7 +434,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTester.ts:158](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L158)
+Defined in: [HotTester.ts:158](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L158)
 
 ___
 
@@ -455,7 +455,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTester.ts:148](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L148)
+Defined in: [HotTester.ts:148](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L148)
 
 ___
 
@@ -477,7 +477,7 @@ Name | Type |
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotTester.ts:143](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L143)
+Defined in: [HotTester.ts:143](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L143)
 
 ___
 
@@ -499,7 +499,7 @@ Name | Type |
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotTester.ts:127](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L127)
+Defined in: [HotTester.ts:127](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L127)
 
 ___
 
@@ -518,7 +518,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTester.ts:116](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L116)
+Defined in: [HotTester.ts:116](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L116)
 
 ___
 
@@ -530,7 +530,7 @@ Waits for the API to finish loading all data.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTester.ts:172](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L172)
+Defined in: [HotTester.ts:172](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L172)
 
 ___
 
@@ -549,4 +549,4 @@ Name | Type |
 
 **Returns:** [*HotDestination*](../interfaces/hottester.hotdestination.md)
 
-Defined in: [HotTester.ts:201](https://github.com/OurFreeLight/HotPreprocessor/blob/3f45061/src/HotTester.ts#L201)
+Defined in: [HotTester.ts:201](https://github.com/OurFreeLight/HotPreprocessor/blob/2227d35/src/HotTester.ts#L201)
