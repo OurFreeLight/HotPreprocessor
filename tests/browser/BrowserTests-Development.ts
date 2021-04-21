@@ -55,8 +55,14 @@ Execute this code to debug in browser:
 				helloWorldAPI.connection.api = helloWorldAPI;
 				processor.api = helloWorldAPI;
 				await HotPreprocessor.displayUrl (
-					"/tests/browser/HelloWorld.hott", "Hello World!", processor, { testData: "TESTING" });
+					"./HelloWorld.hott", "Hello World!", processor, { testData: "TESTING" });
 				done ();`);
+			});
+		it ("should properly assemble the page", async () =>
+			{
+				let elm = await common.driver.wait (until.elementLocated (By.id ("testButtonFromPage")));
+				let value: string = await elm.getAttribute ("innerHTML");
+				expect (value).to.equal ("Test Button from Page: TESTING", "Variables not passing properly to components!");
 			});
 		it ("should click the Hello World button", async () =>
 			{

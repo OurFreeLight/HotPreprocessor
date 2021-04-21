@@ -31,8 +31,8 @@ module.exports = {
 				}),
 			new CopyPlugin ({
 					patterns: [
-							{ from: `${process.cwd ()}/build-web/app.js`, 
-							to: `${process.cwd ()}/public/js/app.js` }
+							{ from: `${process.cwd ()}/build-web/${APPNAME}.js`, 
+							to: `${process.cwd ()}/public/js/${APPNAME}.js` }
 						]
 				})
 		],

@@ -219,7 +219,7 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 				},
 				testing: {
 					tester: "HotTesterMochaSelenium",
-					testerAPIUrl: "http://127.0.0.1:8383"
+					testerAPIUrl: "http://127.0.0.1:8183"
 				}
 			};
 
@@ -229,8 +229,8 @@ This will transpile the TypeScript into ES6 JavaScript by default. After this is
 			{
 				hotSiteJSON.apis = {};
 				hotSiteJSON.apis["AppAPI"] = {
-						"jsapi": "./js/app.js",
-						"libraryName": "appWeb",
+						"jsapi": `./js/${this.name}.js`,
+						"libraryName": `${this.name}Web`,
 						"apiName": "AppAPI",
 						"filepath": "./build/AppAPI.js"
 					};

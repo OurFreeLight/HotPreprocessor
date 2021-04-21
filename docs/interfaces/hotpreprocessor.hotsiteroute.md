@@ -24,7 +24,7 @@ A route used in a HotSite.
 
 The name of the API to interface with.
 
-Defined in: [HotPreprocessor.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotPreprocessor.ts#L58)
+Defined in: [HotPreprocessor.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L58)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 The order in which destinations are supposed to execute. This is
 ignored if the destinations are an array.
 
-Defined in: [HotPreprocessor.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotPreprocessor.ts#L63)
+Defined in: [HotPreprocessor.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L63)
 
 ___
 
@@ -48,7 +48,7 @@ existing one attached to the selected tester, or
 can be an array of destinations that will be used to
 create a new map.
 
-Defined in: [HotPreprocessor.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotPreprocessor.ts#L70)
+Defined in: [HotPreprocessor.ts:70](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L70)
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 The name of the route. Will appear in the title.
 
-Defined in: [HotPreprocessor.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotPreprocessor.ts#L50)
+Defined in: [HotPreprocessor.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L50)
 
 ___
 
@@ -68,4 +68,4 @@ ___
 
 The url to the file to load.
 
-Defined in: [HotPreprocessor.ts:54](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotPreprocessor.ts#L54)
+Defined in: [HotPreprocessor.ts:54](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L54)

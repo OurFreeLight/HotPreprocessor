@@ -59,7 +59,7 @@ The api used during processing.
 
 The current API used on this page. This is cleared between every file processed.
 
-Defined in: [Hot.ts:72](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L72)
+Defined in: [Hot.ts:72](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L72)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 The arguments passed.
 
-Defined in: [Hot.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L53)
+Defined in: [Hot.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L53)
 
 ___
 
@@ -82,7 +82,7 @@ The CSS files to use in the current page being generated.
 **`todo`** Make this a "string | CSSObject" data type so it can also include
 the integrity hashes as well.
 
-Defined in: [Hot.ts:103](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L103)
+Defined in: [Hot.ts:103](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L103)
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 The cookies to use between pages.
 
-Defined in: [Hot.ts:88](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L88)
+Defined in: [Hot.ts:88](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L88)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 The currently generated page being displayed. This is cleared between every file processed.
 
-Defined in: [Hot.ts:49](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L49)
+Defined in: [Hot.ts:49](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L49)
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 The data to share across all the different files and pages. This data will be public.
 
-Defined in: [Hot.ts:84](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L84)
+Defined in: [Hot.ts:84](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L84)
 
 ___
 
@@ -123,7 +123,7 @@ ___
 The mode in which this application is running. If it's set to development mode, all testing
 related data will be collected, parsed, and executed if necessary.
 
-Defined in: [Hot.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L58)
+Defined in: [Hot.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L58)
 
 ___
 
@@ -134,7 +134,7 @@ ___
 The mode in which this application is running. If it's set to development mode, all testing
 related data will be collected, parsed, and executed if necessary.
 
-Defined in: [Hot.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L63)
+Defined in: [Hot.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L63)
 
 ___
 
@@ -147,7 +147,7 @@ The JavaScript files to use in the current page being generated.
 **`todo`** Make this a "string | JSFileObject" data type so it can also include
 the integrity hashes as well.
 
-Defined in: [Hot.ts:110](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L110)
+Defined in: [Hot.ts:110](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L110)
 
 ___
 
@@ -157,7 +157,7 @@ ___
 
 The JavaScript inline code to use in the current page being generated.
 
-Defined in: [Hot.ts:114](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L114)
+Defined in: [Hot.ts:114](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L114)
 
 ___
 
@@ -168,7 +168,7 @@ ___
 The mode in which this application is running. If it's set to development mode, all testing
 related data will be collected, parsed, and executed if necessary.
 
-Defined in: [Hot.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L68)
+Defined in: [Hot.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L68)
 
 ___
 
@@ -178,7 +178,7 @@ ___
 
 Contains the buffer to output. This is cleared between every file processed.
 
-Defined in: [Hot.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L80)
+Defined in: [Hot.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L80)
 
 ___
 
@@ -188,7 +188,7 @@ ___
 
 Any secrets that can be shown publicly. These can be passed from HotSite.json.
 
-Defined in: [Hot.ts:92](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L92)
+Defined in: [Hot.ts:92](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L92)
 
 ___
 
@@ -198,7 +198,7 @@ ___
 
 The API being used by the tester.
 
-Defined in: [Hot.ts:76](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L76)
+Defined in: [Hot.ts:76](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L76)
 
 ___
 
@@ -208,7 +208,7 @@ ___
 
 The CSS string to use when echoing out the CSS files.
 
-Defined in: [Hot.ts:96](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L96)
+Defined in: [Hot.ts:96](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L96)
 
 ___
 
@@ -218,7 +218,7 @@ ___
 
 The JavaScript string to use when echoing out the Scripts files.
 
-Defined in: [Hot.ts:118](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L118)
+Defined in: [Hot.ts:118](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L118)
 
 ___
 
@@ -228,7 +228,7 @@ ___
 
 The JavaScript string to use when echoing out the Scripts files.
 
-Defined in: [Hot.ts:122](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L122)
+Defined in: [Hot.ts:122](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L122)
 
 ## Methods
 
@@ -248,7 +248,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [Hot.ts:178](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L178)
+Defined in: [Hot.ts:178](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L178)
 
 ___
 
@@ -260,7 +260,7 @@ Echo out the CSS for the current page being generated.
 
 **Returns:** *void*
 
-Defined in: [Hot.ts:208](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L208)
+Defined in: [Hot.ts:208](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L208)
 
 ___
 
@@ -272,7 +272,7 @@ Echo out the JS files for the current page being generated.
 
 **Returns:** *void*
 
-Defined in: [Hot.ts:224](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L224)
+Defined in: [Hot.ts:224](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L224)
 
 ___
 
@@ -284,7 +284,7 @@ Echo out the JS scripts for the current page being generated.
 
 **Returns:** *void*
 
-Defined in: [Hot.ts:240](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L240)
+Defined in: [Hot.ts:240](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L240)
 
 ___
 
@@ -302,7 +302,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [Hot.ts:200](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L200)
+Defined in: [Hot.ts:200](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L200)
 
 ___
 
@@ -321,7 +321,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<string\>
 
-Defined in: [Hot.ts:151](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L151)
+Defined in: [Hot.ts:151](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L151)
 
 ___
 
@@ -340,7 +340,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [Hot.ts:127](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L127)
+Defined in: [Hot.ts:127](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L127)
 
 ___
 
@@ -359,4 +359,4 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [Hot.ts:135](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/Hot.ts#L135)
+Defined in: [Hot.ts:135](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/Hot.ts#L135)

@@ -2,6 +2,7 @@
 	"name": "HotSiteTest",
 	"server": {
 			"jsSrcPath": "/build-web/HotPreprocessor.js",
+			"serveHottFiles": true,
 			"serveDirectories": [{
 					"route": "/",
 					"localPath": "./"
@@ -48,7 +49,7 @@
 	"apis": {
 		"HelloWorld": {
 			"jsapi": "./build-web/HotPreprocessorTests.js",
-			"exportedName": "HotPreprocessorTests",
+			"libraryName": "HotPreprocessorTests",
 			"apiName": "HelloWorldAPI"
 		}
 	},

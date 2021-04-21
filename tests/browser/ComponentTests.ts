@@ -25,6 +25,7 @@ describe ("Component Tests", () =>
 			{
 				await common.driver.quit ();
 				await common.shutdown ();
+				await common.driver.sleep (1000);
 			});
  
 		it ("should load the component tests html", async () =>

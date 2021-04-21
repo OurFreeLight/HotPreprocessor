@@ -88,6 +88,7 @@ describe ("Browser Manual Testing From Server Tests - Mocha Selenium - Developme
 		after (async () =>
 			{
 				await common.shutdown ();
+				await HotPreprocessor.wait (1000);
 			});
 
 		it ("should execute the manual server side tests", async () =>

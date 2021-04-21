@@ -441,8 +441,8 @@ export class HotHTTPServer extends HotServer
 	{
 		this.expressApp.use ((req: express.Request, res: express.Response, next: any): void =>
 			{
-				const url: string = `${req.protocol}://${req.hostname}${req.originalUrl}`;
-				this.logger.verbose (`Requested: ${url}`);
+				const url: string = `${req.protocol}://${req.get ("host")}${req.originalUrl}`;
+				this.logger.verbose (`Requested: ${req.method} ${req.httpVersion} ${url}`);
 
 				next ();
 			});
@@ -510,6 +510,8 @@ export class HotHTTPServer extends HotServer
 										this.hottFilesAssociatedInfo.name,
 										fullUrl.toString (),
 										this.hottFilesAssociatedInfo.jsSrcPath);
+									// The content will be generated and sent to the client. The client 
+									// will then request the real page that contains the file.
 									res.send (content);
 								};
 
@@ -567,11 +569,13 @@ export class HotHTTPServer extends HotServer
 											ppath.normalize (`${checkDir}/${tempFilepath}.hott`)) === true)
 										{
 											sendContentFlag = true;
+											url.pathname += ".hott";
 										}
 									}
 
 									if (sendContentFlag === false)
 									{
+										// If no content has been found, send the index.
 										tempFilepath += "index.hott";
 
 										if (await HotHTTPServer.checkIfFileExists (

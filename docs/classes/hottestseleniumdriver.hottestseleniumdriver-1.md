@@ -60,7 +60,7 @@ Name | Type | Default value |
 
 Inherited from: [HotTestDriver](hottestdriver.hottestdriver-1.md)
 
-Defined in: [HotTestSeleniumDriver.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestSeleniumDriver.ts#L35)
+Defined in: [HotTestSeleniumDriver.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestSeleniumDriver.ts#L35)
 
 ## Properties
 
@@ -70,7 +70,7 @@ Defined in: [HotTestSeleniumDriver.ts:35](https://github.com/OurFreeLight/HotPre
 
 The browser to use.
 
-Defined in: [HotTestSeleniumDriver.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestSeleniumDriver.ts#L27)
+Defined in: [HotTestSeleniumDriver.ts:27](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestSeleniumDriver.ts#L27)
 
 ___
 
@@ -80,7 +80,7 @@ ___
 
 The selenium webdriver.
 
-Defined in: [HotTestSeleniumDriver.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestSeleniumDriver.ts#L23)
+Defined in: [HotTestSeleniumDriver.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestSeleniumDriver.ts#L23)
 
 ___
 
@@ -90,7 +90,7 @@ ___
 
 Run the tests headless.
 
-Defined in: [HotTestSeleniumDriver.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestSeleniumDriver.ts#L31)
+Defined in: [HotTestSeleniumDriver.ts:31](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestSeleniumDriver.ts#L31)
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 Automatically open the developer tools on start.
 
-Defined in: [HotTestSeleniumDriver.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestSeleniumDriver.ts#L35)
+Defined in: [HotTestSeleniumDriver.ts:35](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestSeleniumDriver.ts#L35)
 
 ___
 
@@ -112,7 +112,7 @@ The current page.
 
 Inherited from: [HotTestDriver](hottestdriver.hottestdriver-1.md).[page](hottestdriver.hottestdriver-1.md#page)
 
-Defined in: [HotTestDriver.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestDriver.ts#L13)
+Defined in: [HotTestDriver.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestDriver.ts#L13)
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 The current selenium session running.
 
-Defined in: [HotTestSeleniumDriver.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestSeleniumDriver.ts#L19)
+Defined in: [HotTestSeleniumDriver.ts:19](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestSeleniumDriver.ts#L19)
 
 ## Methods
 
@@ -143,7 +143,7 @@ Name | Type | Default value |
 
 Inherited from: [HotTestDriver](hottestdriver.hottestdriver-1.md)
 
-Defined in: [HotTestDriver.ts:107](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestDriver.ts#L107)
+Defined in: [HotTestDriver.ts:107](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestDriver.ts#L107)
 
 ___
 
@@ -166,7 +166,7 @@ Name | Type | Default value |
 
 Overrides: [HotTestDriver](hottestdriver.hottestdriver-1.md)
 
-Defined in: [HotTestSeleniumDriver.ts:269](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestSeleniumDriver.ts#L269)
+Defined in: [HotTestSeleniumDriver.ts:269](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestSeleniumDriver.ts#L269)
 
 ___
 
@@ -180,7 +180,7 @@ Disconnect this server or destroy anything associated with this HotTestDriver.
 
 Overrides: [HotTestDriver](hottestdriver.hottestdriver-1.md)
 
-Defined in: [HotTestSeleniumDriver.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestSeleniumDriver.ts#L51)
+Defined in: [HotTestSeleniumDriver.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestSeleniumDriver.ts#L51)
 
 ___
 
@@ -201,7 +201,7 @@ Name | Type |
 
 Overrides: [HotTestDriver](hottestdriver.hottestdriver-1.md)
 
-Defined in: [HotTestSeleniumDriver.ts:172](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestSeleniumDriver.ts#L172)
+Defined in: [HotTestSeleniumDriver.ts:172](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestSeleniumDriver.ts#L172)
 
 ___
 
@@ -221,7 +221,7 @@ Name | Type |
 
 **Returns:** *By*
 
-Defined in: [HotTestSeleniumDriver.ts:117](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestSeleniumDriver.ts#L117)
+Defined in: [HotTestSeleniumDriver.ts:117](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestSeleniumDriver.ts#L117)
 
 ___
 
@@ -233,7 +233,7 @@ Load the selenium driver.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTestSeleniumDriver.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestSeleniumDriver.ts#L65)
+Defined in: [HotTestSeleniumDriver.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestSeleniumDriver.ts#L65)
 
 ___
 
@@ -253,7 +253,7 @@ Name | Type |
 
 Overrides: [HotTestDriver](hottestdriver.hottestdriver-1.md)
 
-Defined in: [HotTestSeleniumDriver.ts:127](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestSeleniumDriver.ts#L127)
+Defined in: [HotTestSeleniumDriver.ts:127](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestSeleniumDriver.ts#L127)
 
 ___
 
@@ -275,7 +275,7 @@ Name | Type |
 
 Inherited from: [HotTestDriver](hottestdriver.hottestdriver-1.md)
 
-Defined in: [HotTestDriver.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestDriver.ts#L25)
+Defined in: [HotTestDriver.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestDriver.ts#L25)
 
 ___
 
@@ -295,7 +295,7 @@ Name | Type |
 
 Inherited from: [HotTestDriver](hottestdriver.hottestdriver-1.md)
 
-Defined in: [HotTestDriver.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestDriver.ts#L65)
+Defined in: [HotTestDriver.ts:65](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestDriver.ts#L65)
 
 ___
 
@@ -315,7 +315,7 @@ Name | Type |
 
 Inherited from: [HotTestDriver](hottestdriver.hottestdriver-1.md)
 
-Defined in: [HotTestDriver.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestDriver.ts#L73)
+Defined in: [HotTestDriver.ts:73](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestDriver.ts#L73)
 
 ___
 
@@ -335,7 +335,7 @@ Name | Type |
 
 Inherited from: [HotTestDriver](hottestdriver.hottestdriver-1.md)
 
-Defined in: [HotTestDriver.ts:116](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestDriver.ts#L116)
+Defined in: [HotTestDriver.ts:116](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestDriver.ts#L116)
 
 ___
 
@@ -358,7 +358,7 @@ Name | Type | Default value |
 
 Overrides: [HotTestDriver](hottestdriver.hottestdriver-1.md)
 
-Defined in: [HotTestSeleniumDriver.ts:214](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestSeleniumDriver.ts#L214)
+Defined in: [HotTestSeleniumDriver.ts:214](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestSeleniumDriver.ts#L214)
 
 ___
 
@@ -378,7 +378,7 @@ Name | Type |
 
 Inherited from: [HotTestDriver](hottestdriver.hottestdriver-1.md)
 
-Defined in: [HotTestDriver.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestDriver.ts#L51)
+Defined in: [HotTestDriver.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestDriver.ts#L51)
 
 ___
 
@@ -399,4 +399,4 @@ Name | Type |
 
 Overrides: [HotTestDriver](hottestdriver.hottestdriver-1.md)
 
-Defined in: [HotTestSeleniumDriver.ts:135](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestSeleniumDriver.ts#L135)
+Defined in: [HotTestSeleniumDriver.ts:135](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestSeleniumDriver.ts#L135)

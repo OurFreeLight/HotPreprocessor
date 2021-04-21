@@ -1113,7 +1113,7 @@ export class HotPreprocessor implements IHotPreprocessor
 				for (let key in this.hotSite.publicSecrets)
 				{
 					let secret = this.hotSite.publicSecrets[key];
-					let value: string = "";
+					let value: string = undefined;
 
 					if (typeof (secret) === "string")
 						value = JSON.stringify (secret);
@@ -1123,12 +1123,15 @@ export class HotPreprocessor implements IHotPreprocessor
 						{
 							if (secret.passSecretFromAPI != null)
 							{
-								if (this.api.connection == null)
-									throw new Error (`Cannot pass secrets from the API if there's no connection!`);
+								if (this.api != null)
+								{
+									if (this.api.connection == null)
+										throw new Error (`Cannot pass secrets from the API if there's no connection!`);
 
-								let serverConn: HotServer = (<HotServer>this.api.connection);
+									let serverConn: HotServer = (<HotServer>this.api.connection);
 
-								value = JSON.stringify (serverConn.secrets[key]);
+									value = JSON.stringify (serverConn.secrets[key]);
+								}
 							}
 						}
 					}

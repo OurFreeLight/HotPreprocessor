@@ -25,7 +25,7 @@ The database connection info.
 
 The database to use.
 
-Defined in: [HotDBConnectionInterface.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDBConnectionInterface.ts#L30)
+Defined in: [HotDBConnectionInterface.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotDBConnectionInterface.ts#L30)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 The password to use.
 
-Defined in: [HotDBConnectionInterface.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDBConnectionInterface.ts#L26)
+Defined in: [HotDBConnectionInterface.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotDBConnectionInterface.ts#L26)
 
 ___
 
@@ -45,7 +45,7 @@ ___
 
 The server's port.
 
-Defined in: [HotDBConnectionInterface.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDBConnectionInterface.ts#L18)
+Defined in: [HotDBConnectionInterface.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotDBConnectionInterface.ts#L18)
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 The server's address.
 
-Defined in: [HotDBConnectionInterface.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDBConnectionInterface.ts#L14)
+Defined in: [HotDBConnectionInterface.ts:14](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotDBConnectionInterface.ts#L14)
 
 ___
 
@@ -66,7 +66,7 @@ ___
 The type of database. Can be:
 * mysql
 
-Defined in: [HotDBConnectionInterface.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDBConnectionInterface.ts#L10)
+Defined in: [HotDBConnectionInterface.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotDBConnectionInterface.ts#L10)
 
 ___
 
@@ -76,4 +76,4 @@ ___
 
 The username to use to connect.
 
-Defined in: [HotDBConnectionInterface.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotDBConnectionInterface.ts#L22)
+Defined in: [HotDBConnectionInterface.ts:22](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotDBConnectionInterface.ts#L22)

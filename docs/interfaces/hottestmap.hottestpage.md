@@ -23,7 +23,7 @@ The elements to test on this map.
 
 #### Type declaration:
 
-Defined in: [HotTestMap.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestMap.ts#L56)
+Defined in: [HotTestMap.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestMap.ts#L56)
 
 ___
 
@@ -35,4 +35,4 @@ The test paths to test on this map.
 
 #### Type declaration:
 
-Defined in: [HotTestMap.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTestMap.ts#L60)
+Defined in: [HotTestMap.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestMap.ts#L60)

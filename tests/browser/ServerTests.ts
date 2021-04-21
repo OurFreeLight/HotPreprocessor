@@ -18,24 +18,18 @@ describe ("Browser-Server Tests", () =>
 				common = new Common ();
 				await common.load ();
 
-				await HotPreprocessor.wait (100);
 				await common.startServer (true);
-
-				/// @fixme Dumb wait hack, gotta figure out why errors are thrown without this wait.
-				await HotPreprocessor.wait (100);
 				await common.driver.get (`${common.getUrl ()}/tests/browser/Test.hott`);
-				await HotPreprocessor.wait (100);
 			});
 		after (async () =>
 			{
-				debugger;
 				await common.driver.quit ();
 				await common.shutdown ();
+				await HotPreprocessor.wait (1000);
 			});
 
 		it ("should click the test button", async () =>
 			{
-
 				let elm = await common.driver.wait (until.elementLocated (By.id ("testButton")));
 				expect (elm).to.not.equal (null, "Page did not load!");
 				await elm.click ();

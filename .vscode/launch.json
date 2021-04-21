@@ -176,7 +176,7 @@
 				"run",
 				"tests",
 				"7478",
-				"all"
+				"browser"
 			],
 			"cwd": "${workspaceFolder}",
 			"env": {

@@ -75,7 +75,7 @@ Name | Type | Default value |
 
 Inherited from: [HotServer](hotserver.hotserver-1.md)
 
-Defined in: [HotHTTPServer.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L98)
+Defined in: [HotHTTPServer.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L98)
 
 ## Properties
 
@@ -87,7 +87,7 @@ The API to use.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[api](hotserver.hotserver-1.md#api)
 
-Defined in: [HotServer.ts:94](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotServer.ts#L94)
+Defined in: [HotServer.ts:94](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L94)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 The express app to use.
 
-Defined in: [HotHTTPServer.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L40)
+Defined in: [HotHTTPServer.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L40)
 
 ___
 
@@ -116,7 +116,7 @@ Name | Type | Description |
 `name` | *string* | The default name for a served Hott file.   |
 `url` | *string* | The base url for a hott file.   |
 
-Defined in: [HotHTTPServer.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L85)
+Defined in: [HotHTTPServer.ts:85](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L85)
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 The HTTP listener to use.
 
-Defined in: [HotHTTPServer.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L44)
+Defined in: [HotHTTPServer.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L44)
 
 ___
 
@@ -136,7 +136,7 @@ ___
 
 The HTTPS listener to use.
 
-Defined in: [HotHTTPServer.ts:48](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L48)
+Defined in: [HotHTTPServer.ts:48](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L48)
 
 ___
 
@@ -148,7 +148,7 @@ Do not serve these hott files.
 
 #### Type declaration:
 
-Defined in: [HotHTTPServer.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L80)
+Defined in: [HotHTTPServer.ts:80](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L80)
 
 ___
 
@@ -160,7 +160,7 @@ The network address to listen on.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[listenAddress](hotserver.hotserver-1.md#listenaddress)
 
-Defined in: [HotServer.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotServer.ts#L98)
+Defined in: [HotServer.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L98)
 
 ___
 
@@ -172,7 +172,7 @@ The logger.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[logger](hotserver.hotserver-1.md#logger)
 
-Defined in: [HotServer.ts:134](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotServer.ts#L134)
+Defined in: [HotServer.ts:134](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L134)
 
 ___
 
@@ -191,7 +191,7 @@ Name | Type |
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[ports](hotserver.hotserver-1.md#ports)
 
-Defined in: [HotServer.ts:102](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotServer.ts#L102)
+Defined in: [HotServer.ts:102](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L102)
 
 ___
 
@@ -203,7 +203,7 @@ The processor to use.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[processor](hotserver.hotserver-1.md#processor)
 
-Defined in: [HotServer.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotServer.ts#L86)
+Defined in: [HotServer.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L86)
 
 ___
 
@@ -215,7 +215,7 @@ Redirect HTTP traffic to HTTPS.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[redirectHTTPtoHTTPS](hotserver.hotserver-1.md#redirecthttptohttps)
 
-Defined in: [HotServer.ts:126](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotServer.ts#L126)
+Defined in: [HotServer.ts:126](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L126)
 
 ___
 
@@ -227,7 +227,7 @@ Any non-static routes that need to be added. These
 will be added during the preregistration phase, before
 all API routes are added.
 
-Defined in: [HotHTTPServer.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L58)
+Defined in: [HotHTTPServer.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L58)
 
 ___
 
@@ -239,7 +239,7 @@ Any secrets associated with this server.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[secrets](hotserver.hotserver-1.md#secrets)
 
-Defined in: [HotServer.ts:138](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotServer.ts#L138)
+Defined in: [HotServer.ts:138](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L138)
 
 ___
 
@@ -250,7 +250,7 @@ ___
 Serve hott files when requested. This value will be overwritten by whatever
 value is set to server.serveHottFiles in HotSite.json.
 
-Defined in: [HotHTTPServer.ts:76](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L76)
+Defined in: [HotHTTPServer.ts:76](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L76)
 
 ___
 
@@ -262,7 +262,7 @@ The server type.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[serverType](hotserver.hotserver-1.md#servertype)
 
-Defined in: [HotServer.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotServer.ts#L90)
+Defined in: [HotServer.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L90)
 
 ___
 
@@ -282,7 +282,7 @@ Name | Type | Description |
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[ssl](hotserver.hotserver-1.md#ssl)
 
-Defined in: [HotServer.ts:109](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotServer.ts#L109)
+Defined in: [HotServer.ts:109](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L109)
 
 ___
 
@@ -292,7 +292,7 @@ ___
 
 The static files and folders to serve.
 
-Defined in: [HotHTTPServer.ts:52](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L52)
+Defined in: [HotHTTPServer.ts:52](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L52)
 
 ___
 
@@ -304,7 +304,7 @@ The type of server.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[type](hotserver.hotserver-1.md#type)
 
-Defined in: [HotServer.ts:130](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotServer.ts#L130)
+Defined in: [HotServer.ts:130](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L130)
 
 ## Methods
 
@@ -324,7 +324,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotHTTPServer.ts:215](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L215)
+Defined in: [HotHTTPServer.ts:215](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L215)
 
 ___
 
@@ -343,7 +343,7 @@ Name | Type | Default value |
 
 **Returns:** *void*
 
-Defined in: [HotHTTPServer.ts:194](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L194)
+Defined in: [HotHTTPServer.ts:194](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L194)
 
 ___
 
@@ -356,7 +356,7 @@ error handlers.
 
 **Returns:** *void*
 
-Defined in: [HotHTTPServer.ts:667](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L667)
+Defined in: [HotHTTPServer.ts:671](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L671)
 
 ___
 
@@ -374,7 +374,7 @@ Name | Type |
 
 **Returns:** [*StaticRoute*](../interfaces/hothttpserver.staticroute.md)
 
-Defined in: [HotHTTPServer.ts:252](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L252)
+Defined in: [HotHTTPServer.ts:252](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L252)
 
 ___
 
@@ -388,7 +388,7 @@ Start listening for requests.
 
 Overrides: [HotServer](hotserver.hotserver-1.md)
 
-Defined in: [HotHTTPServer.ts:695](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L695)
+Defined in: [HotHTTPServer.ts:699](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L699)
 
 ___
 
@@ -400,7 +400,7 @@ The routes to add before registering a route.
 
 **Returns:** *void*
 
-Defined in: [HotHTTPServer.ts:440](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L440)
+Defined in: [HotHTTPServer.ts:440](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L440)
 
 ___
 
@@ -420,7 +420,7 @@ Name | Type |
 
 Overrides: [HotServer](hotserver.hotserver-1.md)
 
-Defined in: [HotHTTPServer.ts:274](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L274)
+Defined in: [HotHTTPServer.ts:274](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L274)
 
 ___
 
@@ -438,7 +438,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotHTTPServer.ts:238](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L238)
+Defined in: [HotHTTPServer.ts:238](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L238)
 
 ___
 
@@ -457,7 +457,7 @@ Name | Type | Default value |
 
 **Returns:** *void*
 
-Defined in: [HotHTTPServer.ts:230](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L230)
+Defined in: [HotHTTPServer.ts:230](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L230)
 
 ___
 
@@ -478,7 +478,7 @@ Name | Type |
 
 Inherited from: [HotServer](hotserver.hotserver-1.md)
 
-Defined in: [HotServer.ts:188](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotServer.ts#L188)
+Defined in: [HotServer.ts:188](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L188)
 
 ___
 
@@ -499,7 +499,7 @@ Name | Type | Default value |
 
 **Returns:** *void*
 
-Defined in: [HotHTTPServer.ts:627](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L627)
+Defined in: [HotHTTPServer.ts:631](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L631)
 
 ___
 
@@ -513,7 +513,7 @@ Shutdown the server.
 
 Overrides: [HotServer](hotserver.hotserver-1.md)
 
-Defined in: [HotHTTPServer.ts:921](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L921)
+Defined in: [HotHTTPServer.ts:925](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L925)
 
 ___
 
@@ -531,7 +531,7 @@ Name | Type |
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotHTTPServer.ts:423](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L423)
+Defined in: [HotHTTPServer.ts:423](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L423)
 
 ___
 
@@ -550,7 +550,7 @@ Name | Type |
 
 **Returns:** *Promise*<Files\>
 
-Defined in: [HotHTTPServer.ts:606](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L606)
+Defined in: [HotHTTPServer.ts:610](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L610)
 
 ___
 
@@ -571,4 +571,4 @@ Name | Type | Default value | Description |
 
 **Returns:** *Promise*<{ `processor`: [*HotServer*](hotserver.hotserver-1.md) \| [*HotPreprocessor*](hotpreprocessor.hotpreprocessor-1.md) ; `server`: [*HotHTTPServer*](hothttpserver.hothttpserver-1.md)  }\>
 
-Defined in: [HotHTTPServer.ts:888](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotHTTPServer.ts#L888)
+Defined in: [HotHTTPServer.ts:892](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotHTTPServer.ts#L892)

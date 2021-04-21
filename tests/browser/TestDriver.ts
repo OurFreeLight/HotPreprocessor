@@ -60,10 +60,8 @@ export class TestDriver extends HotTestDriver
 		}
 
 		let builder: Builder = new Builder ();
-		debugger;
 		this.driver = await builder.withCapabilities (capabilities).build ();
 		this.session = await this.driver.getSession ();
-		debugger;
 	}
 
 	/**

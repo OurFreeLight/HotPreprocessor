@@ -27,7 +27,7 @@ The options to use when starting a page.
 
 Any arguments to pass to the new page.
 
-Defined in: [HotPreprocessor.ts:272](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotPreprocessor.ts#L272)
+Defined in: [HotPreprocessor.ts:272](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L272)
 
 ___
 
@@ -37,7 +37,7 @@ ___
 
 The name of the page to load.
 
-Defined in: [HotPreprocessor.ts:264](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotPreprocessor.ts#L264)
+Defined in: [HotPreprocessor.ts:264](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L264)
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 The processor to use to load the page.
 
-Defined in: [HotPreprocessor.ts:268](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotPreprocessor.ts#L268)
+Defined in: [HotPreprocessor.ts:268](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L268)
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 The base url for the tester api.
 
-Defined in: [HotPreprocessor.ts:284](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotPreprocessor.ts#L284)
+Defined in: [HotPreprocessor.ts:284](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L284)
 
 ___
 
@@ -68,7 +68,7 @@ ___
 The url to the html that loads the hott file that's
 pointed at the url above.
 
-Defined in: [HotPreprocessor.ts:289](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotPreprocessor.ts#L289)
+Defined in: [HotPreprocessor.ts:289](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L289)
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 The name of the tester map to use.
 
-Defined in: [HotPreprocessor.ts:280](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotPreprocessor.ts#L280)
+Defined in: [HotPreprocessor.ts:280](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L280)
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 The name of the tester to use.
 
-Defined in: [HotPreprocessor.ts:276](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotPreprocessor.ts#L276)
+Defined in: [HotPreprocessor.ts:276](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L276)
 
 ___
 
@@ -98,4 +98,4 @@ ___
 
 The Hott site to load.
 
-Defined in: [HotPreprocessor.ts:260](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotPreprocessor.ts#L260)
+Defined in: [HotPreprocessor.ts:260](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L260)

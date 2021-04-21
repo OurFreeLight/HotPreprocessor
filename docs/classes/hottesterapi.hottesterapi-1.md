@@ -59,7 +59,7 @@ Name | Type | Default value |
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md)
 
-Defined in: [HotTesterAPI.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTesterAPI.ts#L10)
+Defined in: [HotTesterAPI.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterAPI.ts#L10)
 
 ## Properties
 
@@ -71,7 +71,7 @@ The authorization credentials to use throughout the application.
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md).[authCredentials](hotapi.hotapi-1.md#authcredentials)
 
-Defined in: [HotAPI.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L50)
+Defined in: [HotAPI.ts:50](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L50)
 
 ___
 
@@ -83,7 +83,7 @@ The base url for the server.
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md).[baseUrl](hotapi.hotapi-1.md#baseurl)
 
-Defined in: [HotAPI.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L33)
+Defined in: [HotAPI.ts:33](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L33)
 
 ___
 
@@ -95,7 +95,7 @@ The server connection.
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md).[connection](hotapi.hotapi-1.md#connection)
 
-Defined in: [HotAPI.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L29)
+Defined in: [HotAPI.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L29)
 
 ___
 
@@ -108,7 +108,7 @@ easy client/server calling.
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md).[createFunctions](hotapi.hotapi-1.md#createfunctions)
 
-Defined in: [HotAPI.ts:38](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L38)
+Defined in: [HotAPI.ts:38](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L38)
 
 ___
 
@@ -120,7 +120,7 @@ The database connection.
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md).[db](hotapi.hotapi-1.md#db)
 
-Defined in: [HotAPI.ts:46](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L46)
+Defined in: [HotAPI.ts:46](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L46)
 
 ___
 
@@ -132,7 +132,7 @@ The database connection.
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md).[executeEventsUsing](hotapi.hotapi-1.md#executeeventsusing)
 
-Defined in: [HotAPI.ts:42](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L42)
+Defined in: [HotAPI.ts:42](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L42)
 
 ___
 
@@ -149,11 +149,11 @@ this function returns false, the server will not start.
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotAPI.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L68)
+Defined in: [HotAPI.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L68)
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md).[onPostRegister](hotapi.hotapi-1.md#onpostregister)
 
-Defined in: [HotAPI.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L68)
+Defined in: [HotAPI.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L68)
 
 ___
 
@@ -170,11 +170,11 @@ this function returns false, the server will not start.
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotAPI.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L63)
+Defined in: [HotAPI.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L63)
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md).[onPreRegister](hotapi.hotapi-1.md#onpreregister)
 
-Defined in: [HotAPI.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L63)
+Defined in: [HotAPI.ts:63](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L63)
 
 ___
 
@@ -188,7 +188,7 @@ The database connection.
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md).[routes](hotapi.hotapi-1.md#routes)
 
-Defined in: [HotAPI.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L58)
+Defined in: [HotAPI.ts:58](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L58)
 
 ___
 
@@ -200,7 +200,7 @@ The function used for user authentication.
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md).[userAuth](hotapi.hotapi-1.md#userauth)
 
-Defined in: [HotAPI.ts:54](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L54)
+Defined in: [HotAPI.ts:54](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L54)
 
 ## Methods
 
@@ -250,7 +250,7 @@ Name | Type | Default value | Description |
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md)
 
-Defined in: [HotAPI.ts:159](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L159)
+Defined in: [HotAPI.ts:159](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L159)
 
 ___
 
@@ -272,7 +272,7 @@ Name | Type | Default value |
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md)
 
-Defined in: [HotAPI.ts:335](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L335)
+Defined in: [HotAPI.ts:335](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L335)
 
 ___
 
@@ -294,7 +294,7 @@ Name | Type |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotTesterAPI.ts:104](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTesterAPI.ts#L104)
+Defined in: [HotTesterAPI.ts:104](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterAPI.ts#L104)
 
 ___
 
@@ -308,7 +308,7 @@ Get the database being used.
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md)
 
-Defined in: [HotAPI.ts:101](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L101)
+Defined in: [HotAPI.ts:101](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L101)
 
 ___
 
@@ -322,7 +322,7 @@ Get the database schema being used.
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md)
 
-Defined in: [HotAPI.ts:112](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L112)
+Defined in: [HotAPI.ts:112](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L112)
 
 ___
 
@@ -344,7 +344,7 @@ Name | Type |
 
 **Returns:** *Promise*<any\>
 
-Defined in: [HotTesterAPI.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotTesterAPI.ts#L26)
+Defined in: [HotTesterAPI.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterAPI.ts#L26)
 
 ___
 
@@ -364,7 +364,7 @@ Name | Type |
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md)
 
-Defined in: [HotAPI.ts:313](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L313)
+Defined in: [HotAPI.ts:313](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L313)
 
 ___
 
@@ -378,7 +378,7 @@ Register all routes with the server.
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md)
 
-Defined in: [HotAPI.ts:322](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L322)
+Defined in: [HotAPI.ts:322](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L322)
 
 ___
 
@@ -398,4 +398,4 @@ Name | Type |
 
 Inherited from: [HotAPI](hotapi.hotapi-1.md)
 
-Defined in: [HotAPI.ts:87](https://github.com/OurFreeLight/HotPreprocessor/blob/75bbcd5/src/HotAPI.ts#L87)
+Defined in: [HotAPI.ts:87](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotAPI.ts#L87)

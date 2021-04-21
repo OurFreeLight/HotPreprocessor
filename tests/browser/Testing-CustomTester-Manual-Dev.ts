@@ -71,6 +71,7 @@ describe ("Browser Manual Testing From Server Tests - Custom Tester - Developmen
 		after (async () =>
 			{
 				await common.shutdown ();
+				await HotPreprocessor.wait (1000);
 			});
 
 		it ("should execute the manual server side tests using a custom tester", async () =>

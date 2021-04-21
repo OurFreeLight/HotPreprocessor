@@ -38,6 +38,7 @@ describe ("Browser Testing From Web Tests - Custom Tester - Development Mode", (
 		after (async () =>
 			{
 				await common.shutdown ();
+				await HotPreprocessor.wait (1000);
 			});
 
 		it ("should execute the server side tests from the web using a custom tester", async () =>

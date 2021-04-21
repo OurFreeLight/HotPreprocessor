@@ -100,6 +100,7 @@ export class HotFile implements IHotFile
 	{
 		try
 		{
+			console.log (`FETCH URL: ${url}`);
 			let res: Response = await fetch (url);
 
 			if (res.ok === false)
