@@ -100,7 +100,6 @@ export class HotFile implements IHotFile
 	{
 		try
 		{
-			console.log (`FETCH URL: ${url}`);
 			let res: Response = await fetch (url);
 
 			if (res.ok === false)
@@ -351,6 +350,9 @@ export class HotFile implements IHotFile
 			}, 
 			(offContent: string): string =>
 			{
+				if (offContent === "")
+					return ("");
+
 				let tempOutput: string = HotFile.processNestedContent (
 					offContent, "!{", "}", "{", 
 					(regexFound2: string): string =>

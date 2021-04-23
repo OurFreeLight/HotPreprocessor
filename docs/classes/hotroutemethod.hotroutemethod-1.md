@@ -53,7 +53,7 @@ Name | Type | Default value |
 
 **Returns:** [*HotRouteMethod*](hotroutemethod.hotroutemethod-1.md)
 
-Defined in: [HotRouteMethod.ts:93](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L93)
+Defined in: [HotRouteMethod.ts:93](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L93)
 
 ## Properties
 
@@ -64,7 +64,7 @@ Defined in: [HotRouteMethod.ts:93](https://github.com/OurFreeLight/HotPreprocess
 The authorization credentials to be used by the client
 when connecting to the server.
 
-Defined in: [HotRouteMethod.ts:87](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L87)
+Defined in: [HotRouteMethod.ts:87](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L87)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 Has this method been registered with the server? This
 prevents the method from being reregistered.
 
-Defined in: [HotRouteMethod.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L82)
+Defined in: [HotRouteMethod.ts:82](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L82)
 
 ___
 
@@ -86,7 +86,7 @@ ___
 Has this method been registered with the server? This
 prevents the method from being reregistered.
 
-Defined in: [HotRouteMethod.ts:77](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L77)
+Defined in: [HotRouteMethod.ts:77](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L77)
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 The api call name.
 
-Defined in: [HotRouteMethod.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L68)
+Defined in: [HotRouteMethod.ts:68](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L68)
 
 ___
 
@@ -108,7 +108,7 @@ Executes when executing a called method from the client side.
 
 **`fixme`** Is this necessary?
 
-Defined in: [HotRouteMethod.ts:178](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L178)
+Defined in: [HotRouteMethod.ts:178](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L178)
 
 ___
 
@@ -124,9 +124,9 @@ Executes after all routes have been registered.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotRouteMethod.ts:151](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L151)
+Defined in: [HotRouteMethod.ts:151](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L151)
 
-Defined in: [HotRouteMethod.ts:151](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L151)
+Defined in: [HotRouteMethod.ts:151](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L151)
 
 ___
 
@@ -142,9 +142,9 @@ Executes before all routes have been registered.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotRouteMethod.ts:142](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L142)
+Defined in: [HotRouteMethod.ts:142](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L142)
 
-Defined in: [HotRouteMethod.ts:142](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L142)
+Defined in: [HotRouteMethod.ts:142](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L142)
 
 ___
 
@@ -155,7 +155,7 @@ ___
 Executes when first registering this method with Express. If
 this returns false, the method will not be registered.
 
-Defined in: [HotRouteMethod.ts:147](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L147)
+Defined in: [HotRouteMethod.ts:147](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L147)
 
 ___
 
@@ -171,7 +171,7 @@ If any exceptions are thrown from this function, they will be sent
 to the server as an { error: string; } object with the exception
 message as the error.
 
-Defined in: [HotRouteMethod.ts:162](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L162)
+Defined in: [HotRouteMethod.ts:162](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L162)
 
 ___
 
@@ -187,7 +187,7 @@ If any exceptions are thrown from this function, they will be sent
 to the server as an { error: string; } object with the exception
 message as the error.
 
-Defined in: [HotRouteMethod.ts:173](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L173)
+Defined in: [HotRouteMethod.ts:173](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L173)
 
 ___
 
@@ -197,7 +197,7 @@ ___
 
 The parent route.
 
-Defined in: [HotRouteMethod.ts:64](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L64)
+Defined in: [HotRouteMethod.ts:64](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L64)
 
 ___
 
@@ -209,7 +209,7 @@ The test case objects to execute during tests.
 
 #### Type declaration:
 
-Defined in: [HotRouteMethod.ts:91](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L91)
+Defined in: [HotRouteMethod.ts:91](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L91)
 
 ___
 
@@ -219,7 +219,7 @@ ___
 
 The api call name.
 
-Defined in: [HotRouteMethod.ts:72](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L72)
+Defined in: [HotRouteMethod.ts:72](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L72)
 
 ## Methods
 
@@ -238,4 +238,4 @@ Name | Type | Default value |
 
 **Returns:** *void*
 
-Defined in: [HotRouteMethod.ts:183](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotRouteMethod.ts#L183)
+Defined in: [HotRouteMethod.ts:183](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotRouteMethod.ts#L183)

@@ -25,7 +25,7 @@ The logging level.
 
 Prints all messages, except verbose.
 
-Defined in: [HotLog.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotLog.ts#L25)
+Defined in: [HotLog.ts:25](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotLog.ts#L25)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 Prints only error messages.
 
-Defined in: [HotLog.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotLog.ts#L17)
+Defined in: [HotLog.ts:17](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotLog.ts#L17)
 
 ___
 
@@ -45,7 +45,7 @@ ___
 
 Prints only info messages.
 
-Defined in: [HotLog.ts:9](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotLog.ts#L9)
+Defined in: [HotLog.ts:9](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotLog.ts#L9)
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 Doesn't print any message.
 
-Defined in: [HotLog.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotLog.ts#L29)
+Defined in: [HotLog.ts:29](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotLog.ts#L29)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 Prints all messages.
 
-Defined in: [HotLog.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotLog.ts#L21)
+Defined in: [HotLog.ts:21](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotLog.ts#L21)
 
 ___
 
@@ -75,4 +75,4 @@ ___
 
 Prints only warning messages.
 
-Defined in: [HotLog.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotLog.ts#L13)
+Defined in: [HotLog.ts:13](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotLog.ts#L13)

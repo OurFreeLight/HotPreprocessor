@@ -34,7 +34,7 @@ loaded.
 
 #### Type declaration:
 
-Defined in: [HotPreprocessor.ts:188](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L188)
+Defined in: [HotPreprocessor.ts:188](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L188)
 
 ___
 
@@ -46,7 +46,7 @@ The components to load and register.
 
 #### Type declaration:
 
-Defined in: [HotPreprocessor.ts:231](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L231)
+Defined in: [HotPreprocessor.ts:231](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L231)
 
 ___
 
@@ -58,7 +58,7 @@ The files to load and save in memory.
 
 #### Type declaration:
 
-Defined in: [HotPreprocessor.ts:242](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L242)
+Defined in: [HotPreprocessor.ts:242](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L242)
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 The path to the current HotSite. This is filled in during parsing.
 
-Defined in: [HotPreprocessor.ts:88](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L88)
+Defined in: [HotPreprocessor.ts:88](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L88)
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 The name of this HotSite.
 
-Defined in: [HotPreprocessor.ts:84](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L84)
+Defined in: [HotPreprocessor.ts:84](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L84)
 
 ___
 
@@ -90,7 +90,7 @@ Secrets that can be publicly embedded into the page.
 
 #### Type declaration:
 
-Defined in: [HotPreprocessor.ts:219](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L219)
+Defined in: [HotPreprocessor.ts:219](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L219)
 
 ___
 
@@ -102,7 +102,7 @@ The routes to load.
 
 #### Type declaration:
 
-Defined in: [HotPreprocessor.ts:181](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L181)
+Defined in: [HotPreprocessor.ts:181](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L181)
 
 ___
 
@@ -127,7 +127,7 @@ Name | Type | Description |
 `serveHottFiles`? | *boolean* | Serve hott files when requested.   |
 `url`? | *string* | The base url for the server.   |
 
-Defined in: [HotPreprocessor.ts:92](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L92)
+Defined in: [HotPreprocessor.ts:92](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L92)
 
 ___
 
@@ -149,4 +149,4 @@ Name | Type | Description |
 `testerAPIUrl`? | *string* | The url that connects to the tester api server.   |
 `testerName`? | *string* | The name of the tester to use.   |
 
-Defined in: [HotPreprocessor.ts:147](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L147)
+Defined in: [HotPreprocessor.ts:147](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L147)

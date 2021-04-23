@@ -174,11 +174,19 @@ async function handleCreateCommands (): Promise<commander.Command>
 				creator = new HotCreator ();
 		};
 
+	let copyLibrariesPath: string = "";
 	const createCmd: commander.Command = new commander.Command ("create");
-	createCmd.description (`Create commands.`);
+	createCmd.description (`Create a new project.`);
 	createCmd.action (async (cmdr: any, args: string) =>
 		{
 			createHotCreator ();
+
+			if (copyLibrariesPath !== "")
+			{
+				await creator.copyLibraries (copyLibrariesPath);
+
+				return;
+			}
 
 			if (args == null)
 				throw new Error (`You must supply an npm compatible project name!`);
@@ -194,20 +202,27 @@ async function handleCreateCommands (): Promise<commander.Command>
 			await creator.create ();
 		});
 
+	createCmd.option (`--copy-libraries-to-location <path>`, 
+		`Copy the latest HotPreprocessor libraries to a specified location. This will not generate any projects.`, 
+		(path: string, previous: any) =>
+		{
+			createHotCreator ();
+			copyLibrariesPath = path;
+		}, "");
 	createCmd.option (`--type <type>`, 
-		`The type of app to create. Can be (web, web-api, api) Default: api`, 
+		`The type of app to create. Can be (web, web-api, api)`, 
 		(type: string, previous: any) =>
 		{
 			createHotCreator ();
 			creator.type = type;
-		}, "");
+		}, "web-api");
 	createCmd.option (`--code <language>`, 
 		`Set the type of code output. Can be (ts, js) Default: ts`, 
 		(language: string, previous: any) =>
 		{
 			createHotCreator ();
 			creator.language = language;
-		}, "");
+		}, "ts");
 	createCmd.option (`--output <path>`, 
 		`The directory path to place all the files.`, 
 		(path: string, previous: any) =>
@@ -275,6 +290,13 @@ async function handleRunCommands (): Promise<commander.Command>
 {
 	let webServer: HotHTTPServer = new HotHTTPServer (processor);
 	let apiServer: HotHTTPServer = new HotHTTPServer (processor);
+	let testerPorts: {
+			http: number;
+			https: number;
+	 	} = {
+			http: 8183,
+			https: 4143
+		};
 	let apis: APItoLoad[] = [];
 	let dbinfo: HotDBConnectionInterface = null;
 	let setupDB = () =>
@@ -401,7 +423,8 @@ async function handleRunCommands (): Promise<commander.Command>
 
 			if (processor.mode === DeveloperMode.Development)
 			{
-				let serverStarter = await HotTesterServer.startServer ("http://127.0.0.1:8183", 8183, 4143, processor);
+				let serverStarter = await HotTesterServer.startServer (
+					`http://127.0.0.1:${testerPorts.http}`, testerPorts.http, testerPorts.https, processor);
 				testerServer = serverStarter.server;
 
 				let tester: HotTesterMochaSelenium = new HotTesterMochaSelenium (
@@ -490,6 +513,43 @@ async function handleRunCommands (): Promise<commander.Command>
 				await webServer.listen ();
 			}
 		});
+
+	runCmd.option (`--tester-http-port <port>`, 
+		`Set the tester HTTP port`, 
+		(port: string, previous: any) =>
+		{
+			try
+			{
+				const tempPort: number = parseInt (port);
+
+				testerPorts.http = tempPort;
+			}
+			catch (ex)
+			{
+				processor.logger.error (`Unable to parse tester http port ${port}`);
+			}
+		}, testerPorts.http);
+	runCmd.option (`--tester-https-port [port]`, 
+		`Set the tester HTTPS port`, 
+		(port: string, previous: any) =>
+		{
+			if (port == null)
+				return;
+
+			if (port === "")
+				return;
+
+			try
+			{
+				const tempPort: number = parseInt (port);
+
+				testerPorts.https = tempPort;
+			}
+			catch (ex)
+			{
+				processor.logger.error (`Unable to parse tester https port ${port}`);
+			}
+		}, testerPorts.https);
 
 	const serverTypes: string[] = ["web", "api"];
 

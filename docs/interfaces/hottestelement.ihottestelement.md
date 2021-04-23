@@ -27,7 +27,7 @@ A test element.
 The name of the function to execute
 while executing the test.
 
-Defined in: [HotTestElement.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestElement.ts#L56)
+Defined in: [HotTestElement.ts:56](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTestElement.ts#L56)
 
 ___
 
@@ -37,7 +37,7 @@ ___
 
 The name of the element.
 
-Defined in: [HotTestElement.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestElement.ts#L51)
+Defined in: [HotTestElement.ts:51](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTestElement.ts#L51)
 
 ___
 
@@ -47,4 +47,4 @@ ___
 
 The value to use.
 
-Defined in: [HotTestElement.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestElement.ts#L60)
+Defined in: [HotTestElement.ts:60](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTestElement.ts#L60)

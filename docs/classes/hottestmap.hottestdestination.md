@@ -32,7 +32,7 @@ Name | Type | Default value |
 
 **Returns:** [*HotTestDestination*](hottestmap.hottestdestination.md)
 
-Defined in: [HotTestMap.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestMap.ts#L23)
+Defined in: [HotTestMap.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTestMap.ts#L23)
 
 ## Properties
 
@@ -43,7 +43,7 @@ Defined in: [HotTestMap.ts:23](https://github.com/OurFreeLight/HotPreprocessor/b
 If set to true, this will automatically start executing it's
 tests when it's time.
 
-Defined in: [HotTestMap.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestMap.ts#L23)
+Defined in: [HotTestMap.ts:23](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTestMap.ts#L23)
 
 ___
 
@@ -53,4 +53,4 @@ ___
 
 The destination to take.
 
-Defined in: [HotTestMap.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestMap.ts#L18)
+Defined in: [HotTestMap.ts:18](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTestMap.ts#L18)

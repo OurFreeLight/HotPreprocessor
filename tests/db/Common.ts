@@ -88,5 +88,6 @@ export class Common
 	async shutdown (): Promise<void>
 	{
 		await this.server.shutdown ();
+		await HotPreprocessor.wait (1000);
 	}
 }

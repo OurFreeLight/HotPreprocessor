@@ -27,7 +27,7 @@ If the test element is missing, ignore the error. This
 will cause the rest of the function to return immediately
 without any exceptions being thrown.
 
-Defined in: [HotTestElement.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestElement.ts#L16)
+Defined in: [HotTestElement.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTestElement.ts#L16)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 Indicates that the test element must be visible in
 order to select it.
 
-Defined in: [HotTestElement.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTestElement.ts#L10)
+Defined in: [HotTestElement.ts:10](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTestElement.ts#L10)

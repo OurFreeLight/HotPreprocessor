@@ -44,7 +44,6 @@ describe ("Hotsite Files Tests", () =>
 			});
 		it ("should have loaded /tests/hotsite/HelloWorld.hott", async () =>
 			{
-				debugger;
 				await common.driver.navigate ().to (`${common.getUrl (server)}/tests/hotsite/HelloWorld.hott`);
 				await HotPreprocessor.wait (100);
 				let elm = await common.driver.wait (until.elementLocated (By.css ("#test")));
@@ -54,7 +53,6 @@ describe ("Hotsite Files Tests", () =>
 			{
 				await common.driver.navigate ().to (`${common.getUrl (server)}/tests/hotsite/HelloWorld`);
 				await HotPreprocessor.wait (100);
-				debugger;
 				let elm = await common.driver.wait (until.elementLocated (By.css ("#test")));
 				expect (elm).to.not.equal (null, "Page did not load!");
 			});

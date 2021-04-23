@@ -87,7 +87,7 @@ Name | Type |
 
 **Returns:** [*HotPreprocessor*](hotpreprocessor.hotpreprocessor-1.md)
 
-Defined in: [HotPreprocessor.ts:397](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L397)
+Defined in: [HotPreprocessor.ts:397](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L397)
 
 ## Properties
 
@@ -99,7 +99,7 @@ The api that's used to communicate with.
 
 Implementation of: [IHotPreprocessor](../interfaces/hotpreprocessor.ihotpreprocessor.md).[api](../interfaces/hotpreprocessor.ihotpreprocessor.md#api)
 
-Defined in: [HotPreprocessor.ts:353](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L353)
+Defined in: [HotPreprocessor.ts:353](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L353)
 
 ___
 
@@ -109,7 +109,7 @@ ___
 
 The api content to use when about to load HotPreprocessor.
 
-Defined in: [HotPreprocessor.ts:377](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L377)
+Defined in: [HotPreprocessor.ts:377](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L377)
 
 ___
 
@@ -123,7 +123,7 @@ The components that can be constructed.
 
 Implementation of: [IHotPreprocessor](../interfaces/hotpreprocessor.ihotpreprocessor.md).[components](../interfaces/hotpreprocessor.ihotpreprocessor.md#components)
 
-Defined in: [HotPreprocessor.ts:365](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L365)
+Defined in: [HotPreprocessor.ts:365](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L365)
 
 ___
 
@@ -137,7 +137,7 @@ The files that can be stored for later use.
 
 Implementation of: [IHotPreprocessor](../interfaces/hotpreprocessor.ihotpreprocessor.md).[files](../interfaces/hotpreprocessor.ihotpreprocessor.md#files)
 
-Defined in: [HotPreprocessor.ts:369](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L369)
+Defined in: [HotPreprocessor.ts:369](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L369)
 
 ___
 
@@ -149,7 +149,7 @@ The loaded hotsite.
 
 Implementation of: [IHotPreprocessor](../interfaces/hotpreprocessor.ihotpreprocessor.md).[hotSite](../interfaces/hotpreprocessor.ihotpreprocessor.md#hotsite)
 
-Defined in: [HotPreprocessor.ts:373](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L373)
+Defined in: [HotPreprocessor.ts:373](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L373)
 
 ___
 
@@ -159,7 +159,7 @@ ___
 
 The logger.
 
-Defined in: [HotPreprocessor.ts:389](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L389)
+Defined in: [HotPreprocessor.ts:389](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L389)
 
 ___
 
@@ -171,7 +171,7 @@ Indicates what type of execution this is.
 
 Implementation of: [IHotPreprocessor](../interfaces/hotpreprocessor.ihotpreprocessor.md).[mode](../interfaces/hotpreprocessor.ihotpreprocessor.md#mode)
 
-Defined in: [HotPreprocessor.ts:349](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L349)
+Defined in: [HotPreprocessor.ts:349](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L349)
 
 ___
 
@@ -181,7 +181,7 @@ ___
 
 The page content to use when about to load HotPreprocessor.
 
-Defined in: [HotPreprocessor.ts:385](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L385)
+Defined in: [HotPreprocessor.ts:385](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L385)
 
 ___
 
@@ -195,7 +195,7 @@ The pages that can be constructed.
 
 Implementation of: [IHotPreprocessor](../interfaces/hotpreprocessor.ihotpreprocessor.md).[pages](../interfaces/hotpreprocessor.ihotpreprocessor.md#pages)
 
-Defined in: [HotPreprocessor.ts:361](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L361)
+Defined in: [HotPreprocessor.ts:361](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L361)
 
 ___
 
@@ -205,7 +205,7 @@ ___
 
 The secrets that can be exposed publicly.
 
-Defined in: [HotPreprocessor.ts:393](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L393)
+Defined in: [HotPreprocessor.ts:393](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L393)
 
 ___
 
@@ -217,7 +217,7 @@ The tester api that's used to communicate with.
 
 Implementation of: [IHotPreprocessor](../interfaces/hotpreprocessor.ihotpreprocessor.md).[testerAPI](../interfaces/hotpreprocessor.ihotpreprocessor.md#testerapi)
 
-Defined in: [HotPreprocessor.ts:357](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L357)
+Defined in: [HotPreprocessor.ts:357](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L357)
 
 ___
 
@@ -227,7 +227,7 @@ ___
 
 The tester api content to use when about to load HotPreprocessor.
 
-Defined in: [HotPreprocessor.ts:381](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L381)
+Defined in: [HotPreprocessor.ts:381](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L381)
 
 ___
 
@@ -239,7 +239,7 @@ The secrets that can be exposed publicly.
 
 #### Type declaration:
 
-Defined in: [HotPreprocessor.ts:397](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L397)
+Defined in: [HotPreprocessor.ts:397](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L397)
 
 ___
 
@@ -249,7 +249,7 @@ ___
 
 Indicates if this is ready for testing.
 
-Defined in: [HotPreprocessor.ts:341](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L341)
+Defined in: [HotPreprocessor.ts:341](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L341)
 
 ___
 
@@ -259,7 +259,7 @@ ___
 
 Indicates if this is a web build.
 
-Defined in: [HotPreprocessor.ts:337](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L337)
+Defined in: [HotPreprocessor.ts:337](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L337)
 
 ___
 
@@ -275,9 +275,9 @@ Executes this event when this page is ready for testing.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotPreprocessor.ts:345](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L345)
+Defined in: [HotPreprocessor.ts:345](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L345)
 
-Defined in: [HotPreprocessor.ts:345](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L345)
+Defined in: [HotPreprocessor.ts:345](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L345)
 
 ## Methods
 
@@ -295,7 +295,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotPreprocessor.ts:613](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L613)
+Defined in: [HotPreprocessor.ts:613](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L613)
 
 ___
 
@@ -313,7 +313,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotPreprocessor.ts:586](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L586)
+Defined in: [HotPreprocessor.ts:586](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L586)
 
 ___
 
@@ -331,7 +331,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotPreprocessor.ts:570](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L570)
+Defined in: [HotPreprocessor.ts:570](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L570)
 
 ___
 
@@ -349,7 +349,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotPreprocessor.ts:1282](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1282)
+Defined in: [HotPreprocessor.ts:1282](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1282)
 
 ___
 
@@ -372,7 +372,7 @@ Name | Type | Default value |
 
 **Returns:** *void*
 
-Defined in: [HotPreprocessor.ts:1265](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1265)
+Defined in: [HotPreprocessor.ts:1265](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1265)
 
 ___
 
@@ -390,7 +390,7 @@ Name | Type | Description |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotPreprocessor.ts:1395](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1395)
+Defined in: [HotPreprocessor.ts:1395](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1395)
 
 ___
 
@@ -409,7 +409,7 @@ Name | Type | Description |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotPreprocessor.ts:1379](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1379)
+Defined in: [HotPreprocessor.ts:1379](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1379)
 
 ___
 
@@ -432,7 +432,7 @@ Name | Type | Default value |
 
 **Returns:** *string*
 
-Defined in: [HotPreprocessor.ts:1036](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1036)
+Defined in: [HotPreprocessor.ts:1036](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1036)
 
 ___
 
@@ -450,7 +450,7 @@ Name | Type |
 
 **Returns:** [*HotComponent*](hotcomponent.hotcomponent-1.md)
 
-Defined in: [HotPreprocessor.ts:683](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L683)
+Defined in: [HotPreprocessor.ts:683](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L683)
 
 ___
 
@@ -468,7 +468,7 @@ Name | Type |
 
 **Returns:** [*HotFile*](hotfile.hotfile-1.md)
 
-Defined in: [HotPreprocessor.ts:602](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L602)
+Defined in: [HotPreprocessor.ts:602](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L602)
 
 ___
 
@@ -486,7 +486,7 @@ Name | Type |
 
 **Returns:** [*HotPage*](hotpage.hotpage-1.md)
 
-Defined in: [HotPreprocessor.ts:578](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L578)
+Defined in: [HotPreprocessor.ts:578](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L578)
 
 ___
 
@@ -504,7 +504,7 @@ Name | Type |
 
 **Returns:** [*HotSiteRoute*](../interfaces/hotpreprocessor.hotsiteroute.md)
 
-Defined in: [HotPreprocessor.ts:1362](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1362)
+Defined in: [HotPreprocessor.ts:1362](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1362)
 
 ___
 
@@ -522,7 +522,7 @@ Name | Type |
 
 **Returns:** *string*
 
-Defined in: [HotPreprocessor.ts:1334](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1334)
+Defined in: [HotPreprocessor.ts:1334](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1334)
 
 ___
 
@@ -534,7 +534,7 @@ Get the list of urls for each map from the HotSite.
 
 **Returns:** *string*[]
 
-Defined in: [HotPreprocessor.ts:1307](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1307)
+Defined in: [HotPreprocessor.ts:1307](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1307)
 
 ___
 
@@ -546,7 +546,7 @@ Get the list of maps for testing from the HotSite.
 
 **Returns:** *string*[]
 
-Defined in: [HotPreprocessor.ts:1290](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1290)
+Defined in: [HotPreprocessor.ts:1290](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1290)
 
 ___
 
@@ -566,7 +566,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotPreprocessor.ts:985](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L985)
+Defined in: [HotPreprocessor.ts:985](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L985)
 
 ___
 
@@ -585,7 +585,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotPreprocessor.ts:795](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L795)
+Defined in: [HotPreprocessor.ts:795](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L795)
 
 ___
 
@@ -604,7 +604,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<string\>
 
-Defined in: [HotPreprocessor.ts:1414](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1414)
+Defined in: [HotPreprocessor.ts:1414](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1414)
 
 ___
 
@@ -622,7 +622,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotPreprocessor.ts:622](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L622)
+Defined in: [HotPreprocessor.ts:622](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L622)
 
 ___
 
@@ -641,7 +641,7 @@ Name | Type |
 
 **Returns:** HTMLElement \| HTMLElement[]
 
-Defined in: [HotPreprocessor.ts:691](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L691)
+Defined in: [HotPreprocessor.ts:691](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L691)
 
 ___
 
@@ -660,7 +660,7 @@ Name | Type | Default value |
 
 **Returns:** *boolean*
 
-Defined in: [HotPreprocessor.ts:728](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L728)
+Defined in: [HotPreprocessor.ts:728](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L728)
 
 ___
 
@@ -681,7 +681,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<[*HotPreprocessor*](hotpreprocessor.hotpreprocessor-1.md)\>
 
-Defined in: [HotPreprocessor.ts:1679](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1679)
+Defined in: [HotPreprocessor.ts:1679](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1679)
 
 ___
 
@@ -703,7 +703,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<[*HotPreprocessor*](hotpreprocessor.hotpreprocessor-1.md)\>
 
-Defined in: [HotPreprocessor.ts:1529](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1529)
+Defined in: [HotPreprocessor.ts:1529](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1529)
 
 ___
 
@@ -724,7 +724,7 @@ Name | Type | Default value |
 
 **Returns:** *any*
 
-Defined in: [HotPreprocessor.ts:525](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L525)
+Defined in: [HotPreprocessor.ts:525](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L525)
 
 ___
 
@@ -743,7 +743,7 @@ Name | Type |
 
 **Returns:** *any*
 
-Defined in: [HotPreprocessor.ts:760](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L760)
+Defined in: [HotPreprocessor.ts:760](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L760)
 
 ___
 
@@ -762,7 +762,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotPreprocessor.ts:1491](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1491)
+Defined in: [HotPreprocessor.ts:1491](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1491)
 
 ___
 
@@ -780,7 +780,7 @@ Name | Type |
 
 **Returns:** *boolean*
 
-Defined in: [HotPreprocessor.ts:488](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L488)
+Defined in: [HotPreprocessor.ts:488](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L488)
 
 ___
 
@@ -801,7 +801,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<string\>
 
-Defined in: [HotPreprocessor.ts:1469](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1469)
+Defined in: [HotPreprocessor.ts:1469](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1469)
 
 ___
 
@@ -821,7 +821,7 @@ Name | Type | Default value |
 
 **Returns:** *Promise*<string\>
 
-Defined in: [HotPreprocessor.ts:1425](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1425)
+Defined in: [HotPreprocessor.ts:1425](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1425)
 
 ___
 
@@ -839,7 +839,7 @@ Name | Type |
 
 **Returns:** *Promise*<string\>
 
-Defined in: [HotPreprocessor.ts:1446](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1446)
+Defined in: [HotPreprocessor.ts:1446](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1446)
 
 ___
 
@@ -859,7 +859,7 @@ Name | Type |
 
 **Returns:** *string*
 
-Defined in: [HotPreprocessor.ts:750](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L750)
+Defined in: [HotPreprocessor.ts:750](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L750)
 
 ___
 
@@ -878,7 +878,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotPreprocessor.ts:1503](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1503)
+Defined in: [HotPreprocessor.ts:1503](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1503)
 
 ___
 
@@ -896,7 +896,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotPreprocessor.ts:556](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L556)
+Defined in: [HotPreprocessor.ts:556](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L556)
 
 ___
 
@@ -911,4 +911,4 @@ the first one.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotPreprocessor.ts:1516](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotPreprocessor.ts#L1516)
+Defined in: [HotPreprocessor.ts:1516](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotPreprocessor.ts#L1516)

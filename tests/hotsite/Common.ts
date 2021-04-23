@@ -122,5 +122,6 @@ export class Common
 			await this.testerServer.shutdown ();
 
 		await this.server.shutdown ();
+		await HotPreprocessor.wait (1000);
 	}
 }

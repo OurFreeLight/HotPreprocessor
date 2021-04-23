@@ -70,7 +70,7 @@ Name | Type | Default value |
 
 Inherited from: [HotServer](hotserver.hotserver-1.md)
 
-Defined in: [HotTesterServer.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L53)
+Defined in: [HotTesterServer.ts:53](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L53)
 
 ## Properties
 
@@ -82,7 +82,7 @@ The API to use.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[api](hotserver.hotserver-1.md#api)
 
-Defined in: [HotServer.ts:94](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L94)
+Defined in: [HotServer.ts:94](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotServer.ts#L94)
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 The express app to use.
 
-Defined in: [HotTesterServer.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L26)
+Defined in: [HotTesterServer.ts:26](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L26)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 The HTTP listener to use.
 
-Defined in: [HotTesterServer.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L30)
+Defined in: [HotTesterServer.ts:30](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L30)
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 The HTTPS listener to use.
 
-Defined in: [HotTesterServer.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L34)
+Defined in: [HotTesterServer.ts:34](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L34)
 
 ___
 
@@ -124,7 +124,7 @@ The network address to listen on.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[listenAddress](hotserver.hotserver-1.md#listenaddress)
 
-Defined in: [HotServer.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L98)
+Defined in: [HotServer.ts:98](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotServer.ts#L98)
 
 ___
 
@@ -136,7 +136,7 @@ The logger.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[logger](hotserver.hotserver-1.md#logger)
 
-Defined in: [HotServer.ts:134](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L134)
+Defined in: [HotServer.ts:134](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotServer.ts#L134)
 
 ___
 
@@ -155,7 +155,7 @@ Name | Type |
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[ports](hotserver.hotserver-1.md#ports)
 
-Defined in: [HotServer.ts:102](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L102)
+Defined in: [HotServer.ts:102](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotServer.ts#L102)
 
 ___
 
@@ -167,7 +167,7 @@ The processor to use.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[processor](hotserver.hotserver-1.md#processor)
 
-Defined in: [HotServer.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L86)
+Defined in: [HotServer.ts:86](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotServer.ts#L86)
 
 ___
 
@@ -179,7 +179,7 @@ Redirect HTTP traffic to HTTPS.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[redirectHTTPtoHTTPS](hotserver.hotserver-1.md#redirecthttptohttps)
 
-Defined in: [HotServer.ts:126](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L126)
+Defined in: [HotServer.ts:126](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotServer.ts#L126)
 
 ___
 
@@ -191,7 +191,7 @@ Any non-static routes that need to be added. These
 will be added during the preregistration phase, before
 all API routes are added.
 
-Defined in: [HotTesterServer.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L40)
+Defined in: [HotTesterServer.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L40)
 
 ___
 
@@ -203,7 +203,7 @@ Any secrets associated with this server.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[secrets](hotserver.hotserver-1.md#secrets)
 
-Defined in: [HotServer.ts:138](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L138)
+Defined in: [HotServer.ts:138](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotServer.ts#L138)
 
 ___
 
@@ -215,7 +215,7 @@ The server type.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[serverType](hotserver.hotserver-1.md#servertype)
 
-Defined in: [HotServer.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L90)
+Defined in: [HotServer.ts:90](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotServer.ts#L90)
 
 ___
 
@@ -235,7 +235,7 @@ Name | Type | Description |
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[ssl](hotserver.hotserver-1.md#ssl)
 
-Defined in: [HotServer.ts:109](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L109)
+Defined in: [HotServer.ts:109](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotServer.ts#L109)
 
 ___
 
@@ -247,7 +247,7 @@ The type of server.
 
 Inherited from: [HotServer](hotserver.hotserver-1.md).[type](hotserver.hotserver-1.md#type)
 
-Defined in: [HotServer.ts:130](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L130)
+Defined in: [HotServer.ts:130](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotServer.ts#L130)
 
 ## Methods
 
@@ -267,7 +267,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotTesterServer.ts:167](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L167)
+Defined in: [HotTesterServer.ts:167](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L167)
 
 ___
 
@@ -285,7 +285,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [HotTesterServer.ts:143](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L143)
+Defined in: [HotTesterServer.ts:143](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L143)
 
 ___
 
@@ -298,7 +298,7 @@ error handlers.
 
 **Returns:** *void*
 
-Defined in: [HotTesterServer.ts:386](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L386)
+Defined in: [HotTesterServer.ts:386](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L386)
 
 ___
 
@@ -316,7 +316,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTesterServer.ts:159](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L159)
+Defined in: [HotTesterServer.ts:159](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L159)
 
 ___
 
@@ -335,7 +335,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTesterServer.ts:151](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L151)
+Defined in: [HotTesterServer.ts:151](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L151)
 
 ___
 
@@ -349,7 +349,7 @@ Start listening for requests.
 
 Overrides: [HotServer](hotserver.hotserver-1.md)
 
-Defined in: [HotTesterServer.ts:414](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L414)
+Defined in: [HotTesterServer.ts:414](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L414)
 
 ___
 
@@ -361,7 +361,7 @@ The routes to add before registering a route.
 
 **Returns:** *void*
 
-Defined in: [HotTesterServer.ts:323](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L323)
+Defined in: [HotTesterServer.ts:323](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L323)
 
 ___
 
@@ -381,7 +381,7 @@ Name | Type |
 
 Overrides: [HotServer](hotserver.hotserver-1.md)
 
-Defined in: [HotTesterServer.ts:182](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L182)
+Defined in: [HotTesterServer.ts:182](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L182)
 
 ___
 
@@ -402,7 +402,7 @@ Name | Type |
 
 Inherited from: [HotServer](hotserver.hotserver-1.md)
 
-Defined in: [HotServer.ts:188](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotServer.ts#L188)
+Defined in: [HotServer.ts:188](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotServer.ts#L188)
 
 ___
 
@@ -423,7 +423,7 @@ Name | Type | Default value |
 
 **Returns:** *void*
 
-Defined in: [HotTesterServer.ts:346](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L346)
+Defined in: [HotTesterServer.ts:346](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L346)
 
 ___
 
@@ -441,7 +441,7 @@ Name | Type |
 
 **Returns:** *Promise*<void\>
 
-Defined in: [HotTesterServer.ts:494](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L494)
+Defined in: [HotTesterServer.ts:494](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L494)
 
 ___
 
@@ -455,7 +455,7 @@ Shutdown the server.
 
 Overrides: [HotServer](hotserver.hotserver-1.md)
 
-Defined in: [HotTesterServer.ts:533](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L533)
+Defined in: [HotTesterServer.ts:533](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L533)
 
 ___
 
@@ -473,7 +473,7 @@ Name | Type |
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [HotTesterServer.ts:306](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L306)
+Defined in: [HotTesterServer.ts:306](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L306)
 
 ___
 
@@ -495,4 +495,4 @@ Name | Type | Default value | Description |
 
 **Returns:** *Promise*<{ `processor`: [*HotServer*](hotserver.hotserver-1.md) \| [*HotPreprocessor*](hotpreprocessor.hotpreprocessor-1.md) ; `server`: [*HotTesterServer*](hottesterserver.hottesterserver-1.md)  }\>
 
-Defined in: [HotTesterServer.ts:509](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotTesterServer.ts#L509)
+Defined in: [HotTesterServer.ts:509](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotTesterServer.ts#L509)

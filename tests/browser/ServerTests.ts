@@ -25,7 +25,6 @@ describe ("Browser-Server Tests", () =>
 			{
 				await common.driver.quit ();
 				await common.shutdown ();
-				await HotPreprocessor.wait (1000);
 			});
 
 		it ("should click the test button", async () =>

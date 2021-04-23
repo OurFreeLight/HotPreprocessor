@@ -126,6 +126,19 @@ export class Hot
 	 */
 	static async include (file: HotFile | string, args: any[] = null): Promise<void>
 	{
+		if (typeof (file) === "string")
+		{
+			const lowerFile: string = file.toLowerCase ();
+
+			// If the file to be included does not have a nahfam, add it. This 
+			// will ensure the server sends only the file content.
+			if (lowerFile.indexOf (".hott") > -1)
+			{
+				if (lowerFile.indexOf ("nahfam") < 0)
+					file += "?hpserve=nahfam";
+			}
+		}
+
 		Hot.echo (await Hot.getFile (file, args));
 	}
 

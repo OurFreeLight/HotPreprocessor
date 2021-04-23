@@ -17,7 +17,7 @@
 
 • **Create**: = 0
 
-Defined in: [schemas/HotDBSchema.ts:3](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/schemas/HotDBSchema.ts#L3)
+Defined in: [schemas/HotDBSchema.ts:3](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/schemas/HotDBSchema.ts#L3)
 
 ___
 
@@ -25,4 +25,4 @@ ___
 
 • **Modify**: = 1
 
-Defined in: [schemas/HotDBSchema.ts:4](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/schemas/HotDBSchema.ts#L4)
+Defined in: [schemas/HotDBSchema.ts:4](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/schemas/HotDBSchema.ts#L4)

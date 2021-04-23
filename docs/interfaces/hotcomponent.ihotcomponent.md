@@ -32,7 +32,7 @@ A component to preprocess.
 
 The connected API.
 
-Defined in: [HotComponent.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotComponent.ts#L28)
+Defined in: [HotComponent.ts:28](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotComponent.ts#L28)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 The options to include with registering this component.
 
-Defined in: [HotComponent.ts:32](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotComponent.ts#L32)
+Defined in: [HotComponent.ts:32](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotComponent.ts#L32)
 
 ___
 
@@ -54,7 +54,7 @@ The events to trigger.
 
 #### Type declaration:
 
-Defined in: [HotComponent.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotComponent.ts#L44)
+Defined in: [HotComponent.ts:44](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotComponent.ts#L44)
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 The associated HTMLElement.
 
-Defined in: [HotComponent.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotComponent.ts#L16)
+Defined in: [HotComponent.ts:16](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotComponent.ts#L16)
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 The name of the page.
 
-Defined in: [HotComponent.ts:20](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotComponent.ts#L20)
+Defined in: [HotComponent.ts:20](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotComponent.ts#L20)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 The processor to use.
 
-Defined in: [HotComponent.ts:12](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotComponent.ts#L12)
+Defined in: [HotComponent.ts:12](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotComponent.ts#L12)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 The name of the tag.
 
-Defined in: [HotComponent.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotComponent.ts#L24)
+Defined in: [HotComponent.ts:24](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotComponent.ts#L24)
 
 ___
 
@@ -104,7 +104,7 @@ ___
 
 The type of component.
 
-Defined in: [HotComponent.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotComponent.ts#L36)
+Defined in: [HotComponent.ts:36](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotComponent.ts#L36)
 
 ___
 
@@ -114,4 +114,4 @@ ___
 
 The value of the component.
 
-Defined in: [HotComponent.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/ff92735/src/HotComponent.ts#L40)
+Defined in: [HotComponent.ts:40](https://github.com/OurFreeLight/HotPreprocessor/blob/5a339e8/src/HotComponent.ts#L40)

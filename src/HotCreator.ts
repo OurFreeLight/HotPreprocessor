@@ -110,6 +110,16 @@ export class HotCreator
 	}
 
 	/**
+	 * Copy the libraries over to a new location.
+	 */
+	async copyLibraries (location: string): Promise<void>
+	{
+		const buildWebDir: string = ppath.normalize (`${__dirname}/../../build-web`);
+
+		await HotIO.copyFiles (buildWebDir, ppath.normalize (location));
+	}
+
+	/**
 	 * Create an app.
 	 */
 	async create (): Promise<void>
