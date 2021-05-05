@@ -551,6 +551,26 @@ export class HotPreprocessor implements IHotPreprocessor
 	}
 
 	/**
+	 * Check if a required parameter exists inside an object. If it exists, return the value.
+	 * If it does not exist, return a default value instead.
+	 */
+	static getParamDefault (name: string, objWithParam: any, defaultValue: any): any
+	{
+		let value: any = objWithParam[name];
+
+		if (value == null)
+			return (defaultValue);
+
+		if (typeof (value) === "string")
+		{
+			if (value === "")
+				return (defaultValue);
+		}
+
+		return (value);
+	}
+
+	/**
 	 * Wait for a number of milliseconds.
 	 */
 	static async wait (numMilliseconds: number): Promise<void>
